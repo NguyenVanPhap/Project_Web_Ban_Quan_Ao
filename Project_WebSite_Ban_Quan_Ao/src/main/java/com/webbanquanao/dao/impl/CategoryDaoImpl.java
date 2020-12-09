@@ -126,7 +126,7 @@ public class CategoryDaoImpl implements CategoryDao {
         List<CategoryEntity> categoryEntities = new ArrayList<CategoryEntity>();
         Transaction transaction = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()){
+        try{Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
 
             categoryEntities = session.createQuery("from CategoryEntity").getResultList();
