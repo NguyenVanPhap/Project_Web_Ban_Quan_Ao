@@ -51,28 +51,28 @@
 									<h3>User:</h3>
 									<c:url value="/admin/user/edit" var="edit"></c:url>
 
-									<form role="form" action="${edit }" method="get" enctype="multipart/form-data">
+									<form role="form" action="${edit }" method="post" enctype="multipart/form-data">
 
 										<input name="id" value="${user.id }" type="text" hidden="">
 
 										<div class="form-group">
 											<label>User Name:</label> <input class="form-control"
-											value="${user.userName }" name="username" />
+																			 value="${user.userName }" name="username" />
 										</div>
 
 										<div class="form-group">
 											<label>Password</label> <input class="form-control"
-											value="${user.password }" type="password" name="password" />
+																		   value="${user.password }" type="password" name="password" />
 										</div>
 
 										<div class="form-group">
 											<label>Email:</label> <input class="form-control"
-											value="${user.email }" name="email" />
+																		 value="${user.email }" name="email" />
 										</div>
 
 										<div class="form-group">
 											<label>Address:</label> <input class="form-control"
-											value="${user.address }" name="address" />
+																		   value="${user.address }" name="address" />
 										</div>
 
 										<div class="form-group">
@@ -85,11 +85,11 @@
 												/>Admin
 												</label> <br>
 												<label> <input type="radio" value="2"
-												name="permission" <c:if test="${user.permission==2}">
+															   name="permission" <c:if test="${user.permission==2}">
 													checked
 												</c:if>
 												/>Client
-											</label>
+												</label>
 											</div>
 
 										</div>

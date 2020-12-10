@@ -49,19 +49,31 @@
 									<form role="form" action="add"  method="post" enctype="multipart/form-data">
 										<div class="form-group">
 											<label>User Name:</label>
-											<input class="form-control" placeholder="Your name" type="textbox" name="username" >
+											<c:if test="${ not empty nameError}">
+												<p style="color: red"><c:out value="${nameError}" /></p>
+											</c:if>
+											<input class="form-control" placeholder="Your name" type="textbox" name="username"
+												   value=<c:out value="${param.username}"/>>
 
 										</div>
 										<div class="form-group">
 											<label>Password</label>
+											<c:if test="${ not empty passError}">
+												<p style="color: red"><c:out value="${passError}" /></p>
+											</c:if>
+
 											<input class="form-control" placeholder="please enter password" type="password"
-												   name="password" />
+												   name="password" value=<c:out value="${param.password}"/>>
 										</div>
 
 										<div class="form-group">
 											<label>Email:</label>
-
-											<input class="form-control" type="textbox" placeholder="Please enter email" name="email" />
+											<%--<c:if test="${ not empty maiError && not empty MailFormatError}">--%>
+												<p style="color: red"><c:out value="${mailError}" /></p>
+												<p style="color: red"><c:out value="${MailFormatError}" /></p>
+											<%--</c:if>--%>
+											<input class="form-control" type="textbox" placeholder="Please enter email"
+												   name="email" value=<c:out value="${param.email}"/>>
 										</div>
 
 										<div class="form-group">

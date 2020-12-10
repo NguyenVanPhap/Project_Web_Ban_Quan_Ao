@@ -30,7 +30,7 @@ public class UserEditController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         UserEntity user = userService.get(id);
         req.setAttribute("user", user);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/edit-user.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/admin/edit-user.jsp");
         dispatcher.forward(req, resp);
     }
 
@@ -63,19 +63,21 @@ public class UserEditController extends HttpServlet {
                     user.setPermission(Integer.parseInt(item.getString()));;
                 } else if (item.getFieldName().equals("avatar"))
                 {
-                    String originalFileName = item.getName();
-                    Path path = Paths.get(originalFileName);
-                    final String storepath=servletContext.getRealPath("image");
-                    System.out.println("File1: "+storepath+"\\"+path.getFileName());
-                    File file = new File(storepath + "\\" + path.getFileName());
-                    item.write(file);
-                    user.setAvatar(originalFileName);
-                    item.write(file);
-                    user.setAvatar(originalFileName);
-                } else
+                    if (item.getSize() > 0)
+                    {
+                        String originalFileName = item.getName();
+                        Path path = Paths.get(originalFileName);
+                        final String storepath = servletContext.getRealPath("image");
+                        System.out.println("File1: " + storepath + "\\" + path.getFileName());
+                        File file = new File(storepath + "\\" + path.getFileName());
+                        item.write(file);
+                        user.setAvatar(originalFileName);
+                    }
+                    else
                     {
                         user.setAvatar(null);
                     }
+                }
             }
             userService.edit(user);
             resp.sendRedirect(req.getContextPath() + "/admin/user/list");
