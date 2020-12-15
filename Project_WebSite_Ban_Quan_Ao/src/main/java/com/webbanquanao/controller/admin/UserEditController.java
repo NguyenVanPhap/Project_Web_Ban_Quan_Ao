@@ -70,7 +70,9 @@ public class UserEditController extends HttpServlet {
                         final String storepath = servletContext.getRealPath("image");
                         System.out.println("File1: " + storepath + "\\" + path.getFileName());
                         File file = new File(storepath + "\\" + path.getFileName());
-                        item.write(file);
+                        if (!file.exists() && !file.isDirectory()) {
+                            item.write(file);
+                        }
                         user.setAvatar(originalFileName);
                     }
                     else

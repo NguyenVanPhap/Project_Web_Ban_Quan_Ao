@@ -96,7 +96,7 @@
 
 										<div class="form-group">
 											<label>Choose Avatar</label> <input type="file"
-																				name="avatar" />
+																				name="avatar" value="${user.avatar }" />
 										</div>
 										<button type="submit" class="btn btn-default">Edit</button>
 										<button type="reset" class="btn btn-primary">Reset</button>

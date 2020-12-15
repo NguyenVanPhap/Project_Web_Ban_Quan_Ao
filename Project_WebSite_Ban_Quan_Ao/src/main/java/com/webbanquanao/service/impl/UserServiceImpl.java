@@ -5,7 +5,6 @@ import com.webbanquanao.dao.impl.UserDaoImpl;
 import com.webbanquanao.model.UserEntity;
 import com.webbanquanao.service.UserService;
 
-import java.io.File;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -26,14 +25,14 @@ public class UserServiceImpl implements UserService {
         oldUser.setAddress(newUser.getAddress());
         oldUser.setPermission(newUser.getPermission());
         if (newUser.getAvatar() != null) {
-            // XOA ANH CU DI
+            /*// XOA ANH CU DI
             String fileName = oldUser.getAvatar();
-            final String dir = "F:\\upload";
+            final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
             File file = new File(dir + "/" + fileName);
             if (file.exists()) {
                 file.delete();
             }
-            // THEM ANH MOI
+            // THEM ANH MOI*/
             oldUser.setAvatar(newUser.getAvatar());
         }
 
@@ -80,7 +79,7 @@ public class UserServiceImpl implements UserService {
         if (userDao.checkExistUserName(username)) {
             return false;
         }
-        userDao.insert(new UserEntity(email, username, password));
+        //       userDao.insert(new UserEntity(email, username, password));
         return true;
     }
 

@@ -14,25 +14,6 @@ public class UserEntity {
     private String address;
     private Integer permission;
 
-    public UserEntity() {
-        super();
-    }
-    public UserEntity(String email, String username, String password) {
-        super();
-        this.email = email;
-        this.userName = username;
-        this.password = password;
-    }
-    public UserEntity(int id, String email, String username, String password, String avatar, int roleId) {
-        super();
-        this.id = id;
-        this.email = email;
-        this.userName = username;
-        this.password = password;
-        this.avatar = avatar;
-        this.permission = roleId;
-    }
-
     @Id
     @Column(name = "id")
     public int getId() {

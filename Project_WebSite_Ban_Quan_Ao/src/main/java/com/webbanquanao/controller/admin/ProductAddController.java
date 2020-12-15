@@ -12,6 +12,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,9 +39,15 @@ public class ProductAddController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("One");
         ProductEntity product = new ProductEntity();
         DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
         ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
+
+        ServletContext context = request.getServletContext();
+        final String dir = context.getRealPath("image");
+
+
 
         try {
             List<FileItem> items = servletFileUpload.parseRequest(request);
@@ -48,25 +55,24 @@ public class ProductAddController extends HttpServlet {
                 if (item.getFieldName().equals("name")) {
                     product.setName(item.getString());
                 } else if (item.getFieldName().equals("category")) {
-     //               product.setCategory(categoryService.get(Integer.parseInt(item.getString())));
+                    product.setCategoryEntity(categoryService.get(Integer.parseInt(item.getString())));
                 } else if (item.getFieldName().equals("price")) {
-     //               product.setPrice(Long.parseLong(item.getString()));
+                    product.setPrice(Double.parseDouble(item.getString()));
                 } else if (item.getFieldName().equals("des")) {
                     product.setDes(item.getString());
                 } else if (item.getFieldName().equals("image")) {
-                    final String dir = "D:\\upload";
                     String originalFileName = item.getName();
-                    int index = originalFileName.lastIndexOf(".");
-                    String ext = originalFileName.substring(index + 1);
-                    String fileName = System.currentTimeMillis() + "." + ext;
-                    File file = new File(dir + "/" + fileName);
-                    item.write(file);
-                    product.setImage(fileName);
+
+                    System.out.println("FileName: "+originalFileName);
+                    File file = new File(dir + File.separator + originalFileName);
+                    if (!file.exists() && !file.isDirectory()) {
+                        item.write(file);
+                    }
+                    product.setImage(originalFileName);
                 }
             }
 
             productService.insert(product);
-
             response.sendRedirect(request.getContextPath() + "/admin/product/list");
         } catch (FileUploadException e) {
             e.printStackTrace();
@@ -74,6 +80,9 @@ public class ProductAddController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
+            System.out.println("Two");
+            response.sendRedirect(request.getContextPath() + "/admin/product/add?e=1");
         }
+
     }
 }

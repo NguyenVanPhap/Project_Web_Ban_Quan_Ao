@@ -12,6 +12,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +48,10 @@ public class ProductEditController extends HttpServlet {
         DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
         ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
 
+
+        ServletContext context = request.getServletContext();
+        final String dir = context.getRealPath("image");
+
         try {
             List<FileItem> items = servletFileUpload.parseRequest(request);
 
@@ -55,25 +60,19 @@ public class ProductEditController extends HttpServlet {
                     product.setId(Integer.parseInt(item.getString()));
                 } else if (item.getFieldName().equals("name")) {
                     product.setName(item.getString());
-                    ;
                 } else if (item.getFieldName().equals("cate")) {
-     //               product.setCategory(categoryService.get(item.getString()));
+                    product.setCategoryEntity(categoryService.get(Integer.parseInt(item.getString())));
                 } else if (item.getFieldName().equals("des")) {
                     product.setDes(item.getString());
-                    ;
                 } else if (item.getFieldName().equals("price")) {
-       //             product.setPrice(Long.parseLong(item.getString()));
+                    product.setPrice(Double.parseDouble(item.getString()));
                 } else if (item.getFieldName().equals("image")) {
                     if (item.getSize() > 0) {// neu co file d
-                        final String dir = "F:\\upload";
                         String originalFileName = item.getName();
-                        int index = originalFileName.lastIndexOf(".");
-                        String ext = originalFileName.substring(index + 1);
-                        String fileName = System.currentTimeMillis() + "." + ext;
-                        File file = new File(dir + "/" + fileName);
+                        File file = new File(dir + File.separator + originalFileName);
                         item.write(file);
 
-                        product.setImage(fileName);
+                        product.setImage(originalFileName);
 
                     } else {
 

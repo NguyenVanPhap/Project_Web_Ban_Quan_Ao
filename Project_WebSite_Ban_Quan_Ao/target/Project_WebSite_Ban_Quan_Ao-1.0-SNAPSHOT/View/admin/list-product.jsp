@@ -6,10 +6,8 @@
 <c:url value="/View/admin/Static" var="url"></c:url>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
-
 <html>
 <head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Product Management</title>
@@ -72,12 +70,12 @@
 									<c:forEach items="${proList}" var="pro" >
 										<tr class="odd gradeX">
 											<td>${pro.getId()}</td>
-											<!--		<c:url value="/image?fname=${pro.getImage()}" var="imgUrl"></c:url>-->
+											<c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
 											<td><img height="150" width="200" src="${imgUrl}" /></td>
 
 											<td>${pro.getName() }</td>
 											<td>${pro.getPrice() }</td>
-											<td>${pro.getCategory().getCate_name() }</td>
+											<td>${pro.getCategoryEntity().getCateName()}</td>
 											<td>${pro.getDes() } </td>
 											<td><a
 													href="<c:url value='/product/detail?id=${pro.getId() }'/>"
