@@ -8,7 +8,6 @@ import java.util.Objects;
 @Table(name = "cart", schema = "web_ban_quan_ao", catalog = "")
 public class CartEntity {
     private String id;
-    private int uId;
     private Date buyDate;
     private Boolean action;
 
@@ -20,16 +19,6 @@ public class CartEntity {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "u_id")
-    public int getuId() {
-        return uId;
-    }
-
-    public void setuId(int uId) {
-        this.uId = uId;
     }
 
     @Basic
@@ -57,14 +46,13 @@ public class CartEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CartEntity that = (CartEntity) o;
-        return uId == that.uId &&
-                Objects.equals(id, that.id) &&
+        return Objects.equals(id, that.id) &&
                 Objects.equals(buyDate, that.buyDate) &&
                 Objects.equals(action, that.action);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, uId, buyDate, action);
+        return Objects.hash(id, buyDate, action);
     }
 }

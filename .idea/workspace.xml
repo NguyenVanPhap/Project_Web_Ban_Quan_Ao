@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc227dd1-67f7-4681-870b-038a37638e5b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/.idea/dataSources/731df968-8d10-4950-b890-61c7895c3a00.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/.idea/dataSources/731df968-8d10-4950-b890-61c7895c3a00/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/Project_WebSite_Ban_Quan_Ao.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/Project_WebSite_Ban_Quan_Ao.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/ProductAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/ProductAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/ProductEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/ProductEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/ProductListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/ProductListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/UserAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/controller/admin/UserAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/HibernateConnection/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/HibernateConnection/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/impl/CategoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/impl/CategoryDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/impl/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/impl/ProductDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/CartEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/CartEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/CartitemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/CartitemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/CategoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/CategoryEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/ProductEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/ProductEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/model/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/service/impl/CartItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/service/impl/CartItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/java/com/webbanquanao/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/add-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/add-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/add-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/add-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/edit-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/edit-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/edit-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/edit-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/list-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/list-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/list-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/list-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/slide-bar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/src/main/webapp/View/admin/slide-bar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/add-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/add-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/add-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/add-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/edit-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/edit-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/edit-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/edit-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/list-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/list-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/list-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/list-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/slide-bar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/View/admin/slide-bar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/ProductAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/ProductAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/ProductEditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/ProductEditController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/ProductListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/ProductListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/UserAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/controller/admin/UserAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/HibernateConnection/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/HibernateConnection/HibernateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/impl/CategoryDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/impl/CategoryDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/impl/ProductDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/impl/ProductDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/impl/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/dao/impl/UserDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/CartEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/CartEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/CartitemEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/CartitemEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/CategoryEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/ProductEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/ProductEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/model/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/service/impl/CartItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/service/impl/CartItemServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/service/impl/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/service/impl/ProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/com/webbanquanao/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/image/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/image/hhhhh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/ProductAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/ProductAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/ProductEditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/ProductEditController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/ProductListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/ProductListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/UserAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/controller/admin/UserAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/HibernateConnection/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/HibernateConnection/HibernateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/impl/CategoryDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/impl/CategoryDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/impl/ProductDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/impl/ProductDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/impl/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/dao/impl/UserDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/CartEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/CartEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/CartitemEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/CartitemEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/CategoryEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/ProductEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/ProductEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/model/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/service/impl/CartItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/service/impl/CartItemServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/service/impl/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/service/impl/ProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao/target/classes/com/webbanquanao/service/impl/UserServiceImpl.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1lYkFjU1GTA5NXTLjjprJBMT1lg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Project_WebSite_Ban_Quan_Ao" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc227dd1-67f7-4681-870b-038a37638e5b" name="Default Changelist" comment="" />
+      <created>1607781311038</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607781311038</updated>
+      <workItem from="1607781312498" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1607781338045">
+      <screen x="62" y="0" width="1474" height="864" />
+    </state>
+    <state x="580" y="190" key="FileChooserDialogImpl/62.0.1474.864@62.0.1474.864" timestamp="1607781338045" />
+  </component>
+</project>

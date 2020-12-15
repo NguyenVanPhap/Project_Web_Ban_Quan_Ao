@@ -56,7 +56,7 @@
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <a href="<c:url value='/admin/user/add?'/>"
-                            class="button">ADD</a>
+                       class="button">ADD</a>
                     <div class="panel panel-default">
                         <div class="panel-heading">Advanced Tables</div>
                         <div class="panel-body">
@@ -69,7 +69,6 @@
                                         <th>Avatar</th>
                                         <th>Email</th>
                                         <th>User Name</th>
-                                        <th>Password</th>
                                         <th>Address</th>
                                         <th>permission</th>
                                         <th>Action</th>
@@ -84,7 +83,6 @@
                                             <td><img height="70" width="90" src="${imgUrl}" /></td>
                                             <td>${user.getEmail() }</td>
                                             <td>${user.getUserName() }</td>
-                                            <td>${user.getPassword() }</td>
                                             <td>${user.getAddress() }</td>
                                             <td class="center"><c:choose>
                                                 <c:when test="${user.getPermission() ==1 }">
@@ -94,9 +92,9 @@
                                             </c:choose></td>
 
                                             <td><a href="<c:url value='/admin/user/edit?id=${user.id }'/>"
-                                                    class="center">Edit</a> |
+                                                   class="center">Edit</a> |
                                                 <a href="<c:url value='/admin/user/delete?id=${user.id }'/>"
-                                                    class="center">Delete</a>
+                                                   class="center">Delete</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

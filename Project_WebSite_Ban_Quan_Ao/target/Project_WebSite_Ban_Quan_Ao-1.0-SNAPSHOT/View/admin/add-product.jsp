@@ -10,7 +10,7 @@
 	<script src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Edit User</title>
+	<title>Addition Product</title>
 	<!-- BOOTSTRAP STYLES-->
 	<link href="${url}/css/bootstrap.css" rel="stylesheet" />
 	<!-- FONTAWESOME STYLES-->
@@ -69,7 +69,7 @@
 											<div class="checkbox">
 												<select name="category">
 													<c:forEach items="${categories}" var="c">
-														<option value="${c.getCate_id()}">${c.getCate_name()}</option>
+														<option value="${c.getCateId()}">${c.getCateName()}</option>
 													</c:forEach>
 												</select>
 											</div>

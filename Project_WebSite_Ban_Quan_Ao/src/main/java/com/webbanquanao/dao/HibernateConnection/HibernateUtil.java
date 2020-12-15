@@ -3,6 +3,9 @@ package com.webbanquanao.dao.HibernateConnection;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  * Java based configuration
  * @author ramesh Fadatare
@@ -14,7 +17,7 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         try {
             // load from different directory
-            SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
             return sessionFactory;
 
@@ -32,5 +35,11 @@ public class HibernateUtil {
     public static void shutdown() {
         // Close caches and connection pools
         getSessionFactory().close();
+    }
+
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("NewPersistenceUnit");
+
+    public static EntityManagerFactory getEmFactory(){
+        return emf;
     }
 }

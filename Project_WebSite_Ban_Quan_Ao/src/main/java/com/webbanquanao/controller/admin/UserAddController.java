@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.regex.Pattern;
+
+import static org.hibernate.sql.InFragment.NULL;
 
 @WebServlet(urlPatterns = { "/admin/user/add" })
 public class UserAddController extends HttpServlet {
@@ -47,40 +50,52 @@ public class UserAddController extends HttpServlet {
         diskFileItemFactory.setRepository(repository);*/
 
         ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
-
+        String url="";
         try {
             List<FileItem> items = servletFileUpload.parseRequest(req);
             for (FileItem item : items) {
-                if (item.getFieldName().equals("email")) {
-                    user.setEmail(item.getString());;
-                } else if (item.getFieldName().equals("username")) {
+                if (item.getFieldName().equals("email"))
+                {
+                    user.setEmail(item.getString());
+                } else if (item.getFieldName().equals("username"))
+                {
                     user.setUserName(item.getString());
-                } else if (item.getFieldName().equals("password")) {
+                } else if (item.getFieldName().equals("password"))
+                {
                     user.setPassword(item.getString());
                 }else if (item.getFieldName().equals("address")) {
                     user.setAddress(item.getString());
                 } else if (item.getFieldName().equals("permission")) {
                     user.setPermission(Integer.parseInt(item.getString()));;
                 } else if (item.getFieldName().equals("avatar")) {
-                    String originalFileName = item.getName();
-                    Path path =Paths.get(originalFileName);
-                    final String storepath=servletContext.getRealPath("image");
-                    System.out.println("File1: "+storepath+"\\"+path.getFileName());
-                    File file = new File(storepath + "\\" + path.getFileName());
-                    item.write(file);
-                    user.setAvatar(originalFileName);
-                    userService.insert(user);
+                    if (item.getSize() > 0) {
+                        String originalFileName = item.getName();
+                        Path path = Paths.get(originalFileName);
+                        final String storepath = servletContext.getRealPath("image");
+                        System.out.println("File1: " + storepath + "\\" + path.getFileName());
+                        File file = new File(storepath + "\\" + path.getFileName());
+                        if (!file.exists() && !file.isDirectory()) {
+                            item.write(file);
+                        }
+                        System.out.println("File1:Thanh Cong ");
+                        user.setAvatar(originalFileName);
+                    }
+                    else
+                    {
+                        user.setAvatar(null);
+                    }
 
                 }
             }
 
-
-
+            userService.insert(user);
             resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+
         } catch (FileUploadException e) {
             e.printStackTrace();
         } catch (Exception e) {
             resp.sendRedirect(req.getContextPath() + "/admin/user/add?e=1");
+
         }
 
     }

@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
         if (userDao.checkExistUserName(username)) {
             return false;
         }
- //       userDao.insert(new UserEntity(email, username, password));
+        //       userDao.insert(new UserEntity(email, username, password));
         return true;
     }
 

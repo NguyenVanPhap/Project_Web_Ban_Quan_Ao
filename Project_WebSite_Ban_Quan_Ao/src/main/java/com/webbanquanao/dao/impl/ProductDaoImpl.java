@@ -1,10 +1,17 @@
 package com.webbanquanao.dao.impl;
 
+import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.dao.ProductDao;
+import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,132 +24,132 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void insert(ProductEntity product){
-/*        String sql="Insert into Product(image, name, price, cate_id, des) values (?,?,?,?,?)";
-        Connection conn = super.getJDBCConnection();
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
         try{
-            PreparedStatement ps= conn.prepareStatement(sql);
-            ps.setString(1,product.getImage());
-            ps.setString(2,product.getName());
-            ps.setFloat(3,product.getPrice());
-            ps.setInt(4,product.getCategory().getCate_id());
-            ps.setString(5,product.getDes());
-            ps.executeUpdate();
+            trans.begin();
+            em.persist(product);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
         }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }*/
+        finally {
+            em.close();
+        }
+
     }
 
     @Override
     public void edit(ProductEntity product){
-/*        String sql = "Update Product Set image = ?, name = ?, price = ?, cate_id = ?, des= ?";
-        Connection conn = super.getJDBCConnection();
-
-        try{
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,product.getImage());
-            ps.setString(2,product.getName());
-            ps.setFloat(3,product.getPrice());
-            ps.setInt(4,product.getCategory().getCate_id());
-            ps.setString(5,product.getDes());
-            ps.executeUpdate();
-        }
-        catch (SQLException e)
-        {
+        /*Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(product);
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
         }*/
+
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+
+        try{
+            trans.begin();
+            em.merge(product);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
     public void delete(int id)
     {
-/*        String sql = "Delete From Product Where id=?";
-        Connection conn = super.getJDBCConnection();
+        Transaction transaction = null;
 
-        try{
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            ProductEntity product =session.get(ProductEntity.class,id);
+            if (product != null){
+                session.delete(product);
+            }
+            transaction.commit();
         }
-        catch (SQLException e){
+        catch (Exception e){
+            if(transaction != null)
+                transaction.rollback();
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Override
     public ProductEntity get(int id){
-  /*      String sql = "SELECT product.id, product.image, product.name AS p_name, product.price, product.des, category.cate_name AS c_name, category.cate_id AS c_id "
-                + "FROM product INNER JOIN category " + "ON product.cate_id = category.cate_id WHERE product.id=?";
-        Connection conn = super.getJDBCConnection();
-
-        try{
-            PreparedStatement ps =conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next()){
-                Category category = categoryService.get(rs.getInt("c_id"));
-
-                Product product = new Product();
-                product.setId(rs.getInt("id"));
-                product.setImage(rs.getString("image"));
-                product.setName(rs.getString("p_name"));
-                product.setPrice(rs.getFloat("price"));
-                product.setDes(rs.getString("des"));
-                product.setCategory(category);
-
-                return product;
+        Transaction transaction = null;
+        ProductEntity product = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+            product = session.get(ProductEntity.class, id);
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
             }
+            e.printStackTrace();
         }
-        catch (SQLException e)
-        {
-            e.printStackTrace();;
-        }*/
-        return null;
+        return product;
     }
 
     @Override
     public List<ProductEntity> getAll(){
-/*        List<Product> productList = new ArrayList<Product>();
-        String sql = "SELECT product.id, product.image, product.name AS p_name, product.price, product.des , category.cate_name AS c_name, category.cate_id AS c_id  "
-                + "FROM product INNER JOIN category " + "ON product.cate_id = category.cate_id";
-        Connection conn = super.getJDBCConnection();
+        /*List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        Transaction transaction = null;
 
-        try{
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
 
-            while (rs.next()){
-                Category category = categoryService.get(rs.getInt("c_id"));
-
-                Product product = new Product();
-                product.setId(rs.getInt("id"));
-                product.setImage(rs.getString("image"));
-                product.setName(rs.getString("p_name"));
-                product.setPrice(rs.getFloat("price"));
-                product.setDes(rs.getString("des"));
-                product.setCategory(category);
-
-                productList.add(product);
-            }
+            productList = session.createQuery("from ProductEntity").getResultList();
+            transaction.commit();
         }
-        catch (SQLException e)
-        {
+        catch (Exception e){
+            if(transaction != null)
+                transaction.rollback();
             e.printStackTrace();
         }
         return productList;*/
-        return null;
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM ProductEntity ";
+        TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
+        List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        try{
+            productList = q.getResultList();
+            if(productList == null || productList.isEmpty())
+                productList= null;
+        }finally {
+            em.close();
+        }
+        return productList;
     }
 
     @Override
     public List<ProductEntity> search(String keyword)
     {
-        /*List<Product> productList = new ArrayList<Product>();
+        /*List<ProductEntity> productList = new ArrayList<ProductEntity>();
         String sql = "SELECT product.id, product.image, product.name AS p_name, product.price, " +
                 "product.des , category.cate_name AS c_name, category.cate_id AS c_id " +
-                "FROM Product , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
+                "FROM ProductEntity , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
         Connection conn = super.getJDBCConnection();
 
         try{
@@ -154,7 +161,7 @@ public class ProductDaoImpl implements ProductDao {
             {
                 Category category = categoryService.get(rs.getInt("c_id"));
 
-                Product product = new Product();
+                ProductEntity product = new ProductEntity();
                 product.setId(rs.getInt("id"));
                 product.setImage(rs.getString("image"));
                 product.setName(rs.getString("p_name"));
@@ -175,10 +182,10 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<ProductEntity> searchByCategory(int cate_id){
- /*       List<Product> productList = new ArrayList<Product>();
+ /*       List<ProductEntity> productList = new ArrayList<ProductEntity>();
         String sql ="SELECT product.id, product.image, product.name AS p_name, product.price, " +
                 "product.des , category.cate_name AS c_name, category.cate_id AS c_id " +
-                "FROM Product , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
+                "FROM ProductEntity , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
         Connection conn = super.getJDBCConnection();
 
         try{
@@ -190,7 +197,7 @@ public class ProductDaoImpl implements ProductDao {
             {
                 Category category = categoryService.get(rs.getInt("c_id"));
 
-                Product product = new Product();
+                ProductEntity product = new ProductEntity();
                 product.setId(rs.getInt("id"));
                 product.setImage(rs.getString("image"));
                 product.setName(rs.getString("p_name"));
@@ -211,9 +218,9 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<ProductEntity> searchByName(String productName) {
-/*        List<Product> productList = new ArrayList<Product>();
+/*        List<ProductEntity> productList = new ArrayList<ProductEntity>();
         String sql = "SELECT product.id, product.image, product.name AS p_name, product.price, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				"
-                + " FROM Product , Category   where product.cate_id = category.cate_id and Product.name like ? ";
+                + " FROM ProductEntity , Category   where product.cate_id = category.cate_id and ProductEntity.name like ? ";
         Connection conn = super.getJDBCConnection();
 
         try {
@@ -223,7 +230,7 @@ public class ProductDaoImpl implements ProductDao {
 
             while (rs.next()) {
                 Category category = categoryService.get(rs.getInt("c_id"));
-                Product product = new Product();
+                ProductEntity product = new ProductEntity();
                 product.setId(rs.getInt("id"));
                 product.setName(rs.getString("p_name"));
                 product.setPrice(rs.getLong("price"));

@@ -9,14 +9,13 @@
 	<script src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Edit User</title>
+	<title>Addition Product</title>
 	<!-- BOOTSTRAP STYLES-->
-	<link rel="stylesheet" href="Static/css/bootstrap.css">
-	<link rel="stylesheet" href="Static/css/custom.css">
-	<link rel="stylesheet" href="Static/css/font-awesome.css">
-
-
-
+	<link href="${url}/css/bootstrap.css" rel="stylesheet" />
+	<!-- FONTAWESOME STYLES-->
+	<link href="${url}/css/font-awesome.css" rel="stylesheet" />
+	<!-- CUSTOM STYLES-->
+	<link href="${url}/css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans'
 		  rel='stylesheet' type='text/css' />
@@ -68,7 +67,7 @@
 											<div class="checkbox">
 												<select name="cate">
 													<c:forEach items="${categories}" var="c">
-														<option value="${c.name}">${c.name}</option>
+														<option value="${c.getCateId()}">${c.getCateName()}</option>
 													</c:forEach>
 												</select>
 											</div>
