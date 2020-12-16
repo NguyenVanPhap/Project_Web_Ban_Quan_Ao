@@ -182,6 +182,19 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<ProductEntity> searchByCategory(int cate_id){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM ProductEntity P Where P.categoryEntity.cateId =:cate_id ";
+        TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
+        q.setParameter("cate_id",cate_id);
+        List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        try{
+            productList = q.getResultList();
+            if(productList == null || productList.isEmpty())
+                productList= null;
+        }finally {
+            em.close();
+        }
+        return productList;
  /*       List<ProductEntity> productList = new ArrayList<ProductEntity>();
         String sql ="SELECT product.id, product.image, product.name AS p_name, product.price, " +
                 "product.des , category.cate_name AS c_name, category.cate_id AS c_id " +
@@ -213,11 +226,24 @@ public class ProductDaoImpl implements ProductDao {
             e.printStackTrace();
         }
         return productList;*/
-        return null;
+
     }
 
     @Override
     public List<ProductEntity> searchByName(String productName) {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM ProductEntity P where P.name like :productName";
+        TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
+        q.setParameter("productName","%"+productName+"%");
+        List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        try{
+            productList = q.getResultList();
+            if(productList == null || productList.isEmpty())
+                productList= null;
+        }finally {
+            em.close();
+        }
+        return productList;
 /*        List<ProductEntity> productList = new ArrayList<ProductEntity>();
         String sql = "SELECT product.id, product.image, product.name AS p_name, product.price, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				"
                 + " FROM ProductEntity , Category   where product.cate_id = category.cate_id and ProductEntity.name like ? ";
@@ -247,6 +273,6 @@ public class ProductDaoImpl implements ProductDao {
         }
 
         return productList;*/
-        return null;
     }
+
 }

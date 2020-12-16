@@ -35,70 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!-- header-section-starts -->
 <div class="c-header" id="home">
-    <div class="top-header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="${url}/images/logo.png" alt="" /></a>
-            </div>
-            <div class="header-top-right">
-                <!-- start search-->
-                <div class="search-box">
-                    <div id="sb-search" class="sb-search">
-                        <form>
-                            <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-                            <input class="sb-search-submit" type="submit" value="">
-                            <span class="sb-icon-search"> </span>
-                        </form>
-                    </div>
-                </div>
-                <!-- search-scripts -->
-                <script src="${url}/js/classie.js"></script>
-                <script src="${url}/js/uisearch.js"></script>
-                <script>
-                    new UISearch( document.getElementById( 'sb-search' ) );
-                </script>
-                <!-- //search-scripts -->
-
-                <a href="cart.html"><i class="cart"></i></a>
-            </div>
-            <div class="navigation">
-                <div>
-                    <label class="mobile_menu" for="mobile_menu">
-                        <span>Menu</span>
-                    </label>
-                    <input id="mobile_menu" type="checkbox">
-                    <ul class="nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li class="dropdown1"><a href="#">Áo</a>
-                            <ul class="dropdown2">
-                                <li><a href="products.html">Áo thun nam</a></li>
-                                <li><a href="products.html">Áo thun nữ</a></li>
-                                <li><a href="products.html">Áo sơ mi nam</a></li>
-                                <li><a href="products.html">Áo Sơ mi nữ</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown1"><a href="#">Quần</a>
-                            <ul class="dropdown2">
-                                <li><a href="products.html">Quần jean nam</a></li>
-                                <li><a href="products.html">Quần jean nữ</a></li>
-                                <li><a href="products.html">Quần kaki nam</a></li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class="dropdown1"><a href="#">Giày</a>
-                            <ul class="dropdown2">
-                                <li><a href="products.html">Giày adidas</a></li>
-                                <li><a href="products.html">Giày nike</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contact US</a></li>
-                        <div class="clearfix"></div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <jsp:include page="/View/User/Top-Header.jsp"></jsp:include>
 </div>
 <!-- start Dresses-page -->
 <!-- content-section-starts -->
@@ -127,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="ft-ball">
         <div class="cont span_2_of_3">
             <div class="mens-toolbar">
-                <div class="sort">
+                <%--<div class="sort">
                     <div class="sort-by">
                         <label>Sort By</label>
                         <select>
@@ -140,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </select>
                         <a href=""><img src="${url}/images/arrow2.gif" alt="" class="v-middle"></a>
                     </div>
-                </div>
+                </div>--%>
                 <div class="pager">
                     <div class="limiter visible-desktop">
                         <label>Show</label>
@@ -155,13 +92,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <ul class="dc_pagination dc_paginationA dc_paginationA06">
                         <li><a href="#" class="previous">Pages</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
+                        <li><a href="<c:url value='/user/product/list?page=1'/>">1</a></li>
+                        <li><a href="<c:url value='/user/product/list?page=2'/>">2</a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
             </div>
+
             <c:forEach items="${productList}" var="pro">
             <div class="box1">
                 <div class="col_1_of_single1 span_1_of_single1">
@@ -169,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="top_box">
                             <h3 class="m_1">${pro.getName() }</h3>
                             <p class="m_2">${pro.getCategoryEntity().getCateName()}</p>
-                            <a href="single.html">
+                            <a href="<c:url value='/product/detail?id=${pro.id }'/>">
                                 <div class="grid_img">
                                     <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
                                     <div class="css3"><img height="250" width="200" src="${imgUrl}" alt=""/></div>
@@ -200,56 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </c:forEach>
 
         </div>
-        <div class="rsidebar span_1_of_left">
-            <section  class="sky-form">
-                <div class="product_right">
-                    <h3 class="m_2">Categories</h3>
-
-                    <select class="dropdown" tabindex="50" data-settings='{"wrapperClass":"metro"}'>
-                        <option value="1">Quần</option>
-                        <option value="2">Quần jean nam</option>
-                        <option value="3">Quần kaki nam</option>
-                        <option value="4">Quần jean nữ</option>
-                        <option value="5">Quần kaki nữ</option>
-
-
-                    </select>
-                    <select class="dropdown" tabindex="8" data-settings='{"wrapperClass":"metro"}'>
-                        <option value="1">Giày</option>
-                        <option value="2">Giày adidas</option>
-                        <option value="3">Giày nike</option>
-
-                    </select>
-                    <select class="dropdown" tabindex="8" data-settings='{"wrapperClass":"metro"}'>
-                        <option value="1">Áo</option>
-                        <option value="2">ÁO sơ mi nam</option>
-                        <option value="3">Áo sơ mi nữ </option>
-                        <option value="4">Áo thun nam</option>
-                        <option value="5">Áo thun nữ</option>
-
-                    </select>
-
-                </div>
-
-
-            </section>
-
-            <section  class="sky-form">
-                <h4>Price</h4>
-                <div class="row row1 scroll-pane">
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i> dưới 100000</label>
-                    </div>
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>100.000-200.000</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>200.000-300.000</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>300.000-600.000</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>600.000-1000.000</label>
-                    </div>
-                </div>
-            </section>
-
-        </div>
+        <jsp:include page="/View/User/Search_right.jsp"></jsp:include>
         <div class="clearfix"></div>
     </div>
 </div>
