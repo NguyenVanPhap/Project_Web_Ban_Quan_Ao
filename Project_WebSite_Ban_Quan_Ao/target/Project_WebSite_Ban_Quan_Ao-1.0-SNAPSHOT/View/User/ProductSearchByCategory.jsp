@@ -37,6 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="c-header" id="home">
     <jsp:include page="/View/User/Top-Header.jsp"></jsp:include>
 </div>
+
 <!-- start Dresses-page -->
 <!-- content-section-starts -->
 <div class="container">
@@ -64,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="ft-ball">
         <div class="cont span_2_of_3">
             <div class="mens-toolbar">
-                <%--<div class="sort">
+                <div class="sort">
                     <div class="sort-by">
                         <label>Sort By</label>
                         <select>
@@ -77,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </select>
                         <a href=""><img src="${url}/images/arrow2.gif" alt="" class="v-middle"></a>
                     </div>
-                </div>--%>
+                </div>
                 <div class="pager">
                     <div class="limiter visible-desktop">
                         <label>Show</label>
@@ -101,40 +102,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <c:forEach items="${productList}" var="pro">
-            <div class="box1">
-                <div class="col_1_of_single1 span_1_of_single1">
-                    <div class="view1 view-fifth1">
-                        <div class="top_box">
-                            <h3 class="m_1">${pro.getName() }</h3>
-                            <p class="m_2">${pro.getCategoryEntity().getCateName()}</p>
-                            <a href="<c:url value='/product/detail?id=${pro.id }'/>">
-                                <div class="grid_img">
-                                    <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
-                                    <div class="css3"><img height="250" width="200" src="${imgUrl}" alt=""/></div>
-                                    <div class="mask1">
-                                        <div class="info">Quick View</div>
+                <div class="box1">
+                    <div class="col_1_of_single1 span_1_of_single1">
+                        <div class="view1 view-fifth1">
+                            <div class="top_box">
+                                <h3 class="m_1">${pro.getName() }</h3>
+                                <p class="m_2">${pro.getCategoryEntity().getCateName()}</p>
+                                <a href="<c:url value='/product/detail?id=${pro.id }'/>">
+                                    <div class="grid_img">
+                                        <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
+                                        <div class="css3"><img height="250" width="200" src="${imgUrl}" alt=""/></div>
+                                        <div class="mask1">
+                                            <div class="info">Quick View</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="price">${pro.getPrice() }</div>
-                            </a>
+                                    <div class="price">${pro.getPrice() }</div>
+                                </a>
+                            </div>
                         </div>
+                        <ul class="list2">
+                            <li>
+                                <img src="${url}/images/plus.png" alt=""/>
+                                <ul class="icon1 sub-icon1 profile_img">
+                                    <li><a class="active-icon c1" href="single.html">Add To Bag </a>
+                                        <ul class="sub-icon1 list">
+                                            <li><h3>Decription</h3><a href=""></a></li>
+                                            <li><p>${pro.getDes() }<a href=""></a></p></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
                     </div>
-                    <ul class="list2">
-                        <li>
-                            <img src="${url}/images/plus.png" alt=""/>
-                            <ul class="icon1 sub-icon1 profile_img">
-                                <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-                                    <ul class="sub-icon1 list">
-                                        <li><h3>Decription</h3><a href=""></a></li>
-                                        <li><p>${pro.getDes() }<a href=""></a></p></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
                 </div>
-            </div>
             </c:forEach>
 
         </div>
