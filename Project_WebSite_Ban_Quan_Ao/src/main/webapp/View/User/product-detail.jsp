@@ -224,7 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="container">
         <div class="copyrights">
-            <p>Copyright &copy; 2015 All rights reserved | Template by  <a href="http://w3layouts.com">  W3layouts</a></p>
+            
         </div>
         <div class="footer-social-icons">
             <a href="#"><i class="fb"></i></a>
