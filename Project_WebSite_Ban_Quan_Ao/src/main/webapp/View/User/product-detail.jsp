@@ -220,7 +220,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- content-section-ends -->
 <div class="footer">
     <div class="up-arrow">
-        <a class="scroll" href="#home"><img src="images/up.png" alt="" /></a>
+        <a class="scroll" href="#home"><img src="View/User/images/up.png" alt="" /></a>
     </div>
     <div class="container">
         <div class="copyrights">
