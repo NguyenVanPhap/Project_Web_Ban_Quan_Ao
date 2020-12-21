@@ -11,14 +11,14 @@
 <div class="top-header">
     <div class="container">
         <div class="logo">
-            <a href="index.html"><img src="${url}/images/logo.png" alt="" /></a>
+            <a href="${pageContext.request.contextPath }/Home"><img src="${url}/images/logo.png" alt="" /></a>
         </div>
         <div class="header-top-right">
             <!-- start search-->
             <div class="search-box">
                 <div id="sb-search" class="sb-search">
-                    <form>
-                        <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+                    <form action="${pageContext.request.contextPath }/product/SearchName">
+                        <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search_name" id="search">
                         <input class="sb-search-submit" type="submit" value="">
                         <span class="sb-icon-search"> </span>
                     </form>
@@ -41,9 +41,9 @@
                 </label>
                 <input id="mobile_menu" type="checkbox">
                 <ul class="nav">
-                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath }/Home">Home</a></li>
 
-                    <li class="dropdown1"><a href="#">Áo</a>
+                    <li class="dropdown1"><a href="">Áo</a>
                         <ul class="dropdown2">
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=10">Áo Thun nam</a></li>
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=9">Áo thun nữ</a></li>

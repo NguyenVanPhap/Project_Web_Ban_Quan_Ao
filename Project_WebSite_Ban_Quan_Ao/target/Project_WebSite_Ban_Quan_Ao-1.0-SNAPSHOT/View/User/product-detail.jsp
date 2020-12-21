@@ -66,72 +66,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!-- header-section-starts -->
-<%--<div class="c-header" id="home">
-    <div class="top-header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo.png" alt="" /></a>
-            </div>
-            <div class="header-top-right">
-                <!-- start search-->
-                <div class="search-box">
-                    <div id="sb-search" class="sb-search">
-                        <form>
-                            <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-                            <input class="sb-search-submit" type="submit" value="">
-                            <span class="sb-icon-search"> </span>
-                        </form>
-                    </div>
-                </div>
-                <!-- search-scripts -->
-                <script src="${url}/js/classie.js"></script>
-                <script src="${url}/js/uisearch.js"></script>
-                <script>
-                    new UISearch( document.getElementById( 'sb-search' ) );
-                </script>
-                <!-- //search-scripts -->
+<div class="c-header" id="home">
 
-                <a href="cart.html"><i class="cart"></i></a>
-            </div>
-            <div class="navigation">
-                <div>
-                    <label class="mobile_menu" for="mobile_menu">
-                        <span>Menu</span>
-                    </label>
-                    <input id="mobile_menu" type="checkbox">
-                    <ul class="nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li class="dropdown1"><a href="#">Áo</a>
-                            <ul class="dropdown2">
-                                <li><a href="products.html">Áo thun nam</a></li>
-                                <li><a href="products.html">Áo thun nữ</a></li>
-                                <li><a href="products.html">Áo sơ mi nam</a></li>
-                                <li><a href="products.html">Áo Sơ mi nữ</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown1"><a href="#">Quần</a>
-                            <ul class="dropdown2">
-                                <li><a href="products.html">Quần jean nam</a></li>
-                                <li><a href="products.html">Quần jean nữ</a></li>
-                                <li><a href="products.html">Quần kaki nam</a></li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class="dropdown1"><a href="#">Giày</a>
-                            <ul class="dropdown2">
-                                <li><a href="products.html">Giày adidas</a></li>
-                                <li><a href="products.html">Giày nike</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contact US</a></li>
-                        <div class="clearfix"></div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--%>
+</div>
 <jsp:include page="/View/User/Top-Header.jsp"></jsp:include>
 <!-- start-single-page -->
 <!-- content -->
@@ -167,12 +104,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul id="etalage">
 
                             <li>
-                            <a href="optionallink.html">
-                                <img class="etalage_thumb_image" src="${imgUrl}" class="img-responsive" />
-                                <img class="etalage_source_image" src="${imgUrl}" class="img-responsive"
-                                     title="" />
-                            </a>
-                        </li>
+                                <a href="optionallink.html">
+                                    <img class="etalage_thumb_image" src="${imgUrl}" class="img-responsive" />
+                                    <img class="etalage_source_image" src="${imgUrl}" class="img-responsive"
+                                         title="" />
+                                </a>
+                            </li>
                             <li>
                                 <img class="etalage_thumb_image" src="${imgUrl}" class="img-responsive"  />
                                 <img class="etalage_source_image" src="${imgUrl}" class="img-responsive"  />

@@ -70,7 +70,9 @@ public class ProductEditController extends HttpServlet {
                     if (item.getSize() > 0) {// neu co file d
                         String originalFileName = item.getName();
                         File file = new File(dir + File.separator + originalFileName);
-                        item.write(file);
+                        if (!file.exists() && !file.isDirectory()) {
+                            item.write(file);
+                        }
 
                         product.setImage(originalFileName);
 

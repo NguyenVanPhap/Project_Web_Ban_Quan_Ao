@@ -69,4 +69,8 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> searchByName(String productName) {
         return productDao.searchByName(productName);
     }
+
+    public List<ProductEntity> searchByPrice(double priceStart,double priceEnd) {
+        return productDao.searchByPrice(priceStart,priceEnd);
+    }
 }

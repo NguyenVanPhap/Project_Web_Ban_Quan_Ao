@@ -34,6 +34,6 @@ public class ProductListClientController extends HttpServlet {
 		req.setAttribute("cateList",cateList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/product.jsp");
 		dispatcher.forward(req, resp);
-	}
+	}// c�i n�y sai
 
 }
