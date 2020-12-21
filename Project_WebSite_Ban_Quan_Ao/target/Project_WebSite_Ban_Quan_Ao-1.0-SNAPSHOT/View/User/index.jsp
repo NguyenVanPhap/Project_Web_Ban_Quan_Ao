@@ -51,17 +51,18 @@
 <div class="content">
     <div class="features-section">
         <div class="features-section-head text-center">
-            <h3><span>F</span>eatured Items</h3>
-            <p>“this weeks featured products”</p>
+            <h3><span>S</span>ản phẩm nổi nật</h3>
+            <p>“Sản phẩm của tuần”</p>
         </div>
         <div class="features-section-grids">
             <div class="features-section-grid">
-                <img src="images/girl.png" alt="" />
+                <c:url value="/image/${productList.get(1).getImage()}" var="imgUrl1"></c:url>
+                <img STYLE="width: 60%" src="${imgUrl1}" alt="" />
                 <div class="girl-info">
                     <div class="lonovo">
                         <div class="dress">
-                            <h4>Lolona Dress</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+                            <h4>${productList.get(1).getName()}</h4>
+                            <p>${productList.get(1).getDes()}</p>
                         </div>
                         <div class="priceindollers">
                             <h3>$ <span>689</span></h3>
@@ -86,150 +87,32 @@
                     <li><span class="filter" data-filter="icon"><label></label>Pant</span></li>
                 </ul>
                 <div id="portfoliolist">
-                    <div class="portfolio card mix_all"  data-cat="card" style="display: inline-block; opacity: 1;">
-                        <div class="portfolio-wrapper">
-                            <a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-                                <img src="images/pic1.jpg" class="img-responsive" alt="" /><div class="b-wrapper"><div class="atc"><p>Add To Cart</p></div><div class="clearfix"></div><h2 class="b-animate b-from-left    b-delay03 "><img src="images/icon-eye.png" class="img-responsive go" alt=""/></h2>
-                            </div></a>
-                            <div class="title">
-                                <div class="colors">
-                                    <h4>Lolona Jeans</h4>
-                                    <p> Colors:
-                                    <ul>
-                                        <a href="#"><li class="color1"></li></a>
-                                        <a href="#"><li class="color2"></li></a>
-                                        <a href="#"><li class="color3"></li></a>
-                                        <a href="#"><li class="color4"></li></a>
-                                    </ul>
-                                    </p>
+                   <%-- ///////////////////////////////////////--%>
+                    <c:forEach items="${productList}" var="pro">
+                        <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
+                        <div class="portfolio card mix_all"  data-cat="card" style="display: inline-block; opacity: 1;">
+                            <div class="portfolio-wrapper">
+                                <a href="<c:url value='/product/detail?id=${pro.id }'/>" class="b-link-stripe b-animate-go  thickbox">
+                                    <img style="height: 250px" src="${imgUrl}" class="img-responsive" alt="" />
+                                        <div class="b-wrapper">
+                                            <div class="atc"><p>Add To Cart</p>
+                                    </div><div class="clearfix">
+                                </div><h2 class="b-animate b-from-left    b-delay03 ">
+                                    <img src="${imgUrl}" class="img-responsive go" alt=""/></h2>
+                                </div></a>
+                                <div class="title">
+                                    <div class="colors">
+                                        <h4>${pro.getName() }</h4>
+                                    </div>
+                                    <div class="main-price">
+                                        <h3><span>$</span>${pro.getPrice() }</h3>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="main-price">
-                                    <h3><span>$</span>30</h3>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="portfolio app mix_all"  data-cat="app" style="display: inline-block; opacity: 1;">
-                        <div class="portfolio-wrapper">
-                            <a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-                                <img src="images/pic2.jpg" class="img-responsive" alt="" /><div class="b-wrapper"><div class="atc"><p>Add To Cart</p></div><div class="clearfix"></div><h2 class="b-animate b-from-left    b-delay03 "><img src="images/icon-eye.png" class="img-responsive go" alt=""/></h2>
-                            </div></a>
-                            <div class="title">
-                                <div class="colors">
-                                    <h4>Lolona Jeans</h4>
-                                    <p> Colors:
-                                    <ul>
-                                        <a href="#"><li class="color1"></li></a>
-                                        <a href="#"><li class="color2"></li></a>
-                                        <a href="#"><li class="color3"></li></a>
-                                        <a href="#"><li class="color4"></li></a>
-                                    </ul>
-                                    </p>
-                                </div>
-                                <div class="main-price">
-                                    <h3><span>$</span>30</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio web mix_all"  data-cat="web" style="display: inline-block; opacity: 1;">
-                        <div class="portfolio-wrapper">
-                            <a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-                                <img src="images/pic3.jpg" class="img-responsive" alt="" /><div class="b-wrapper"><div class="atc"><p>Add To Cart</p></div><div class="clearfix"></div><h2 class="b-animate b-from-left    b-delay03 "><img src="images/icon-eye.png" class="img-responsive go" alt=""/></h2>
-                            </div></a>
-                            <div class="title">
-                                <div class="colors">
-                                    <h4>Lolona Jeans</h4>
-                                    <p> Colors:
-                                    <ul>
-                                        <a href="#"><li class="color1"></li></a>
-                                        <a href="#"><li class="color2"></li></a>
-                                        <a href="#"><li class="color3"></li></a>
-                                        <a href="#"><li class="color4"></li></a>
-                                    </ul>
-                                    </p>
-                                </div>
-                                <div class="main-price">
-                                    <h3><span>$</span>30</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio icon mix_all"  data-cat="icon" style="display: inline-block; opacity: 1;">
-                        <div class="portfolio-wrapper">
-                            <a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-                                <img src="images/pic4.jpg" class="img-responsive" alt="" /><div class="b-wrapper"><div class="atc"><p>Add To Cart</p></div><div class="clearfix"></div><h2 class="b-animate b-from-left    b-delay03 "><img src="images/icon-eye.png" class="img-responsive go" alt=""/></h2>
-                            </div></a>
-                            <div class="title">
-                                <div class="colors">
-                                    <h4>Lolona Jeans</h4>
-                                    <p> Colors:
-                                    <ul>
-                                        <a href="#"><li class="color1"></li></a>
-                                        <a href="#"><li class="color2"></li></a>
-                                        <a href="#"><li class="color3"></li></a>
-                                        <a href="#"><li class="color4"></li></a>
-                                    </ul>
-                                    </p>
-                                </div>
-                                <div class="main-price">
-                                    <h3><span>$</span>30</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
-                        <div class="portfolio-wrapper">
-                            <a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-                                <img src="images/pic5.jpg" class="img-responsive" alt="" /><div class="b-wrapper"><div class="atc"><p>Add To Cart</p></div><div class="clearfix"></div><h2 class="b-animate b-from-left    b-delay03 "><img src="images/icon-eye.png" class="img-responsive go" alt=""/></h2>
-                                <p class="b-animate b-from-right    b-delay03 "></p></div></a>
-                            <div class="title">
-                                <div class="colors">
-                                    <h4>Lolona Jeans</h4>
-                                    <p> Colors:
-                                    <ul>
-                                        <a href="#"><li class="color1"></li></a>
-                                        <a href="#"><li class="color2"></li></a>
-                                        <a href="#"><li class="color3"></li></a>
-                                        <a href="#"><li class="color4"></li></a>
-                                    </ul>
-                                    </p>
-                                </div>
-                                <div class="main-price">
-                                    <h3><span>$</span>30</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio app mix_all"  data-cat="app" style="display: inline-block; opacity: 1;">
-                        <div class="portfolio-wrapper">
-                            <a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-                                <img src="images/pic6.jpg" class="img-responsive" alt="" /><div class="b-wrapper"><div class="atc"><p>Add To Cart</p></div><div class="clearfix"></div><h2 class="b-animate b-from-left    b-delay03 "><img src="images/icon-eye.png" class="img-responsive go" alt=""/></h2>
-                            </div></a>
-                            <div class="title">
-                                <div class="colors">
-                                    <h4>Lolona Jeans</h4>
-                                    <p> Colors:
-                                    <ul>
-                                        <a href="#"><li class="color1"></li></a>
-                                        <a href="#"><li class="color2"></li></a>
-                                        <a href="#"><li class="color3"></li></a>
-                                        <a href="#"><li class="color4"></li></a>
-                                    </ul>
-                                    </p>
-                                </div>
-                                <div class="main-price">
-                                    <h3><span>$</span>30</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
+
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
@@ -304,22 +187,10 @@
         </div>
     </div>
     <div class="container">
-        <div class="subscribe-section">
-            <div class="subscribe text-center">
-                <h4>Subscribe To Our Newsletter</h4>
-                <input type="text" class="text" value="Your email..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your email...';}">
-                <input type="submit" value="Subscribe">
-            </div>
-            <div class="social-icons text-center">
-                <a href="#"><i class="facebook"></i></a>
-                <a href="#"><i class="twitter"></i></a>
-                <a href="#"><i class="linkedin"></i></a>
-                <a href="#"><i class="pinterest"></i></a>
-            </div>
-        </div>
+
     </div>
     <div class="container">
-        <div class="recommand-section">
+        <%--<div class="recommand-section">
             <div class="recommand-section-head text-center">
                 <h3><span>R</span>ecommended</h3>
                 <p>“check out some recommended products also”</p>
@@ -510,7 +381,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
     <div class="contact-section">
         <div class="contact-section-head text-center">

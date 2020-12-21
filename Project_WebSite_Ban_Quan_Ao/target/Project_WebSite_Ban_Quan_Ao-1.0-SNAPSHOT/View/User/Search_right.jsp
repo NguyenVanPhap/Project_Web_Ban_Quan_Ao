@@ -17,7 +17,7 @@
 
                     <li class="active"><a href="#" style="color: black;"></a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</li>
                     <li>
-                        <a style="color: black;" href="#">Áo&emsp;&emsp;&emsp;</a>
+                        <a style="  color: black;" href="#">Áo&emsp;&emsp;&emsp;</a>
                         <ul class="dropdown2">
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=10">Áo thun nam</a></li>
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=9">Áo thun nữ</a></li>
@@ -43,17 +43,17 @@
         </div>
     </section>
 
+
     <section  class="sky-form">
         <h4>Price</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i> dưới 100000</label>
-            </div>
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>100.000-200.000</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>200.000-300.000</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>300.000-600.000</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>600.000-1000.000</label>
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=0&endPrice=100000">Dưới 100.000</a></li>
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=100000&endPrice=200000">100.000-200.000</a></li>
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=200000&endPrice=300000">200.000-300.000</a></li>
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=600000&endPrice=600000">300.000-600.000</a></li>
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=600000&endPrice=1000000">600.000-1000.000</a></li>
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=1000000&endPrice=999999999">Trên 1000.000</a></li>
             </div>
         </div>
     </section>

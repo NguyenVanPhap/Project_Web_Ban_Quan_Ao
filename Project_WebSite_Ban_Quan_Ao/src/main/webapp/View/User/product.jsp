@@ -64,20 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="ft-ball">
         <div class="cont span_2_of_3">
             <div class="mens-toolbar">
-                <%--<div class="sort">
-                    <div class="sort-by">
-                        <label>Sort By</label>
-                        <select>
-                            <option value="">
-                                Popularity               </option>
-                            <option value="">
-                                Price : High to Low               </option>
-                            <option value="">
-                                Price : Low to High               </option>
-                        </select>
-                        <a href=""><img src="${url}/images/arrow2.gif" alt="" class="v-middle"></a>
-                    </div>
-                </div>--%>
+
                 <div class="pager">
                     <div class="limiter visible-desktop">
                         <label>Show</label>

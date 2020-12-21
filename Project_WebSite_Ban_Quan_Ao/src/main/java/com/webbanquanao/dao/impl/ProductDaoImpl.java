@@ -274,5 +274,20 @@ public class ProductDaoImpl implements ProductDao {
 
         return productList;*/
     }
-
+    public List<ProductEntity> searchByPrice(double priceStart,double priceEnd){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM ProductEntity P where P.price >= :priceStart and P.price <= : priceEnd";
+        TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
+        q.setParameter("priceStart",priceStart);
+        q.setParameter("priceEnd",priceEnd);
+        List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        try{
+            productList = q.getResultList();
+            if(productList == null || productList.isEmpty())
+                productList= null;
+        }finally {
+            em.close();
+        }
+        return productList;
+    }
 }

@@ -20,4 +20,6 @@ public interface ProductDao {
     List<ProductEntity> searchByCategory(int cate_id);
 
     List<ProductEntity> searchByName(String productName);
+
+    List<ProductEntity> searchByPrice(double priceStart,double priceEnd);
 }
