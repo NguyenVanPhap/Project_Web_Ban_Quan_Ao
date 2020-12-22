@@ -124,7 +124,6 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-
             <!-- script-for-portfolio -->
             <script type="text/javascript">
                 jQuery(document).ready(function($) {
@@ -215,7 +214,7 @@
     </div>
     <div class="container">
         <div class="copyrights">
-            <p>Copyright &copy; 2015 All rights reserved | Template by  <a href="http://w3layouts.com">  W3layouts</a></p>
+            <p>Copyright &copy; 2020 All rights reserved</p>
         </div>
         <div class="footer-social-icons">
             <a href="#"><i class="fb"></i></a>
