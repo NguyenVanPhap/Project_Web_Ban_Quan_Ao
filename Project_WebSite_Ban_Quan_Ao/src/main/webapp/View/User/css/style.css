@@ -270,7 +270,7 @@ i.shipping {
 	margin-top:4px;
 }
 .features-section-grids { 
-	background: url('../images/middle-bg.jpg') no-repeat 0px 0px;
+	background: /*url('../images/middle-bg.jpg')*/ no-repeat 0px 0px;
 	background-size:cover;
 	min-height:330px;
 	position: relative;
