@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="NewPersistenceUnit" value="b94b8d1e-4749-435d-86d5-2da9916fc4ee" />
+          <factory-entry name="NewPersistenceUnit" value="b53456a0-31f4-4e1c-9436-4f94bb079d96" />
           <factory-entry name="Project_WebSite_Ban_Quan_Ao" />
           <factory-entry name="default" value="731df968-8d10-4950-b890-61c7895c3a00" />
         </datasource-mapping>
