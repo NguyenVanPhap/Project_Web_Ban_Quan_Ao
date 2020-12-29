@@ -5,12 +5,12 @@
 <html>
 <head>
     <title>Pakhi an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Home :: w3layouts</title>
-    <link href="View/User/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="${url}/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="View/User/js/jquery.min.js"></script>
+    <script src="${url}/js/jquery.min.js"></script>
     <!-- Custom Theme files -->
-    <link href="View/User/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="View/User/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${url}/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${url}/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
    <!-- dropdown -->
     <script src="js/jquery.easydropdown.js"></script>
 
@@ -32,10 +32,31 @@
         <div class="signing text-right">
             <div class="container">
                 <div class="sign-in">
-                    <a href="signin.html">Sign In</a>
+                    <c:choose>
+                        <c:when test="${not empty email}">
+                            <a href="">${user}</a>
+
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${pageContext.request.contextPath }/User/signin">Sign In</a>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <%--                    <c:if test = "${not empty email}">--%>
+                    <%--                        ${email}--%>
+                    <%--                    </c:if>--%>
+
                 </div>
                 <div class="sign-up1">
-                    <a href="signin.html">Sign Up</a>
+                    <c:choose>
+                        <c:when test="${not empty email}">
+                            <a href="${pageContext.request.contextPath }/User/signout">Sign Out</a>
+
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${pageContext.request.contextPath }/User/signup">Sign Up</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="clearfix"></div>
             </div>

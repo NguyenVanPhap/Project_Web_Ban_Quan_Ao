@@ -11,7 +11,11 @@
 	</div>
 	<div
 			style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-		Welcome ${username } &nbsp; <a href="${pageContext.request.contextPath }/logout"
+		Welcome <c:when test="${not empty email}">
+		<a href="">${user}</a>
+
+	</c:when> &nbsp;
+		<a href="${pageContext.request.contextPath }/User/signout"
 									   class="btn btn-danger square-btn-adjust">Logout</a>
 	</div>
 </nav>

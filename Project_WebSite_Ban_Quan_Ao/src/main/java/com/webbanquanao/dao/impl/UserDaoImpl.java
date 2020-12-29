@@ -109,7 +109,7 @@ public class UserDaoImpl  implements UserDao{
     public List<UserEntity> search(String keyword) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         String qString = "SELECT u FROM UserEntity u "+
-                "WHERE u.userName LIKE CONCAT('%',:keyword,'%')";
+                "WHERE u.email LIKE CONCAT('%',:keyword,'%')";
         TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
         q.setParameter("keyword",keyword);
 
@@ -159,6 +159,30 @@ public class UserDaoImpl  implements UserDao{
         TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
         q.setParameter("keyword",username);
 
+        List<UserEntity> userEntities;
+        try{
+            userEntities=q.getResultList();
+
+        }
+        catch (NoResultException e){
+            return  false;
+        }
+        finally {
+            em.close();
+        }
+        if(userEntities.size()>0 &&userEntities!=null)
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean checkExistAccount(String email, String password){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM UserEntity u "+
+                "WHERE u.email=:keyemail and u.password=:keypass";
+        TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
+        q.setParameter("keyemail",email);
+        q.setParameter("keypass",password);
         List<UserEntity> userEntities;
         try{
             userEntities=q.getResultList();
