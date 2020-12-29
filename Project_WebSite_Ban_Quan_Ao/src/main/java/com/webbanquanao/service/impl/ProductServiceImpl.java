@@ -23,14 +23,16 @@ public class ProductServiceImpl implements ProductService {
         oldProduct.setName(newProduct.getName());
         oldProduct.setPrice(newProduct.getPrice());
         oldProduct.setCategoryEntity(newProduct.getCategoryEntity());
+        oldProduct.setDes(newProduct.getDes());
         if (newProduct.getImage() != null) {
             // XOA ANH CU DI
-            String fileName = oldProduct.getImage();
-            final String dir = "F:\\upload";
-            File file = new File(dir + "/" + fileName);
-            if (file.exists()) {
-                file.delete();
-            }
+//            String fileName = oldProduct.getImage();
+//            final String dir = "F:\\upload";
+//            final String dir = context.getRealPath("image");
+//            File file = new File(dir + "/" + fileName);
+//            if (file.exists()) {
+//                file.delete();
+//            }
 
             oldProduct.setImage(newProduct.getImage());
         }

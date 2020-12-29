@@ -71,7 +71,7 @@
                         </ul>
                     </li>
 
-                    <li><a href="contact.html">Contact US</a></li>
+                    <li><a href="${url}/contact.jsp">Contact US</a></li>
                     <div class="clearfix"></div>
                 </ul>
             </div>
