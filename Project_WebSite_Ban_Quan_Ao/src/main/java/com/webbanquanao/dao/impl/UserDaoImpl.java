@@ -109,7 +109,7 @@ public class UserDaoImpl  implements UserDao{
     public List<UserEntity> search(String keyword) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         String qString = "SELECT u FROM UserEntity u "+
-                "WHERE u.userName LIKE CONCAT('%',:keyword,'%')";
+                "WHERE u.email LIKE CONCAT('%',:keyword,'%')";
         TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
         q.setParameter("keyword",keyword);
 
