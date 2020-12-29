@@ -1520,7 +1520,7 @@ h2.title {
 }
 
 .breadcrumbs .breadcrumb li a {
-    background: #FE980F;
+    background: #eb5367;
     color: #FFFFFF;
     padding: 3px 7px;
 }
@@ -1531,7 +1531,7 @@ h2.title {
     width: auto;
     border-width: 8px;
     border-style: solid;
-    border-color: transparent transparent transparent #FE980F;
+    border-color: transparent transparent transparent #eb5367;
     position: absolute;
     top: 11px;
     left: 48px;
@@ -1547,7 +1547,7 @@ h2.title {
 }
 
 #cart_items .cart_info .cart_menu {
-    background: #FE980F;
+    background: #eb5367;
     color: #fff;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -1597,7 +1597,7 @@ h2.title {
 }
 
 #cart_items .cart_info .cart_total_price {
-    color: #FE980F;
+    color: #eb5367;
     font-size: 24px;
 }
 
@@ -1641,7 +1641,7 @@ h2.title {
 }
 
 .cart_delete a:hover {
-    background: #FE980F
+    background: #eb5367
 }
 
 .bg h2.title {
@@ -1999,7 +1999,7 @@ textarea {
     position: absolute;
     width: auto;
     height: auto;
-    border-color: transparent transparent transparent #FE980F;
+    border-color: transparent transparent transparent #DD0000;
     border-width: 4px;
     border-style: solid;
     top: 6px;
@@ -2313,7 +2313,7 @@ textarea {
 }
 
 .btn.btn-primary {
-    background: #FE980F;
+    background: #eb5367;
     border: 0 none;
     border-radius: 0;
     margin-top: 16px;

@@ -15,12 +15,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Cart | E-Shopper</title>
-    <link href="View/User/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="${pageContext.request.contextPath}/View/User/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="View/User/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/View/User/js/jquery.min.js"></script>
     <!-- Custom Theme files -->
-    <link href="View/User/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="View/User/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${pageContext.request.contextPath}/View/User/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/View/User/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- dropdown -->
     <script src="js/jquery.easydropdown.js"></script>
 
@@ -33,22 +33,27 @@
     <!--webfont-->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 
-    <link href="View/User/css/bootstrap.min.css" rel="stylesheet">
-    <link href="View/User/css/font-awesome.min.css" rel="stylesheet">
-    <link href="View/User/css/prettyPhoto.css" rel="stylesheet">
-    <link href="View/User/css/price-range.css" rel="stylesheet">
-    <link href="View/User/css/animate.css" rel="stylesheet">
-    <link href="View/User/css/main.css" rel="stylesheet">
-    <link href="View/User/css/responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/User/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/User/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/User/css/prettyPhoto.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/User/css/price-range.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/User/css/animate.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/User/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/View/User/css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="View/User/js/html5shiv.js"></script>
-    <script src="View/User/js/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/View/User/js/html5shiv.js"></script>
+    <script src="${pageContext.request.contextPath}/View/User/js/respond.min.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 </head><!--/head-->
 
 <body>
@@ -68,93 +73,64 @@
             <table class="table table-condensed">
                 <thead>
                 <tr class="cart_menu">
-                    <td class="image">Item</td>
+                    <td>Number</td>
+                    <td>Image</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                    <td>Delete</td>
+      <!--              <td class="image">Id</td>
                     <td class="description"></td>
                     <td class="price">Price</td>
                     <td class="quantity">Quantity</td>
                     <td class="total">Total</td>
-                    <td></td>
+                    STT // tính cộng dồn lên
+                    Sản phẩm(image, tên, bởi ai bán) // Lấy từ Product ra với tên id User tương ứng
+                    Giá // Lấy giá từ Id với User tương ứng
+                    Số lượng // Lấy từ CartItem ra quantity
+                    Thành tiền // Tiền của 1 sp ở product * số lượng
+                    Gốc dưới là tổng tiền. // tính tổng các thành tiền...-->
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="cart_product">
-                        <a href=""><img src="images/cart/one.png" alt=""></a>
-                    </td>
-                    <td class="cart_description">
-                        <h4><a href="">Colorblock Scuba</a></h4>
-                        <p>Web ID: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="cart_product">
-                        <a href=""><img src="images/cart/two.png" alt=""></a>
-                    </td>
-                    <td class="cart_description">
-                        <h4><a href="">Colorblock Scuba</a></h4>
-                        <p>Web ID: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cart_product">
-                        <a href=""><img src="images/cart/three.png" alt=""></a>
-                    </td>
-                    <td class="cart_description">
-                        <h4><a href="">Colorblock Scuba</a></h4>
-                        <p>Web ID: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
-                </tr>
+                <c:forEach items="${cartEntity.getCartitemEntities()}" var="cartItem" varStatus="loop">
+                    <tr>
+                        <td>${loop.count}</td>
+                        <td class="cart_product">
+                            <a href=""><img height="200" width="200" src="${pageContext.request.contextPath}/image/${cartItem.getProductEntity().getImage()}" alt=""></a>
+                        </td>
+                        <td class="cart_description">
+                            <h4><a href="">${cartItem.getProductEntity().getName()}</a></h4>
+                            <p>${cartItem.getProductEntity().getDes() }</p>
+                        </td>
+                        <td class="cart_price">
+                            <h4>${cartItem.getProductEntity().getPrice()} VNĐ</h4>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="cart_quantity_up" href="${pageContext.request.contextPath}/member/cart/increaseOrDecrease?pId=${cartItem.getProductEntity().getId()}&&check=1"> + </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="${cartItem.getQuantity() }" autocomplete="off" size="2">
+                                <a class="cart_quantity_down" href="${pageContext.request.contextPath}/member/cart/increaseOrDecrease?pId=${cartItem.getProductEntity().getId()}&&check=0"> - </a>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">${cartItem.getProductEntity().getPrice()*cartItem.getQuantity() } VND</p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" href="${pageContext.request.contextPath}/member/cart/remove?pId=${loop.index}"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
+        </div>
+        <div class="float-right text-right">
+            <h4>Subtotal:</h4>
+            <h1>${total} VNĐ</h1>
+        </div>
+        <div class="float-right text-right">
+            <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
         </div>
     </div>
 </section> <!--/#cart_items-->

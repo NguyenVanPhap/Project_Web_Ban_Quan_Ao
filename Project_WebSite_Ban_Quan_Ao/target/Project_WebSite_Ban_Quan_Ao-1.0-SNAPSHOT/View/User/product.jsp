@@ -94,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="top_box">
                             <h3 class="m_1">${pro.getName() }</h3>
                             <p class="m_2">${pro.getCategoryEntity().getCateName()}</p>
-                            <a href="<c:url value='/product/detail?id=${pro.id }'/>">
+                            <a href="<c:url value='/product/detail?id=${pro.getId() }'/>">
                                 <div class="grid_img">
                                     <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
                                     <div class="css3"><img height="250" width="200" src="${imgUrl}" alt=""/></div>
@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li>
                             <img src="${url}/images/plus.png" alt=""/>
                             <ul class="icon1 sub-icon1 profile_img">
-                                <li><a class="active-icon c1" href="single.html">Add To Bag </a>
+                                <li><a class="active-icon c1" href="${pageContext.request.contextPath }/member/cart/add?pId=${pro.getId() }">Add To Bag </a>
                                     <ul class="sub-icon1 list">
                                         <li><h3>Decription</h3><a href=""></a></li>
                                         <li><p>${pro.getDes() }<a href=""></a></p></li>

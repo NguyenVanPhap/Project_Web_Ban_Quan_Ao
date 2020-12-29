@@ -26,4 +26,6 @@ public interface UserService {
     boolean checkExistEmail(String email);
 
     boolean checkExistUsername(String username);
+
+    boolean checkExistAccount(String email, String password);
 }

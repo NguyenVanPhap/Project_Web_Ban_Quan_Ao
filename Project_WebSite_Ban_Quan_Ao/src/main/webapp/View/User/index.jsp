@@ -32,10 +32,10 @@
         <div class="signing text-right">
             <div class="container">
                 <div class="sign-in">
-                    <a href="signin.html">Sign In</a>
+                    <a href="${pageContext.request.contextPath }/User/signout">Sign In</a>
                 </div>
                 <div class="sign-up1">
-                    <a href="signin.html">Sign Up</a>
+                    <a href="${pageContext.request.contextPath }/User/signup">Sign Up</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -54,15 +54,16 @@
             <h3><span>S</span>ản phẩm nổi nật</h3>
             <p>“Sản phẩm của tuần”</p>
         </div>
+        <c:forEach items="${productList}" var="pro">
         <div class="features-section-grids" >
             <div class="features-section-grid" style=";width:50%;left: 25%;" >
-                <c:url value="/image/${productList.get(1).getImage()}" var="imgUrl1"></c:url>
+                <c:url value="/image/${pro.getImage()}" var="imgUrl1"></c:url>
                 <img src="${imgUrl1}" alt="" />
                 <div class="girl-info">
                     <div class="lonovo">
                         <div class="dress">
-                            <h4>${productList.get(1).getName()}</h4>
-                            <p>${productList.get(1).getDes()}</p>
+                            <h4>${pro.getName()}</h4>
+                            <p>${pro.getDes()}</p>
                         </div>
                         <div class="priceindollers">
                             <h3>$ <span>689</span></h3>
@@ -72,6 +73,7 @@
                 </div>
             </div>
         </div>
+        </c:forEach>
     </div>
     <div class="container">
         <div class="products-section">

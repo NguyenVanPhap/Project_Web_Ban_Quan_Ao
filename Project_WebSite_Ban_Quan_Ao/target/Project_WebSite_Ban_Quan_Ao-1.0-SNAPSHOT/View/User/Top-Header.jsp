@@ -32,7 +32,7 @@
             </script>
             <!-- //search-scripts -->
 
-            <a href="cart.html"><i class="cart"></i></a>
+            <a href="${pageContext.request.contextPath }/member/cart"><i class="cart"></i></a>
         </div>
         <div class="navigation">
             <div>

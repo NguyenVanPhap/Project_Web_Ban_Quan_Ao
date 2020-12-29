@@ -1,9 +1,14 @@
 package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.CartDao;
+import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.CartEntity;
+import com.webbanquanao.model.CartitemEntity;
+import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.service.UserService;
 import com.webbanquanao.service.impl.UserServiceImpl;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -151,5 +156,19 @@ public class CartDaoImpl implements CartDao {
     public CartEntity get(String name) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public void removeProduct(CartEntity cart, int pId){
+        List <CartitemEntity> cartItems = cart.getCartitemEntities();
+        cartItems.remove(pId);
+        cart.setCartitemEntities(cartItems);
+    }
+
+    @Override
+    public double totalBill(CartEntity cart) {
+        double total = cart.getCartitemEntities().stream().mapToDouble(cartItem -> cartItem.getProductEntity().getPrice() * cartItem.getQuantity()).sum();
+
+        return total;
     }
 }
