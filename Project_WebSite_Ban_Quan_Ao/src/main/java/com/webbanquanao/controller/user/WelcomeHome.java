@@ -6,8 +6,10 @@ import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.model.UserEntity;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.UserService;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
 import com.webbanquanao.service.impl.ProductServiceImpl;
+import com.webbanquanao.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +25,8 @@ import java.util.List;
 public class WelcomeHome extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     CategoryService cateService = new CategoryServiceImpl();
+    UserService userService = new UserServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*HttpSession session = request.getSession();
@@ -55,6 +59,16 @@ public class WelcomeHome extends HttpServlet {
             if(i<=10)
                 newList.add(productList.get(i));
         }
+
+        //Đăng nhập:
+        HttpSession session = request.getSession();
+        String email = session.getAttribute("email").toString();
+        List<UserEntity> user = userService.search(email);
+        user.forEach((u -> {
+            request.setAttribute("user", u.getUserName());
+        }));
+        request.setAttribute("email", email);
+
         request.setAttribute("productList",newList);
         request.getRequestDispatcher("/View/User/index.jsp").forward(request, response);
     }
