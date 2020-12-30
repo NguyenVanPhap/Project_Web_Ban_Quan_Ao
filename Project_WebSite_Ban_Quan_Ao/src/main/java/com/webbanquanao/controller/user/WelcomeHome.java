@@ -68,7 +68,6 @@ public class WelcomeHome extends HttpServlet {
             request.setAttribute("user", u.getUserName());
         }));
         request.setAttribute("email", email);
-
         request.setAttribute("productList",newList);
         request.getRequestDispatcher("/View/User/index.jsp").forward(request, response);
     }
