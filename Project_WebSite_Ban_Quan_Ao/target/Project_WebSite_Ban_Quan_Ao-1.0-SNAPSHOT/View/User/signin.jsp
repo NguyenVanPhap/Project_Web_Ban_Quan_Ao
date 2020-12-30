@@ -126,89 +126,89 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="login-signup-form">
                 <form role="form" action="signin" method="post"
                       enctype="multipart/form-data">
-                <div class="col-md-5 login text-center">
-                    <h4>login</h4>
-                    <br>
-                    <br>
-                    <div class="cus_info_wrap">
-                        <label class="labelTop">
-                            Email:
-                            <span class="require">*</span>
-                        </label>
-                        <input type="text" value="" placeholder="Please enter email" name = "email">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="cus_info_wrap">
-                        <label class="labelTop">
-                            Password:
-                            <span class="require">*</span>
-                        </label>
-                        <input type="password" value="" placeholder="Please enter password" name = "password">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="sky-form span_99">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" >Remember me on this computer </label>
-                    </div>
-                    <c:if test = "${not empty SignInErr}">
-                        <div class = "require">
-                                ${SignInErr}
+                    <div class="col-md-5 login text-center">
+                        <h4>login</h4>
+                        <br>
+                        <br>
+                        <div class="cus_info_wrap">
+                            <label class="labelTop">
+                                Email:
+                                <span class="require">*</span>
+                            </label>
+                            <input type="text" value="" placeholder="Please enter email" name = "email">
                         </div>
-                    </c:if>
-                    <div class="botton1">
-                        <input type="submit" value="SIGNIN" class="botton">
-                    </div>
-                    <div class="forgetit">
-                        <a href="">forgot your password?</a>
-                        <input type="text" class="text" value="Enter email to reset it" onfocus="this.value = '';" onblur="if (this.value == 'Enter email to reset it') {this.value = 'Enter email to reset it';}">
-                        <input type="submit" value="SUBMIT" class="botton">
-                    </div>
+                        <div class="clearfix"></div>
+                        <div class="cus_info_wrap">
+                            <label class="labelTop">
+                                Password:
+                                <span class="require">*</span>
+                            </label>
+                            <input type="password" value="" placeholder="Please enter password" name = "password">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="sky-form span_99">
+                            <label class="checkbox"><input type="checkbox" name="checkbox" >Remember me on this computer </label>
+                        </div>
+                        <c:if test = "${not empty SignInErr}">
+                            <div class = "require">
+                                    ${SignInErr}
+                            </div>
+                        </c:if>
+                        <div class="botton1">
+                            <input type="submit" value="SIGNIN" class="botton">
+                        </div>
+                        <div class="forgetit">
+                            <a href="">forgot your password?</a>
+                            <input type="text" class="text" value="Enter email to reset it" onfocus="this.value = '';" onblur="if (this.value == 'Enter email to reset it') {this.value = 'Enter email to reset it';}">
+                            <input type="submit" value="SUBMIT" class="botton">
+                        </div>
 
-                </div>
+                    </div>
                 </form>
                 <form role="form" action="signup" method="post"
                       enctype="multipart/form-data">
-                <div class="col-md-5 sign-up text-center">
-                    <h4>signup</h4>
-                    <div class="cus_info_wrap">
-                        <label class="labelTop">
-                            Email Id:
+                    <div class="col-md-5 sign-up text-center">
+                        <h4>signup</h4>
+                        <div class="cus_info_wrap">
+                            <label class="labelTop">
+                                Email Id:
+                                <span class="require">*</span>
+                            </label>
+                            <input type="text" value="${email}" placeholder="Please enter email" name = "email">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="cus_info_wrap">
+                            <label class="labelTop">
+                                Password:
+                                <span class="require">*</span>
+                            </label>
+                            <input type="password" value="" placeholder="Please enter password" name = "password">
+                        </div>
+                        <div class="clearfix"></div><div class="cus_info_wrap">
+                        <label class="labelTop confirmpass">
+                            Conform Password:
                             <span class="require">*</span>
                         </label>
-                        <input type="text" value="${email}" placeholder="Please enter email" name = "email">
+                        <input type="password" value="" placeholder="Confirm your password" name = "cfpassword">
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="cus_info_wrap">
-                        <label class="labelTop">
-                            Password:
-                            <span class="require">*</span>
-                        </label>
-                        <input type="password" value="" placeholder="Please enter password" name = "password">
-                    </div>
-                    <div class="clearfix"></div><div class="cus_info_wrap">
-                    <label class="labelTop confirmpass">
-                        Conform Password:
-                        <span class="require">*</span>
-                    </label>
-                    <input type="password" value="" placeholder="Confirm your password" name = "cfpassword">
-                </div>
-                    <c:if test = "${not empty SignUpErr}">
-                    <div class = "require">
-                        ${SignUpErr}
-                    </div>
-                    </c:if>
+                        <c:if test = "${not empty SignUpErr}">
+                            <div class = "require">
+                                    ${SignUpErr}
+                            </div>
+                        </c:if>
 
-                    <div class="botton1">
-                        <input type="submit" value="SIGNIN" class="botton">
+                        <div class="botton1">
+                            <input type="submit" value="SIGNIN" class="botton">
+                        </div>
                     </div>
-                </div>
                 </form>
 
-<%--                <% String passError = request.getParameter("passError");--%>
-<%--                    if(passError == null){--%>
-<%--                        passError = "";--%>
-<%--                    }--%>
-<%--                %>--%>
-<%--                <%= passError%>--%>
+                <%--                <% String passError = request.getParameter("passError");--%>
+                <%--                    if(passError == null){--%>
+                <%--                        passError = "";--%>
+                <%--                    }--%>
+                <%--                %>--%>
+                <%--                <%= passError%>--%>
                 <div class="col-md-2 benefits">
                     <h4>Benefits of signup</h4>
                     <p>Manage your purchases anytime: Track your order status and print your vouchers</p>

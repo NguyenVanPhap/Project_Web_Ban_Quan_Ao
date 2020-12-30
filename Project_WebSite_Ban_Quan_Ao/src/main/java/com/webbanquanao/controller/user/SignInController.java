@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 @WebServlet(urlPatterns = { "/User/signin" })
 public class SignInController extends HttpServlet {
@@ -44,6 +45,7 @@ public class SignInController extends HttpServlet {
         String email = "";
         String pass = "";
         String passError = null;
+        AtomicReference<Boolean> admin = new AtomicReference<>(false);
         try {
             List<FileItem> items = servletFileUpload.parseRequest(req);
             for (FileItem item : items) {
@@ -58,6 +60,8 @@ public class SignInController extends HttpServlet {
                     user.setPassword(item.getString());
                     pass = item.getString();
                 }
+
+
             }
 
             if(email.equals("")){
@@ -74,8 +78,16 @@ public class SignInController extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/User/signin");
             }
             else if(userService.checkExistAccount(email,pass)){
+                String home = "/Home";
+                List<UserEntity> users = userService.search(email);
+                for (UserEntity u : users) {
+                    if (u.getPermission().equals(1)) {
+                        home = "/admin";
+                    }
+                    else break;
+                }
+                resp.sendRedirect(req.getContextPath() + home);
 
-                resp.sendRedirect(req.getContextPath() + "/Home");
             }
             else{
                 session.setAttribute("SignInErr","Email or Password is not correct!");
