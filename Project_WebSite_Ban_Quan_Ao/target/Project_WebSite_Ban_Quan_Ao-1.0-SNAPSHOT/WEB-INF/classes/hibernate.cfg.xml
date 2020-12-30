@@ -5,7 +5,11 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/web_ban_quan_ao</property>
         <property name="hibernate.connection.username">root</property>
+<<<<<<< HEAD
         <property name="hibernate.connection.password">@nvp111111</property>
+=======
+        <property name="hibernate.connection.password">hoang1503</property>
+>>>>>>> ace9bc24f2b34b737d9b7db7db8dc64ebe7aef2b
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.connection.CharSet">utf8</property>
