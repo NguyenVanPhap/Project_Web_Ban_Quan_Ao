@@ -59,7 +59,7 @@ public class WelcomeHome extends HttpServlet {
             if(i<=10)
                 newList.add(productList.get(i));
         }
-
+        if (type="")
         //Đăng nhập:
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
