@@ -60,14 +60,19 @@ public class WelcomeHome extends HttpServlet {
                 newList.add(productList.get(i));
         }
 
+        try {
         //Đăng nhập:
-        HttpSession session = request.getSession();
-        String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
-        request.setAttribute("email", email);
+            HttpSession session = request.getSession();
+            String email = session.getAttribute("email").toString();
+            List<UserEntity> user = userService.search(email);
+            user.forEach((u -> {
+                request.setAttribute("user", u.getUserName());
+            }));
+            request.setAttribute("email", email);
+        }
+        catch (Exception e) {
+
+        }
 
         request.setAttribute("productList",newList);
         request.getRequestDispatcher("/View/User/index.jsp").forward(request, response);
