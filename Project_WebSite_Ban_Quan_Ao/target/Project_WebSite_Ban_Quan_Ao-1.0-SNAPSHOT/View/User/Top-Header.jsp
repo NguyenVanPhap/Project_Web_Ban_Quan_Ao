@@ -45,6 +45,7 @@
 
                     <li class="dropdown1"><a href="">Áo</a>
                         <ul class="dropdown2">
+
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=10&page=1">Áo Thun nam</a></li>
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=9&page=1">Áo thun nữ</a></li>
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=8&page=1">Áo Sơ mi nam</a></li>
@@ -55,10 +56,12 @@
 
                     <li class="dropdown1"><a href="#">Quần</a>
                         <ul class="dropdown2">
+
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=6&page=1">QUần jean nam</a></li>
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=5&page=1">Quần jean nữ</a></li>
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=4&page=1">Quần kaki nam</a></li>
                             <li><a href="${pageContext.request.contextPath }/product/category?cate_id=3&page=1">Quần kaki nữ</a></li>
+
 
                         </ul>
                     </li>

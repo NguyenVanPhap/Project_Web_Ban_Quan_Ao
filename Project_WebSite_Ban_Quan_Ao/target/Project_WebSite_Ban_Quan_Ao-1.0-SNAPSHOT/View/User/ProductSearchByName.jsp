@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li>
                                 <img src="${url}/images/plus.png" alt=""/>
                                 <ul class="icon1 sub-icon1 profile_img">
-                                    <li><a class="active-icon c1" href="single.html">Add To Bag </a>
+                                    <li><a class="active-icon c1" href="${pageContext.request.contextPath }/member/cart/add?pId=${pro.getId() }">Add To Bag </a>
                                         <ul class="sub-icon1 list">
                                             <li><h3>Decription</h3><a href=""></a></li>
                                             <li><p>${pro.getDes() }<a href=""></a></p></li>
