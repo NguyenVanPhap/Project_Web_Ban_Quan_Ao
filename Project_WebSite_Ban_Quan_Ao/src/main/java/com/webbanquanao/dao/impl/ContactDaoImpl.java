@@ -5,6 +5,7 @@ import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.ContactEntity;
 import com.webbanquanao.model.ContactEntity;
 import com.webbanquanao.model.ContactEntity;
+import com.webbanquanao.model.ContactEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -68,4 +69,39 @@ public class ContactDaoImpl implements ContactDAO {
         }
     }
 
+    @Override
+    public void updateAction(ContactEntity contact) {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+
+        try{
+            trans.begin();
+            em.merge(contact);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
+    }
+    @Override
+    public ContactEntity getById(int id){
+        Transaction transaction = null;
+        ContactEntity contact = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+
+            contact = session.get(ContactEntity.class, id);
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return contact;
+    }
 }
