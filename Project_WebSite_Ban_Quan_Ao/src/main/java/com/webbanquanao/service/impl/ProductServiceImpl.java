@@ -75,4 +75,17 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> searchByPrice(double priceStart,double priceEnd) {
         return productDao.searchByPrice(priceStart,priceEnd);
     }
+
+    @Override
+    public List<ProductEntity> getByPage(int offset, int limit) {
+        return productDao.getByPage(offset,limit);
+    }
+
+    public List<ProductEntity> getByPageAndPrice(double priceStart,double priceEnd,int offset, int limit){
+        return productDao.getByPageAndPrice(priceStart,priceEnd,offset, limit);
+    }
+
+    public List<ProductEntity> searchByPageAndCategory(int cate_id,int offset, int limit){
+        return productDao.searchByPageAndCategory(cate_id,offset,limit);
+    }
 }

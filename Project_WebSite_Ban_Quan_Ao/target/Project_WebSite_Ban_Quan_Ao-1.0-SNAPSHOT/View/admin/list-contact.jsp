@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url value="/View/admin/Static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -58,8 +57,8 @@
                                         <th>index</th>
                                         <th>Name</th>
                                         <th>Mobile</th>
-                                        <th>Subject</th>
                                         <th>Email</th>
+                                        <th>Subject</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -68,18 +67,34 @@
                                     </a>
                                     <c:set var="index" value="${0}" />
                                     <c:forEach items="${contactEntityList }" var="list">
-                                        <tr class="odd gradeX">
-                                            <c:set var="index" value="${index + 1}" />
-                                            <td>${index }</td>
-                                            <td>${list.name}</td>
-                                            <td>${list.mobile}</td>
-                                            <td>${list.subject}</td>
-                                            <td>${list.email}</td>
-                                            <td></td>
-                                            <td><a
-                                                    href="<c:url value='/admin/contact/delete?id=${list.id }'/>"
-                                                    class="center">Delete</a></td>
-                                        </tr>
+                                        <c:if test="${list.status !=-1}">
+                                            <tr class="odd gradeX">
+                                                <c:set var="index" value="${index + 1}" />
+                                                <td>${index }</td>
+                                                <td>${list.name}</td>
+                                                <td>${list.mobile}</td>
+
+                                                <td>${list.email}</td>
+                                                <td>${list.subject}</td>
+                                                <td>
+                                                    <c:if test="${list.status ==0}">Đang chờ xử lý</c:if>
+                                                    <c:if test="${list.status ==1}">Đã xử lý</c:if>
+                                                </td>
+                                                <td><a
+                                                        href="<c:url value='/admin/contact/update?id=${list.id }&value=1'/>"
+                                                        class="center">Duyệt
+                                                    </a> |
+                                                    <a href="<c:url value='/admin/contact/update?id=${list.id }&value=0'/>"
+                                                        class="center">Chờ
+                                                    </a> |
+                                                    <a  href="<c:url value='/admin/contact/update?id=${list.id }&value=-1'/>"
+                                                        class="center">Xoá
+                                                    </a>
+                                                </td>
+
+
+                                            </tr>
+                                        </c:if>
                                     </c:forEach>
                                     </tbody>
                                 </table>

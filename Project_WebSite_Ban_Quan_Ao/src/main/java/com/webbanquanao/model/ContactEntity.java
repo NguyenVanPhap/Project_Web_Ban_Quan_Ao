@@ -1,5 +1,7 @@
 package com.webbanquanao.model;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,17 @@ public class ContactEntity {
     private String subject;
     @Column(name="email")
     private String email;
+    @Column(name="status")
+    @ColumnDefault("0")
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public int getId() {
         return id;

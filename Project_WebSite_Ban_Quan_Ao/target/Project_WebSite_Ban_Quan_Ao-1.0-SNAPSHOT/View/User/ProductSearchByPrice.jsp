@@ -37,7 +37,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="c-header" id="home">
     <jsp:include page="/View/User/Top-Header.jsp"></jsp:include>
 </div>
-
 <!-- start Dresses-page -->
 <!-- content-section-starts -->
 <div class="container">
@@ -65,20 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="ft-ball">
         <div class="cont span_2_of_3">
             <div class="mens-toolbar">
-                <div class="sort">
-                    <div class="sort-by">
-                        <label>Sort By</label>
-                        <select>
-                            <option value="">
-                                Popularity               </option>
-                            <option value="">
-                                Price : High to Low               </option>
-                            <option value="">
-                                Price : Low to High               </option>
-                        </select>
-                        <a href=""><img src="${url}/images/arrow2.gif" alt="" class="v-middle"></a>
-                    </div>
-                </div>
+
                 <div class="pager">
                     <div class="limiter visible-desktop">
                         <label>Show</label>
@@ -94,8 +80,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="dc_pagination dc_paginationA dc_paginationA06">
                         <li><a href="#" class="previous">Pages</a></li>
                         <c:forEach var = "i" begin = "1" end = "${numOfPages}">
-                            <li><a href="<c:url value='/product/category?cate_id=${cate_id}&page=${i}'/>">${i}</a></li>
+                            <li><a href="<c:url value='/product/searchByPrice?startPrice=${startPrice}&endPrice=${endPrice}&page=${i}'/>">${i}</a></li>
                         </c:forEach>
+
+
+                        <%--                        <li><a href="<c:url value='/user/product/list?page=2'/>">2</a></li>--%>
                     </ul>
                     <div class="clearfix"></div>
                 </div>

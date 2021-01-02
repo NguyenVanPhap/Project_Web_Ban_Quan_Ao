@@ -44,7 +44,7 @@
             <i class="shipping"></i>
             <h3>Shopping Place For Girls</h3>
             <p></p>
-            <a href="${pageContext.request.contextPath }/user/product/list">All Products</a>
+            <a href="${pageContext.request.contextPath }/user/product/list?page=1">All Products</a>
         </div>
     </div>
 </div>

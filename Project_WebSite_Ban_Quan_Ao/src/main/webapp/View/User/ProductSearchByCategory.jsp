@@ -93,8 +93,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <ul class="dc_pagination dc_paginationA dc_paginationA06">
                         <li><a href="#" class="previous">Pages</a></li>
-                        <li><a href="<c:url value='/user/product/list?page=1'/>">1</a></li>
-                        <li><a href="<c:url value='/user/product/list?page=2'/>">2</a></li>
+                        <c:forEach var = "i" begin = "1" end = "${numOfPages}">
+                            <li><a href="<c:url value='/product/category?cate_id=${cate_id}&page=${i}'/>">${i}</a></li>
+                        </c:forEach>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
