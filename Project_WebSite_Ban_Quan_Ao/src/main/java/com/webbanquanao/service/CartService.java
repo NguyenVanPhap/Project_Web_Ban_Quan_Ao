@@ -16,4 +16,8 @@ public interface CartService {
     List<CartEntity> getAll();
 
     List<CartEntity> search(String keyword);
+
+    void removeProduct(CartEntity cart, int pId);
+
+    double totalBill(CartEntity cart);
 }

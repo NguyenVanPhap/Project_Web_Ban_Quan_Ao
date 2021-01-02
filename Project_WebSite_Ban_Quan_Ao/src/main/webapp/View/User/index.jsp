@@ -5,13 +5,13 @@
 <html>
 <head>
     <title>Pakhi an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Home :: w3layouts</title>
-    <link href="View/User/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="${url}/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="View/User/js/jquery.min.js"></script>
+    <script src="${url}/js/jquery.min.js"></script>
     <!-- Custom Theme files -->
-    <link href="View/User/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="View/User/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
-   <!-- dropdown -->
+    <link href="${url}/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${url}/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- dropdown -->
     <script src="js/jquery.easydropdown.js"></script>
 
     <script src="js/scripts.js" type="text/javascript"></script>
@@ -32,10 +32,31 @@
         <div class="signing text-right">
             <div class="container">
                 <div class="sign-in">
-                    <a href="signin.html">Sign In</a>
+                    <c:choose>
+                        <c:when test="${not empty email}">
+                            <a href="">${user}</a>
+
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${pageContext.request.contextPath }/User/signin">Sign In</a>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <%--                    <c:if test = "${not empty email}">--%>
+                    <%--                        ${email}--%>
+                    <%--                    </c:if>--%>
+
                 </div>
                 <div class="sign-up1">
-                    <a href="signin.html">Sign Up</a>
+                    <c:choose>
+                        <c:when test="${not empty email}">
+                            <a href="${pageContext.request.contextPath }/User/signout">Sign Out</a>
+
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${pageContext.request.contextPath }/User/signup">Sign Up</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -87,19 +108,19 @@
                     <li><span class="filter" data-filter="icon"><label></label><a href="${pageContext.request.contextPath }/Home?cateid=8">Quần</a></span></li>
                 </ul>
                 <div id="portfoliolist">
-                   <%-- ///////////////////////////////////////--%>
+                    <%-- ///////////////////////////////////////--%>
                     <c:forEach items="${productList}" var="pro">
                         <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
                         <div class="portfolio card mix_all"  data-cat="card" style="display: inline-block; opacity: 1;">
                             <div class="portfolio-wrapper">
                                 <a href="<c:url value='/product/detail?id=${pro.id }'/>" class="b-link-stripe b-animate-go  thickbox">
                                     <img style="height: 250px" src="${imgUrl}" class="img-responsive" alt="" />
-                                        <div class="b-wrapper">
-                                            <div class="atc"><p>Add To Cart</p>
-                                    </div><div class="clearfix">
-                                </div><h2 class="b-animate b-from-left    b-delay03 ">
-                                    <img src="${imgUrl}" class="img-responsive go" alt=""/></h2>
-                                </div></a>
+                                    <div class="b-wrapper">
+                                        <div class="atc"><p>Add To Cart</p>
+                                        </div><div class="clearfix">
+                                    </div><h2 class="b-animate b-from-left    b-delay03 ">
+                                        <img src="${imgUrl}" class="img-responsive go" alt=""/></h2>
+                                    </div></a>
                                 <div class="title">
                                     <div class="colors">
                                         <h4>${pro.getName() }</h4>

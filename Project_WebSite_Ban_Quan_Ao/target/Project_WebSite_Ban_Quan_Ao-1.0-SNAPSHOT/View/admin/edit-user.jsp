@@ -56,17 +56,31 @@
 										<input name="id" value="${user.id }" type="text" hidden="">
 
 										<div class="form-group">
-											<label>User Name:</label> <input class="form-control"
-																			 value="${user.userName }" name="username" />
+											<label>User Name:
+											</label>
+											<c:if test="${not empty nameError}">
+												<a><p style="color: red"><c:out value="${nameError}" /></p></a>
+											</c:if>
+											<input class="form-control"
+
+												   value="${user.userName }" name="username" />
 										</div>
 
 										<div class="form-group">
-											<label>Password</label> <input class="form-control"
+											<label>Password</label>
+											<c:if test="${not empty passError}">
+												<a><p style="color: red"><c:out value="${passError}" /></p></a>
+											</c:if>
+											<input class="form-control"
 																		   value="${user.password }" type="password" name="password" />
 										</div>
 
 										<div class="form-group">
-											<label>Email:</label> <input class="form-control"
+											<label>Email:</label>
+											<c:if test="${not empty emailError}">
+												<a><p style="color: red"><c:out value="${emailError}" /></p></a>
+											</c:if>
+											<input class="form-control"
 																		 value="${user.email }" name="email" />
 										</div>
 

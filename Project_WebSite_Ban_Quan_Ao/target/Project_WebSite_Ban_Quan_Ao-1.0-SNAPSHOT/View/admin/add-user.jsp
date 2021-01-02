@@ -49,39 +49,57 @@
 									<form role="form" action="add"  method="post" enctype="multipart/form-data">
 										<div class="form-group">
 											<label>User Name:</label>
-											<input class="form-control" placeholder="Your name" type="textbox" name="username" >
+											<c:if test="${not empty nameError}">
+												<a><p style="color: red"><c:out value="${nameError}" /></p></a>
+											</c:if>
+											<input class="form-control" placeholder="Your name" type="textbox" name="username" value="${name}"/>
 
 										</div>
 										<div class="form-group">
 											<label>Password</label>
+											<c:if test="${not empty passError}">
+												<a><p style="color: red"><c:out value="${passError}" /></p></a>
+											</c:if>
 											<input class="form-control" placeholder="please enter password" type="password"
-												   name="password" />
+												   name="password" value="${pass}"/>
 										</div>
 
 										<div class="form-group">
 											<label>Email:</label>
-
-											<input class="form-control" type="textbox" placeholder="Please enter email" name="email" />
+											<c:if test="${not empty emailError}">
+												<a><p style="color: red"><c:out value="${emailError}" /></p></a>
+											</c:if>
+											<input class="form-control" type="textbox" placeholder="Please enter email" name="email"
+													   value="${mail}"
+											/>
 										</div>
 
 										<div class="form-group">
 											<label>Address:</label>
-											<input class="form-control" placeholder="Your address" type="textbox" name="address" >
+											<input class="form-control" placeholder="Your address" type="textbox" name="address" value="${address}"/>
 
 										</div>
 										<div class="form-group">
 											<label>Role</label>
 											<div class="checkbox">
-												<label> <input type="radio" value="1" name="permission"/>Admin
+												<label> <input type="radio" value="1" name="permission"
+														<c:if test="${permission==1}">
+															checked
+														</c:if>
+												/>Admin
 												</label>
 												<br>
-												<label> <input type="radio" value="2" name="permission" />Client
+												<label> <input type="radio" value="2" name="permission"
+														<c:if test="${permission==2}">
+															checked
+														</c:if>
+												/>Client
 												</label>
 											</div>
 
 										</div>
 										<div class="form-group">
-											<label>Avatar</label> <input type="file" name="avatar" />
+											<label>Avatar</label> <input type="file" name="avatar" value="${avatar}"/>
 										</div>
 										<button type="submit" class="btn btn-default">Add</button>
 										<button type="reset" class="btn btn-primary">Reset</button>

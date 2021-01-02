@@ -18,4 +18,8 @@ public interface CartDao {
     List<CartEntity> getAll();
 
     List<CartEntity> search(String name);
+
+    void removeProduct(CartEntity cart, int pId);
+
+    double totalBill(CartEntity cart);
 }
