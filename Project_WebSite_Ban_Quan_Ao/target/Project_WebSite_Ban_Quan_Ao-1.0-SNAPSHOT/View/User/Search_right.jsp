@@ -19,10 +19,10 @@
                     <li>
                         <a style="  color: black;" href="#">Áo&emsp;&emsp;&emsp;</a>
                         <ul class="dropdown2">
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=10">Áo thun nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=9">Áo thun nữ</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=8">Áo sơ mi nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=7">Áo sơ mi nữ</a></li>
+                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=9">Áo thun nam</a></li>
+                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=8">Áo thun nữ</a></li>
+                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=7">Áo sơ mi nam</a></li>
+                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=6">Áo sơ mi nữ</a></li>
                         </ul>
                     </li>
                     <li><a style="color: black;" href="#">Giày&emsp;&emsp;&emsp;</a>
@@ -33,10 +33,10 @@
                     </li>
                     <li ><a style="color: black;" href="#">QUần&emsp;&emsp;&emsp;</a>
                         <ul class="dropdown2">
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=6">Quần jean nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=5">Quần jean nữ</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=4">Quần kaki nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=3">Quần kaki nữ</a></li>
+                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=5">Quần jean nam</a></li>
+                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=4">Quần jean nữ</a></li>
+                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=3">Quần kaki nam</a></li>
+
                         </ul>
                     </li>
                 </ul>

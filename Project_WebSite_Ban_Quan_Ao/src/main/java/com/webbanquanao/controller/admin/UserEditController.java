@@ -95,7 +95,7 @@ public class UserEditController extends HttpServlet {
                     else {
                         req.getSession().setAttribute("passError", null);
                     }
-                    
+
                     user.setPassword(item.getString());
                 }else if (item.getFieldName().equals("address")) {
                     user.setAddress(item.getString());

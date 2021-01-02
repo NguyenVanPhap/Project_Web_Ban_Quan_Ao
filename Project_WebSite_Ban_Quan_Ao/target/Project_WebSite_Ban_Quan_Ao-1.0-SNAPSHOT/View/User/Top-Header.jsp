@@ -45,20 +45,19 @@
 
                     <li class="dropdown1"><a href="">Áo</a>
                         <ul class="dropdown2">
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=10">Áo Thun nam</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=9">Áo thun nữ</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=8">Áo Sơ mi nam</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=7">Áo Sơ mi nữ</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=9">Áo Thun nam</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=8">Áo thun nữ</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=7">Áo Sơ mi nam</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=6">Áo Sơ mi nữ</a></li>
 
                         </ul>
                     </li>
 
                     <li class="dropdown1"><a href="#">Quần</a>
                         <ul class="dropdown2">
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=6">QUần jean nam</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=5">Quần jean nữ</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=4">Quần kaki nam</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=3">Quần kaki nữ</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=5">QUần jean nam</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=4">Quần jean nữ</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=3">Quần kaki nam</a></li>
 
                         </ul>
                     </li>
