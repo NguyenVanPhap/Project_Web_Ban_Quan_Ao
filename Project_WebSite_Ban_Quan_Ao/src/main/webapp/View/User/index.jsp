@@ -70,7 +70,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="features-section">
+    <div class="features-section" style="height: 50%">
         <div class="features-section-head text-center">
             <h3><span>S</span>ản phẩm nổi nật</h3>
             <p>“Sản phẩm của tuần”</p>
