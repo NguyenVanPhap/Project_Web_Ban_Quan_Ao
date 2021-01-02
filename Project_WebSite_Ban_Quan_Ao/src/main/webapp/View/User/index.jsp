@@ -70,7 +70,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="features-section" style="height: 50%">
+    <div class="features-section" >
         <div class="features-section-head text-center">
             <h3><span>S</span>ản phẩm nổi nật</h3>
             <p>“Sản phẩm của tuần”</p>
@@ -78,10 +78,10 @@
         <div class="features-section-grids" >
             <div class="features-section-grid" style=";width:50%;left: 25%;" >
                 <c:url value="/image/${productList.get(1).getImage()}" var="imgUrl1"></c:url>
-                <img src="${imgUrl1}" alt="" />
-                <div class="girl-info">
+                <img src="${imgUrl1}" alt="" style="height: 650px"/>
+                <div class="girl-info" style="height: 200px">
                     <div class="lonovo">
-                        <div class="dress">
+                        <div class="dress" style="width: 500px">
                             <h4>${productList.get(1).getName()}</h4>
                             <p>${productList.get(1).getDes()}</p>
                         </div>

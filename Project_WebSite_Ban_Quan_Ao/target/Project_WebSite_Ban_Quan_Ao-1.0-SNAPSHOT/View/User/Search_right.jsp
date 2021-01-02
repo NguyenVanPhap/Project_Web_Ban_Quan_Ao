@@ -24,6 +24,7 @@
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=9&page=1">Áo thun nữ</a></li>
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=8&page=1">Áo sơ mi nam</a></li>
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=7&page=1">Áo sơ mi nữ</a></li>
+
                         </ul>
                     </li>
                     <li><a style="color: black;" href="#">Giày&emsp;&emsp;&emsp;</a>
