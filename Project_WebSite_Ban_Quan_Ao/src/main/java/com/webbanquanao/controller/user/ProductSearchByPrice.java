@@ -16,12 +16,30 @@ public class ProductSearchByPrice extends HttpServlet{
     ProductService productService=new ProductServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Hello");
         double startPrice=Double.parseDouble(req.getParameter("startPrice"));
         double endPrice=Double.parseDouble(req.getParameter("endPrice"));
-        List<ProductEntity> productSeachByPrice =productService.searchByPrice(startPrice,endPrice);
-        req.setAttribute("productList", productSeachByPrice);
-        req.getRequestDispatcher("/View/User/ProductSearchByCategory.jsp").forward(req, resp);
+        int numOfProducts=0;
+        List<ProductEntity> products =productService.searchByPrice(startPrice,endPrice);
+        if (products != null){
+            numOfProducts =products.size();
+        }
+        int litmit=9;
+        int numOfPages = 0;
+        if (numOfProducts/litmit==(float)numOfProducts/litmit){
+            numOfPages = numOfProducts/litmit;
+        }
+        else{
+            numOfPages = numOfProducts/litmit+1;
+        }
+        int page = Integer.parseInt(req.getParameter("page"));
+        int offset = (page-1) * litmit;
+        List<ProductEntity> productList=productService.getByPageAndPrice(startPrice,endPrice, offset,litmit);
+
+        req.setAttribute("numOfPages",numOfPages);
+        req.setAttribute("productList", productList);
+        req.setAttribute("startPrice",startPrice);
+        req.setAttribute("endPrice",endPrice);
+        req.getRequestDispatcher("/View/User/ProductSearchByPrice.jsp").forward(req, resp);
     }
 }
 
