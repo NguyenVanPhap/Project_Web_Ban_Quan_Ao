@@ -2,7 +2,6 @@ package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.dao.ProductDao;
-import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
@@ -12,15 +11,10 @@ import org.hibernate.Transaction;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
-    CategoryService categoryService = new CategoryServiceImpl();
 
     @Override
     public void insert(ProductEntity product){
