@@ -22,4 +22,10 @@ public interface ProductService {
     List<ProductEntity> searchByName(String productName);
 
     List<ProductEntity> searchByPrice(double priceStart,double priceEnd);
+
+    List<ProductEntity> getByPage(int offset, int limit);
+
+    List<ProductEntity> getByPageAndPrice(double priceStart,double priceEnd,int offset, int limit);
+
+    List<ProductEntity> searchByPageAndCategory(int cate_id,int offset, int limit);
 }

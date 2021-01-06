@@ -2,7 +2,6 @@ package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.UserDao;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
-import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.UserEntity;
 
 import javax.persistence.*;

@@ -76,7 +76,7 @@
 											<td>${pro.getName() }</td>
 											<td>${pro.getPrice() }</td>
 											<td>${pro.getCategoryEntity().getCateName()}</td>
-											<td>${pro.getDes() } </td>
+											<td style="width: 35%">${pro.getDes() } </td>
 											<td><a
 													href="<c:url value='/product/detail?id=${pro.getId() }'/>"
 													class="center">Detail</a> | <a

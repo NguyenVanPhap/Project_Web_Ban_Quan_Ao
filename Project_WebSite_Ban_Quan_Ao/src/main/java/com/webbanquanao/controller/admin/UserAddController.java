@@ -56,16 +56,58 @@ public class UserAddController extends HttpServlet {
             for (FileItem item : items) {
                 if (item.getFieldName().equals("email"))
                 {
+
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("emailError", "Enter your email");
+                        url = "0";
+                    }
+                    else
+                    {
+                        Pattern pattern = Pattern.compile("^(.+)@(.+)$");
+                        if(!pattern.matcher(item.getString()).matches())
+                        {
+                            req.getSession().setAttribute("emailError", "You must enter email in format xxx-xxx-xxxx");
+                            url = "0";
+                        }
+                        else {
+                            req.getSession().setAttribute("emailError", null);
+                        }
+
+                    }
+                    req.getSession().setAttribute("mail",item.getString());
                     user.setEmail(item.getString());
                 } else if (item.getFieldName().equals("username"))
                 {
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("nameError", "Enter your your user name");
+                        url = "0";
+                    }
+                    else {
+                        req.getSession().setAttribute("nameError", null);
+                    }
+                    req.getSession().setAttribute("name",item.getString());
                     user.setUserName(item.getString());
                 } else if (item.getFieldName().equals("password"))
                 {
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("passError", "Enter your your password");
+                        url = "0";
+                    }
+                    else {
+                        req.getSession().setAttribute("passError", null);
+                    }
+
+                    req.getSession().setAttribute("pass",item.getString());
                     user.setPassword(item.getString());
                 }else if (item.getFieldName().equals("address")) {
+
+                    req.getSession().setAttribute("address",item.getString());
                     user.setAddress(item.getString());
                 } else if (item.getFieldName().equals("permission")) {
+                    req.getSession().setAttribute("permission",Integer.parseInt(item.getString()));
                     user.setPermission(Integer.parseInt(item.getString()));;
                 } else if (item.getFieldName().equals("avatar")) {
                     if (item.getSize() > 0) {
@@ -78,24 +120,29 @@ public class UserAddController extends HttpServlet {
                             item.write(file);
                         }
                         System.out.println("File1:Thanh Cong ");
+                        req.getSession().setAttribute("avatar",originalFileName);
                         user.setAvatar(originalFileName);
                     }
                     else
                     {
                         user.setAvatar(null);
                     }
-
                 }
             }
 
-            userService.insert(user);
-            resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+            if(url!="0") {
+                userService.insert(user);
+                resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+            }
+            else
+            {
+                resp.sendRedirect(req.getContextPath() + "/admin/user/add");
+            }
 
         } catch (FileUploadException e) {
             e.printStackTrace();
         } catch (Exception e) {
             resp.sendRedirect(req.getContextPath() + "/admin/user/add?e=1");
-
         }
 
     }

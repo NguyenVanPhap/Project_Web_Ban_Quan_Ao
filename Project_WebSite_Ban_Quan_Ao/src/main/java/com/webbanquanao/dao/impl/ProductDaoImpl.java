@@ -2,7 +2,6 @@ package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.dao.ProductDao;
-import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
@@ -12,15 +11,10 @@ import org.hibernate.Transaction;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
-    CategoryService categoryService = new CategoryServiceImpl();
 
     @Override
     public void insert(ProductEntity product){
@@ -42,21 +36,6 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void edit(ProductEntity product){
-        /*Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // start a transaction
-            transaction = session.beginTransaction();
-            // save the student object
-            session.update(product);
-            // commit transaction
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }*/
-
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
 
@@ -114,21 +93,6 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<ProductEntity> getAll(){
-        /*List<ProductEntity> productList = new ArrayList<ProductEntity>();
-        Transaction transaction = null;
-
-        try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            transaction = session.beginTransaction();
-
-            productList = session.createQuery("from ProductEntity").getResultList();
-            transaction.commit();
-        }
-        catch (Exception e){
-            if(transaction != null)
-                transaction.rollback();
-            e.printStackTrace();
-        }
-        return productList;*/
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         String qString = "FROM ProductEntity ";
         TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
@@ -142,7 +106,61 @@ public class ProductDaoImpl implements ProductDao {
         }
         return productList;
     }
+    @Override
+    public List<ProductEntity> getByPage(int offset, int limit){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM ProductEntity ";
+        TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
+        q.setFirstResult(offset);
+        q.setMaxResults(limit);
+        List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        try{
+            productList = q.getResultList();
+            if(productList == null || productList.isEmpty())
+                productList= null;
+        }finally {
+            em.close();
+        }
+        return productList;
+    }
+    @Override
+    public List<ProductEntity> getByPageAndPrice(double priceStart,double priceEnd, int offset, int limit){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM ProductEntity P where P.price >= :priceStart and P.price <= : priceEnd";
+        TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
+        q.setParameter("priceStart",priceStart);
+        q.setParameter("priceEnd",priceEnd);
+        q.setFirstResult(offset);
+        q.setMaxResults(limit);
+        List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        try{
+            productList = q.getResultList();
+            if(productList == null || productList.isEmpty())
+                productList= null;
+        }finally {
+            em.close();
+        }
+        return productList;
+    }
+    @Override
+    public List<ProductEntity> searchByPageAndCategory(int cate_id,int offset, int limit){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM ProductEntity P Where P.categoryEntity.cateId =:cate_id ";
+        TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
+        q.setParameter("cate_id",cate_id);
+        q.setFirstResult(offset);
+        q.setMaxResults(limit);
+        List<ProductEntity> productList = new ArrayList<ProductEntity>();
+        try{
+            productList = q.getResultList();
+            if(productList == null || productList.isEmpty())
+                productList= null;
+        }finally {
+            em.close();
+        }
+        return productList;
 
+    }
     @Override
     public List<ProductEntity> search(String keyword)
     {
@@ -195,37 +213,6 @@ public class ProductDaoImpl implements ProductDao {
             em.close();
         }
         return productList;
- /*       List<ProductEntity> productList = new ArrayList<ProductEntity>();
-        String sql ="SELECT product.id, product.image, product.name AS p_name, product.price, " +
-                "product.des , category.cate_name AS c_name, category.cate_id AS c_id " +
-                "FROM ProductEntity , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
-        Connection conn = super.getJDBCConnection();
-
-        try{
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, cate_id);
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next())
-            {
-                Category category = categoryService.get(rs.getInt("c_id"));
-
-                ProductEntity product = new ProductEntity();
-                product.setId(rs.getInt("id"));
-                product.setImage(rs.getString("image"));
-                product.setName(rs.getString("p_name"));
-                product.setPrice(rs.getFloat("price"));
-                product.setDes(rs.getString("des"));
-
-                product.setCategory(category);
-
-                productList.add(product);
-            }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-        return productList;*/
 
     }
 
@@ -244,35 +231,6 @@ public class ProductDaoImpl implements ProductDao {
             em.close();
         }
         return productList;
-/*        List<ProductEntity> productList = new ArrayList<ProductEntity>();
-        String sql = "SELECT product.id, product.image, product.name AS p_name, product.price, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				"
-                + " FROM ProductEntity , Category   where product.cate_id = category.cate_id and ProductEntity.name like ? ";
-        Connection conn = super.getJDBCConnection();
-
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,"%"+ productName +"%");
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Category category = categoryService.get(rs.getInt("c_id"));
-                ProductEntity product = new ProductEntity();
-                product.setId(rs.getInt("id"));
-                product.setName(rs.getString("p_name"));
-                product.setPrice(rs.getLong("price"));
-                product.setImage(rs.getString("image"));
-                product.setDes(rs.getString("des"));
-                product.setCategory(category);
-
-                product.setCategory(category);
-                productList.add(product);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return productList;*/
     }
     public List<ProductEntity> searchByPrice(double priceStart,double priceEnd){
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();

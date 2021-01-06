@@ -93,8 +93,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <ul class="dc_pagination dc_paginationA dc_paginationA06">
                         <li><a href="#" class="previous">Pages</a></li>
-                        <li><a href="<c:url value='/user/product/list?page=1'/>">1</a></li>
-                        <li><a href="<c:url value='/user/product/list?page=2'/>">2</a></li>
+                        <c:forEach var = "i" begin = "1" end = "${numOfPages}">
+                            <li><a href="<c:url value='/product/category?cate_id=${cate_id}&page=${i}'/>">${i}</a></li>
+                        </c:forEach>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -124,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li>
                                 <img src="${url}/images/plus.png" alt=""/>
                                 <ul class="icon1 sub-icon1 profile_img">
-                                    <li><a class="active-icon c1" href="single.html">Add To Bag </a>
+                                    <li><a class="active-icon c1" href="${pageContext.request.contextPath }/member/cart/add?pId=${pro.getId() }">Add To Bag </a>
                                         <ul class="sub-icon1 list">
                                             <li><h3>Decription</h3><a href=""></a></li>
                                             <li><p>${pro.getDes() }<a href=""></a></p></li>
