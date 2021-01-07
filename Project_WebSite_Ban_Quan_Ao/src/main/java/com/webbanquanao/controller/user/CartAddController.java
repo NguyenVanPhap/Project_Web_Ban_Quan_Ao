@@ -3,7 +3,9 @@ package com.webbanquanao.controller.user;
 import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
 import com.webbanquanao.model.ProductEntity;
+import com.webbanquanao.service.CartService;
 import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.impl.CartServiceImpl;
 import com.webbanquanao.service.impl.ProductServiceImpl;
 
 import javax.servlet.ServletException;
@@ -13,15 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Date;
+import java.util.*;
 
 
 @WebServlet(urlPatterns = { "/member/cart/add" }) // ?pId=123
 public class CartAddController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
+    CartService cartService = new CartServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -98,6 +99,10 @@ public class CartAddController extends HttpServlet {
                     cartitemEntity.setProductEntity(productEntity);
                     listCartItem.add(cartitemEntity);
                     cartEntity.setCartitemEntities(listCartItem);
+                //    long millis=System.currentTimeMillis();
+                //    java.sql.Date date=new java.sql.Date(millis);
+                //    cartEntity.setBuyDate(date);
+                    cartEntity.setAction(false);
                     session.setAttribute("cartEntity",cartEntity);
                 }
                 else{
@@ -107,6 +112,7 @@ public class CartAddController extends HttpServlet {
                     for(CartitemEntity cartitemEntity : listCartItem){
                         if(cartitemEntity.getProductEntity().getId() == productEntity.getId()){
                             cartitemEntity.setQuantity(cartitemEntity.getQuantity() + quantity);
+            //                cartService.edit(cartEntity);
                             check = true;
                         }
                     }
@@ -116,6 +122,7 @@ public class CartAddController extends HttpServlet {
                         cartitemEntity.setProductEntity(productEntity);
                         listCartItem.add(cartitemEntity);
                         cartEntity.setCartitemEntities(listCartItem);
+              //          cartService.edit(cartEntity);
                     }
                     session.setAttribute("cartEntity",cartEntity);
                 }

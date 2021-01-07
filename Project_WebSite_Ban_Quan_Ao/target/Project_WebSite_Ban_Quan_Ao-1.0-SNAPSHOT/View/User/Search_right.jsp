@@ -39,7 +39,11 @@
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=5&page=1">Quần jean nam</a></li>
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=4&page=1">Quần jean nữ</a></li>
                             <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=3&page=1">Quần kaki nam</a></li>
+<<<<<<< HEAD
 
+=======
+                           
+>>>>>>> a1a4dd79683d8d30beb74a8c4f5fc8fbe053d906
 
                         </ul>
                     </li>

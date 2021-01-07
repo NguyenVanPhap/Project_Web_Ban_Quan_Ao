@@ -3,6 +3,7 @@ package com.webbanquanao.controller.user;
 import com.webbanquanao.model.UserEntity;
 import com.webbanquanao.service.UserService;
 import com.webbanquanao.service.impl.UserServiceImpl;
+import com.webbanquanao.utils.JavaMailUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -94,6 +95,10 @@ public class SignUpController extends HttpServlet {
             else if(pass.equals(cfpass)){
                 userService.insert(user);
                 resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+                String recepient=user.getEmail();
+                String subject ="Đăng ký thành công!";
+                String content="<h3>Đăng ký tài khoản thành công!</h3><br><p>Cảm ơn bạn đã sử dụng dịch vụ của shop</p>";
+                JavaMailUtil.sendMail(recepient,subject,content);
             }
             else{
                 session.setAttribute("SignUpErr","Those passwords didn't match. Try again.");
