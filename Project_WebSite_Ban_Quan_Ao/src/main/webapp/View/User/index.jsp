@@ -86,7 +86,7 @@
                             <p>${productList.get(1).getDes()}</p>
                         </div>
                         <div class="priceindollers">
-                            <h3>$ <span>689</span></h3>
+                            <h3>$ <span>${productList.get(1).getPrice() }</span></h3>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -102,34 +102,36 @@
             </div>
             <div class="products-section-grids">
                 <ul id="filters" class="clearfix">
-                    <li><span class="filter active" data-filter="app card icon web"><label class="active"></label><a href="${pageContext.request.contextPath }/Home">ALL</a></span></li>
-                    <li><span class="filter" data-filter="app"><label></label><a href="${pageContext.request.contextPath }/Home?cateid=1">Giày</a></span></li>
-                    <li><span class="filter" data-filter="card"><label></label><a href="${pageContext.request.contextPath }/Home?cateid=5">Áo</a></span></li>
-                    <li><span class="filter" data-filter="icon"><label></label><a href="${pageContext.request.contextPath }/Home?cateid=8">Quần</a></span></li>
+                    <li><span class="filter active" data-filter="app card icon web" onclick="window.location='${pageContext.request.contextPath }/Home'">ALL</span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=1'">Giày</span></li>
+                    <li><span class="filter" data-filter="card" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=7'">Áo</span></li>
+                    <li><span class="filter" data-filter="icon" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=3'">Quần</span></li>
                 </ul>
                 <div id="portfoliolist">
                     <%-- ///////////////////////////////////////--%>
                     <c:forEach items="${productList}" var="pro">
                         <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
-                        <div class="portfolio card mix_all"  data-cat="card" style="display: inline-block; opacity: 1;">
+                        <div class="portfolio card mix_all"  data-cat="card" style=" position:relative;height: 550px; display: inline-block; opacity: 1;">
                             <div class="portfolio-wrapper">
                                 <a href="<c:url value='/product/detail?id=${pro.id }'/>" class="b-link-stripe b-animate-go  thickbox">
-                                    <img style="height: 250px" src="${imgUrl}" class="img-responsive" alt="" />
+                                    <img style="height: 350px ;width: 280px" src="${imgUrl}" class="img-responsive" alt="" />
                                     <div class="b-wrapper">
                                         <div class="atc"><p>Add To Cart</p>
                                         </div><div class="clearfix">
                                     </div><h2 class="b-animate b-from-left    b-delay03 ">
                                         <img src="${imgUrl}" class="img-responsive go" alt=""/></h2>
                                     </div></a>
-                                <div class="title">
+                                <div class="title" style="position: relative; ">
                                     <div class="colors">
                                         <h4>${pro.getName() }</h4>
                                     </div>
-                                    <div class="main-price">
-                                        <h3><span>$</span>${pro.getPrice() }</h3>
-                                    </div>
+
                                     <div class="clearfix"></div>
                                 </div>
+                            </div>
+
+                            <div style="position: absolute; bottom: 0px">
+                                <h3><span>$</span>${pro.getPrice() }</h3>
                             </div>
                         </div>
                     </c:forEach>
@@ -139,7 +141,7 @@
                 <div class="clearfix"></div>
                 <div class="more">
                     <div class="seemore">
-                        <a href="${pageContext.request.contextPath }/user/product/list">See More</a>
+                        <a href="${pageContext.request.contextPath }/user/product/list?page=1">See More</a>
                     </div>
 
                     <div class="clearfix"></div>

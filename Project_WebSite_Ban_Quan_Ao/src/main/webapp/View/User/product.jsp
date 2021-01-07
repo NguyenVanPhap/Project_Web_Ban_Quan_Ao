@@ -67,24 +67,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <div class="pager">
                     <div class="limiter visible-desktop">
-                        <label>Show</label>
-                        <select>
-                            <option value="" selected="selected">
-                                9                </option>
-                            <option value="">
-                                15                </option>
-                            <option value="">
-                                30                </option>
-                        </select> per page
+
                     </div>
                     <ul class="dc_pagination dc_paginationA dc_paginationA06">
                         <li><a href="#" class="previous">Pages</a></li>
                         <c:forEach var = "i" begin = "1" end = "${numOfPages}">
                             <li><a href="<c:url value='/user/product/list?page=${i}'/>">${i}</a></li>
                         </c:forEach>
-
-
-<%--                        <li><a href="<c:url value='/user/product/list?page=2'/>">2</a></li>--%>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -138,11 +127,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="footer">
     <div class="up-arrow">
-        <a class="scroll" href="#home"><img src="${url}/images/up.png" alt="" /></a>
+        <a class="scroll" href="#"><img src="${url}/images/up.png" alt="" /></a>
     </div>
     <div class="container">
         <div class="copyrights">
-            <p>Copyright &copy; 2015 All rights reserved | Template by  <a href="http://w3layouts.com">  W3layouts</a></p>
+            <p>Copyright &copy; 2015 All rights reserved </p>
         </div>
         <div class="footer-social-icons">
             <a href="#"><i class="fb"></i></a>
