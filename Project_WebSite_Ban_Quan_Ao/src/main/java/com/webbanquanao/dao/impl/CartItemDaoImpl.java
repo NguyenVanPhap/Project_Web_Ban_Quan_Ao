@@ -1,90 +1,66 @@
 package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.CartItemDao;
-import com.webbanquanao.dao.UserDao;
+import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
+import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
-import com.webbanquanao.service.CartService;
-import com.webbanquanao.service.ProductService;
-import com.webbanquanao.service.impl.CartServiceImpl;
-import com.webbanquanao.service.impl.ProductServiceImpl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class CartItemDaoImpl implements CartItemDao {
-    CartService cartService = new CartServiceImpl();
-    ProductService productService = new ProductServiceImpl();
-    UserDao userDao = new UserDaoImpl();
-
 
     @Override
     public void insert(CartitemEntity cartItem) {
-   /*     String sql = "INSERT INTO CartItem(id, cat_id, pro_id, quantity, unitPrice) VALUES (?,?,?,?,?)";
-        Connection con = super.getJDBCConnection();
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setString(1, cartItem.getId());
-            ps.setString(2, cartItem.getCart().getId());
-            ps.setInt(3, cartItem.getProduct().getId());
-            ps.setInt(4, cartItem.getQuantity());
-            ps.setFloat(5, cartItem.getUnitPrice());
-
-            ps.executeUpdate();
-
-//			ResultSet generatedKeys = ps.getGeneratedKeys();
-//			if (generatedKeys.next()) {
-//				int id = generatedKeys.getInt(1);
-//				cartItem.setId(id);
-//			}
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
+        try{
+            trans.begin();
+            em.persist(cartItem);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
     public void edit(CartitemEntity cartItem) {
- /*       String sql = "UPDATE CartItem SET cat_id = ?, pro_id = ?, quantity = ?, unitPrice=? WHERE id = ?";
-        Connection con = super.getJDBCConnection();
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setString(1, cartItem.getCart().getId());
-            ps.setInt(2, cartItem.getProduct().getId());
-            ps.setInt(3, cartItem.getQuantity());
-            ps.setFloat(4, cartItem.getUnitPrice());
-            ps.setString(5, cartItem.getId());
-
-
-            ps.executeUpdate();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
+        try{
+            trans.begin();
+            em.merge(cartItem);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
     public void delete(String id) {
-/*        String sql = "DELETE FROM CartItem WHERE id = ?";
-        Connection con = super.getJDBCConnection();
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
+        try{
+            CartEntity cart = em.find(CartEntity.class, id);
+            trans.begin();
+            em.remove(em.merge(cart));
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override

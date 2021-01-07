@@ -4,64 +4,63 @@ import com.webbanquanao.dao.CartDao;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
-import com.webbanquanao.model.ProductEntity;
-import com.webbanquanao.service.UserService;
-import com.webbanquanao.service.impl.UserServiceImpl;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class CartDaoImpl implements CartDao {
-   UserService userS = new UserServiceImpl();
 
     @Override
     public void insert(CartEntity cart) {
-/*        String sql = "INSERT INTO Cart(id,u_id, buyDate) VALUES (?,?,?)";
-        Connection con = super.getJDBCConnection();
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, cart.getId());
-            ps.setInt(2, cart.getBuyer().getId());
-            ps.setDate(3, (java.sql.Date) new Date(cart.getBuyDate().getTime()));
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.persist(cart);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
     public void edit(CartEntity cart) {
-/*        String sql = "UPDATE cart SET id_user = ?, buyDate = ? WHERE id = ?";
-        Connection con = super.getJDBCConnection();
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, cart.getBuyer().getId());
-            ps.setDate(2, (java.sql.Date) new Date(cart.getBuyDate().getTime()));
-            ps.setString(3, cart.getId());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
+        try{
+            trans.begin();
+            em.merge(cart);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
     public void delete(int id) {
-/*        String sql = "DELETE FROM cart WHERE id = ?";
-        Connection con = super.getJDBCConnection();
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
+        try{
+            CartEntity cart = em.find(CartEntity.class, id);
+            trans.begin();
+            em.remove(em.merge(cart));
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override

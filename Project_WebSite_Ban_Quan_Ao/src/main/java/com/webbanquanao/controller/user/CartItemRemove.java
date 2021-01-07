@@ -24,6 +24,7 @@ public class CartItemRemove extends HttpServlet {
         int pId = Integer.parseInt(req.getParameter("pId"));
         if (cartEntity != null) {
             cartService.removeProduct(cartEntity,pId);
+    //        cartService.delete(pId);
 
             //Map<Integer, CartitemEntity> map = (Map<Integer, CartitemEntity>) obj; // ep ve kieu cua no
             // Xoa san pham trong map
