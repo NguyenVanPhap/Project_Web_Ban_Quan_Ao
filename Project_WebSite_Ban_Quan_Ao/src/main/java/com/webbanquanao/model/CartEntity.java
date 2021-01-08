@@ -11,7 +11,7 @@ import java.util.Objects;
 public class CartEntity {
     @Id
     @Column(name = "id")
-    private String id;
+    private int id;
     @Basic
     @Column(name = "buyDate")
     private Date buyDate;
@@ -28,11 +28,11 @@ public class CartEntity {
 
     //   @Id
     //   @Column(name = "id")
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                         <div class="btn_form">
-                            <a href="single.html">buy now</a>
+                            <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">buy now</a>
                         </div>
                         <a href="#"><span>login to save in wishlist </span></a>
                         <div class="det_nav">

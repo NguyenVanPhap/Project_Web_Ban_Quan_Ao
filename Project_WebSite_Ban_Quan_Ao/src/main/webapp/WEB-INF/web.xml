@@ -11,19 +11,4 @@
         <param-name>authtoken</param-name>
         <param-value>LJVc6WWIt66gEQuwowYZvnfQLXqTepyFytPwvUoTw8KgAMpwCAZ-N_jc0he</param-value>
     </context-param>
-
-    <context-param>
-        <param-name>posturl</param-name>
-        <param-value>https://www.sandbox.paypal.com/cgi-bin/webscr</param-value>
-    </context-param>
-    
-    <context-param>
-        <param-name>business</param-name>
-        <param-value>chuShop@gmail.com</param-value>
-    </context-param>
-    
-    <context-param>
-        <param-name>returnurl</param-name>
-        <param-value>http://localhost:8080/Project_WebSite_Ban_Quan_Ao_war_exploded/checkout</param-value>
-    </context-param>
 </web-app>

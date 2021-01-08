@@ -3,7 +3,9 @@ package com.webbanquanao.controller.user;
 import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
 import com.webbanquanao.model.ProductEntity;
+import com.webbanquanao.service.CartItemService;
 import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.impl.CartItemServiceImpl;
 import com.webbanquanao.service.impl.ProductServiceImpl;
 
 import javax.servlet.ServletException;
@@ -18,6 +20,7 @@ import java.util.List;
 @WebServlet(urlPatterns = { "/member/cart/increaseOrDecrease" }) // ?pId=123
 public class IncreaseOrDecreaseProduct extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
+    CartItemService cartItemService = new CartItemServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,6 +38,7 @@ public class IncreaseOrDecreaseProduct extends HttpServlet {
                 for (CartitemEntity cartitemEntity : listCartItem) {
                     if (cartitemEntity.getProductEntity().getId() == productEntity.getId() && cartitemEntity.getQuantity() > 1) {
                         cartitemEntity.setQuantity(cartitemEntity.getQuantity() - quantity);
+                        cartItemService.edit(cartitemEntity);
                         break;
                     }
                 }
@@ -43,6 +47,8 @@ public class IncreaseOrDecreaseProduct extends HttpServlet {
                 for (CartitemEntity cartitemEntity : listCartItem) {
                     if (cartitemEntity.getProductEntity().getId() == productEntity.getId()) {
                         cartitemEntity.setQuantity(cartitemEntity.getQuantity() + quantity);
+                        cartItemService.edit(cartitemEntity);
+                        break;
                     }
                 }
             }

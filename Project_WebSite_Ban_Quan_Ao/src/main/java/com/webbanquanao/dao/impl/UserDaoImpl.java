@@ -103,7 +103,6 @@ public class UserDaoImpl  implements UserDao{
         return userEntities;
     }
 
-
     @Override
     public List<UserEntity> search(String keyword) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
@@ -196,5 +195,27 @@ public class UserDaoImpl  implements UserDao{
         if(userEntities.size()>0 &&userEntities!=null)
             return true;
         return false;
+    }
+
+    @Override
+    public UserEntity getUser(String email) {
+
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM UserEntity u "+
+                "WHERE u.email=:email";
+        TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
+        q.setParameter("email",email);
+
+        UserEntity userEntity;
+        try{
+            userEntity = q.getSingleResult();
+        }
+        catch (NoResultException e){
+            return null;
+        }
+        finally {
+            em.close();
+        }
+        return userEntity;
     }
 }

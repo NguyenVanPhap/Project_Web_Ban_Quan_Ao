@@ -28,4 +28,6 @@ public interface UserService {
     boolean checkExistUsername(String username);
 
     boolean checkExistAccount(String email, String password);
+
+    UserEntity getUser(String email);
 }
