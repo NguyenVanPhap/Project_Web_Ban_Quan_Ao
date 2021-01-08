@@ -198,4 +198,12 @@ public class CartDaoImpl implements CartDao {
         }
         return id;
     }
+
+    public CartEntity getCart(int u_id){
+        CartEntity cart = new CartEntity();
+
+
+
+        return cart;
+    }
 }
