@@ -3,6 +3,7 @@ package com.webbanquanao.service.impl;
 import com.webbanquanao.dao.CartDao;
 import com.webbanquanao.dao.impl.CartDaoImpl;
 import com.webbanquanao.model.CartEntity;
+import com.webbanquanao.model.CartitemEntity;
 import com.webbanquanao.service.CartService;
 
 import java.util.List;
@@ -32,14 +33,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void edit(CartEntity newCart) {
-        CartEntity oldCart = cartDao.get(newCart.getId());
-
-        oldCart.setBuyDate(newCart.getBuyDate());
-  //      oldCart.setBuyer(newCart.getBuyer());
-
-        cartDao.edit(oldCart);
-    }
+    public void edit(CartEntity cart) { cartDao.edit(cart); }
 
     @Override
     public void delete(int id) {
@@ -53,4 +47,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public double totalBill(CartEntity cart) { return cartDao.totalBill(cart);}
+
+    @Override
+    public int getIDCart() { return cartDao.getIDCart(); }
 }

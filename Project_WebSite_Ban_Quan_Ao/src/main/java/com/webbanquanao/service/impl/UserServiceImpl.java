@@ -93,4 +93,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean checkExistAccount(String email, String password) { return userDao.checkExistAccount(email,password);}
+
+    public UserEntity getUser(String email) { return userDao.getUser(email); }
 }

@@ -2,6 +2,7 @@ package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.dao.ProductDao;
+import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
@@ -54,41 +55,32 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void delete(int id)
     {
-        Transaction transaction = null;
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
-        try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            transaction = session.beginTransaction();
-            ProductEntity product =session.get(ProductEntity.class,id);
-            if (product != null){
-                session.delete(product);
-            }
-            transaction.commit();
+        try{
+            ProductEntity productEntity = em.find(ProductEntity.class, id);
+            trans.begin();
+            em.remove(em.merge(productEntity));
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
         }
-        catch (Exception e){
-            if(transaction != null)
-                transaction.rollback();
-            e.printStackTrace();
+        finally {
+            em.close();
         }
     }
 
     @Override
     public ProductEntity get(int id){
-        Transaction transaction = null;
-        ProductEntity product = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // start a transaction
-            transaction = session.beginTransaction();
-            // get an user object
-            product = session.get(ProductEntity.class, id);
-            // commit transaction
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        try{
+            ProductEntity productEntity = em.find(ProductEntity.class, id);
+            return productEntity;
         }
-        return product;
+        finally {
+            em.close();
+        }
     }
 
     @Override

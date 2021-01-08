@@ -1,6 +1,7 @@
 package com.webbanquanao.dao;
 
 import com.webbanquanao.model.CartEntity;
+import com.webbanquanao.model.CartitemEntity;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface CartDao {
     void removeProduct(CartEntity cart, int pId);
 
     double totalBill(CartEntity cart);
+
+    int getIDCart();
 }

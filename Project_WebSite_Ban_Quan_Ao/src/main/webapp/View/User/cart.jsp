@@ -70,11 +70,15 @@
             </ol>
         </div>
 
-        <form action="${initParam['posturl']}" method="POST">
+        <c:set var="posturl" scope="session" value="https://www.sandbox.paypal.com/cgi-bin/webscr"/>
+        <c:set var="returnurl" scope="session" value="http://localhost:8080/Project_WebSite_Ban_Quan_Ao_war_exploded/checkout"/>
+        <c:set var="business" scope="session" value="chuShop@gmail.com"/>
+
+        <form action="${posturl}" method="POST">
             <input type="hidden" name="upload" value="1"/>
-            <input type="hidden" name="return" value="${initParam['returnurl']}"/>
+            <input type="hidden" name="return" value="${returnurl}"/>
             <input type="hidden" name="cmd" value="_cart"/>
-            <input type="hidden" name="business" value="${initParam['business']}"/>
+            <input type="hidden" name="business" value="${business}"/>
 
         <div class="table-responsive cart_info">
             <table class="table table-condensed">

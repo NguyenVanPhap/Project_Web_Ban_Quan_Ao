@@ -9,11 +9,13 @@ public interface CartItemService {
 
     void edit(CartitemEntity cartItem);
 
-    void delete(String id);
+    void delete(CartitemEntity cartitemEntity);
 
     CartitemEntity get(int id);
 
     List<CartitemEntity> getAll();
 
     List<CartitemEntity> search(String keyword);
+
+    int getIDCartItem();
 }
