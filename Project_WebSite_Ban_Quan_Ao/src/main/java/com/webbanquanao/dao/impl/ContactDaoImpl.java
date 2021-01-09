@@ -50,7 +50,7 @@ public class ContactDaoImpl implements ContactDAO {
     @Override
     public void delete(int id)
     {
-        Transaction transaction = null;
+/*        Transaction transaction = null;
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             transaction = session.beginTransaction();
@@ -64,7 +64,7 @@ public class ContactDaoImpl implements ContactDAO {
             if(transaction != null)
                 transaction.rollback();
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ContactDaoImpl implements ContactDAO {
     }
     @Override
     public ContactEntity getById(int id){
-        Transaction transaction = null;
+/*        Transaction transaction = null;
         ContactEntity contact = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
@@ -100,6 +100,7 @@ public class ContactDaoImpl implements ContactDAO {
             }
             e.printStackTrace();
         }
-        return contact;
+        return contact;*/
+        return null;
     }
 }

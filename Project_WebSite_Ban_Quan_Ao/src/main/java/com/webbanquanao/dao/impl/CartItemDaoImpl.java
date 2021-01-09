@@ -4,9 +4,13 @@ import com.webbanquanao.dao.CartItemDao;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.type.IntegerType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import java.util.List;
 
 public class CartItemDaoImpl implements CartItemDao {
@@ -14,14 +18,16 @@ public class CartItemDaoImpl implements CartItemDao {
     @Override
     public void insert(CartitemEntity cartItem) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em.getTransaction();
-
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("Insert into CartItem(pro_id,cart_id,quantity) values(:pro_id,:cart_id,:quantity)");
+        query.setParameter("pro_id",cartItem.getProductEntity().getId());
+        query.setParameter("cart_id",cartItem.getCartEntity().getId());
+        query.setParameter("quantity",cartItem.getQuantity());
         try{
-            trans.begin();
-            em.persist(cartItem);
-            trans.commit();
-        }catch (Exception ex){
-            trans.rollback();
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
         }
         finally {
             em.close();
@@ -31,14 +37,15 @@ public class CartItemDaoImpl implements CartItemDao {
     @Override
     public void edit(CartitemEntity cartItem) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em.getTransaction();
-
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("UPDATE CartItem SET quantity = :quantity WHERE id = :id");
+        query.setParameter("id", cartItem.getId());
+        query.setParameter("quantity", cartItem.getQuantity());;
         try{
-            trans.begin();
-            em.merge(cartItem);
-            trans.commit();
-        }catch (Exception ex){
-            trans.rollback();
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
         }
         finally {
             em.close();
@@ -46,17 +53,16 @@ public class CartItemDaoImpl implements CartItemDao {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(CartitemEntity cartItem) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em.getTransaction();
-
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("DELETE FROM CartItem Where id = :id");
+        query.setParameter("id", cartItem.getId());
         try{
-            CartEntity cart = em.find(CartEntity.class, id);
-            trans.begin();
-            em.remove(em.merge(cart));
-            trans.commit();
-        }catch (Exception ex){
-            trans.rollback();
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
         }
         finally {
             em.close();
@@ -172,5 +178,22 @@ public class CartItemDaoImpl implements CartItemDao {
     public CartitemEntity get(String name) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public int getIDCartItem(){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        int id = (int) getSession.createSQLQuery("SELECT id FROM CartItem ORDER BY id DESC LIMIT 1").addScalar("id",new IntegerType()).uniqueResult();
+        try{
+
+            getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
+        return id;
     }
 }

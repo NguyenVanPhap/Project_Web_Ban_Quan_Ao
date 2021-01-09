@@ -86,6 +86,8 @@ public class SignInController extends HttpServlet {
                     }
                     else break;
                 }
+//                if(home == "/Home")
+//                    ffff
                 resp.sendRedirect(req.getContextPath() + home);
 
             }

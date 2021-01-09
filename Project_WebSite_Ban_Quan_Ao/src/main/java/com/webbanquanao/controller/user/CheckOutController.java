@@ -23,6 +23,7 @@ public class CheckOutController extends HttpServlet {
         HttpSession httpSession = req.getSession();
         CartEntity cartEntity = (CartEntity) httpSession.getAttribute("cartEntity");
         cartEntity.setAction(true);
+        cartService.edit(cartEntity);
         httpSession.removeAttribute("cartEntity");
         double total = 0;
         httpSession.setAttribute("total",total);
