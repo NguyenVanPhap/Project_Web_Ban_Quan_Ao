@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: ThinkKING
+=======
+Built-By: PC
+>>>>>>> eafeb8bebbb989f3ded752252ed9e4ae0fcf3705
 Build-Jdk: 1.8.0_181
 
