@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url value="/View/User" var="url"></c:url>
+<c:url value="/contactController" var="CCUrl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -212,18 +213,18 @@
             <p>“let us know your feedbacks and questions”</p>
         </div>
         <div class="contact-form-main">
-            <form>
+            <form action="${CCUrl}" method="post">
                 <label class="span1"></label>
-                <input type="text" class="text" value="Name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name...';}">
+                <input name="userName" type="text" class="text" value="Name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name...';}">
                 <label class="span2"></label>
                 <label class="span3"></label>
-                <input type="text" class="text" value="Email..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email...';}">
+                <input name="userEmail" type="text" class="text" value="Email..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email...';}">
                 <label class="span4"></label>
                 <label class="span5"></label>
-                <input type="text" class="text" value="Phone..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone...';}">
+                <input name="userPhone" type="text" class="text" value="Phone..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone...';}">
                 <label class="span6"></label>
                 <label class="span7"></label>
-                <textarea onfocus="if(this.value == 'Message...') this.value='';" onblur="if(this.value == '') this.value='Your Message';" >Message...</textarea>
+                <textarea name="userMsg" onfocus="if(this.value == 'Message...') this.value='';" onblur="if(this.value == '') this.value='Your Message';" >Message...</textarea>
                 <label class="span8"></label>
                 <input type="submit" value="">
             </form>

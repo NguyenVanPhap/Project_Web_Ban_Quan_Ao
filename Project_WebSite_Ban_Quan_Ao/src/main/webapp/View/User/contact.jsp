@@ -40,6 +40,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!-- header-section-starts -->
 <div class="c-header" id="home">
+    <jsp:include page="/View/User/Top-Header.jsp"></jsp:include>
+</div>
+<%--<!-- header-section-starts -->
+<div class="c-header" id="home">
     <div class="top-header">
         <div class="container">
             <div class="logo">
@@ -104,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
-</div>
+</div>--%>
 <!-- start Contact-page -->
 <!-- content-section-starts -->
 <div class="container">
