@@ -22,13 +22,10 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://54.255.52.44:3306/web_ban_quan_ao"/>
             <property name="hibernate.connection.autocommit" value="false"/>
-<<<<<<< HEAD:Project_WebSite_Ban_Quan_Ao/out/artifacts/Project_WebSite_Ban_Quan_Ao_war_exploded/WEB-INF/classes/META-INF/persistence.xml
+
             <property name="hibernate.connection.username" value="hoang"/>
             <property name="hibernate.connection.password" value="BMEbIkFzDfEksZqZKAM6"/>
-=======
-            <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="hoang1503"/>
->>>>>>> eafeb8bebbb989f3ded752252ed9e4ae0fcf3705:Project_WebSite_Ban_Quan_Ao/target/Project_WebSite_Ban_Quan_Ao-1.0-SNAPSHOT/WEB-INF/classes/META-INF/persistence.xml
+
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.connection.CharSet" value="utf8"/>
             <property name="hibernate.connection.characterEncoding" value="utf8"/>
