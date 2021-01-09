@@ -23,4 +23,6 @@ public interface CartService {
     double totalBill(CartEntity cart);
 
     int getIDCart();
+
+    List<CartitemEntity> getCart(int u_id);
 }

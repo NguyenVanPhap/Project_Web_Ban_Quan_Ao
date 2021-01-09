@@ -199,11 +199,32 @@ public class CartDaoImpl implements CartDao {
         return id;
     }
 
-    public CartEntity getCart(int u_id){
-        CartEntity cart = new CartEntity();
+    @Override
+    public List<CartitemEntity> getCart(int u_id){
+        List<CartitemEntity> resultList;
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("Select cartitem.id,cartitem.pro_id,cartitem.cart_id,cartitem.quantity From cartitem,(" +
+                                                   "Select id From cart where u_id = :u_id and action=0) as cartWithId " +
+                                                   "Where cartitem.cart_id = cartWithId.id;");
+        query.setParameter("u_id",u_id);
+        try{
+            resultList = query.getResultList();
+ /*           for(CartitemEntity cartItem:resultList){
+                System.out.println(cartItem.getId());
+                System.out.println(cartItem.getQuantity());
+                System.out.println(cartItem.getCartEntity().getId());
+                System.out.println(cartItem.getProductEntity().getId());
+            }*/
+    //        getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
 
 
-
-        return cart;
+        return resultList;
     }
 }
