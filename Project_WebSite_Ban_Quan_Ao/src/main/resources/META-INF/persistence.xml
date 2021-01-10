@@ -11,6 +11,10 @@
         <class>com.webbanquanao.model.PromotionEntity</class>
         <class>com.webbanquanao.model.UserEntity</class>
         <class>com.webbanquanao.model.ContactEntity</class>
+        <class>com.webbanquanao.model.BrandEntity</class>
+        <class>com.webbanquanao.model.ColorEntity</class>
+        <class>com.webbanquanao.model.SizeEntity</class>
+        <class>com.webbanquanao.model.SkuEntity</class>
 
         <!--        <class>com.webbanquanao.model.CartEntity</class>
                 <class>com.webbanquanao.model.CartitemEntity</class>

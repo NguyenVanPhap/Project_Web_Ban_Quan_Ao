@@ -50,4 +50,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public int getIDCart() { return cartDao.getIDCart(); }
+
+    @Override
+    public List<CartitemEntity> getCart(int u_id) { return cartDao.getCart(u_id); }
 }

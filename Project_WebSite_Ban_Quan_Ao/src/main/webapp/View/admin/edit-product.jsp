@@ -74,6 +74,17 @@
 
 										</div>
 										<div class="form-group">
+											<label>Brand</label>
+											<div class="checkbox">
+												<select name="brand">
+													<c:forEach items="${listBrand}" var="b">
+														<option value="${b.getBrandId()}">${b.getBrandName()}</option>
+													</c:forEach>
+												</select>
+											</div>
+
+										</div>
+										<div class="form-group">
 											<label>image</label> <input type="file" name="image" value="${product.image }" />
 										</div>
 										<button type="submit" class="btn btn-default">Edit</button>

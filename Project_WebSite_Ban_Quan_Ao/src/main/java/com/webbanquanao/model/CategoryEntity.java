@@ -1,33 +1,16 @@
 package com.webbanquanao.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "category", schema = "web_ban_quan_ao", catalog = "")
 public class CategoryEntity {
-    @Id
-    @Column(name = "cate_id")
     private int cateId;
-
-    @Basic
-    @Column(name = "cate_name")
     private String cateName;
 
-
-    @OneToMany(mappedBy = "categoryEntity",fetch = FetchType.EAGER)
-    List<ProductEntity> productEntityList;
-
-    public List<ProductEntity> getProductEntityList() {
-        return productEntityList;
-    }
-
-    public void setProductEntityList(List<ProductEntity> productEntityList) {
-        this.productEntityList = productEntityList;
-    }
-
+    @Id
+    @Column(name = "cate_id")
     public int getCateId() {
         return cateId;
     }
@@ -36,7 +19,8 @@ public class CategoryEntity {
         this.cateId = cateId;
     }
 
-
+    @Basic
+    @Column(name = "cate_name")
     public String getCateName() {
         return cateName;
     }

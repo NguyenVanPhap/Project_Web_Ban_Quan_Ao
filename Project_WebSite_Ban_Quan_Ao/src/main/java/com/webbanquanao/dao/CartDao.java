@@ -25,4 +25,6 @@ public interface CartDao {
     double totalBill(CartEntity cart);
 
     int getIDCart();
+
+    List<CartitemEntity> getCart(int u_id);
 }

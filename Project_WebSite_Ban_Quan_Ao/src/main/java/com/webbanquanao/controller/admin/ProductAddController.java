@@ -1,9 +1,12 @@
 package com.webbanquanao.controller.admin;
 
+import com.webbanquanao.model.BrandEntity;
 import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ProductEntity;
+import com.webbanquanao.service.BrandService;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.impl.BrandServiceImpl;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
 import com.webbanquanao.service.impl.ProductServiceImpl;
 import org.apache.commons.fileupload.FileItem;
@@ -26,12 +29,16 @@ import java.util.List;
 public class ProductAddController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     CategoryService categoryService = new CategoryServiceImpl();
+    BrandService brandService = new BrandServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         List<CategoryEntity> categories = categoryService.getAll();
 
+
         request.setAttribute("categories", categories);
+        List<BrandEntity> listBrand = brandService.getAll();
+        request.setAttribute("listBrand", listBrand);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/View/admin/add-product.jsp");
         dispatcher.forward(request,response);
@@ -56,6 +63,8 @@ public class ProductAddController extends HttpServlet {
                     product.setName(item.getString());
                 } else if (item.getFieldName().equals("category")) {
                     product.setCategoryEntity(categoryService.get(Integer.parseInt(item.getString())));
+                } else if (item.getFieldName().equals("brand")) {
+                    product.setBrandEntity(brandService.get(Integer.parseInt(item.getString())));
                 } else if (item.getFieldName().equals("price")) {
                     product.setPrice(Double.parseDouble(item.getString()));
                 } else if (item.getFieldName().equals("des")) {

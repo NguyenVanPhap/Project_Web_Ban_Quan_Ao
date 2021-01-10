@@ -1,7 +1,10 @@
 package com.webbanquanao.controller.user;
 
+import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.UserEntity;
+import com.webbanquanao.service.CartService;
 import com.webbanquanao.service.UserService;
+import com.webbanquanao.service.impl.CartServiceImpl;
 import com.webbanquanao.service.impl.UserServiceImpl;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -23,6 +26,9 @@ import java.util.concurrent.atomic.AtomicReference;
 @WebServlet(urlPatterns = { "/User/signin" })
 public class SignInController extends HttpServlet {
     UserService userService = new UserServiceImpl();
+    CartService cartService = new CartServiceImpl();
+    CartEntity cartEntity = new CartEntity();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -86,8 +92,12 @@ public class SignInController extends HttpServlet {
                     }
                     else break;
                 }
-//                if(home == "/Home")
-//                    ffff
+              /*  if(home == "/Home")
+                    for(UserEntity u: users){
+                        System.out.println("Hello World!!!");
+                        cartEntity.setCartitemEntities(cartService.getCart(u.getId()));
+                        session.setAttribute("cartEntity", cartEntity);
+                    }*/
                 resp.sendRedirect(req.getContextPath() + home);
 
             }

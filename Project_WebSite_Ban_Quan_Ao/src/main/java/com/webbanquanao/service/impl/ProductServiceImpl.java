@@ -23,6 +23,7 @@ public class ProductServiceImpl implements ProductService {
         oldProduct.setName(newProduct.getName());
         oldProduct.setPrice(newProduct.getPrice());
         oldProduct.setCategoryEntity(newProduct.getCategoryEntity());
+        oldProduct.setBrandEntity(newProduct.getBrandEntity());
         oldProduct.setDes(newProduct.getDes());
         if (newProduct.getImage() != null) {
             // XOA ANH CU DI
