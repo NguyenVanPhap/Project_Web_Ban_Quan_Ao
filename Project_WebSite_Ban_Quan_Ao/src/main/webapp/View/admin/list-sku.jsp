@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Management</title>
@@ -38,8 +39,8 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>All Product</h2>
-                    <h5>You can management product in here</h5>
+                    <h2>All Option of Product</h2>
+                    <h5>You can management product's option in here</h5>
 
                 </div>
             </div>
@@ -49,6 +50,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
+                    <a href="<c:url value='/admin/sku/add?id=${id}'/>"
+                       class="button">ADD</a>
                     <div class="panel panel-default">
                         <div class="panel-heading">Advanced Tables</div>
                         <div class="panel-body">
@@ -76,12 +79,11 @@
                                             <td>${sku.getQuantity()}</td>
 
                                             <td><a
-                                                    href="<c:url value='/product/detail?id=${pro.getId() }'/>"
-                                                    class="center">Detail</a> | <a
-                                                    href="<c:url value='/admin/product/edit?id=${pro.getId() }'/>"
+
+                                                    href="<c:url value='/admin/sku/edit?id=${sku.getSkuId() }'/>"
                                                     class="center">Edit</a>
                                                 | <a
-                                                        href="<c:url value='/admin/product/delete?id=${pro.getId() }'/>"
+                                                        href="<c:url value='/admin/sku/delete?id=${sku.getSkuId() }'/>"
                                                         class="center">Delete</a></td>
 
                                         </tr>

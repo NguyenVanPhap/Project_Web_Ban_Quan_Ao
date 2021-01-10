@@ -1,7 +1,10 @@
 package com.webbanquanao.controller.admin;
 
+import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.model.SkuEntity;
+import com.webbanquanao.service.ProductService;
 import com.webbanquanao.service.SkuService;
+import com.webbanquanao.service.impl.ProductServiceImpl;
 import com.webbanquanao.service.impl.SkuServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -15,10 +18,15 @@ import java.util.List;
 
 @WebServlet(urlPatterns= {"/admin/sku/list"})
 public class SkuListController extends HttpServlet {
+    ProductService productService = new ProductServiceImpl();
     SkuService skuService = new SkuServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<SkuEntity> listSku = skuService.getAll();
+        String id = request.getParameter("id");
+        List<SkuEntity> listSku = skuService.searchByProduct(Integer.parseInt(id));
+        request.setAttribute("id",id);
+        //ProductEntity product = productService.get();
+        //List<SkuEntity> listSku = skuService.getAll();
         request.setAttribute("listSku", listSku);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/View/admin/list-sku.jsp");
         dispatcher.forward(request, response);

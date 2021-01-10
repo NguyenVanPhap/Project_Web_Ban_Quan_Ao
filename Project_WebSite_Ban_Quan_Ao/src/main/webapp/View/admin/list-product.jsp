@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Product Management</title>
@@ -49,6 +50,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<!-- Advanced Tables -->
+					<a href="<c:url value='/admin/product/add?'/>"
+					   class="button">ADD</a>
 					<div class="panel panel-default">
 						<div class="panel-heading">Advanced Tables</div>
 						<div class="panel-body">
@@ -80,8 +83,8 @@
 											<td>${pro.getBrandEntity().getBrandName()}</td>
 											<td style="width: 35%">${pro.getDes() } </td>
 											<td><a
-													href="<c:url value='/product/detail?id=${pro.getId() }'/>"
-													class="center">Detail</a> | <a
+													href="<c:url value='/admin/sku/list?id=${pro.getId() }'/>"
+													class="center">Option</a> | <a
 													href="<c:url value='/admin/product/edit?id=${pro.getId() }'/>"
 													class="center">Edit</a>
 												| <a
