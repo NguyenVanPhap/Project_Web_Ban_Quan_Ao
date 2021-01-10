@@ -62,6 +62,7 @@
 										<th>Name</th>
 										<th>Price($)</th>
 										<th>Category</th>
+										<th>Brand</th>
 										<th>Description</th>
 										<th>Action </th>
 									</tr>
@@ -76,6 +77,7 @@
 											<td>${pro.getName() }</td>
 											<td>${pro.getPrice() }</td>
 											<td>${pro.getCategoryEntity().getCateName()}</td>
+											<td>${pro.getBrandEntity().getBrandName()}</td>
 											<td style="width: 35%">${pro.getDes() } </td>
 											<td><a
 													href="<c:url value='/product/detail?id=${pro.getId() }'/>"

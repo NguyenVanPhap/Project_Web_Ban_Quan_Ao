@@ -22,11 +22,13 @@ public class ProductEntity {
     @Column(name = "des")
     private String des;
 
-
     @ManyToOne
-    @JoinColumn(name="cate_id")
+    @JoinColumn(name = "cate_id")
     private CategoryEntity categoryEntity;
 
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private BrandEntity brandEntity;
 
     public CategoryEntity getCategoryEntity() {
         return categoryEntity;
@@ -36,11 +38,17 @@ public class ProductEntity {
         this.categoryEntity = categoryEntity;
     }
 
+    public BrandEntity getBrandEntity() {
+        return brandEntity;
+    }
+
+    public void setBrandEntity(BrandEntity brandEntity) {
+        this.brandEntity = brandEntity;
+    }
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -80,6 +88,7 @@ public class ProductEntity {
     public void setDes(String des) {
         this.des = des;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
