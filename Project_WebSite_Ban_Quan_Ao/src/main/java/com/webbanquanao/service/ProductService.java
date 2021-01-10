@@ -17,7 +17,7 @@ public interface ProductService {
 
     List<ProductEntity> search(String name);
 
-    List<ProductEntity> searchByCategory(int cate_id);
+    List<ProductEntity> searchByCategory(String cate_name);
 
     List<ProductEntity> searchByName(String productName);
 
@@ -27,5 +27,5 @@ public interface ProductService {
 
     List<ProductEntity> getByPageAndPrice(double priceStart,double priceEnd,int offset, int limit);
 
-    List<ProductEntity> searchByPageAndCategory(int cate_id,int offset, int limit);
+    List<ProductEntity> searchByPageAndCategory(String cate_name,int offset, int limit);
 }

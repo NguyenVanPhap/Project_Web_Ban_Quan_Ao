@@ -24,6 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- Custom Theme files -->
     <link href="${url}/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="${url}/css/form.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${url}/css/main.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -120,25 +121,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="desc1 span_3_of_2">
                         <h3>${product.getName() }</h3>
-                        <p>${product.getPrice() }<a href="#">click for offer</a></p>
+                        <p>${product.getPrice() }
 
-
+                        <div class="det_nav">
+                            <div class="product-configuration">
+                                <!-- Cable Configuration -->
+                                <div class="cable-config">
+                                    <span>Màu</span>
+                                    <div class="cable-choose">
+                                        <c:forEach items="${listColor}" var="sku" >
+                                            <button><c:out value="${sku}"/></button>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-configuration">
+                                <!-- Cable Configuration -->
+                                <div class="cable-config">
+                                    <span>Size</span>
+                                    <div class="cable-choose">
+                                        <c:forEach items="${listSize}" var="sku" >
+                                            <button><c:out value="${sku}"/></button>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="btn_form">
                             <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">buy now</a>
                         </div>
-                        <a href="#"><span>login to save in wishlist </span></a>
-                        <div class="det_nav">
-                            <h4>related products :</h4>
-                            <ul>
 
-                                <c:forEach items="${RelateProductList}" var="pro">
-                                    <c:url value="/image/${pro.getImage()}" var="imgUrlrelate"></c:url>
-                                    <li><a href="<c:url value='/product/detail?id=${pro.id }'/>">
-                                        <img style="height: 150px; width: 150px" src="${imgUrlrelate}" class="img-responsive" alt=""/></a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -147,7 +159,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p class="prod-desc">${product.getDes() }</p>
                 </div>
                 <div class="single-bottom2">
-
+                    <div class="det_nav">
+                        <h4>related products :</h4>
+                        <ul>
+                            <c:forEach items="${RelateProductList}" var="pro">
+                                <c:url value="/image/${pro.getImage()}" var="imgUrlrelate"></c:url>
+                                <li><a href="<c:url value='/product/detail?id=${pro.id }'/>">
+                                    <img style="height: 150px; width: 150px" src="${imgUrlrelate}" class="img-responsive" alt=""/></a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

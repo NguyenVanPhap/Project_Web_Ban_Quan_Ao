@@ -12,44 +12,48 @@
 <div class="rsidebar span_1_of_left">
     <section  class="sky-form">
         <div class="product_right">
-                <h3 class="m_2">Categories</h3>
-                <ul class="nav">
+            <h3>Bộ lọc tìm kiếm</h3>
+            <h4>theo danh mục</h4>
+            <div class="row row1 scroll-pane">
 
-                    <li class="active"><a href="#" style="color: black;"></a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</li>
-                    <li>
-                        <a style="  color: black;" href="#">Áo&emsp;&emsp;&emsp;</a>
-                        <ul class="dropdown2">
-
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=9&page=1">Áo thun nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=8&page=1">Áo thun nữ</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=7&page=1">Áo sơ mi nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=6&page=1">Áo sơ mi nữ</a></li>
-
-                        </ul>
-                    </li>
-                    <li><a style="color: black;" href="#">Giày&emsp;&emsp;&emsp;</a>
-                        <ul class="dropdown2">
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=2&page=1">Giày adidas</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=1&page=1">Giày nike</a></li>
-                        </ul>
-                    </li>
-                    <li ><a style="color: black;" href="#">QUần&emsp;&emsp;&emsp;</a>
-                        <ul class="dropdown2">
-
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=5&page=1">Quần jean nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=4&page=1">Quần jean nữ</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=3&page=1">Quần kaki nam</a></li>
-
-
-                        </ul>
-                    </li>
-                </ul>
+                <div class="col col-4">
+                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="áo thun"
+                    <c:forEach items="${categorylist}" var="cate" >
+                        <c:set var="x" value="áo thun"></c:set>
+                            <c:if test="${cate=x}"> checked="checked"</c:if>
+                    </c:forEach>><i></i><a href="${pageContext.request.contextPath }/product/category?page=1">áo thun</a></label>
+                    <%--/////////////--%>
+                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="áo sơ mi"
+                    <c:forEach items="${categorylist}" var="cate" >
+                        <c:set var="x" value="áo sơ mi"></c:set>
+                    <c:if test="${cate=x}"> checked="checked"</c:if>
+                    </c:forEach>><i></i>áo sơ mi</label>
+                    <%--/////////////--%>
+                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="quần jean"
+                    <c:forEach items="${categorylist}" var="cate" >
+                        <c:set var="x" value="quần jean"></c:set>
+                    <c:if test="${cate=x}"> checked="checked"</c:if>
+                    </c:forEach>><i></i>quần kaki</label>
+                    <%--/////////////--%>
+                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="giày nike"
+                    <c:forEach items="${categorylist}" var="cate" >
+                        <c:set var="x" value="giày nike"></c:set>
+                    <c:if test="${cate=x}"> checked="checked"</c:if>
+                    </c:forEach>><i></i>áo nike</label>
+                    <%--/////////////--%>
+                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="giày adidas"
+                    <c:forEach items="${categorylist}" var="cate" >
+                        <c:set var="x" value="giày adidas"></c:set>
+                    <c:if test="${cate=x}"> checked="checked"</c:if>
+                    </c:forEach>><i></i>áo adidas</label>
+                </div>
+            </div>
         </div>
     </section>
 
 
     <section  class="sky-form">
-        <h4>Price</h4>
+        <h4>Theo giá</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=0&endPrice=100000&page=1">Dưới 100.000</a></li>
