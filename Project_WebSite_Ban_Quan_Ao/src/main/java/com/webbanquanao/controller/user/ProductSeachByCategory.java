@@ -1,6 +1,7 @@
 package com.webbanquanao.controller.user;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,15 @@ public class ProductSeachByCategory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int numOfProducts=0;
-        String cate_id=req.getParameter("cate_id");
-        List<ProductEntity> products =productService.searchByCategory(Integer.parseInt(cate_id));
+        String[] categorylist=req.getParameterValues("catecheckbox");
+        System.out.println(categorylist.length);
+        req.setAttribute("categorylist",categorylist);
+        List<ProductEntity> products=new ArrayList<ProductEntity>();
+        for (int i=0;i<categorylist.length;i++)
+        {
+            List<ProductEntity> tempproducts =productService.searchByCategory(categorylist[i]);
+            products.addAll(tempproducts);
+        }
         if (products != null){
             numOfProducts =products.size();
         }
@@ -32,12 +40,18 @@ public class ProductSeachByCategory extends HttpServlet {
             numOfPages = numOfProducts/litmit+1;
         }
         int page = Integer.parseInt(req.getParameter("page"));
+
         int offset = (page-1) * litmit;
-        List<ProductEntity> productList=productService.searchByPageAndCategory(Integer.parseInt(cate_id), offset,litmit);
+        List<ProductEntity> productList=new ArrayList<ProductEntity>();
+        for (int i=0;i<categorylist.length;i++)
+        {
+            List<ProductEntity> tempproductList=productService.searchByPageAndCategory(categorylist[i], offset,litmit);
+            productList.addAll(tempproductList);
+        }
+
 
         req.setAttribute("numOfPages",numOfPages);
         req.setAttribute("productList", productList);
-        req.setAttribute("cate_id",cate_id);
         req.setAttribute("productList", productList);
         req.getRequestDispatcher("/View/User/ProductSearchByCategory.jsp").forward(req, resp);
     }

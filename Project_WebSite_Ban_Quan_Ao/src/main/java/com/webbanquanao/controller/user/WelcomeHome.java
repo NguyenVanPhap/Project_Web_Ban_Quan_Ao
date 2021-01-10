@@ -37,7 +37,7 @@ public class WelcomeHome extends HttpServlet {
         List<CategoryEntity> cateList = cateService.getAll();
         request.setAttribute("cateList",cateList);
         List<ProductEntity> newList = new ArrayList<>();
-        try {
+        /*try {
             String id=request.getParameter("cateid");
             if(id!=null)
             {
@@ -47,11 +47,7 @@ public class WelcomeHome extends HttpServlet {
             }
         }
         catch (Exception e)
-        {}
-        /*if(productList==null)
-        {
-            productList = productService.getAll();
-        }*/
+        {}*/
         for (int i = 0; i <productList.size() ; i++)
         {
             if(i<=8)

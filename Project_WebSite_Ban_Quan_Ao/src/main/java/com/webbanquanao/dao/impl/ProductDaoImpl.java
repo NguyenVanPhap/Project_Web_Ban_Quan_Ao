@@ -135,11 +135,11 @@ public class ProductDaoImpl implements ProductDao {
         return productList;
     }
     @Override
-    public List<ProductEntity> searchByPageAndCategory(int cate_id,int offset, int limit){
+    public List<ProductEntity> searchByPageAndCategory(String cate_name,int offset, int limit){
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
-        String qString = "FROM ProductEntity P Where P.categoryEntity.cateId =:cate_id ";
+        String qString = "FROM ProductEntity P Where P.categoryEntity.cateName =:cate_name ";
         TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
-        q.setParameter("cate_id",cate_id);
+        q.setParameter("cate_name",cate_name);
         q.setFirstResult(offset);
         q.setMaxResults(limit);
         List<ProductEntity> productList = new ArrayList<ProductEntity>();
@@ -156,46 +156,16 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<ProductEntity> search(String keyword)
     {
-        /*List<ProductEntity> productList = new ArrayList<ProductEntity>();
-        String sql = "SELECT product.id, product.image, product.name AS p_name, product.price, " +
-                "product.des , category.cate_name AS c_name, category.cate_id AS c_id " +
-                "FROM ProductEntity , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
-        Connection conn = super.getJDBCConnection();
 
-        try{
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, "%" + keyword + "%");
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next())
-            {
-                Category category = categoryService.get(rs.getInt("c_id"));
-
-                ProductEntity product = new ProductEntity();
-                product.setId(rs.getInt("id"));
-                product.setImage(rs.getString("image"));
-                product.setName(rs.getString("p_name"));
-                product.setPrice(rs.getFloat("price"));
-                product.setDes(rs.getString("des"));
-
-                product.setCategory(category);
-
-                productList.add(product);
-            }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-        return productList;*/
         return null;
     }
 
     @Override
-    public List<ProductEntity> searchByCategory(int cate_id){
+    public List<ProductEntity> searchByCategory(String cate_name){
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
-        String qString = "FROM ProductEntity P Where P.categoryEntity.cateId =:cate_id ";
+        String qString = "FROM ProductEntity P Where P.categoryEntity.cateName =:cate_name ";
         TypedQuery<ProductEntity> q = em.createQuery(qString,ProductEntity.class);
-        q.setParameter("cate_id",cate_id);
+        q.setParameter("cate_name",cate_name);
         List<ProductEntity> productList = new ArrayList<ProductEntity>();
         try{
             productList = q.getResultList();

@@ -64,8 +64,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductEntity> searchByCategory(int cate_id) {
-        return productDao.searchByCategory(cate_id);
+    public List<ProductEntity> searchByCategory(String cate_name) {
+        return productDao.searchByCategory(cate_name);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class ProductServiceImpl implements ProductService {
         return productDao.getByPageAndPrice(priceStart,priceEnd,offset, limit);
     }
 
-    public List<ProductEntity> searchByPageAndCategory(int cate_id,int offset, int limit){
-        return productDao.searchByPageAndCategory(cate_id,offset,limit);
+    public List<ProductEntity> searchByPageAndCategory(String cate_name,int offset, int limit){
+        return productDao.searchByPageAndCategory(cate_name,offset,limit);
     }
 }
