@@ -75,6 +75,7 @@
                     </li>
 
                     <li><a href="${url}/contact.jsp">Contact US</a></li>
+                    <li><a href="${pageContext.request.contextPath }/infoController">Info</a></li>
                     <div class="clearfix"></div>
                 </ul>
             </div>
