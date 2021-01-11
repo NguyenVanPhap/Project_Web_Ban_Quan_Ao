@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 Sales
             </li>&nbsp;
             <span>&gt;</span>
-            <li>products</a></li>
+            <li>products</li>
         </ul>
         <ul class="previous">
             <li><a href="index.html">Back to Previous Page</a></li>
@@ -131,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="cable-choose">
                                         <select name="color" style="width: 50%">
                                             <c:forEach items="${listColor}" var="sku" >
-                                                <option  value="${sku}"><c:out value="${sku}"/></option>
+                                                <option  value="${sku}"><c:out value="${sku}"/> </option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -153,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         <div class="cart_quantity">
                             <label for="quantity">Số lượng:</label>
-                            <input type="number" id="quantity" name="quantity" min="1" max="${maxquantity}" value="1">
+                            <input type="number" id="quantity" name="quantity" min="1" max="${maxquantity}" value="1"/>
                         </div>
                         <br/>
                         </div>
