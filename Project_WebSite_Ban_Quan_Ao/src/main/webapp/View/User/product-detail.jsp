@@ -149,18 +149,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </select>
                                     </div>
                                 </div>
+
                             </div>
+                        <div class="cart_quantity">
+                            <label for="quantity">Số lượng:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="${maxquantity}" value="1">
+                        </div>
+                        <br/>
                         </div>
 
-
-
-
-
-
-                        <div class="btn_form">
+                        <div class="btn_form" style="width: 50%">
                             <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">add to bag</a>
                         </div>
-                        <div class="btn_form">
+                        <div class="btn_form" style="width: 50%">
                             <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">buy now</a>
                         </div>
 

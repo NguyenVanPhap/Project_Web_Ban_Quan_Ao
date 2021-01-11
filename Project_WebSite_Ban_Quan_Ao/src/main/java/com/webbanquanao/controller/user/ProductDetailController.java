@@ -35,6 +35,7 @@ public class ProductDetailController extends HttpServlet {
         List<ProductEntity> newList = new ArrayList<>();
         List<String> listcolor=new ArrayList<String>();
         List<String> listsize=new ArrayList<String>();
+
         for (int i = 0; i < 3; i++) {
             int randomIndex = rand.nextInt(productList.size());
             newList.add(productList.get(randomIndex));
@@ -63,6 +64,7 @@ public class ProductDetailController extends HttpServlet {
         req.setAttribute("listSize", listsize);
         req.setAttribute("categories", categories);
         req.setAttribute("product", product);
+        req.setAttribute("maxquantity",skuService.searchByProduct(Integer.parseInt(id)).size());
         RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/product-detail.jsp");
         dispatcher.forward(req, resp);
     }
