@@ -1,7 +1,6 @@
 package com.webbanquanao.controller.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,15 +18,8 @@ public class ProductSeachByCategory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int numOfProducts=0;
-        String[] categorylist=req.getParameterValues("catecheckbox");
-        System.out.println(categorylist.length);
-        req.setAttribute("categorylist",categorylist);
-        List<ProductEntity> products=new ArrayList<ProductEntity>();
-        for (int i=0;i<categorylist.length;i++)
-        {
-            List<ProductEntity> tempproducts =productService.searchByCategory(categorylist[i]);
-            products.addAll(tempproducts);
-        }
+        String cate_name=req.getParameter("cateid");
+        List<ProductEntity> products =productService.searchByCategory(cate_name);
         if (products != null){
             numOfProducts =products.size();
         }
@@ -40,18 +32,12 @@ public class ProductSeachByCategory extends HttpServlet {
             numOfPages = numOfProducts/litmit+1;
         }
         int page = Integer.parseInt(req.getParameter("page"));
-
         int offset = (page-1) * litmit;
-        List<ProductEntity> productList=new ArrayList<ProductEntity>();
-        for (int i=0;i<categorylist.length;i++)
-        {
-            List<ProductEntity> tempproductList=productService.searchByPageAndCategory(categorylist[i], offset,litmit);
-            productList.addAll(tempproductList);
-        }
-
+        List<ProductEntity> productList=productService.searchByPageAndCategory(cate_name, offset,litmit);
 
         req.setAttribute("numOfPages",numOfPages);
         req.setAttribute("productList", productList);
+        req.setAttribute("cate_id",cate_name);
         req.setAttribute("productList", productList);
         req.getRequestDispatcher("/View/User/ProductSearchByCategory.jsp").forward(req, resp);
     }

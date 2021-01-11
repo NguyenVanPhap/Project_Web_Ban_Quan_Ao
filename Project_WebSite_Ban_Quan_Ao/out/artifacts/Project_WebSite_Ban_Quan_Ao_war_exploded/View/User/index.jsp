@@ -42,11 +42,6 @@
                             <a href="${pageContext.request.contextPath }/User/signin">Sign In</a>
                         </c:otherwise>
                     </c:choose>
-
-                    <%--                    <c:if test = "${not empty email}">--%>
-                    <%--                        ${email}--%>
-                    <%--                    </c:if>--%>
-
                 </div>
                 <div class="sign-up1">
                     <c:choose>
@@ -78,16 +73,16 @@
         </div>
         <div class="features-section-grids" >
             <div class="features-section-grid" style=";width:50%;left: 25%;" >
-                <c:url value="/image/${productList.get(1).getImage()}" var="imgUrl1"></c:url>
+                <c:url value="/image/${allproduct.get(0).getImage()}" var="imgUrl1"></c:url>
                 <img src="${imgUrl1}" alt="" style="height: 650px"/>
                 <div class="girl-info" style="height: 200px">
                     <div class="lonovo">
                         <div class="dress" style="width: 500px">
-                            <h4>${productList.get(1).getName()}</h4>
-                            <p>${productList.get(1).getDes()}</p>
+                            <h4>${allproduct.get(0).getName()}</h4>
+                            <p>${allproduct.get(0).getDes()}</p>
                         </div>
                         <div class="priceindollers">
-                            <h3>$ <span>${productList.get(1).getPrice() }</span></h3>
+                            <h3>$ <span>${allproduct.get(0).getPrice() }</span></h3>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -104,9 +99,10 @@
             <div class="products-section-grids">
                 <ul id="filters" class="clearfix">
                     <li><span class="filter active" data-filter="app card icon web" onclick="window.location='${pageContext.request.contextPath }/Home'">ALL</span></li>
-                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=1'">Giày</span></li>
-                    <li><span class="filter" data-filter="card" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=7'">Áo</span></li>
-                    <li><span class="filter" data-filter="icon" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=3'">Quần</span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=giày nike'">Giày</span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=quan jean'">Quần </span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=áo thun'">áo</span></li>
+
                 </ul>
                 <div id="portfoliolist">
                     <%-- ///////////////////////////////////////--%>
