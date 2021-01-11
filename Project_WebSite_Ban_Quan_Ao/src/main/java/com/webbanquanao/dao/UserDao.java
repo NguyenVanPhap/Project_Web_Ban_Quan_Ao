@@ -23,4 +23,8 @@ public interface UserDao {
     boolean checkExistEmail(String email);
 
     boolean checkExistUserName(String userName);
+
+    boolean checkExistAccount(String email, String password);
+
+    UserEntity getUser(String email);
 }

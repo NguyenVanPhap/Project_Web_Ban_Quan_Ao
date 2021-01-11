@@ -17,9 +17,28 @@ public class ProductSeachByCategory extends HttpServlet {
     ProductService productService=new ProductServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String cate_id=req.getParameter("cate_id");
-        List<ProductEntity> productSeachByCategory =productService.searchByCategory(Integer.parseInt(cate_id));
-        req.setAttribute("productList", productSeachByCategory);
+        int numOfProducts=0;
+        String cate_name=req.getParameter("cateid");
+        List<ProductEntity> products =productService.searchByCategory(cate_name);
+        if (products != null){
+            numOfProducts =products.size();
+        }
+        int litmit=9;
+        int numOfPages = 0;
+        if (numOfProducts/litmit==(float)numOfProducts/litmit){
+            numOfPages = numOfProducts/litmit;
+        }
+        else{
+            numOfPages = numOfProducts/litmit+1;
+        }
+        int page = Integer.parseInt(req.getParameter("page"));
+        int offset = (page-1) * litmit;
+        List<ProductEntity> productList=productService.searchByPageAndCategory(cate_name, offset,litmit);
+
+        req.setAttribute("numOfPages",numOfPages);
+        req.setAttribute("productList", productList);
+        req.setAttribute("cate_id",cate_name);
+        req.setAttribute("productList", productList);
         req.getRequestDispatcher("/View/User/ProductSearchByCategory.jsp").forward(req, resp);
     }
 }

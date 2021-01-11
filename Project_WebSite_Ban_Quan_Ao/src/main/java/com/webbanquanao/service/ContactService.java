@@ -9,4 +9,5 @@ public interface ContactService {
     void insert(ContactEntity contact);
     public List<ContactEntity> getAll();
     void delete(int id);
+    void updateAction(int id, int value);
 }

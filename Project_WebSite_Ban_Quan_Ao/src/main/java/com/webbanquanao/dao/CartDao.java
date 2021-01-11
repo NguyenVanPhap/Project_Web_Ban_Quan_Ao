@@ -1,6 +1,7 @@
 package com.webbanquanao.dao;
 
 import com.webbanquanao.model.CartEntity;
+import com.webbanquanao.model.CartitemEntity;
 
 import java.util.List;
 
@@ -18,4 +19,12 @@ public interface CartDao {
     List<CartEntity> getAll();
 
     List<CartEntity> search(String name);
+
+    void removeProduct(CartEntity cart, int pId);
+
+    double totalBill(CartEntity cart);
+
+    int getIDCart();
+
+    List<CartitemEntity> getCart(int u_id);
 }

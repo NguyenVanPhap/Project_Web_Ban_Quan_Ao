@@ -28,12 +28,26 @@ public class ProductListClientController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<ProductEntity> productList = productService.getAll();
+		String[] categorylist=req.getParameterValues("catecheckbox");
+		req.setAttribute("categorylist",categorylist);
+		List<ProductEntity> products = productService.getAll();
+		int numOfProducts = products.size();int litmit=9;int numOfPages = 0;
+		if (numOfProducts/litmit==(float)numOfProducts/litmit){
+			numOfPages = numOfProducts/litmit;
+		}
+		else
+			{
+			numOfPages = numOfProducts/litmit+1;
+		}
+		int page = Integer.parseInt(req.getParameter("page"));
+		int offset = (page-1) * litmit;
+		List<ProductEntity> productList=productService.getByPage(offset,litmit);
 		req.setAttribute("productList", productList);
 		List<CategoryEntity> cateList = cateService.getAll();
 		req.setAttribute("cateList",cateList);
+		req.setAttribute("numOfPages",numOfPages);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/product.jsp");
 		dispatcher.forward(req, resp);
-	}// c�i n�y sai
+	}
 
 }

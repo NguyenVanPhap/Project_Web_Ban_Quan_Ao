@@ -23,6 +23,7 @@ public class ProductServiceImpl implements ProductService {
         oldProduct.setName(newProduct.getName());
         oldProduct.setPrice(newProduct.getPrice());
         oldProduct.setCategoryEntity(newProduct.getCategoryEntity());
+        oldProduct.setBrandEntity(newProduct.getBrandEntity());
         oldProduct.setDes(newProduct.getDes());
         if (newProduct.getImage() != null) {
             // XOA ANH CU DI
@@ -63,8 +64,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductEntity> searchByCategory(int cate_id) {
-        return productDao.searchByCategory(cate_id);
+    public List<ProductEntity> searchByCategory(String cate_name) {
+        return productDao.searchByCategory(cate_name);
     }
 
     @Override
@@ -74,5 +75,18 @@ public class ProductServiceImpl implements ProductService {
 
     public List<ProductEntity> searchByPrice(double priceStart,double priceEnd) {
         return productDao.searchByPrice(priceStart,priceEnd);
+    }
+
+    @Override
+    public List<ProductEntity> getByPage(int offset, int limit) {
+        return productDao.getByPage(offset,limit);
+    }
+
+    public List<ProductEntity> getByPageAndPrice(double priceStart,double priceEnd,int offset, int limit){
+        return productDao.getByPageAndPrice(priceStart,priceEnd,offset, limit);
+    }
+
+    public List<ProductEntity> searchByPageAndCategory(String cate_name,int offset, int limit){
+        return productDao.searchByPageAndCategory(cate_name,offset,limit);
     }
 }

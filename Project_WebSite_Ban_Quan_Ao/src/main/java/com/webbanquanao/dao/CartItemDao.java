@@ -10,7 +10,7 @@ public interface CartItemDao {
 
     void edit(CartitemEntity cartItem);
 
-    void delete(String id);
+    void delete(CartitemEntity cartitem);
 
     CartitemEntity get(String name);
 
@@ -19,4 +19,6 @@ public interface CartItemDao {
     List<CartitemEntity> getAll();
 
     List<CartitemEntity> search(String name);
+
+    int getIDCartItem();
 }

@@ -1,9 +1,12 @@
 package com.webbanquanao.controller.admin;
 
+import com.webbanquanao.model.BrandEntity;
 import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ProductEntity;
+import com.webbanquanao.service.BrandService;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.impl.BrandServiceImpl;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
 import com.webbanquanao.service.impl.ProductServiceImpl;
 import org.apache.commons.fileupload.FileItem;
@@ -26,12 +29,15 @@ import java.util.List;
 public class ProductEditController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     CategoryService categoryService = new CategoryServiceImpl();
+    BrandService brandService = new BrandServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         ProductEntity product = productService.get(Integer.parseInt(id));
         List<CategoryEntity> categories = categoryService.getAll();
+        List<BrandEntity> listBrand = brandService.getAll();
+        request.setAttribute("listBrand", listBrand);
 
         request.setAttribute("categories", categories);
 
@@ -62,6 +68,8 @@ public class ProductEditController extends HttpServlet {
                     product.setName(item.getString());
                 } else if (item.getFieldName().equals("cate")) {
                     product.setCategoryEntity(categoryService.get(Integer.parseInt(item.getString())));
+                } else if (item.getFieldName().equals("brand")) {
+                    product.setBrandEntity(brandService.get(Integer.parseInt(item.getString())));
                 } else if (item.getFieldName().equals("des")) {
                     product.setDes(item.getString());
                 } else if (item.getFieldName().equals("price")) {

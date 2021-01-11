@@ -1,6 +1,7 @@
 package com.webbanquanao.service;
 
 import com.webbanquanao.model.CartEntity;
+import com.webbanquanao.model.CartitemEntity;
 
 import java.util.List;
 
@@ -16,4 +17,12 @@ public interface CartService {
     List<CartEntity> getAll();
 
     List<CartEntity> search(String keyword);
+
+    void removeProduct(CartEntity cart, int pId);
+
+    double totalBill(CartEntity cart);
+
+    int getIDCart();
+
+    List<CartitemEntity> getCart(int u_id);
 }

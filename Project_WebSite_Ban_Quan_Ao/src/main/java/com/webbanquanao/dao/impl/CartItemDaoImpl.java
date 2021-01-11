@@ -1,90 +1,72 @@
 package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.CartItemDao;
-import com.webbanquanao.dao.UserDao;
+import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
+import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
-import com.webbanquanao.service.CartService;
-import com.webbanquanao.service.ProductService;
-import com.webbanquanao.service.impl.CartServiceImpl;
-import com.webbanquanao.service.impl.ProductServiceImpl;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.type.IntegerType;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import java.util.List;
 
 public class CartItemDaoImpl implements CartItemDao {
-    CartService cartService = new CartServiceImpl();
-    ProductService productService = new ProductServiceImpl();
-    UserDao userDao = new UserDaoImpl();
-
 
     @Override
     public void insert(CartitemEntity cartItem) {
-   /*     String sql = "INSERT INTO CartItem(id, cat_id, pro_id, quantity, unitPrice) VALUES (?,?,?,?,?)";
-        Connection con = super.getJDBCConnection();
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setString(1, cartItem.getId());
-            ps.setString(2, cartItem.getCart().getId());
-            ps.setInt(3, cartItem.getProduct().getId());
-            ps.setInt(4, cartItem.getQuantity());
-            ps.setFloat(5, cartItem.getUnitPrice());
-
-            ps.executeUpdate();
-
-//			ResultSet generatedKeys = ps.getGeneratedKeys();
-//			if (generatedKeys.next()) {
-//				int id = generatedKeys.getInt(1);
-//				cartItem.setId(id);
-//			}
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("Insert into CartItem(pro_id,cart_id,quantity) values(:pro_id,:cart_id,:quantity)");
+        query.setParameter("pro_id",cartItem.getProductEntity().getId());
+        query.setParameter("cart_id",cartItem.getCartEntity().getId());
+        query.setParameter("quantity",cartItem.getQuantity());
+        try{
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
     public void edit(CartitemEntity cartItem) {
- /*       String sql = "UPDATE CartItem SET cat_id = ?, pro_id = ?, quantity = ?, unitPrice=? WHERE id = ?";
-        Connection con = super.getJDBCConnection();
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setString(1, cartItem.getCart().getId());
-            ps.setInt(2, cartItem.getProduct().getId());
-            ps.setInt(3, cartItem.getQuantity());
-            ps.setFloat(4, cartItem.getUnitPrice());
-            ps.setString(5, cartItem.getId());
-
-
-            ps.executeUpdate();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("UPDATE CartItem SET quantity = :quantity WHERE id = :id");
+        query.setParameter("id", cartItem.getId());
+        query.setParameter("quantity", cartItem.getQuantity());;
+        try{
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
-    public void delete(String id) {
-/*        String sql = "DELETE FROM CartItem WHERE id = ?";
-        Connection con = super.getJDBCConnection();
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
+    public void delete(CartitemEntity cartItem) {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("DELETE FROM CartItem Where id = :id");
+        query.setParameter("id", cartItem.getId());
+        try{
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
     }
 
     @Override
@@ -196,5 +178,22 @@ public class CartItemDaoImpl implements CartItemDao {
     public CartitemEntity get(String name) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public int getIDCartItem(){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        int id = (int) getSession.createSQLQuery("SELECT id FROM CartItem ORDER BY id DESC LIMIT 1").addScalar("id",new IntegerType()).uniqueResult();
+        try{
+
+            getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
+        return id;
     }
 }

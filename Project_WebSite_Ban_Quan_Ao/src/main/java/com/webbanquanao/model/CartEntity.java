@@ -2,27 +2,42 @@ package com.webbanquanao.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cart", schema = "web_ban_quan_ao", catalog = "")
+@Table(name = "cart", schema = "web_ban_quan_ao")
 public class CartEntity {
-    private String id;
-    private Date buyDate;
-    private Boolean action;
-
     @Id
     @Column(name = "id")
-    public String getId() {
+    private int id;
+    @Basic
+    @Column(name = "buyDate")
+    private Date buyDate;
+    @Basic
+    @Column(name = "action")
+    private Boolean action;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<CartitemEntity> cartitemEntities;
+
+    @ManyToOne
+    @JoinColumn(name = "u_id")
+    private UserEntity userEntity;
+
+    //   @Id
+    //   @Column(name = "id")
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "buyDate")
+    //    @Basic
+//    @Column(name = "buyDate")
     public Date getBuyDate() {
         return buyDate;
     }
@@ -31,8 +46,8 @@ public class CartEntity {
         this.buyDate = buyDate;
     }
 
-    @Basic
-    @Column(name = "action")
+    //    @Basic
+//    @Column(name = "action")
     public Boolean getAction() {
         return action;
     }
@@ -40,6 +55,14 @@ public class CartEntity {
     public void setAction(Boolean action) {
         this.action = action;
     }
+
+    public List<CartitemEntity> getCartitemEntities() { return cartitemEntities; }
+
+    public void setCartitemEntities(List<CartitemEntity> cartitemEntities) { this.cartitemEntities = cartitemEntities; }
+
+    public UserEntity getUserEntity() { return userEntity; }
+
+    public void setUserEntity(UserEntity userEntity) { this.userEntity = userEntity; }
 
     @Override
     public boolean equals(Object o) {

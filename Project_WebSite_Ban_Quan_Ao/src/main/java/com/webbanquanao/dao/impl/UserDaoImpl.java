@@ -2,7 +2,6 @@ package com.webbanquanao.dao.impl;
 
 import com.webbanquanao.dao.UserDao;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
-import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.UserEntity;
 
 import javax.persistence.*;
@@ -104,12 +103,11 @@ public class UserDaoImpl  implements UserDao{
         return userEntities;
     }
 
-
     @Override
     public List<UserEntity> search(String keyword) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         String qString = "SELECT u FROM UserEntity u "+
-                "WHERE u.userName LIKE CONCAT('%',:keyword,'%')";
+                "WHERE u.email LIKE CONCAT('%',:keyword,'%')";
         TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
         q.setParameter("keyword",keyword);
 
@@ -173,5 +171,51 @@ public class UserDaoImpl  implements UserDao{
         if(userEntities.size()>0 &&userEntities!=null)
             return true;
         return false;
+    }
+
+    @Override
+    public boolean checkExistAccount(String email, String password){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM UserEntity u "+
+                "WHERE u.email=:keyemail and u.password=:keypass";
+        TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
+        q.setParameter("keyemail",email);
+        q.setParameter("keypass",password);
+        List<UserEntity> userEntities;
+        try{
+            userEntities=q.getResultList();
+
+        }
+        catch (NoResultException e){
+            return  false;
+        }
+        finally {
+            em.close();
+        }
+        if(userEntities.size()>0 &&userEntities!=null)
+            return true;
+        return false;
+    }
+
+    @Override
+    public UserEntity getUser(String email) {
+
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM UserEntity u "+
+                "WHERE u.email=:email";
+        TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
+        q.setParameter("email",email);
+
+        UserEntity userEntity;
+        try{
+            userEntity = q.getSingleResult();
+        }
+        catch (NoResultException e){
+            return null;
+        }
+        finally {
+            em.close();
+        }
+        return userEntity;
     }
 }

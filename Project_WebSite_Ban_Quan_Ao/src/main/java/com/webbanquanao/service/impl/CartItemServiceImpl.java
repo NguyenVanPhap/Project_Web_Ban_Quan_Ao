@@ -17,19 +17,11 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
-    public void edit(CartitemEntity newCartItem) {
-/*        CartitemEntity oldCartItem = cartItemDao.get(newCartItem.getId());
-  //      oldCartItem.setCart(newCartItem.getCart());
-   //     oldCartItem.setProduct(newCartItem.getProduct());
-        oldCartItem.setQuantity(newCartItem.getQuantity());
-        oldCartItem.setUnitPrice(newCartItem.getUnitPrice());
-
-        cartItemDao.edit(oldCartItem);*/
-    }
+    public void edit(CartitemEntity cartItem) { cartItemDao.edit(cartItem);}
 
     @Override
-    public void delete(String id) {
-        cartItemDao.delete(id);
+    public void delete(CartitemEntity cartitemEntity) {
+        cartItemDao.delete(cartitemEntity);
     }
 
     @Override
@@ -47,6 +39,7 @@ public class CartItemServiceImpl implements CartItemService {
         return cartItemDao.search(keyword);
     }
 
-
+    @Override
+    public int getIDCartItem(){ return cartItemDao.getIDCartItem(); }
 }
 

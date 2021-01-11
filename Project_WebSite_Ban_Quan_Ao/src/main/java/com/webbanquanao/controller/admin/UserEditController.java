@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @WebServlet(urlPatterns = { "/admin/user/edit" })
 public class UserEditController extends HttpServlet {
@@ -41,7 +42,8 @@ public class UserEditController extends HttpServlet {
         DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
         ServletContext servletContext = this.getServletConfig().getServletContext();
         ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
-
+        String url="";
+        String iduser="";
         try
         {
             List<FileItem> items = servletFileUpload.parseRequest(req);
@@ -49,13 +51,51 @@ public class UserEditController extends HttpServlet {
             {
                 if (item.getFieldName().equals("id"))
                 {
+                    iduser=item.getString();
                     user.setId(Integer.parseInt(item.getString()));
                 }
                 else if (item.getFieldName().equals("email")) {
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("emailError", "Email is not allowed to be blank");
+                        url = "0";
+                    }
+                    else
+                    {
+                        Pattern pattern = Pattern.compile("^(.+)@(.+)$");
+                        if(!pattern.matcher(item.getString()).matches())
+                        {
+                            req.getSession().setAttribute("emailError", "You must enter email in format xx@xx");
+                            url = "0";
+                        }
+                        else {
+                            req.getSession().setAttribute("emailError", null);
+                        }
+
+                    }
+
                     user.setEmail(item.getString());;
                 } else if (item.getFieldName().equals("username")) {
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("nameError", "username is not allowed to be blank");
+                        url = "0";
+                    }
+                    else {
+                        req.getSession().setAttribute("nameError", null);
+                    }
+                    //req.getSession().setAttribute("name",item.getString());
                     user.setUserName(item.getString());
                 } else if (item.getFieldName().equals("password")) {
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("passError", "password is not allowed to be blank");
+                        url = "0";
+                    }
+                    else {
+                        req.getSession().setAttribute("passError", null);
+                    }
+
                     user.setPassword(item.getString());
                 }else if (item.getFieldName().equals("address")) {
                     user.setAddress(item.getString());
@@ -81,8 +121,16 @@ public class UserEditController extends HttpServlet {
                     }
                 }
             }
-            userService.edit(user);
-            resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+            if(url!="0") {
+                userService.edit(user);
+                resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+            }
+            else
+            {
+                userService.edit(user);
+                resp.sendRedirect(req.getContextPath() + "/admin/user/edit?id="+iduser);
+            }
+
         } catch (FileUploadException e) {
             e.printStackTrace();
         } catch (Exception e) {
