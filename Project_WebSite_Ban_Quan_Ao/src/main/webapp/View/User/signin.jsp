@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/View/User" var="url"></c:url>
+<c:url value="/User/forgot" var="APIurl"></c:url>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -59,9 +60,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="login-content">
         <div class="container">
             <div class="login-signup-form">
+                <div class="col-md-5 login text-center">
                 <form role="form" action="signin" method="post"
                       enctype="multipart/form-data">
-                    <div class="col-md-5 login text-center">
+
                         <h4>login</h4>
                         <br>
                         <br>
@@ -92,14 +94,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="botton1">
                             <input type="submit" value="SIGNIN" class="botton">
                         </div>
-                        <div class="forgetit">
-                            <a href="">forgot your password?</a>
-                            <input type="text" class="text" value="Enter email to reset it" onfocus="this.value = '';" onblur="if (this.value == 'Enter email to reset it') {this.value = 'Enter email to reset it';}">
-                            <input type="submit" value="SUBMIT" class="botton">
-                        </div>
 
+
+
+
+                </form>
+                <form action="${APIurl}" method="get">
+                    <div class="forgetit">
+                        <a href="">forgot your password?</a>
+                        <input id="emailReset" name="emailReset" type="text" class="text">
+                        <%--                            <input id="emailReset" name="emailReset" type="text" class="text" &lt;%&ndash;value="Enter email to reset it" &ndash;%&gt;onfocus="this.value = '';" onblur="if (this.value == 'Enter email to reset it') {this.value = 'Enter email to reset it';}">--%>
+                        <input type="submit" value="Submit"  class="botton">
+                        <label >${msg}</label>
                     </div>
                 </form>
+                </div>
                 <form role="form" action="signup" method="post"
                       enctype="multipart/form-data">
                     <div class="col-md-5 sign-up text-center">
@@ -197,5 +206,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"></div>
     </div>
 </div>
+
 </body>
 </html>

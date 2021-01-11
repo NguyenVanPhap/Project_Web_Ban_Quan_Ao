@@ -10,22 +10,25 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<title>Quản lí tài khoản</title>
-	<link href="${url}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${url}/css/font-awesome.min.css" rel="stylesheet">
-	<link href="${url}/css/main.css" rel="stylesheet">
-	<link href="${url}/css/responsive.css" rel="stylesheet">
 
-	<link href="${url}/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+
+	<link href="${url}/css/bootstrap.css" rel='stylesheet' <%--type='text/css'--%> />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="${url}/js/jquery.min.js"></script>
 	<!-- Custom Theme files -->
 	<link href="${url}/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="${url}/css/form.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="${url}/css/form.css" rel="stylesheet" <%--type="text/css"--%> media="all" />
+
+
+	<link href="${url}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${url}/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${url}/css/main.css" rel="stylesheet">
+	<link href="${url}/css/responsive.css" rel="stylesheet">
 	<!-- Custom Theme files -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Pakhi Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!--webfont-->
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -76,23 +79,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-sm-6">
 					<div class="shopper-info">
 						<p>Thông tin tài khoản</p>
-						<form>
-							<input id="name" type="text" placeholder="Tên" value="${accountModel.getUsername()}">
-							<input id="email" type="text" placeholder="Email" value="${accountModel.getEmail()}">
-							<input id="address" type="text" placeholder="Địa chỉ" value="${accountModel.getAddress()}">
-							<input id="phonenumber" type="text" placeholder="Số điện thoại" value="${accountModel.getPhonenumber()}">
+						<form action="${pageContext.request.contextPath }/infoController?type=changeInfo" method="post">
+							<input name="name"  placeholder="Tên" value="${user.getUserName()}">
+							<input name="email"  placeholder="Email" value="${user.getEmail()}">
+							<input name="address"  placeholder="Địa chỉ" value="${user.getAddress()}">
+<%--							<input id="phonenumber" type="text" placeholder="Số điện thoại" value="${user.getPhonenumber()}">--%>
+							<label style="display: block">${msg}</label>
+							<button style="width: 150px; height: 30px;color: white; background-color: #ff0000; " type="submit" value="Cập nhật thông tin">Cập nhật thông tin</button>
 						</form>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="shopper-info">
 						<p>Thay đổi mật khẩu</p>
-						<form>
-							<input id="oldPassword" type="password" placeholder="Mật khẩu " value="">
-							<input id="newPassword" type="password" placeholder="Mật khẩu mới">
-							<input id="confirmPassword" type="password" placeholder="Xác nhận mật khẩu">
+						<form action="${pageContext.request.contextPath }/infoController?type=changePassword" method="post">
+							<label for="oldPassword"></label><input name="oldPassword"  id="oldPassword" type="password" placeholder="Mật khẩu " value="">
+							<input name="newPassword" id="newPassword" type="password" placeholder="Mật khẩu mới">
+							<input name="confirmPassword" id="confirmPassword" type="password" placeholder="Xác nhận mật khẩu">
+							<label style="display: block" >${msgPass}</label>
+							<button style="width: 150px; height: 30px;color: white; background-color: #ff0000; " type="submit" value="Đổi mật khẩu">Đổi mật khẩu</button>
 						</form>
-						<a class="btn btn-primary" onclick="changePassword()" href="">Cập nhật thông tin</a>
+<%--						<a class="btn btn-primary" onclick="changePassword()" href="">Đổi mật khẩu</a>--%>
 					</div>
 				</div>
 			</div>
