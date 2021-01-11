@@ -129,9 +129,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="cable-config">
                                     <span>Màu</span>
                                     <div class="cable-choose">
-                                        <c:forEach items="${listColor}" var="sku" >
-                                            <button><c:out value="${sku}"/></button>
-                                        </c:forEach>
+                                        <select name="color" style="width: 50%">
+                                            <c:forEach items="${listColor}" var="sku" >
+                                                <option  value="${sku}"><c:out value="${sku}"/></option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -140,13 +142,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="cable-config">
                                     <span>Size</span>
                                     <div class="cable-choose">
-                                        <c:forEach items="${listSize}" var="sku" >
-                                            <button><c:out value="${sku}"/></button>
-                                        </c:forEach>
+                                        <select name="size" style="width: 50%">
+                                            <c:forEach items="${listSize}" var="sku" >
+                                                <option  name="btnsize"  value="${sku}"><c:out value="${sku}"/></option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+
                         <div class="btn_form">
                             <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">add to bag</a>
                         </div>
