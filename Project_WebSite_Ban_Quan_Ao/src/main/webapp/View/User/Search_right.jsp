@@ -12,46 +12,40 @@
 <div class="rsidebar span_1_of_left">
     <section  class="sky-form">
         <div class="product_right">
-                <h3 class="m_2">Categories</h3>
-                <ul class="nav">
+            <h4>Bộ lọc tìm kiếm</h4>
+            <h4>theo danh mục</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4">
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=giày nike&page=1'"
+                                                   type="checkbox"  value="áo thun">giày nike</label>
 
-                    <li class="active"><a href="#" style="color: black;"></a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</li>
-                    <li>
-                        <a style="  color: black;" href="#">Áo&emsp;&emsp;&emsp;</a>
-                        <ul class="dropdown2">
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=giày adidas&page=1'"
+                                                   type="checkbox"  value="áo thun">giày adidas</label>
 
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=9&page=1">Áo thun nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=8&page=1">Áo thun nữ</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=7&page=1">Áo sơ mi nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=6&page=1">Áo sơ mi nữ</a></li>
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=áo thun&page=1'"
+                                                   type="checkbox"  value="áo thun">áo thun </label>
 
-                        </ul>
-                    </li>
-                    <li><a style="color: black;" href="#">Giày&emsp;&emsp;&emsp;</a>
-                        <ul class="dropdown2">
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=2&page=1">Giày adidas</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=1&page=1">Giày nike</a></li>
-                        </ul>
-                    </li>
-                    <li ><a style="color: black;" href="#">QUần&emsp;&emsp;&emsp;</a>
-                        <ul class="dropdown2">
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=áo sơ mi&page=1'"
+                                                   type="checkbox"  value="áo thun">áo sơ mi</label>
 
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=5&page=1">Quần jean nam</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=4&page=1">Quần jean nữ</a></li>
-                            <li><a style="background-color: #FFE4E1; color: black;" href="${pageContext.request.contextPath }/product/category?cate_id=3&page=1">Quần kaki nam</a></li>
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=quần kaki&page=1'"
+                                                   type="checkbox"  value="áo thun">quần kaki</label>
 
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=quần jean&page=1'"
+                                                   type="checkbox"  value="áo thun">quần jean</label>
 
-                        </ul>
-                    </li>
-                </ul>
+                </div>
+
+            </div>
         </div>
     </section>
 
 
     <section  class="sky-form">
-        <h4>Price</h4>
+        <h4>Theo giá</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=0&endPrice=10000000&page=1">ALL</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=0&endPrice=100000&page=1">Dưới 100.000</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=100000&endPrice=200000&page=1">100.000-200.000</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=200000&endPrice=300000&page=1">200.000-300.000</a></li>

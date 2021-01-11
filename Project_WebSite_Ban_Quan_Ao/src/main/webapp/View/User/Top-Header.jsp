@@ -45,32 +45,24 @@
 
                     <li class="dropdown1"><a href="">Áo</a>
                         <ul class="dropdown2">
-
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=9&page=1">Áo Thun nam</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=8&page=1">Áo thun nữ</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=7&page=1">Áo Sơ mi nam</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=6&page=1">Áo Sơ mi nữ</a></li>
-
-
+                            <li><a href="${pageContext.request.contextPath }/product/category?cateid=áo thun&page=1">Áo Thun</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cateid=áo so mi&page=1">Áo Sơ mi</a></li>
                         </ul>
                     </li>
 
                     <li class="dropdown1"><a href="#">Quần</a>
                         <ul class="dropdown2">
 
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=5&page=1">QUần jean nam</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=4&page=1">Quần jean nữ</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=3&page=1">Quần kaki nam</a></li>
-
+                            <li><a href="${pageContext.request.contextPath }/product/category?cateid=quan jean&page=1">QUần jean</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cateid=quan kaki&page=1">Quần kaki</a></li>
 
                         </ul>
                     </li>
 
                     <li class="dropdown1"><a href="#">Giày</a>
                         <ul class="dropdown2">
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=2&page=1">Giày adidas</a></li>
-                            <li><a href="${pageContext.request.contextPath }/product/category?cate_id=1&page=1">Giày nike</a></li>
-
+                            <li><a href="${pageContext.request.contextPath }/product/category?cateid=giày adidas&page=1">Giày adidas</a></li>
+                            <li><a href="${pageContext.request.contextPath }/product/category?cateid=giày nike&page=1">Giày nike</a></li>
                         </ul>
                     </li>
 
