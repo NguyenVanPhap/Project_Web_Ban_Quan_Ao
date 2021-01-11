@@ -12,41 +12,30 @@
 <div class="rsidebar span_1_of_left">
     <section  class="sky-form">
         <div class="product_right">
-            <h3>Bộ lọc tìm kiếm</h3>
+            <h4>Bộ lọc tìm kiếm</h4>
             <h4>theo danh mục</h4>
             <div class="row row1 scroll-pane">
-
                 <div class="col col-4">
-                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="áo thun"
-                    <c:forEach items="${categorylist}" var="cate" >
-                        <c:set var="x" value="áo thun"></c:set>
-                            <c:if test="${cate=x}"> checked="checked"</c:if>
-                    </c:forEach>><i></i><a href="${pageContext.request.contextPath }/product/category?page=1">áo thun</a></label>
-                    <%--/////////////--%>
-                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="áo sơ mi"
-                    <c:forEach items="${categorylist}" var="cate" >
-                        <c:set var="x" value="áo sơ mi"></c:set>
-                    <c:if test="${cate=x}"> checked="checked"</c:if>
-                    </c:forEach>><i></i>áo sơ mi</label>
-                    <%--/////////////--%>
-                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="quần jean"
-                    <c:forEach items="${categorylist}" var="cate" >
-                        <c:set var="x" value="quần jean"></c:set>
-                    <c:if test="${cate=x}"> checked="checked"</c:if>
-                    </c:forEach>><i></i>quần kaki</label>
-                    <%--/////////////--%>
-                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="giày nike"
-                    <c:forEach items="${categorylist}" var="cate" >
-                        <c:set var="x" value="giày nike"></c:set>
-                    <c:if test="${cate=x}"> checked="checked"</c:if>
-                    </c:forEach>><i></i>áo nike</label>
-                    <%--/////////////--%>
-                    <label class="checkbox"><input type="checkbox" name="catecheckbox" value="giày adidas"
-                    <c:forEach items="${categorylist}" var="cate" >
-                        <c:set var="x" value="giày adidas"></c:set>
-                    <c:if test="${cate=x}"> checked="checked"</c:if>
-                    </c:forEach>><i></i>áo adidas</label>
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=giày nike&page=1'"
+                                                   type="checkbox"  value="áo thun">giày nike</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=giày adidas&page=1'"
+                                                   type="checkbox"  value="áo thun">giày adidas</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=áo thun&page=1'"
+                                                   type="checkbox"  value="áo thun">áo thun </label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=áo sơ mi&page=1'"
+                                                   type="checkbox"  value="áo thun">áo sơ mi</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=quần kaki&page=1'"
+                                                   type="checkbox"  value="áo thun">quần kaki</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/category?cateid=quần jean&page=1'"
+                                                   type="checkbox"  value="áo thun">quần jean</label>
+
                 </div>
+
             </div>
         </div>
     </section>
@@ -56,6 +45,7 @@
         <h4>Theo giá</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=0&endPrice=10000000&page=1">ALL</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=0&endPrice=100000&page=1">Dưới 100.000</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=100000&endPrice=200000&page=1">100.000-200.000</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByPrice?startPrice=200000&endPrice=300000&page=1">200.000-300.000</a></li>
