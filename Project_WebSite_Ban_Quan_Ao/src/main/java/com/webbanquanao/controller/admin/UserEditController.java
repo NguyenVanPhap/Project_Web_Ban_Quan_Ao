@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -26,11 +27,18 @@ import java.util.regex.Pattern;
 public class UserEditController extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        String email = session.getAttribute("email").toString();
+        List<UserEntity> users = userService.search(email);
+        users.forEach((u -> {
+            req.setAttribute("user", u.getUserName());
+        }));
         int id = Integer.parseInt(req.getParameter("id"));
         UserEntity user = userService.get(id);
-        req.setAttribute("user", user);
+        req.setAttribute("users", user);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/View/admin/edit-user.jsp");
         dispatcher.forward(req, resp);
     }

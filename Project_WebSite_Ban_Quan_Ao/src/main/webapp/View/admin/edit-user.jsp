@@ -53,7 +53,7 @@
 
 									<form role="form" action="${edit }" method="post" enctype="multipart/form-data">
 
-										<input name="id" value="${user.id }" type="text" hidden="">
+										<input name="id" value="${users.id }" type="text" hidden="">
 
 										<div class="form-group">
 											<label>User Name:
@@ -63,7 +63,7 @@
 											</c:if>
 											<input class="form-control"
 
-												   value="${user.userName }" name="username" />
+												   value="${users.userName }" name="username" />
 										</div>
 
 										<div class="form-group">
@@ -72,7 +72,7 @@
 												<a><p style="color: red"><c:out value="${passError}" /></p></a>
 											</c:if>
 											<input class="form-control"
-																		   value="${user.password }" type="password" name="password" />
+																		   value="${users.password }" type="password" name="password" />
 										</div>
 
 										<div class="form-group">
@@ -81,25 +81,25 @@
 												<a><p style="color: red"><c:out value="${emailError}" /></p></a>
 											</c:if>
 											<input class="form-control"
-																		 value="${user.email }" name="email" />
+																		 value="${users.email }" name="email" />
 										</div>
 
 										<div class="form-group">
 											<label>Address:</label> <input class="form-control"
-																		   value="${user.address }" name="address" />
+																		   value="${users.address }" name="address" />
 										</div>
 
 										<div class="form-group">
 											<label>Role</label>
 											<div class="checkbox">
 												<label> <input type="radio" value="1" name="permission"
-														<c:if test="${user.permission==1}">
+														<c:if test="${users.permission==1}">
 															checked
 														</c:if>
 												/>Admin
 												</label> <br>
 												<label> <input type="radio" value="2"
-															   name="permission" <c:if test="${user.permission==2}">
+															   name="permission" <c:if test="${users.permission==2}">
 													checked
 												</c:if>
 												/>Client
@@ -110,7 +110,7 @@
 
 										<div class="form-group">
 											<label>Choose Avatar</label> <input type="file"
-																				name="avatar" value="${user.avatar }" />
+																				name="avatar" value="${users.avatar }" />
 										</div>
 										<button type="submit" class="btn btn-default">Edit</button>
 										<button type="reset" class="btn btn-primary">Reset</button>
