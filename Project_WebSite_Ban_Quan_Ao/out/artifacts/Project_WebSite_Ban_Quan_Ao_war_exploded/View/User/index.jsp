@@ -113,7 +113,7 @@
                                 <a href="<c:url value='/product/detail?id=${pro.id }'/>" class="b-link-stripe b-animate-go  thickbox">
                                     <img style="height: 350px ;width: 280px" src="${imgUrl}" class="img-responsive" alt="" />
                                     <div class="b-wrapper">
-                                        <div class="atc"><p>Add To Cart</p>
+                                        <div class="atc"><p>View Detail</p>
                                         </div><div class="clearfix">
                                     </div><h2 class="b-animate b-from-left    b-delay03 ">
                                         <img src="${imgUrl}" class="img-responsive go" alt=""/></h2>
