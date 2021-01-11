@@ -175,7 +175,7 @@ public class CartDaoImpl implements CartDao {
     public double totalBill(CartEntity cart) {
         double total = 0;
         try {
-            total = cart.getCartitemEntities().stream().mapToDouble(cartItem -> cartItem.getProductEntity().getPrice() * cartItem.getQuantity()).sum();
+            total = cart.getCartitemEntities().stream().mapToDouble(cartItem -> cartItem.getSkuEntity().getProductEntity().getPrice() * cartItem.getQuantity()).sum();
         }
         catch(Exception e)
         {}

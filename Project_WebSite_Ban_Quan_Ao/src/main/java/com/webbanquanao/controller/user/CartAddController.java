@@ -1,9 +1,6 @@
 package com.webbanquanao.controller.user;
 
-import com.webbanquanao.model.CartEntity;
-import com.webbanquanao.model.CartitemEntity;
-import com.webbanquanao.model.ProductEntity;
-import com.webbanquanao.model.UserEntity;
+import com.webbanquanao.model.*;
 import com.webbanquanao.service.CartItemService;
 import com.webbanquanao.service.CartService;
 import com.webbanquanao.service.ProductService;
@@ -104,7 +101,9 @@ public class CartAddController extends HttpServlet {
                     List<CartitemEntity> listCartItem =new ArrayList<CartitemEntity>();
                     CartitemEntity cartitemEntity = new CartitemEntity();
                     cartitemEntity.setQuantity(quantity);
-                    cartitemEntity.setProductEntity(productEntity);
+                    SkuEntity skuEntity = new SkuEntity();
+                    skuEntity.setProductEntity(productEntity);
+                    cartitemEntity.setSkuEntity(skuEntity);
                     listCartItem.add(cartitemEntity);
                     cartEntity.setCartitemEntities(listCartItem);
                     long millis=System.currentTimeMillis();
@@ -131,7 +130,7 @@ public class CartAddController extends HttpServlet {
                     List<CartitemEntity> listCartItem = cartEntity.getCartitemEntities();
                     boolean check = false;
                     for(CartitemEntity cartitemEntity : listCartItem){
-                        if(cartitemEntity.getProductEntity().getId() == productEntity.getId()) {
+                        if(cartitemEntity.getSkuEntity().getProductEntity().getId() == productEntity.getId()) {
                             cartitemEntity.setQuantity(cartitemEntity.getQuantity() + quantity);
                             if (email != null)
                                 cartItemService.edit(cartitemEntity);
@@ -141,7 +140,7 @@ public class CartAddController extends HttpServlet {
                     if(check == false){
                         CartitemEntity cartitemEntity = new CartitemEntity();
                         cartitemEntity.setQuantity(quantity);
-                        cartitemEntity.setProductEntity(productEntity);
+                        cartitemEntity.getSkuEntity().setProductEntity(productEntity);
                         cartitemEntity.setCartEntity(cartEntity);
                         cartEntity.setCartitemEntities(listCartItem);
                         if(email!=null) {

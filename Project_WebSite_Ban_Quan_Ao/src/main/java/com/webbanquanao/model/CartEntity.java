@@ -15,6 +15,11 @@ public class CartEntity {
     @Basic
     @Column(name = "buyDate")
     private Date buyDate;
+
+    @Basic
+    @Column(name = "note")
+    private String note;
+
     @Basic
     @Column(name = "action")
     private Boolean action;
@@ -25,6 +30,10 @@ public class CartEntity {
     @ManyToOne
     @JoinColumn(name = "u_id")
     private UserEntity userEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "c_id")
+    private CustomerEntity customerEntity;
 
     //   @Id
     //   @Column(name = "id")
@@ -46,6 +55,10 @@ public class CartEntity {
         this.buyDate = buyDate;
     }
 
+    public String getNote() { return note; }
+
+    public void setNote(String note) { this.note = note; }
+
     //    @Basic
 //    @Column(name = "action")
     public Boolean getAction() {
@@ -64,6 +77,10 @@ public class CartEntity {
 
     public void setUserEntity(UserEntity userEntity) { this.userEntity = userEntity; }
 
+    public CustomerEntity getCustomerEntity() { return customerEntity; }
+
+    public void setCustomerEntity(CustomerEntity customerEntity) { this.customerEntity = customerEntity; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,11 +88,12 @@ public class CartEntity {
         CartEntity that = (CartEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(buyDate, that.buyDate) &&
+                Objects.equals(note, that.note) &&
                 Objects.equals(action, that.action);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, buyDate, action);
+        return Objects.hash(id, buyDate, note, action);
     }
 }

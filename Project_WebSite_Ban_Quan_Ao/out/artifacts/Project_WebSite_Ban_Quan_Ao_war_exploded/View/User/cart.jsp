@@ -114,7 +114,7 @@
                         <td class="cart_description">
                             <input type="hidden" name="item_name_${loop.count}" value="${cartItem.getProductEntity().getName()}"/>
                             <h4><a href="">${cartItem.getProductEntity().getName()}</a></h4>
-                            <p>1234</p>
+                            <p>Màu sắc: {}, size: ${size}</p>
                         </td>
                         <td class="cart_price">
                             <input type="hidden" name = "amount_${loop.count}" value="${cartItem.getProductEntity().getPrice()}"/>

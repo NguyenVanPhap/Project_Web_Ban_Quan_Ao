@@ -122,7 +122,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="desc1 span_3_of_2">
                         <h3>${product.getName() }</h3>
                         <p>${product.getPrice() }
-
+                        <form action="${pageContext.request.contextPath}/member/cart/add" method="get">
+                        <select name="pId" hidden>
+                            <option value="${product.getId()}"></option>
+                        </select>
                         <div class="det_nav">
                             <div class="product-configuration">
                                 <!-- Cable Configuration -->
@@ -159,13 +162,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
 
                         <div class="btn_form" style="width: 50%">
-                            <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">add to bag</a>
+                            <input type="submit" style="font-weight: 500; color: #ffff; text-transform: uppercase; background-image: initial;
+                            background-position-x: initial;
+                            background-position-y: initial;
+                            background-size: initial;
+                            background-repeat-x: initial;
+                            background-repeat-y: initial;
+                            background-attachment: initial;
+                            background-origin: initial;
+                            background-clip: initial;
+                            background-color: rgb(235, 83, 103);" value="Thêm vào giỏ">
+                <!--            <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">add to bag</a>
                         </div>
                         <div class="btn_form" style="width: 50%">
-                            <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">buy now</a>
+                            <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">buy now</a> -->
                         </div>
 
-
+                    </form>
                     </div>
                     <div class="clearfix"></div>
                 </div>

@@ -21,7 +21,7 @@ public class CartItemDaoImpl implements CartItemDao {
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
         Query query = getSession.createSQLQuery("Insert into CartItem(pro_id,cart_id,quantity) values(:pro_id,:cart_id,:quantity)");
-        query.setParameter("pro_id",cartItem.getProductEntity().getId());
+        query.setParameter("pro_id",cartItem.getSkuEntity().getProductEntity().getId());
         query.setParameter("cart_id",cartItem.getCartEntity().getId());
         query.setParameter("quantity",cartItem.getQuantity());
         try{
