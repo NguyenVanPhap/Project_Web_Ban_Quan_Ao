@@ -2,9 +2,9 @@ package com.webbanquanao.controller.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,9 +46,12 @@ public class ProductDetailController extends HttpServlet {
         ProductEntity product = productService.get(Integer.parseInt(id));
         List<CategoryEntity> categories = categoryService.getAll();
         List<SkuEntity> listSku = skuService.searchByProduct(Integer.parseInt(id));
+        Integer[] maxquantity={0};
 
         listSku.forEach((element)->
         {
+            if(maxquantity[0]<element.getQuantity())
+            maxquantity[0]=element.getQuantity();
             if(!listcolor.contains(element.getColorEntity().getColorName()))
             {
                 listcolor.add(element.getColorEntity().getColorName());
@@ -64,7 +67,7 @@ public class ProductDetailController extends HttpServlet {
         req.setAttribute("listSize", listsize);
         req.setAttribute("categories", categories);
         req.setAttribute("product", product);
-        req.setAttribute("maxquantity",skuService.searchByProduct(Integer.parseInt(id)).size());
+        req.setAttribute("maxquantity",maxquantity[0]);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/product-detail.jsp");
         dispatcher.forward(req, resp);
     }
