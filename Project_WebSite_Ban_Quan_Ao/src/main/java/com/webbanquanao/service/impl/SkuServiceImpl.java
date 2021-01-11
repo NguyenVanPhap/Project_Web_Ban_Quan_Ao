@@ -44,6 +44,10 @@ public class SkuServiceImpl implements SkuService {
         return skuDao.getAll();
     }
     @Override
+    public boolean checkExistOption(int pro_id,int color_id, int size_id) {
+        return skuDao.checkExistOption(pro_id, color_id, size_id);
+    }
+    @Override
     public List<SkuEntity> searchByProduct(int pro_id) {
         return skuDao.searchByProduct(pro_id);
     }

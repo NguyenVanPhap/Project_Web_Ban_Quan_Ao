@@ -118,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <jsp:include page="/View/User/Top-Header.jsp"></jsp:include>
 </div>
 <!-- start Dresses-page -->
-<br/><br/><br/><br/>
+<br/><br/><br/>
 <div class="container">
     <div class="spec ">
         <h3 style="color: #eb5367">Thanh toán</h3>

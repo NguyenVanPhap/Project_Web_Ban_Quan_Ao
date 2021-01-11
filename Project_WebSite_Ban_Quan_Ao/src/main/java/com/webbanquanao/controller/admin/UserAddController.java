@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -28,8 +29,15 @@ import static org.hibernate.sql.InFragment.NULL;
 public class UserAddController extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        String email = session.getAttribute("email").toString();
+        List<UserEntity> user = userService.search(email);
+        user.forEach((u -> {
+            req.setAttribute("user", u.getUserName());
+        }));
         String eString = req.getParameter("e");
         if (eString != null) {
             if (eString.equals("1")) {

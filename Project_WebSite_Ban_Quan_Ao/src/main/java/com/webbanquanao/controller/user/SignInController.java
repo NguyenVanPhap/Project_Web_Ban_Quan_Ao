@@ -60,7 +60,7 @@ public class SignInController extends HttpServlet {
                     user.setEmail(item.getString());
                     email = item.getString();
 
-                    session.setAttribute("email",email);
+
                 } else if (item.getFieldName().equals("password"))
                 {
                     user.setPassword(item.getString());
@@ -84,6 +84,7 @@ public class SignInController extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/User/signin");
             }
             else if(userService.checkExistAccount(email,pass)){
+                session.setAttribute("email",email);
                 String home = "/Home";
                 List<UserEntity> users = userService.search(email);
                 for (UserEntity u : users) {
