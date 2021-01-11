@@ -148,8 +148,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                         <div class="btn_form">
+                            <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">add to bag</a>
+                        </div>
+                        <div class="btn_form">
                             <a href="${pageContext.request.contextPath}/member/cart/add?pId=${product.getId() }">buy now</a>
                         </div>
+
 
                     </div>
                     <div class="clearfix"></div>
