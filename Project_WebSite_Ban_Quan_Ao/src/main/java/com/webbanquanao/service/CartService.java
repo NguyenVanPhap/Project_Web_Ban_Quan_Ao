@@ -25,4 +25,6 @@ public interface CartService {
     int getIDCart();
 
     List<CartitemEntity> getCart(int u_id);
+
+    void UpdateCustomer(int id, int c_id);
 }

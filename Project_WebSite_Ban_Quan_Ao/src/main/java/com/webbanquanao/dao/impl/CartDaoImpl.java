@@ -223,8 +223,25 @@ public class CartDaoImpl implements CartDao {
         finally {
             em.close();
         }
-
-
         return resultList;
+    }
+
+    @Override
+    public void UpdateCustomer(int id, int c_id)
+    {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("UPDATE Cart SET c_id = :c_id WHERE id = :id");
+        query.setParameter("id", id);
+        query.setParameter("c_id", c_id);;
+        try{
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
     }
 }
