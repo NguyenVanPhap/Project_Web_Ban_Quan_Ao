@@ -27,7 +27,8 @@ public class SignOutController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.invalidate();
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/Home");
+        /*RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/index.jsp");*/
         dispatcher.forward(req, resp);
 
         //resp.sendRedirect(req.getContextPath()+"/View/User/index.jsp");

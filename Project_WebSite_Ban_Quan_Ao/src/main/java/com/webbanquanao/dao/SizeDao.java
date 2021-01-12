@@ -14,4 +14,6 @@ public interface SizeDao {
     SizeEntity get(int id);
     List<SizeEntity> getAll();
 
+    int getSizeId(String size_name);
+
 }

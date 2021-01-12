@@ -15,4 +15,5 @@ public interface ColorDao {
     ColorEntity get(int id);
     List<ColorEntity> getAll();
 
+    int getColorId(String color_name);
 }
