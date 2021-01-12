@@ -1,12 +1,15 @@
 package com.webbanquanao.controller.user;
 
 
+import com.webbanquanao.model.BrandEntity;
 import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.model.UserEntity;
+import com.webbanquanao.service.BrandService;
 import com.webbanquanao.service.CategoryService;
 import com.webbanquanao.service.ProductService;
 import com.webbanquanao.service.UserService;
+import com.webbanquanao.service.impl.BrandServiceImpl;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
 import com.webbanquanao.service.impl.ProductServiceImpl;
 import com.webbanquanao.service.impl.UserServiceImpl;
@@ -25,7 +28,7 @@ import java.util.List;
 public class ProductListClientController extends HttpServlet {
 	ProductService productService = new ProductServiceImpl();
 	CategoryService cateService = new CategoryServiceImpl();
-
+	BrandService brandService = new BrandServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String[] categorylist=req.getParameterValues("catecheckbox");
@@ -46,6 +49,9 @@ public class ProductListClientController extends HttpServlet {
 		List<CategoryEntity> cateList = cateService.getAll();
 		req.setAttribute("cateList",cateList);
 		req.setAttribute("numOfPages",numOfPages);
+
+		List<BrandEntity> listBrand = brandService.getAll();
+		req.setAttribute("listBrand", listBrand);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/product.jsp");
 		dispatcher.forward(req, resp);
 	}
