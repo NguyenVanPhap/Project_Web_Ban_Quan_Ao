@@ -38,13 +38,14 @@ public class ProductSearchByProperties extends HttpServlet {
         } else {
             if (sessProperty.getAttribute("cate_id")==null){
                 sessProperty.setAttribute("cate_id",0);
+                sessProperty.setAttribute("color_id",0);
+                sessProperty.setAttribute("size_id",0);
+                sessProperty.setAttribute("page",1);
+                sessProperty.setAttribute("startPrice",0);
+                sessProperty.setAttribute("endPrice",10000000);
+
             }
 
-            sessProperty.setAttribute("color_id",0);
-            sessProperty.setAttribute("size_id",0);
-            sessProperty.setAttribute("page",1);
-            sessProperty.setAttribute("startPrice",0);
-            sessProperty.setAttribute("endPrice",10000000);
 
             if (colorid !=null){
                 sessProperty.setAttribute("color_id",Integer.parseInt(colorid) );
