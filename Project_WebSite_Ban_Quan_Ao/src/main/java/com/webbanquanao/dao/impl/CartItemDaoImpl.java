@@ -20,8 +20,8 @@ public class CartItemDaoImpl implements CartItemDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("Insert into CartItem(pro_id,cart_id,quantity) values(:pro_id,:cart_id,:quantity)");
-        query.setParameter("pro_id",cartItem.getSkuEntity().getProductEntity().getId());
+        Query query = getSession.createSQLQuery("Insert into CartItem(sku_id,cart_id,quantity) values(:sku_id,:cart_id,:quantity)");
+        query.setParameter("sku_id",cartItem.getSkuEntity().getSkuId());
         query.setParameter("cart_id",cartItem.getCartEntity().getId());
         query.setParameter("quantity",cartItem.getQuantity());
         try{
