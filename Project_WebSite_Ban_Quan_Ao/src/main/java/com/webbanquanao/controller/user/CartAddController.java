@@ -1,14 +1,8 @@
 package com.webbanquanao.controller.user;
 
 import com.webbanquanao.model.*;
-import com.webbanquanao.service.CartItemService;
-import com.webbanquanao.service.CartService;
-import com.webbanquanao.service.ProductService;
-import com.webbanquanao.service.UserService;
-import com.webbanquanao.service.impl.CartItemServiceImpl;
-import com.webbanquanao.service.impl.CartServiceImpl;
-import com.webbanquanao.service.impl.ProductServiceImpl;
-import com.webbanquanao.service.impl.UserServiceImpl;
+import com.webbanquanao.service.*;
+import com.webbanquanao.service.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,85 +20,58 @@ public class CartAddController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     CartService cartService = new CartServiceImpl();
     CartItemService cartItemService = new CartItemServiceImpl();
+    ColorService colorService = new ColorServiceImpl();
+    SizeService sizeService = new SizeServiceImpl();
+    SkuService skuService = new SkuServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-/*        String pId = req.getParameter("pId");
-//        String quantity = req.getParameter("quantity");
-        ProductEntity product = productService.get(Integer.parseInt(pId));
-        CartitemEntity cartItem = new CartitemEntity();
-//        cartItem.setQuantity(Integer.parseInt(quantity));
-        cartItem.setUnitPrice(product.getPrice());
-                cartItem.setProductEntity(product);
-
-        HttpSession httpSession = req.getSession();
-        Object obj = httpSession.getAttribute("cart");
-        if (obj == null) {
-            Map<Integer, CartitemEntity> map = new HashMap<Integer, CartitemEntity>();
-            map.put(cartItem.getProductEntity().getId(), cartItem);
-            httpSession.setAttribute("cart", map);
-        } else {
-            Map<Integer, CartitemEntity> map = (Map<Integer, CartitemEntity>) obj;
-
-            CartitemEntity existedCartItem = map.get(Integer.valueOf(pId));
-
-            if (existedCartItem == null) {
-                map.put(product.getId(), cartItem);
-            } else {
-   //             existedCartItem.setQuantity(existedCartItem.getQuantity() + Integer.parseInt(quantity));
-            }
-
-            httpSession.setAttribute("cart", map);
-        }
-        /*
-         * if (obj != null) { CartItem cartItem = new CartItem();
-         * cartItem.setProduct(product); cartItem.setQuantity(1);
-         * cartItem.setUnitPrice(product.getPrice());
-         *
-         * Map<Integer, CartItem> map = new HashMap<Integer, CartItem>(); // Su dung map
-         * de luu va tim kiem nhanh hon map.put(cartItem.getProduct().getId(),
-         * cartItem);
-         *
-         * httpSession.setAttribute("cart", map);// luu vao session
-         *
-         * } else {
-         *
-         * Map<Integer, CartItem> map = (Map<Integer, CartItem>) obj; CartItem cartItem
-         * = map.get(product.getId()); // 1: Chua co san pham trong gio hang if
-         * (cartItem == null) { CartItem cartItems = new CartItem();
-         * cartItems.setProduct(product); cartItems.setQuantity(1);
-         * cartItems.setUnitPrice(product.getPrice());
-         *
-         * // Su dung map de luu va tim kiem nhanh hon
-         * map.put(cartItems.getProduct().getId(), cartItems);
-         *
-         * httpSession.setAttribute("cart", map);// luu vao session } else { // Truong
-         * hop da co roi cartItem.setQuantity(1 + cartItem.getQuantity());
-         *
-         * httpSession.setAttribute("cart", map); }
-
-        resp.sendRedirect(req.getContextPath() + "/member/cart");*/
         HttpSession httpSession = req.getSession();
         String email = (String) httpSession.getAttribute("email");
+
+        String color = (String) req.getParameter("color");
+        String size = (String) req.getParameter("size");
+
         UserService userService = new UserServiceImpl();
         int quantity = 1;
-        int id;
+        int p_id;
         if(req.getParameter("pId")!=null){
-            id = Integer.parseInt(req.getParameter("pId"));
-            ProductEntity productEntity = productService.get(id);
+            p_id = Integer.parseInt(req.getParameter("pId"));
+            ProductEntity productEntity = productService.get(p_id);
             if(productEntity!=null){
                 if(req.getParameter("quantity")!=null){
                     quantity = Integer.parseInt(req.getParameter("quantity"));
                 }
                 if(httpSession.getAttribute("cartEntity") == null){
+
+                    int color_id = colorService.getColorId(color);
+                    int size_id = sizeService.getSizeId(size);
+                    int maxquantity = skuService.getMaxQuantity(p_id,color_id,size_id);
+                    int sku_id = skuService.getSkuId(p_id,color_id,size_id);
+
+                    ColorEntity colorEntity = new ColorEntity();
+                    colorEntity.setColorId(color_id);
+                    colorEntity.setColorName(color);
+
+                    SizeEntity sizeEntity = new SizeEntity();
+                    sizeEntity.setSizeId(size_id);
+                    sizeEntity.setSizeName(size);
+
+                    SkuEntity skuEntity = new SkuEntity();
+                    skuEntity.setSkuId(sku_id);
+                    skuEntity.setProductEntity(productEntity);
+                    skuEntity.setColorEntity(colorEntity);
+                    skuEntity.setSizeEntity(sizeEntity);
+                    skuEntity.setQuantity(maxquantity);
+
                     CartEntity cartEntity = new CartEntity();
                     List<CartitemEntity> listCartItem =new ArrayList<CartitemEntity>();
+
                     CartitemEntity cartitemEntity = new CartitemEntity();
                     cartitemEntity.setQuantity(quantity);
-                    SkuEntity skuEntity = new SkuEntity();
-                    skuEntity.setProductEntity(productEntity);
                     cartitemEntity.setSkuEntity(skuEntity);
                     listCartItem.add(cartitemEntity);
+
                     cartEntity.setCartitemEntities(listCartItem);
                     long millis=System.currentTimeMillis();
                     java.sql.Date date=new java.sql.Date(millis);
@@ -130,17 +97,41 @@ public class CartAddController extends HttpServlet {
                     List<CartitemEntity> listCartItem = cartEntity.getCartitemEntities();
                     boolean check = false;
                     for(CartitemEntity cartitemEntity : listCartItem){
-                        if(cartitemEntity.getSkuEntity().getProductEntity().getId() == productEntity.getId()) {
-                            cartitemEntity.setQuantity(cartitemEntity.getQuantity() + quantity);
-                            if (email != null)
-                                cartItemService.edit(cartitemEntity);
+                        if(cartitemEntity.getSkuEntity().getProductEntity().getId() == productEntity.getId()){
+                            if(cartitemEntity.getQuantity()<cartitemEntity.getSkuEntity().getQuantity()) {
+                                cartitemEntity.setQuantity(cartitemEntity.getQuantity() + quantity);
+                                if (email != null)
+                                    cartItemService.edit(cartitemEntity);
+                            }
                             check = true;
                         }
                     }
                     if(check == false){
+
+                        int color_id = colorService.getColorId(color);
+                        int size_id = sizeService.getSizeId(size);
+                        int maxquantity = skuService.getMaxQuantity(p_id,color_id,size_id);
+                        int sku_id = skuService.getSkuId(p_id,color_id,size_id);
+
+                        ColorEntity colorEntity = new ColorEntity();
+                        colorEntity.setColorId(color_id);
+                        colorEntity.setColorName(color);
+
+                        SizeEntity sizeEntity = new SizeEntity();
+                        sizeEntity.setSizeId(size_id);
+                        sizeEntity.setSizeName(size);
+
+                        SkuEntity skuEntity = new SkuEntity();
+                        skuEntity.setSkuId(sku_id);
+                        skuEntity.setProductEntity(productEntity);
+                        skuEntity.setColorEntity(colorEntity);
+                        skuEntity.setSizeEntity(sizeEntity);
+                        skuEntity.setQuantity(maxquantity);
+
                         CartitemEntity cartitemEntity = new CartitemEntity();
                         cartitemEntity.setQuantity(quantity);
-                        cartitemEntity.getSkuEntity().setProductEntity(productEntity);
+
+                        cartitemEntity.setSkuEntity(skuEntity);
                         cartitemEntity.setCartEntity(cartEntity);
                         cartEntity.setCartitemEntities(listCartItem);
                         if(email!=null) {
@@ -148,7 +139,6 @@ public class CartAddController extends HttpServlet {
                             int idCartItem = cartItemService.getIDCartItem();
                             cartitemEntity.setId(idCartItem);
                         }
-
                         listCartItem.add(cartitemEntity);
                     }
                     httpSession.setAttribute("cartEntity",cartEntity);

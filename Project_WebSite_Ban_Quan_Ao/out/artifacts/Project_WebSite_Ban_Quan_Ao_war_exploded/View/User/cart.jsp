@@ -84,13 +84,13 @@
             <table class="table table-condensed">
                 <thead>
                 <tr class="cart_menu">
-                    <td>Number</td>
-                    <td>Image</td>
-                    <td>Name</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Total</td>
-                    <td>Delete</td>
+                    <td>STT</td>
+                    <td>Hình ảnh</td>
+                    <td>Tên sản phẩm</td>
+                    <td>Giá </td>
+                    <td>Số lượng</td>
+                    <td>Tổng tiền</td>
+                    <td>Xóa</td>
       <!--              <td class="image">Id</td>
                     <td class="description"></td>
                     <td class="price">Price</td>
@@ -109,27 +109,27 @@
                     <tr>
                         <td>${loop.count}</td>
                         <td class="cart_product">
-                            <a href=""><img height="200" width="200" src="${pageContext.request.contextPath}/image/${cartItem.getProductEntity().getImage()}" alt=""></a>
+                            <a href=""><img height="200" width="200" src="${pageContext.request.contextPath}/image/${cartItem.getSkuEntity().getProductEntity().getImage()}" alt=""></a>
                         </td>
                         <td class="cart_description">
-                            <input type="hidden" name="item_name_${loop.count}" value="${cartItem.getProductEntity().getName()}"/>
-                            <h4><a href="">${cartItem.getProductEntity().getName()}</a></h4>
-                            <p>Màu sắc: {}, size: ${size}</p>
+                            <input type="hidden" name="item_name_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getName()}"/>
+                            <h4><a href="">${cartItem.getSkuEntity().getProductEntity().getName()}</a></h4>
+                            <p>Màu sắc: ${cartItem.getSkuEntity().getColorEntity().getColorName()}, size: ${cartItem.getSkuEntity().getSizeEntity().getSizeName()}</p>
                         </td>
                         <td class="cart_price">
-                            <input type="hidden" name = "amount_${loop.count}" value="${cartItem.getProductEntity().getPrice()}"/>
-                            <h4>${cartItem.getProductEntity().getPrice()} VNĐ</h4>
+                            <input type="hidden" name = "amount_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getPrice()}"/>
+                            <h4>${cartItem.getSkuEntity().getProductEntity().getPrice()} VNĐ</h4>
                         </td>
                         <td class="cart_quantity">
-                            <input type="hidden" name = "quantity_${loop.count}" value="${cartItem.getQuantity() }"/>
+                            <input type="hidden" name = "quantity_${loop.count}" value="${cartItem.getSkuEntity().getQuantity() }"/>
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href="${pageContext.request.contextPath}/member/cart/increaseOrDecrease?pId=${cartItem.getProductEntity().getId()}&&check=1"> + </a>
+                                <a class="cart_quantity_up" href="${pageContext.request.contextPath}/member/cart/increaseOrDecrease?pId=${cartItem.getSkuEntity().getProductEntity().getId()}&&check=1"> + </a>
                                 <input class="cart_quantity_input" type="text" name="quantity" value="${cartItem.getQuantity() }" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href="${pageContext.request.contextPath}/member/cart/increaseOrDecrease?pId=${cartItem.getProductEntity().getId()}&&check=0"> - </a>
+                                <a class="cart_quantity_down" href="${pageContext.request.contextPath}/member/cart/increaseOrDecrease?pId=${cartItem.getSkuEntity().getProductEntity().getId()}&&check=0"> - </a>
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price">${cartItem.getProductEntity().getPrice()*cartItem.getQuantity() } VND</p>
+                            <p class="cart_total_price">${cartItem.getSkuEntity().getProductEntity().getPrice()*cartItem.getQuantity() } VND</p>
                         </td>
                         <td class="cart_delete">
                             <a class="cart_quantity_delete" href="${pageContext.request.contextPath}/member/cart/remove?pId=${loop.index}"><i class="fa fa-times"></i></a>
@@ -144,7 +144,7 @@
             <h1>${total} VNĐ</h1>
         </div>
         <div class="float-right text-right">
-            <button class="btn btn-primary mb-4 btn-lg pl-5 pr-5" onclick="document.location='${pageContext.request.contextPath}/checkout'">Thanh toán</button>
+            <button class="btn btn-primary mb-4 btn-lg pl-5 pr-5" onclick="document.location='${pageContext.request.contextPath}/User/checkout'">Thanh toán</button>
        <!--     <input type="submit" class="btn btn-primary mb-4 btn-lg pl-5 pr-5" value="Checkout"/>-->
         </div>
         </form>

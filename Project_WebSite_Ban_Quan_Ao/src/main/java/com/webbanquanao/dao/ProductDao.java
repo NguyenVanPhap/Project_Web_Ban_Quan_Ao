@@ -3,6 +3,7 @@ package com.webbanquanao.dao;
 import com.webbanquanao.model.ProductEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductDao {
     void insert(ProductEntity product);
@@ -28,4 +29,6 @@ public interface ProductDao {
     List<ProductEntity> getByPageAndPrice(double priceStart,double priceEnd,int offset, int limit);
 
     List<ProductEntity> searchByPageAndCategory(String cate_name,int offset, int limit);
+
+    Object[] searchByProperties(List<Object> map, int offset, int limit);
 }

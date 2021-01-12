@@ -13,4 +13,6 @@ public interface ColorService {
     void delete(int id);
     ColorEntity get(int id);
     List<ColorEntity> getAll();
+
+    int getColorId(String color_name);
 }

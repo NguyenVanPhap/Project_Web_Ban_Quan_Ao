@@ -4,6 +4,8 @@ import com.webbanquanao.dao.ColorDao;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.ColorEntity;
 import com.webbanquanao.model.SizeEntity;
+import org.hibernate.Session;
+import org.hibernate.type.IntegerType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -89,5 +91,23 @@ public class ColorDaoImpl implements ColorDao {
             em.close();
         }
         return colorEntities;
+    }
+
+    @Override
+    public int getColorId(String color_name){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "Select color_id From color Where color_name = '" + color_name + "'";
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        int id;
+
+        try{
+            id = (int) getSession.createSQLQuery(qString).addScalar("color_id",new IntegerType()).uniqueResult();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
+        return id;
     }
 }

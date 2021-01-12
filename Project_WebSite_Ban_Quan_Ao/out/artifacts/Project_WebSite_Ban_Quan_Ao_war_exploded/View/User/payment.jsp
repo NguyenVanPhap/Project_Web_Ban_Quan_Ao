@@ -128,33 +128,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="center_column" class="center_column">
             <div class="row">
                 <div id="left_column" class="column col-sm-12 col-md-12">
-                    <form class="form-horizontal" action="/ThanhToan/StepEnd" method="post">
+                    <form class="form-horizontal" action="/payment" method="get">
                         <div class="col-sm-6 col-md-6">
                             <div class="detail_ct">
                                 <legend>THÔNG TIN LIÊN HỆ</legend>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Họ và tên *</label>
                                     <div class="col-lg-8">
-                                        <input type="text" required name="HoTenKH" class="form-control input-sm field" style="width:300px;" value="">
+                                        <input type="text" required name="fullname" class="form-control input-sm field" style="width:300px;" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Email</label>
                                     <div class="col-lg-8">
-                                        <input type="email" required placeholder="Không bắt buộc" class="form-control input-sm field" name="EmailKH" style="width:300px;" value="">
+                                        <input type="email" required placeholder="Không bắt buộc" class="form-control input-sm field" name="email" style="width:300px;" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Số điện thoại *</label>
                                     <div class="col-lg-8">
-                                        <input type="text" required class="form-control input-sm field" id="phone" name="DienThoai" style="width:300px;" value="">
+                                        <input type="text" required class="form-control input-sm field" id="phone" name="phone" style="width:300px;" value="">
                                     </div>
                                 </div>
                                 <legend>ĐỊA CHỈ GIAO HÀNG</legend>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Địa chỉ</label>
                                     <div class="col-lg-8">
-                                        <textarea required class="form-control input-sm field" placeholder="Vui lòng ghi địa chỉ chi tiết..." name="DiaChiKH" rows="5" style="height:50px;"></textarea>
+                                        <textarea required class="form-control input-sm field" placeholder="Vui lòng ghi địa chỉ chi tiết..." name="address" rows="5" style="height:50px;"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -168,11 +168,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <label class="col-lg-4 control-label">Hình thức thanh toán</label>
                                     <div class="col-lg-8">
                                         <div>
-                                            <input type="radio" id="online" name="check" value="online" checked>
+                                            <input type="radio" id="online" name="optionPayment" value="online" checked>
                                             <label for="online" style="color: #696763">Trực tuyến</label>
                                         </div>
                                         <div>
-                                            <input type="radio" id="offline" name="check" value="offline">
+                                            <input type="radio" id="offline" name="optionPayment" value="offline">
                                             <label for="offline" style="color: #696763">Trả khi nhận hàng</label>
                                         </div>
                                     </div>
@@ -195,16 +195,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <c:forEach items="${cartEntity.getCartitemEntities()}" var="cartItem">
                                 <tr style="border-top:1px solid #999;">
                                     <td>
-                                        <img src="${pageContext.request.contextPath}/image/${cartItem.getProductEntity().getImage()}" width="48">
+                                        <img src="${pageContext.request.contextPath}/image/${cartItem.getSkuEntity().getProductEntity().getImage()}" width="48">
                                     </td>
                                     <td>
                                         <strong>
-                                                ${cartItem.getProductEntity().getName()}
+                                                ${cartItem.getSkuEntity().getProductEntity().getName()}
                                         </strong>
                                     </td>
                                     <td>${cartItem.getQuantity() }</td>
-                                    <td>${cartItem.getProductEntity().getPrice()} VNĐ</td>
-                                    <td>${cartItem.getProductEntity().getPrice()*cartItem.getQuantity() } VNĐ</td>
+                                    <td>${cartItem.getSkuEntity().getProductEntity().getPrice()} VNĐ</td>
+                                    <td>${cartItem.getSkuEntity().getProductEntity().getPrice()*cartItem.getQuantity() } VNĐ</td>
                                 </tr>
                                 </c:forEach>
                                 </tbody>

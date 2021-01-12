@@ -44,4 +44,7 @@ public class ColorServiceImpl implements ColorService {
     public List<ColorEntity> getAll() {
         return colorDao.getAll();
     }
+
+    @Override
+    public int getColorId(String color_name) { return colorDao.getColorId(color_name); }
 }

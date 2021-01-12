@@ -44,4 +44,7 @@ public class SizeServiceImpl implements SizeService {
     public List<SizeEntity> getAll() {
         return sizeDao.getAll();
     }
+
+    @Override
+    public int getSizeId(String size_name) { return sizeDao.getSizeId(size_name); }
 }

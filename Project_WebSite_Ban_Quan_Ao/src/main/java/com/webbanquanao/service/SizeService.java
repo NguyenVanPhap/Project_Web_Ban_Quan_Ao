@@ -12,4 +12,6 @@ public interface SizeService {
     void delete(int id);
     SizeEntity get(int id);
     List<SizeEntity> getAll();
+
+    int getSizeId(String size_name);
 }
