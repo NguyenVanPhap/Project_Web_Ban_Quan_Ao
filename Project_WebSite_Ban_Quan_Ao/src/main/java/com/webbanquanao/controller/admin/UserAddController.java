@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -28,8 +29,15 @@ import static org.hibernate.sql.InFragment.NULL;
 public class UserAddController extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        String email = session.getAttribute("email").toString();
+        List<UserEntity> user = userService.search(email);
+        user.forEach((u -> {
+            req.setAttribute("user", u.getUserName());
+        }));
         String eString = req.getParameter("e");
         if (eString != null) {
             if (eString.equals("1")) {
@@ -67,7 +75,7 @@ public class UserAddController extends HttpServlet {
                         Pattern pattern = Pattern.compile("^(.+)@(.+)$");
                         if(!pattern.matcher(item.getString()).matches())
                         {
-                            req.getSession().setAttribute("emailError", "You must enter email in format xxx-xxx-xxxx");
+                            req.getSession().setAttribute("emailError", "You must enter email in format x@x.x");
                             url = "0";
                         }
                         else {
@@ -106,7 +114,32 @@ public class UserAddController extends HttpServlet {
 
                     req.getSession().setAttribute("address",item.getString());
                     user.setAddress(item.getString());
-                } else if (item.getFieldName().equals("permission")) {
+                }
+                else if (item.getFieldName().equals("phone"))
+                {
+
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("phoneError", "Enter your phone");
+                        url = "0";
+                    }
+                    else
+                    {
+                        Pattern pattern = Pattern.compile("[0-9]{3}[0-9]{3}[0-9]{4}");
+                        if(!pattern.matcher(item.getString()).matches())
+                        {
+                            req.getSession().setAttribute("phoneError", "You must enter phone in format xxx-xxx-xxxx");
+                            url = "0";
+                        }
+                        else {
+                            req.getSession().setAttribute("phoneError", null);
+                        }
+
+                    }
+                    req.getSession().setAttribute("phone",item.getString());
+                    user.setPhone(item.getString());
+                }
+                else if (item.getFieldName().equals("permission")) {
                     req.getSession().setAttribute("permission",Integer.parseInt(item.getString()));
                     user.setPermission(Integer.parseInt(item.getString()));;
                 } else if (item.getFieldName().equals("avatar")) {

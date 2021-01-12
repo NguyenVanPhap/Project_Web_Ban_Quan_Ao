@@ -1,8 +1,11 @@
 package com.webbanquanao.controller.admin;
 
 import com.webbanquanao.model.CategoryEntity;
+import com.webbanquanao.model.UserEntity;
 import com.webbanquanao.service.CategoryService;
+import com.webbanquanao.service.UserService;
 import com.webbanquanao.service.impl.CategoryServiceImpl;
+import com.webbanquanao.service.impl.UserServiceImpl;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -15,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -22,9 +26,16 @@ import java.util.List;
 @WebServlet(urlPatterns = { "/admin/category/edit" })
 public class CategoryEditController extends HttpServlet {
     CategoryService cateService = new CategoryServiceImpl();
+    UserService userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String email = session.getAttribute("email").toString();
+        List<UserEntity> user = userService.search(email);
+        user.forEach((u -> {
+            request.setAttribute("user", u.getUserName());
+        }));
         String id = request.getParameter("id");
         CategoryEntity category = cateService.get(Integer.parseInt(id));
 

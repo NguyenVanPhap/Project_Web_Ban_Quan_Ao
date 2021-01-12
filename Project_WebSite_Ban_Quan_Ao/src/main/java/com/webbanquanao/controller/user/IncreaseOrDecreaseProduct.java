@@ -36,7 +36,7 @@ public class IncreaseOrDecreaseProduct extends HttpServlet {
             List<CartitemEntity> listCartItem = cartEntity.getCartitemEntities();
             if(check ==0) {
                 for (CartitemEntity cartitemEntity : listCartItem) {
-                    if (cartitemEntity.getProductEntity().getId() == productEntity.getId() && cartitemEntity.getQuantity() > 1) {
+                    if (cartitemEntity.getSkuEntity().getProductEntity().getId() == productEntity.getId() && cartitemEntity.getQuantity() > 1) {
                         cartitemEntity.setQuantity(cartitemEntity.getQuantity() - quantity);
                         cartItemService.edit(cartitemEntity);
                         break;
@@ -45,7 +45,7 @@ public class IncreaseOrDecreaseProduct extends HttpServlet {
             }
             else {
                 for (CartitemEntity cartitemEntity : listCartItem) {
-                    if (cartitemEntity.getProductEntity().getId() == productEntity.getId()) {
+                    if (cartitemEntity.getSkuEntity().getProductEntity().getId() == productEntity.getId()) {
                         cartitemEntity.setQuantity(cartitemEntity.getQuantity() + quantity);
                         cartItemService.edit(cartitemEntity);
                         break;

@@ -1,9 +1,6 @@
 package com.webbanquanao.controller.user;
 
-import com.webbanquanao.model.CartEntity;
-import com.webbanquanao.model.CartitemEntity;
-import com.webbanquanao.model.ProductEntity;
-import com.webbanquanao.model.UserEntity;
+import com.webbanquanao.model.*;
 import com.webbanquanao.service.CartItemService;
 import com.webbanquanao.service.CartService;
 import com.webbanquanao.service.ProductService;
@@ -92,7 +89,7 @@ public class CartAddController extends HttpServlet {
         UserService userService = new UserServiceImpl();
         int quantity = 1;
         int id;
-        if(req.getParameter("pId")!=null && email!=null){
+        if(req.getParameter("pId")!=null){
             id = Integer.parseInt(req.getParameter("pId"));
             ProductEntity productEntity = productService.get(id);
             if(productEntity!=null){
@@ -104,23 +101,27 @@ public class CartAddController extends HttpServlet {
                     List<CartitemEntity> listCartItem =new ArrayList<CartitemEntity>();
                     CartitemEntity cartitemEntity = new CartitemEntity();
                     cartitemEntity.setQuantity(quantity);
-                    cartitemEntity.setProductEntity(productEntity);
+                    SkuEntity skuEntity = new SkuEntity();
+                    skuEntity.setProductEntity(productEntity);
+                    cartitemEntity.setSkuEntity(skuEntity);
                     listCartItem.add(cartitemEntity);
                     cartEntity.setCartitemEntities(listCartItem);
                     long millis=System.currentTimeMillis();
                     java.sql.Date date=new java.sql.Date(millis);
                     cartEntity.setBuyDate(date);
                     cartEntity.setAction(false);
-                    UserEntity userEntity = userService.getUser(email);
-                    cartEntity.setUserEntity(userEntity);
-                    cartService.insert(cartEntity);
-                    int idCart = cartService.getIDCart();
-                    cartEntity.setId(idCart);
+                    if(email!=null) {
+                        UserEntity userEntity = userService.getUser(email);
+                        cartEntity.setUserEntity(userEntity);
+                        cartService.insert(cartEntity);
+                        int idCart = cartService.getIDCart();
+                        cartEntity.setId(idCart);
 
-                    cartitemEntity.setCartEntity(cartEntity);
-                    cartItemService.insert(cartitemEntity);
-                    int idCartItem = cartItemService.getIDCartItem();
-                    cartitemEntity.setId(idCartItem);
+                        cartitemEntity.setCartEntity(cartEntity);
+                        cartItemService.insert(cartitemEntity);
+                        int idCartItem = cartItemService.getIDCartItem();
+                        cartitemEntity.setId(idCartItem);
+                    }
 
                     httpSession.setAttribute("cartEntity",cartEntity);
                 }
@@ -129,21 +130,24 @@ public class CartAddController extends HttpServlet {
                     List<CartitemEntity> listCartItem = cartEntity.getCartitemEntities();
                     boolean check = false;
                     for(CartitemEntity cartitemEntity : listCartItem){
-                        if(cartitemEntity.getProductEntity().getId() == productEntity.getId()){
+                        if(cartitemEntity.getSkuEntity().getProductEntity().getId() == productEntity.getId()) {
                             cartitemEntity.setQuantity(cartitemEntity.getQuantity() + quantity);
-                            cartItemService.edit(cartitemEntity);
+                            if (email != null)
+                                cartItemService.edit(cartitemEntity);
                             check = true;
                         }
                     }
                     if(check == false){
                         CartitemEntity cartitemEntity = new CartitemEntity();
                         cartitemEntity.setQuantity(quantity);
-                        cartitemEntity.setProductEntity(productEntity);
+                        cartitemEntity.getSkuEntity().setProductEntity(productEntity);
                         cartitemEntity.setCartEntity(cartEntity);
                         cartEntity.setCartitemEntities(listCartItem);
-                        cartItemService.insert(cartitemEntity);
-                        int idCartItem = cartItemService.getIDCartItem();
-                        cartitemEntity.setId(idCartItem);
+                        if(email!=null) {
+                            cartItemService.insert(cartitemEntity);
+                            int idCartItem = cartItemService.getIDCartItem();
+                            cartitemEntity.setId(idCartItem);
+                        }
 
                         listCartItem.add(cartitemEntity);
                     }
@@ -153,7 +157,7 @@ public class CartAddController extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/member/cart");
         }
         else {
-            resp.sendRedirect(req.getContextPath()+"/User/signin");
+            resp.sendRedirect(req.getContextPath()+"/member/cart");
         }
     }
 }

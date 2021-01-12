@@ -4,13 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user", schema = "web_ban_quan_ao", catalog = "")
+@Table(name = "user", schema = "web_ban_quan_ao")
 public class UserEntity {
     private int id;
     private String avatar;
     private String email;
     private String userName;
     private String password;
+    private String phone;
     private String address;
     private Integer permission;
 
@@ -65,6 +66,16 @@ public class UserEntity {
     }
 
     @Basic
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Basic
     @Column(name = "address")
     public String getAddress() {
         return address;
@@ -94,12 +105,13 @@ public class UserEntity {
                 Objects.equals(email, that.email) &&
                 Objects.equals(userName, that.userName) &&
                 Objects.equals(password, that.password) &&
+                Objects.equals(phone, that.phone) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(permission, that.permission);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, avatar, email, userName, password, address, permission);
+        return Objects.hash(id, avatar, email, userName, password, phone, address, permission);
     }
 }

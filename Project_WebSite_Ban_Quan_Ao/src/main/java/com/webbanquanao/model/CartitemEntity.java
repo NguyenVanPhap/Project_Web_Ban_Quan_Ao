@@ -14,12 +14,12 @@ public class CartitemEntity {
     private Integer quantity;
 
     @ManyToOne
-    @JoinColumn(name = "pro_id")
-    private ProductEntity productEntity;
+    @JoinColumn(name = "sku_id")
+    private SkuEntity skuEntity;
 
-    public ProductEntity getProductEntity(){ return productEntity; }
+    public SkuEntity getSkuEntity(){ return skuEntity; }
 
-    public void setProductEntity(ProductEntity productEntity){ this.productEntity = productEntity; }
+    public void setSkuEntity(SkuEntity skuEntity){ this.skuEntity = skuEntity; }
 
     @ManyToOne
     @JoinColumn(name = "cart_id")

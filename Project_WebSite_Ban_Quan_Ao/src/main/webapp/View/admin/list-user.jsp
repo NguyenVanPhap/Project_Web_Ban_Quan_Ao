@@ -1,8 +1,8 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <c:url value="/View/admin/Static" var="url"></c:url>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
@@ -70,6 +70,7 @@
                                         <th>Email</th>
                                         <th>User Name</th>
                                         <th>Address</th>
+                                        <th>Phone</th>
                                         <th>permission</th>
                                         <th>Action</th>
 
@@ -84,6 +85,7 @@
                                             <td>${user.getEmail() }</td>
                                             <td>${user.getUserName() }</td>
                                             <td>${user.getAddress() }</td>
+                                            <td>${user.getPhone() }</td>
                                             <td class="center"><c:choose>
                                                 <c:when test="${user.getPermission() ==1 }">
                                                     Admin

@@ -13,6 +13,7 @@ public interface SkuDao {
     void delete(int id);
     SkuEntity get(int id);
     List<SkuEntity> getAll();
+    boolean checkExistOption(int pro_id,int color_id, int size_id);
     List<SkuEntity> searchByProduct(int pro_id);
 
 }

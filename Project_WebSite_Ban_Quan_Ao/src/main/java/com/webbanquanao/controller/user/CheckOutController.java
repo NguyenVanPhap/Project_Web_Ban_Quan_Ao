@@ -20,15 +20,15 @@ public class CheckOutController extends HttpServlet {
     private ProductService productService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession httpSession = req.getSession();
+ /*       HttpSession httpSession = req.getSession();
         CartEntity cartEntity = (CartEntity) httpSession.getAttribute("cartEntity");
         cartEntity.setAction(true);
         cartService.edit(cartEntity);
         httpSession.removeAttribute("cartEntity");
         double total = 0;
         httpSession.setAttribute("total",total);
-  //      httpSession.setAttribute("cartEntity",cartEntity);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/cart.jsp");
+  //      httpSession.setAttribute("cartEntity",cartEntity);*/
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/payment.jsp");
         dispatcher.forward(req, resp);
     }
 }

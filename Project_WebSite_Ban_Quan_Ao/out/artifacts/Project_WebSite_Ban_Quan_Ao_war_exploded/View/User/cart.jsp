@@ -74,11 +74,11 @@
         <c:set var="returnurl" scope="session" value="http://localhost:8080/Project_WebSite_Ban_Quan_Ao_war_exploded/checkout"/>
         <c:set var="business" scope="session" value="chuShop@gmail.com"/>
 
-        <form action="${posturl}" method="POST">
+<!--        <form action="${posturl}" method="POST">
             <input type="hidden" name="upload" value="1"/>
             <input type="hidden" name="return" value="${returnurl}"/>
             <input type="hidden" name="cmd" value="_cart"/>
-            <input type="hidden" name="business" value="${business}"/>
+            <input type="hidden" name="business" value="${business}"/>-->
 
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
@@ -114,7 +114,7 @@
                         <td class="cart_description">
                             <input type="hidden" name="item_name_${loop.count}" value="${cartItem.getProductEntity().getName()}"/>
                             <h4><a href="">${cartItem.getProductEntity().getName()}</a></h4>
-                            <p>${cartItem.getProductEntity().getDes() }</p>
+                            <p>Màu sắc: {}, size: ${size}</p>
                         </td>
                         <td class="cart_price">
                             <input type="hidden" name = "amount_${loop.count}" value="${cartItem.getProductEntity().getPrice()}"/>
@@ -144,7 +144,8 @@
             <h1>${total} VNĐ</h1>
         </div>
         <div class="float-right text-right">
-            <input type="submit" class="btn btn-primary mb-4 btn-lg pl-5 pr-5" value="Checkout"/>
+            <button class="btn btn-primary mb-4 btn-lg pl-5 pr-5" onclick="document.location='${pageContext.request.contextPath}/checkout'">Thanh toán</button>
+       <!--     <input type="submit" class="btn btn-primary mb-4 btn-lg pl-5 pr-5" value="Checkout"/>-->
         </div>
         </form>
     </div>
