@@ -70,6 +70,7 @@
                                         <th>Email</th>
                                         <th>User Name</th>
                                         <th>Address</th>
+                                        <th>Phone</th>
                                         <th>permission</th>
                                         <th>Action</th>
 
@@ -84,6 +85,7 @@
                                             <td>${user.getEmail() }</td>
                                             <td>${user.getUserName() }</td>
                                             <td>${user.getAddress() }</td>
+                                            <td>${user.getPhone() }</td>
                                             <td class="center"><c:choose>
                                                 <c:when test="${user.getPermission() ==1 }">
                                                     Admin

@@ -105,9 +105,33 @@ public class UserEditController extends HttpServlet {
                     }
 
                     user.setPassword(item.getString());
-                }else if (item.getFieldName().equals("address")) {
+                }
+                if (item.getFieldName().equals("phone")) {
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("phoneError", "Enter your phone");
+                        url = "0";
+                    }
+                    else
+                    {
+                        Pattern pattern = Pattern.compile("[0-9]{10}");
+                        if(!pattern.matcher(item.getString()).matches())
+                        {
+                            req.getSession().setAttribute("phoneError", "You must enter phone in format xxxxxxxxxx");
+                            url = "0";
+                        }
+                        else {
+                            req.getSession().setAttribute("phoneError", null);
+                        }
+
+                    }
+                    user.setPhone(item.getString());
+                }
+                else if (item.getFieldName().equals("address")) {
                     user.setAddress(item.getString());
-                } else if (item.getFieldName().equals("permission")) {
+                }
+
+                else if (item.getFieldName().equals("permission")) {
                     user.setPermission(Integer.parseInt(item.getString()));;
                 } else if (item.getFieldName().equals("avatar"))
                 {

@@ -81,6 +81,15 @@
 
 										</div>
 										<div class="form-group">
+											<label>Phone:</label>
+											<c:if test="${not empty phoneError}">
+												<a><p style="color: red"><c:out value="${phoneError}" /></p></a>
+											</c:if>
+											<input class="form-control" type="textbox" placeholder="Please enter your phone" name="phone"
+												   value="${phone}"
+											/>
+										</div>
+										<div class="form-group">
 											<label>Role</label>
 											<div class="checkbox">
 												<label> <input type="radio" value="1" name="permission"
