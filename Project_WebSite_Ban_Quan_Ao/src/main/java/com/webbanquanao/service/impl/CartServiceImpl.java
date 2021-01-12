@@ -53,4 +53,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<CartitemEntity> getCart(int u_id) { return cartDao.getCart(u_id); }
+
+    @Override
+    public void UpdateCustomer(int id, int c_id) { cartDao.UpdateCustomer(id,c_id); }
 }
