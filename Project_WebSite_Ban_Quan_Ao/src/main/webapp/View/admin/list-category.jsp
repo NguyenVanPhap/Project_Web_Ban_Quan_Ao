@@ -12,7 +12,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Management</title>
+    <title>Category Management</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="${url}/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -44,8 +44,8 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>List User</h2>
-                    <h5>You can edit , add, delete User</h5>
+                    <h2>List Category</h2>
+                    <h5>You can edit , add, delete Category</h5>
 
                 </div>
             </div>
