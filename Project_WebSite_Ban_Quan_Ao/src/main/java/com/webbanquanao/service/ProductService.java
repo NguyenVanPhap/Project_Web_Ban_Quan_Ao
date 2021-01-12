@@ -4,6 +4,7 @@ import clojure.lang.Obj;
 import com.webbanquanao.model.ProductEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService {
     void insert(ProductEntity product);
@@ -29,4 +30,6 @@ public interface ProductService {
     List<ProductEntity> getByPageAndPrice(double priceStart,double priceEnd,int offset, int limit);
 
     List<ProductEntity> searchByPageAndCategory(String cate_name,int offset, int limit);
+
+    public Object[] searchByProperties(List<Object> map,int offset, int limit);
 }

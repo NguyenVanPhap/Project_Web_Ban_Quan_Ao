@@ -29,6 +29,16 @@ public class WelcomeHome extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        Reset value
+        HttpSession sessProperty = request.getSession();
+        sessProperty.setAttribute("cate_id",0);
+        sessProperty.setAttribute("color_id",0);
+        sessProperty.setAttribute("size_id",0);
+        sessProperty.setAttribute("startPrice",0);
+        sessProperty.setAttribute("endPrice",10000000);
+        sessProperty.setAttribute("page",1);
+
+
         List<ProductEntity> productList = productService.getAll();
         List<CategoryEntity> cateList = cateService.getAll();
         request.setAttribute("cateList",cateList);
