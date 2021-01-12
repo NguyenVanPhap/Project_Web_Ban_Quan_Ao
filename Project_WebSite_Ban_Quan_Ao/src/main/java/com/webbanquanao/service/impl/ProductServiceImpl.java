@@ -7,6 +7,7 @@ import com.webbanquanao.service.ProductService;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 public class ProductServiceImpl implements ProductService {
     ProductDao productDao = new ProductDaoImpl();
@@ -88,5 +89,9 @@ public class ProductServiceImpl implements ProductService {
 
     public List<ProductEntity> searchByPageAndCategory(String cate_name,int offset, int limit){
         return productDao.searchByPageAndCategory(cate_name,offset,limit);
+    }
+
+    public Object[] searchByProperties(List<Object> map, int offset, int limit){
+        return productDao.searchByProperties(map,offset,limit);
     }
 }
