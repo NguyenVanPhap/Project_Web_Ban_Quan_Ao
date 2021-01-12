@@ -75,7 +75,7 @@ public class UserAddController extends HttpServlet {
                         Pattern pattern = Pattern.compile("^(.+)@(.+)$");
                         if(!pattern.matcher(item.getString()).matches())
                         {
-                            req.getSession().setAttribute("emailError", "You must enter email in format xxx-xxx-xxxx");
+                            req.getSession().setAttribute("emailError", "You must enter email in format x@x.x");
                             url = "0";
                         }
                         else {
@@ -114,7 +114,32 @@ public class UserAddController extends HttpServlet {
 
                     req.getSession().setAttribute("address",item.getString());
                     user.setAddress(item.getString());
-                } else if (item.getFieldName().equals("permission")) {
+                }
+                else if (item.getFieldName().equals("phone"))
+                {
+
+                    if(item.getString().equals(""))
+                    {
+                        req.getSession().setAttribute("phoneError", "Enter your phone");
+                        url = "0";
+                    }
+                    else
+                    {
+                        Pattern pattern = Pattern.compile("[0-9]{3}[0-9]{3}[0-9]{4}");
+                        if(!pattern.matcher(item.getString()).matches())
+                        {
+                            req.getSession().setAttribute("phoneError", "You must enter phone in format xxx-xxx-xxxx");
+                            url = "0";
+                        }
+                        else {
+                            req.getSession().setAttribute("phoneError", null);
+                        }
+
+                    }
+                    req.getSession().setAttribute("phone",item.getString());
+                    user.setPhone(item.getString());
+                }
+                else if (item.getFieldName().equals("permission")) {
                     req.getSession().setAttribute("permission",Integer.parseInt(item.getString()));
                     user.setPermission(Integer.parseInt(item.getString()));;
                 } else if (item.getFieldName().equals("avatar")) {

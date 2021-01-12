@@ -88,6 +88,14 @@
 											<label>Address:</label> <input class="form-control"
 																		   value="${users.address }" name="address" />
 										</div>
+										<div class="form-group">
+											<label>Phone:</label>
+											<c:if test="${not empty phoneError}">
+												<a><p style="color: red"><c:out value="${phoneError}" /></p></a>
+											</c:if>
+											<input class="form-control"
+												   value="${users.phone }" name="phone" />
+										</div>
 
 										<div class="form-group">
 											<label>Role</label>
