@@ -15,6 +15,8 @@ public interface CartItemService {
 
     List<CartitemEntity> getAll();
 
+    List<CartitemEntity> getByCartId(int id);
+
     List<CartitemEntity> search(String keyword);
 
     int getIDCartItem();

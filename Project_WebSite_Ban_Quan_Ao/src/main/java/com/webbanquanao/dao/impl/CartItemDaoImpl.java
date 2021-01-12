@@ -11,6 +11,8 @@ import org.hibernate.type.IntegerType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartItemDaoImpl implements CartItemDao {
@@ -167,7 +169,35 @@ public class CartItemDaoImpl implements CartItemDao {
             e.printStackTrace();
         }
         return cartItemList;*/
-        return null;
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM CartitemEntity ";
+        TypedQuery<CartitemEntity> q = em.createQuery(qString,CartitemEntity.class);
+
+        List<CartitemEntity> cartItemList = new ArrayList<CartitemEntity>();
+        try{
+            cartItemList = q.getResultList();
+            if(cartItemList == null || cartItemList.isEmpty())
+                cartItemList= null;
+        }finally {
+            em.close();
+        }
+        return cartItemList;
+    }
+    @Override
+    public List<CartitemEntity> getByCartId(int id) {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM CartitemEntity C where C.cartEntity.id =: id";
+        TypedQuery<CartitemEntity> q = em.createQuery(qString,CartitemEntity.class);
+        q.setParameter("id",id);
+        List<CartitemEntity> cartItemList = new ArrayList<CartitemEntity>();
+        try{
+            cartItemList = q.getResultList();
+            if(cartItemList == null || cartItemList.isEmpty())
+                cartItemList= null;
+        }finally {
+            em.close();
+        }
+        return cartItemList;
     }
 
     public List<CartitemEntity> search(String name) {
