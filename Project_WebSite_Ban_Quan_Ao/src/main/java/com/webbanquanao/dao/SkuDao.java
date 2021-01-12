@@ -16,4 +16,7 @@ public interface SkuDao {
     boolean checkExistOption(int pro_id,int color_id, int size_id);
     List<SkuEntity> searchByProduct(int pro_id);
 
+    int getSkuId(int p_id, int color_id, int size_id);
+
+    int getMaxQuantity(int p_id, int color_id, int size_id);
 }

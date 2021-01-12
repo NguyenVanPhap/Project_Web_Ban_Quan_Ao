@@ -51,4 +51,10 @@ public class SkuServiceImpl implements SkuService {
     public List<SkuEntity> searchByProduct(int pro_id) {
         return skuDao.searchByProduct(pro_id);
     }
+
+    @Override
+    public int getMaxQuantity(int p_id, int color_id, int size_id) { return  skuDao.getMaxQuantity(p_id,color_id,size_id); }
+
+    @Override
+    public int getSkuId(int p_id, int color_id, int size_id) { return skuDao.getSkuId(p_id, color_id, size_id); }
 }

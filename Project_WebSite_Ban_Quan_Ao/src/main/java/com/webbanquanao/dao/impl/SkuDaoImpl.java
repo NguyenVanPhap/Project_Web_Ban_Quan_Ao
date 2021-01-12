@@ -4,6 +4,8 @@ import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.dao.SkuDao;
 import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.model.SkuEntity;
+import org.hibernate.Session;
+import org.hibernate.type.IntegerType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -133,6 +135,41 @@ public class SkuDaoImpl implements SkuDao {
             em.close();
         }
         return skuEntities;
+    }
 
+    @Override
+    public int getMaxQuantity(int p_id, int color_id, int size_id){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "Select quantity From sku Where pro_id = " + p_id +" and color_id = " + color_id + " and size_id = " + size_id;
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        int quantity=0;
+
+        try{
+            quantity = (int) getSession.createSQLQuery(qString).addScalar("quantity",new IntegerType()).uniqueResult();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
+        return quantity;
+    }
+
+    @Override
+    public int getSkuId(int p_id, int color_id, int size_id){
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "Select SKU_id From sku Where pro_id = " + p_id +" and color_id = " + color_id + " and size_id = " + size_id;
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        int sku_id=0;
+
+        try{
+            sku_id = (int) getSession.createSQLQuery(qString).addScalar("SKU_id",new IntegerType()).uniqueResult();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
+        return sku_id;
     }
 }
