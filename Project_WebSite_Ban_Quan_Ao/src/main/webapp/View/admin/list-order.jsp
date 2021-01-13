@@ -84,17 +84,27 @@
 											<%--<td>${list.product.name }</td>
 											<td>${list.quantity }</td>
 											<td>$ ${list.product.price }</td>--%>
-											<td>2000</td>
-											<td class="center">Pending</td>
+											<td>
+												<c:forEach var="item" items="${cart.getCartitemEntities()}">
+													<c:set var="totalPrice"  value="${totalPrice+item.getQuantity() * item.getSkuEntity().getProductEntity().getPrice()}"></c:set>
+												</c:forEach>
+												${totalPrice} VNĐ
+												<c:set var="totalPrice" value="${0}"></c:set>
+											</td>
+											<td class="center">
+												<c:if test="${cart.status==0}">Đang xử lý</c:if>
+												<c:if test="${cart.status==1}">Đã duyệt</c:if>
+												<c:if test="${cart.status==2}">Đã nhận hàng </c:if>
+											</td>
 
 
 											<td>
 												<a
 														<%--href="<c:url value='/admin/order/edit?id=${list.id }'/>"--%>
-														class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Xem Chi Tiết</a> |
+														class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Detail</a> |
 												<a
-													href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-													class="center">Edit</a> | <a
+													href="<c:url value='/admin/order/update?id=${cart.id }'/>"
+													class="center">Change</a> | <a
 													href="<c:url value='/admin/order/delete?id=${cart.id }&type=admin'/>"
 													class="center">Delete
 											</a></td>

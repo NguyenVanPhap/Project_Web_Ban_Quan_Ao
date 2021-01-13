@@ -4,6 +4,7 @@ import com.webbanquanao.dao.CartDao;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
+import com.webbanquanao.model.ContactEntity;
 import com.webbanquanao.model.ProductEntity;
 import org.hibernate.Session;
 import org.hibernate.type.IntegerType;
@@ -103,7 +104,17 @@ public class CartDaoImpl implements CartDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }*/
-        return null;
+
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+
+        try{
+            CartEntity cart = em.find(CartEntity.class, id);
+            return cart;
+        }
+        finally {
+            em.close();
+        }
+
     }
 
     @Override
@@ -276,6 +287,23 @@ public class CartDaoImpl implements CartDao {
             query.executeUpdate();
             getSession.getTransaction().commit();
             getSession.close();
+        }
+        finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void updateStatus(CartEntity cart) {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+
+        try{
+            trans.begin();
+            em.merge(cart);
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
         }
         finally {
             em.close();
