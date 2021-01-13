@@ -140,8 +140,8 @@ public class UserEditController extends HttpServlet {
                         String originalFileName = item.getName();
                         Path path = Paths.get(originalFileName);
                         final String storepath = servletContext.getRealPath("image");
-                        System.out.println("File1: " + storepath + "\\" + path.getFileName());
-                        File file = new File(storepath + "\\" + path.getFileName());
+                        System.out.println("File1: " + storepath + File.separator + path.getFileName());
+                        File file = new File(storepath + File.separator + path.getFileName());
                         if (!file.exists() && !file.isDirectory()) {
                             item.write(file);
                         }

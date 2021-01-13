@@ -13,20 +13,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.webbanquanao.model.CategoryEntity;
-import com.webbanquanao.model.ProductEntity;
-import com.webbanquanao.model.SkuEntity;
-import com.webbanquanao.service.CategoryService;
-import com.webbanquanao.service.ProductService;
-import com.webbanquanao.service.SkuService;
-import com.webbanquanao.service.impl.CategoryServiceImpl;
-import com.webbanquanao.service.impl.ProductServiceImpl;
-import com.webbanquanao.service.impl.SkuServiceImpl;
+import com.webbanquanao.model.*;
+import com.webbanquanao.service.*;
+import com.webbanquanao.service.impl.*;
 
 @WebServlet(urlPatterns="/product/detail")
 public class ProductDetailController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     CategoryService categoryService = new CategoryServiceImpl();
+    SizeService sizeService=new SizeServiceImpl();
+    ColorService colorService=new ColorServiceImpl();
+    BrandService brandService = new BrandServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -65,6 +62,14 @@ public class ProductDetailController extends HttpServlet {
                 listsize.add(element.getSizeEntity().getSizeName());
             }
         });
+        List<SizeEntity> sizeEntityList=sizeService.getAll();
+        req.setAttribute("sizeList",sizeEntityList);
+
+        List<ColorEntity> colorEntityList=colorService.getAll();
+        req.setAttribute("colorList",colorEntityList);
+
+        List<BrandEntity> listBrand = brandService.getAll();
+        req.setAttribute("listBrand", listBrand);
 
         req.setAttribute("listSku", listSku);
         req.setAttribute("listColor", listcolor);

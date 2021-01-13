@@ -46,7 +46,7 @@ public class WelcomeHome extends HttpServlet {
         try {
             String cate=request.getParameter("cateid");
             if(cate!=null)
-                productList = productService.searchByCategory(cate);
+                productList = productService.searchByName(cate);
         }
         catch (Exception e)
         {}
