@@ -1,18 +1,9 @@
 package com.webbanquanao.controller.user;
 
 
-import com.webbanquanao.model.BrandEntity;
-import com.webbanquanao.model.CategoryEntity;
-import com.webbanquanao.model.ProductEntity;
-import com.webbanquanao.model.UserEntity;
-import com.webbanquanao.service.BrandService;
-import com.webbanquanao.service.CategoryService;
-import com.webbanquanao.service.ProductService;
-import com.webbanquanao.service.UserService;
-import com.webbanquanao.service.impl.BrandServiceImpl;
-import com.webbanquanao.service.impl.CategoryServiceImpl;
-import com.webbanquanao.service.impl.ProductServiceImpl;
-import com.webbanquanao.service.impl.UserServiceImpl;
+import com.webbanquanao.model.*;
+import com.webbanquanao.service.*;
+import com.webbanquanao.service.impl.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
