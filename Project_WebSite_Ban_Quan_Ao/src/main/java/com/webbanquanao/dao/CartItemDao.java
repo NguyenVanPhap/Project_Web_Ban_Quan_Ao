@@ -18,6 +18,8 @@ public interface CartItemDao {
 
     List<CartitemEntity> getAll();
 
+    List<CartitemEntity> getByCartId(int id);
+
     List<CartitemEntity> search(String name);
 
     int getIDCartItem();

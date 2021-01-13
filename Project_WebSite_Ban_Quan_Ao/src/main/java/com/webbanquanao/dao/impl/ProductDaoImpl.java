@@ -232,6 +232,9 @@ public class ProductDaoImpl implements ProductDao {
             qString+= " and Sku.sizeEntity.sizeId =:size_id ";
         }
         qString += "and Sku.productEntity.price >=:start_price and Sku.productEntity.price <=:end_price ";
+        if(value.get(5)!=null) {
+            qString += "and Sku.productEntity.brandEntity.brandId =:brand_id ";
+        }
         qString += "GROUP BY Sku.productEntity";
 //        Query q = em.createQuery(qString);
 
@@ -250,6 +253,9 @@ public class ProductDaoImpl implements ProductDao {
         if(value.get(3)!=null && value.get(4) !=null ) {
             q.setParameter("start_price",1.0*(int) value.get(3));
             q.setParameter("end_price",1.0*(int) value.get(4));
+        }
+        if (value.get(5)!=null) {
+            q.setParameter("brand_id",value.get(5));
         }
 
         List<ProductEntity> productListCount = new ArrayList<ProductEntity>();

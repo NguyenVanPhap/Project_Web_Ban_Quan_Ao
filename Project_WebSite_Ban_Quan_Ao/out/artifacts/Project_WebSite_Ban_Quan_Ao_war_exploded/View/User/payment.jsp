@@ -128,33 +128,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="center_column" class="center_column">
             <div class="row">
                 <div id="left_column" class="column col-sm-12 col-md-12">
-                    <form class="form-horizontal" action="/payment" method="get">
+                    <form class="form-horizontal" action="${pageContext.request.contextPath}/payment" method="get">
                         <div class="col-sm-6 col-md-6">
                             <div class="detail_ct">
                                 <legend>THÔNG TIN LIÊN HỆ</legend>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Họ và tên *</label>
                                     <div class="col-lg-8">
-                                        <input type="text" required name="fullname" class="form-control input-sm field" style="width:300px;" value="">
+                                        <input type="text" required name="fullname" class="form-control input-sm field" style="width:300px;" value="${cartEntity.getCustomerEntity().getFullname()}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Email</label>
                                     <div class="col-lg-8">
-                                        <input type="email" required placeholder="Không bắt buộc" class="form-control input-sm field" name="email" style="width:300px;" value="">
+                                        <input type="email" required placeholder="Không bắt buộc" class="form-control input-sm field" name="email" style="width:300px;" value="${cartEntity.getCustomerEntity().getEmail()}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Số điện thoại *</label>
                                     <div class="col-lg-8">
-                                        <input type="text" required class="form-control input-sm field" id="phone" name="phone" style="width:300px;" value="">
+                                        <input type="text" required class="form-control input-sm field" id="phone" name="phone" style="width:300px;" value="${cartEntity.getCustomerEntity().getPhone()}">
                                     </div>
                                 </div>
                                 <legend>ĐỊA CHỈ GIAO HÀNG</legend>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Địa chỉ</label>
                                     <div class="col-lg-8">
-                                        <textarea required class="form-control input-sm field" placeholder="Vui lòng ghi địa chỉ chi tiết..." name="address" rows="5" style="height:50px;"></textarea>
+                                        <textarea required class="form-control input-sm field"  placeholder="Vui lòng ghi địa chỉ chi tiết..." name="address" rows="5" style="height:50px;">${cartEntity.getCustomerEntity().getAddress()}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">

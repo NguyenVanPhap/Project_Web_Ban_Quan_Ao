@@ -33,6 +33,10 @@ public class CartItemServiceImpl implements CartItemService {
     public List<CartitemEntity> getAll() {
         return cartItemDao.getAll();
     }
+    @Override
+    public List<CartitemEntity> getByCartId(int id){
+        return cartItemDao.getByCartId(id);
+    }
 
     @Override
     public List<CartitemEntity> search(String keyword) {

@@ -29,6 +29,7 @@
             <property name="hibernate.connection.autocommit" value="false"/>
 
             <property name="hibernate.connection.username" value="root"/>
+
             <property name="hibernate.connection.password" value="@nvp111111"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>

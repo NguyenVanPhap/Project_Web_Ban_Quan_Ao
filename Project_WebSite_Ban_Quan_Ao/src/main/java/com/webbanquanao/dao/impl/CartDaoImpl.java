@@ -4,6 +4,7 @@ import com.webbanquanao.dao.CartDao;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
+import com.webbanquanao.model.ProductEntity;
 import org.hibernate.Session;
 import org.hibernate.type.IntegerType;
 
@@ -11,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartDaoImpl implements CartDao {
@@ -60,6 +62,11 @@ public class CartDaoImpl implements CartDao {
         try{
             CartEntity cart = em.find(CartEntity.class, id);
             trans.begin();
+//            CartitemEntity cartitemEntity = em.find(CartitemEntity.class,id);
+            String qString = "delete FROM CartitemEntity C WHERE C.cartEntity.id =:id";
+            Query q = em.createQuery(qString);
+            q.setParameter("id",id);
+            int result= q.executeUpdate();
             em.remove(em.merge(cart));
             trans.commit();
         }catch (Exception ex){
@@ -101,7 +108,7 @@ public class CartDaoImpl implements CartDao {
 
     @Override
     public List<CartEntity> getAll() {
- /*       List<Cart> cartList = new ArrayList<Cart>();
+        /*List<Cart> cartList = new ArrayList<Cart>();
         String sql = "SELECT cart.id, cart.buyDate, User.email, user.username, user.id AS user_id "
                 + "FROM cart INNER JOIN user " + "ON cart.id_user = user.id";
         Connection con = super.getJDBCConnection();
@@ -126,7 +133,20 @@ public class CartDaoImpl implements CartDao {
             e.printStackTrace();
         }
         return cartList;*/
-        return null;
+
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM CartEntity ";
+        TypedQuery<CartEntity> q = em.createQuery(qString,CartEntity.class);
+
+        List<CartEntity> cartList = new ArrayList<CartEntity>();
+        try{
+            cartList = q.getResultList();
+            if(cartList == null || cartList.isEmpty())
+                cartList= null;
+        }finally {
+            em.close();
+        }
+        return cartList;
     }
 
     public List<CartEntity> search(String name) {
@@ -223,8 +243,25 @@ public class CartDaoImpl implements CartDao {
         finally {
             em.close();
         }
-
-
         return resultList;
+    }
+
+    @Override
+    public void UpdateCustomer(int id, int c_id)
+    {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        Session getSession = em.unwrap(Session.class);
+        getSession.getTransaction().begin();
+        Query query = getSession.createSQLQuery("UPDATE Cart SET c_id = :c_id WHERE id = :id");
+        query.setParameter("id", id);
+        query.setParameter("c_id", c_id);;
+        try{
+            query.executeUpdate();
+            getSession.getTransaction().commit();
+            getSession.close();
+        }
+        finally {
+            em.close();
+        }
     }
 }

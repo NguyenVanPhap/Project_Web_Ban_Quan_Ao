@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		 pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <c:url value="/View/admin/Static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -60,9 +60,9 @@
 										<th>Buyer</th>
 										<th>Email</th>
 										<th>Date</th>
-										<th>Product</th>
+										<%--<th>Product</th>
 										<th>Quantity</th>
-										<th>Price</th>
+										<th>Price</th>--%>
 										<th>Sum</th>
 										<th>Status</th>
 										<th>Action</th>
@@ -73,26 +73,31 @@
 									<tbody>
 									</a>
 									<c:set var="index" value="${0}" />
-									<c:forEach items="${listCartItem }" var="list">
+									<c:forEach items="${listCart }" var="cart">
 										<tr class="odd gradeX">
 											<c:set var="index" value="${index + 1}" />
 											<td>${index }</td>
-											<td>${list.id }</td>
-											<td>${list.cart.buyer.username }</td>
-											<td>${list.cart.buyer.email }</td>
-											<td>${list.cart.buyDate }</td>
-											<td>${list.product.name }</td>
+											<td>${cart.id }</td>
+											<td>${cart.userEntity.userName }</td>
+											<td>${cart.userEntity.email }</td>
+											<td>${cart.buyDate }</td>
+											<%--<td>${list.product.name }</td>
 											<td>${list.quantity }</td>
-											<td>$ ${list.product.price }</td>
-											<td>$ ${ list.quantity * list.product.price }</td>
+											<td>$ ${list.product.price }</td>--%>
+											<td>2000</td>
 											<td class="center">Pending</td>
 
 
-											<td><a
+											<td>
+												<a
+														<%--href="<c:url value='/admin/order/edit?id=${list.id }'/>"--%>
+														class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Xem Chi Tiết</a> |
+												<a
 													href="<c:url value='/admin/order/edit?id=${list.id }'/>"
 													class="center">Edit</a> | <a
-													href="<c:url value='/admin/order/delete?id=${list.id }'/>"
-													class="center">Delete</a></td>
+													href="<c:url value='/admin/order/delete?id=${cart.id }'/>"
+													class="center">Delete
+											</a></td>
 
 										</tr>
 									</c:forEach>
@@ -103,6 +108,54 @@
 
 						</div>
 					</div>
+					<c:forEach items="${listCart}" var="cart">
+						<div class="modal fade" id="oderlist${cart.id}">
+							<div class="modal-dialog modal-dialog-centered modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">Chi  tiết đơn hàng</h4>
+									</div>
+									<div class="modal-body">
+										<table class="table table-condensed">
+											<thead>
+
+											<tr class="cart_menu">
+												<td class="image">Ảnh</td>
+												<td class="description">Tên Sản Phẩm</td>
+												<td>Màu sắc</td>
+												<td>Size</td>
+												<td class="price">Giá</td>
+												<td class="quantity">Số Lượng</td>
+												<td class="total">Tổng Tiền</td>
+											</tr>
+											</thead>
+											<tbody>
+											<c:forEach items="${cart.getCartitemEntities()}" var="item">
+												<c:url value="/image/${item.getSkuEntity().getProductEntity().getImage()}" var="imgUrl"></c:url>
+												<tr>
+													<td class="cart_product">
+														<img width="45px" height="45px" src="${imgUrl}" alt="#">
+													</td>
+													<td class="description">${item.getSkuEntity().getProductEntity().getName()}</td>
+													<td>${item.getSkuEntity().getColorEntity().getColorName()}</td>
+													<td>${item.getSkuEntity().getSizeEntity().getSizeName()}</td>
+													<td class="price">${item.getSkuEntity().getProductEntity().getPrice()}<span>VNĐ</span></td>
+													<td class="quantity">${item.getQuantity()}</td>
+													<td class="total">${item.getSkuEntity().getProductEntity().getPrice()*item.getQuantity()}<span>VNĐ</span></td>
+												</tr>
+											</c:forEach>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+										<button type="button" class="btn btn-success">OK</button>
+									</div>
+								</div>
+							</div>
+						</div> <!-- end modal -->
+					</c:forEach>
+
 					<!--End Advanced Tables -->
 				</div>
 			</div>

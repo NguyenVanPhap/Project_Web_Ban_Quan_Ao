@@ -19,6 +19,7 @@ import java.util.List;
 public class ProductListClientController extends HttpServlet {
 	ProductService productService = new ProductServiceImpl();
 	CategoryService cateService = new CategoryServiceImpl();
+	BrandService brandService = new BrandServiceImpl();
 	SizeService sizeService=new SizeServiceImpl();
 	ColorService colorService=new ColorServiceImpl();
 
@@ -51,6 +52,9 @@ public class ProductListClientController extends HttpServlet {
 
 
 		req.setAttribute("numOfPages",numOfPages);
+
+		List<BrandEntity> listBrand = brandService.getAll();
+		req.setAttribute("listBrand", listBrand);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/product.jsp");
 		dispatcher.forward(req, resp);
 	}

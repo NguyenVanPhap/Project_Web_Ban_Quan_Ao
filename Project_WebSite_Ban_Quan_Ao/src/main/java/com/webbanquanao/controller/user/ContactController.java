@@ -24,6 +24,9 @@ public class ContactController extends HttpServlet {
         contact.setMobile((String) req.getParameter("userPhone"));
         contact.setSubject((String) req.getParameter("userMsg"));
         contactService.insert(contact);
+        req.setAttribute("infoMsg","Đã gửi ý kiến phản hồi thành công");
         resp.sendRedirect(req.getContextPath() + "/View/User/contact.jsp");
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/contact.jsp");
+//        dispatcher.forward(req, resp);
     }
 }

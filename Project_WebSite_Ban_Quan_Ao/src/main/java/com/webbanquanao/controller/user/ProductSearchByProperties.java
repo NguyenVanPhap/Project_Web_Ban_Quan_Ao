@@ -1,6 +1,11 @@
 package com.webbanquanao.controller.user;
 
 import clojure.lang.Obj;
+import com.webbanquanao.model.BrandEntity;
+import com.webbanquanao.model.ProductEntity;
+import com.webbanquanao.service.BrandService;
+import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.impl.BrandServiceImpl;
 import com.webbanquanao.model.CategoryEntity;
 import com.webbanquanao.model.ColorEntity;
 import com.webbanquanao.model.ProductEntity;
@@ -26,6 +31,7 @@ import java.util.*;
 @WebServlet(urlPatterns="/product/searchByProperties")
 public class ProductSearchByProperties extends HttpServlet {
     ProductService productService  = new ProductServiceImpl();
+    BrandService brandService = new BrandServiceImpl();
     CategoryService cateService = new CategoryServiceImpl();
     SizeService sizeService=new SizeServiceImpl();
     ColorService colorService=new ColorServiceImpl();
@@ -38,16 +44,28 @@ public class ProductSearchByProperties extends HttpServlet {
         List<ColorEntity> colorEntityList=colorService.getAll();
         req.setAttribute("colorList",colorEntityList);
         HttpSession sessProperty = req.getSession();
+        String brandid=req.getParameter("brandid");
         String cateid= req.getParameter("cateid") ;
         String colorid = req.getParameter("colorid");
         String sizeid =req.getParameter("sizeid");
         String pageCurrent = req.getParameter("page");
         String startPrice = req.getParameter("startPrice");
         String endPrice = req.getParameter("endPrice");
+        if (brandid !=null) {
+            sessProperty.setAttribute("brand_id",Integer.parseInt(brandid));
+            sessProperty.setAttribute("cate_id",null);
+            sessProperty.setAttribute("color_id",0);
+            sessProperty.setAttribute("size_id",0);
+            sessProperty.setAttribute("startPrice",0);
+            sessProperty.setAttribute("endPrice",10000000);
+            sessProperty.setAttribute("page",1);
+        }
+
         List<CategoryEntity> cateList = cateService.getAll();
         req.setAttribute("cateList",cateList);
         if (cateid !=null) {
             sessProperty.setAttribute("cate_id",Integer.parseInt(cateid));
+            sessProperty.setAttribute("brand_id",0);
             sessProperty.setAttribute("color_id",0);
             sessProperty.setAttribute("size_id",0);
             sessProperty.setAttribute("startPrice",0);
@@ -55,6 +73,7 @@ public class ProductSearchByProperties extends HttpServlet {
             sessProperty.setAttribute("page",1);
         } else {
             if (sessProperty.getAttribute("cate_id")==null){
+
                 sessProperty.setAttribute("cate_id",0);
                 sessProperty.setAttribute("color_id",0);
                 sessProperty.setAttribute("size_id",0);
@@ -79,7 +98,7 @@ public class ProductSearchByProperties extends HttpServlet {
                 sessProperty.setAttribute("endPrice",Integer.parseInt(endPrice));
             }
         }
-
+        int brand_id = (int) sessProperty.getAttribute("brand_id");
         int cate_id= (int) sessProperty.getAttribute("cate_id");
         int color_id= (int)sessProperty.getAttribute("color_id");
         int size_id= (int)sessProperty.getAttribute("size_id");
@@ -93,6 +112,10 @@ public class ProductSearchByProperties extends HttpServlet {
         values.add(2,(size_id==0)?null:size_id);
         values.add(3,start_price);
         values.add(4,end_price);
+        values.add(5,(brand_id==0)?null:brand_id);
+//        map.put("cateId",null);
+//        map.put("colorId",1);
+//        map.put("sizeId",null);
 
 
         int litmit=9;
@@ -110,7 +133,8 @@ public class ProductSearchByProperties extends HttpServlet {
             numOfPages = numOfProducts/litmit+1;
         }
 
-
+        List<BrandEntity> listBrand = brandService.getAll();
+        req.setAttribute("listBrand", listBrand);
 
         List<ProductEntity> products = (List<ProductEntity>) obj[0];
         req.setAttribute("numOfPages",numOfPages);

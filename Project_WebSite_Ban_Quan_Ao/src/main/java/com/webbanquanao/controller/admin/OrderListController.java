@@ -1,5 +1,6 @@
 package com.webbanquanao.controller.admin;
 
+import com.webbanquanao.model.CartEntity;
 import com.webbanquanao.model.CartitemEntity;
 import com.webbanquanao.model.UserEntity;
 import com.webbanquanao.service.CartItemService;
@@ -32,8 +33,17 @@ public class OrderListController extends HttpServlet {
         user.forEach((u -> {
             request.setAttribute("user", u.getUserName());
         }));
-        List<CartitemEntity> listCartItem =cartItemService.getAll();
-        request.setAttribute("listCartItem", listCartItem);
+
+        List<CartEntity> listCart = cartService.getAll();
+
+        for(CartEntity cart : listCart) {
+            List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
+            cart.setCartitemEntities(lstCartItem);
+        }
+
+        request.setAttribute("listCart",listCart);
+        /*List<CartitemEntity> listCartItem =cartItemService.getAll();
+        request.setAttribute("listCartItem", listCartItem);*/
         RequestDispatcher dispatcher = request.getRequestDispatcher("/View/admin/list-order.jsp");
         dispatcher.forward(request, response);
     }

@@ -10,9 +10,21 @@
 
 </script>
 <div class="rsidebar span_1_of_left">
+    <h3>Bộ lọc tìm kiếm</h3>
+    <section  class="sky-form">
+        <h4>Theo nhà cung cấp</h4>
+        <div class="row row1 scroll-pane">
+            <div class="col col-4">
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?brandid=0&page=1">ALL</a></li>
+                <c:forEach var="i" items="${listBrand}">
+                    <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?brandid=${i.brandId}&page=1">${i.brandName}</a></li>
+                </c:forEach>
+            </div>
+        </div>
+    </section>
     <section  class="sky-form">
         <div class="product_right">
-            <h4>Bộ lọc tìm kiếm</h4>
+
             <h4>theo danh mục</h4>
             <div class="row row1 scroll-pane">
                 <div class="col col-4">
