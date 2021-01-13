@@ -28,10 +28,8 @@ public class OrderUpdateController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            req.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        req.setAttribute("user",user.getUserName());
 
         int id= Integer.parseInt(req.getParameter("id")) ;
         CartEntity cart = cartService.get(id);
