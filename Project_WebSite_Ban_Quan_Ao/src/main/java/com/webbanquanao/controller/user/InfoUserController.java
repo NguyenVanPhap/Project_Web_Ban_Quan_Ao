@@ -30,21 +30,28 @@ public class InfoUserController  extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email=(String) session.getAttribute("email");
-        UserEntity user = userService.getUser(email);
+        if(email!=null) {
+            UserEntity user = userService.getUser(email);
 
-        List<CartEntity> carts = cartService.getByUserId(user.getId());
+            List<CartEntity> carts = cartService.getByUserId(user.getId());
 
-        if (carts != null) {
-            for(CartEntity cart : carts) {
-                List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
-                cart.setCartitemEntities(lstCartItem);
+            if (carts != null) {
+                for (CartEntity cart : carts) {
+                    List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
+                    cart.setCartitemEntities(lstCartItem);
+                }
             }
-        }
 
-        req.setAttribute("carts",carts);
-        req.setAttribute("user",user);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/info-user.jsp");
-        dispatcher.forward(req, resp);
+            req.setAttribute("carts", carts);
+            req.setAttribute("user", user);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/info-user.jsp");
+            dispatcher.forward(req, resp);
+        }
+        else
+        {
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/Home");
+            dispatcher.forward(req, resp);
+        }
     }
 
     @Override

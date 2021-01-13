@@ -54,6 +54,9 @@ public class SignUpController extends HttpServlet {
         String url="";
         String email = "";
         String pass = "";
+        String address="";
+        String phone="";
+        String username="";
         String cfpass = "";
         String passError = null;
         try {
@@ -72,13 +75,35 @@ public class SignUpController extends HttpServlet {
                 } else if (item.getFieldName().equals("cfpassword")){
                     cfpass = item.getString();
                 }
+                else
+                if (item.getFieldName().equals("address"))
+                {
+                    user.setAddress(item.getString());
+                    address = item.getString();
 
+                    session.setAttribute("addresss",address);
+                }
+                else
+                if (item.getFieldName().equals("phone"))
+                {
+                    user.setPhone(item.getString());
+                    phone = item.getString();
+
+                    session.setAttribute("phone",phone);
+                }else
+                if (item.getFieldName().equals("username"))
+                {
+                    user.setUserName(item.getString());
+                    username = item.getString();
+
+                    session.setAttribute("username",username);
+                }
 
             }
-            user.setUserName("");
-            user.setAddress("");
+
             user.setPermission(0);;
             user.setAvatar(null);
+
             if(email.equals("")){
                 session.setAttribute("SignUpErr","Enter your Email.");
 
@@ -87,6 +112,7 @@ public class SignUpController extends HttpServlet {
             else if(userService.checkExistEmail(email)){
                 session.setAttribute("SignUpErr","This Email was used.");
                 resp.sendRedirect(req.getContextPath() + "/User/signup");
+                session.setAttribute("success","Đăng kí không thành công");
             }
             else if(pass.equals("")){
                 session.setAttribute("SignUpErr","Enter password");
@@ -94,7 +120,16 @@ public class SignUpController extends HttpServlet {
             }
             else if(pass.equals(cfpass)){
                 userService.insert(user);
-                resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+                if(userService.checkExistEmail(user.getEmail()))
+                {
+                    session.setAttribute("success","Đăng kí thành công");
+                }
+                else
+                {
+                    session.setAttribute("success","Đăng kí không thành công");
+                }
+
+                resp.sendRedirect(req.getContextPath() + "/User/signin");
                 String recepient=user.getEmail();
                 String subject ="Đăng ký thành công!";
                 String content="<h3>Đăng ký tài khoản thành công!</h3><br><p>Cảm ơn bạn đã sử dụng dịch vụ của shop</p>";
@@ -103,6 +138,7 @@ public class SignUpController extends HttpServlet {
             else{
                 session.setAttribute("SignUpErr","Those passwords didn't match. Try again.");
                 resp.sendRedirect(req.getContextPath() + "/User/signup");
+
             }
             //req.setAttribute("passError","Those passwords didn't match. Try again.");
 
@@ -111,7 +147,8 @@ public class SignUpController extends HttpServlet {
             e.printStackTrace();
         } catch (Exception e) {
             /*resp.sendRedirect(req.getContextPath() + "/admin/user/add?e=1");*/
-            resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+            resp.sendRedirect(req.getContextPath() + "/User/signup");
+
         }
 
     }
