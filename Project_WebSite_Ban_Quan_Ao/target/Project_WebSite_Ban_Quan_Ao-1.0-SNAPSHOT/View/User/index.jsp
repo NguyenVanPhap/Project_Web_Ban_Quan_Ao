@@ -82,11 +82,15 @@
                             <p>${allproduct.get(0).getDes()}</p>
                         </div>
                         <div class="priceindollers">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                             <h3><a style="text-decoration: underline black">đ</a> <span>${allproduct.get(0).getPrice() }</span></h3>
 =======
                             <h3>$ <span>${allproduct.get(0).getPrice() }</span></h3>
 >>>>>>> Stashed changes
+=======
+                            <h3>$ <span>${allproduct.get(0).getPrice() }</span></h3>
+>>>>>>> parent of 0dd74e8... load
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -132,11 +136,15 @@
                             </div>
 
                             <div style="position: absolute; bottom: 0px">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                                 <h3><span><a style="text-decoration: underline black">đ</a></span>${pro.getPrice() }</h3>
 =======
                                 <h3><span>$</span>${pro.getPrice() }</h3>
 >>>>>>> Stashed changes
+=======
+                                <h3><span>$</span>${pro.getPrice() }</h3>
+>>>>>>> parent of 0dd74e8... load
                             </div>
                         </div>
                     </c:forEach>

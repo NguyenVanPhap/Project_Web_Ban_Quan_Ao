@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 		 pageEncoding="UTF-8"%>
@@ -6,6 +7,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 >>>>>>> Stashed changes
+=======
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		 pageEncoding="ISO-8859-1"%>
+>>>>>>> parent of 0dd74e8... load
 <c:url value="/View/admin/Static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -65,6 +70,7 @@
 										<th>Buyer</th>
 										<th>Email</th>
 										<th>Date</th>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 										<%--<th>Product</th>
 										<th>Quantity</th>
@@ -74,6 +80,11 @@
 										<th>Quantity</th>
 										<th>Price</th>
 >>>>>>> Stashed changes
+=======
+										<th>Product</th>
+										<th>Quantity</th>
+										<th>Price</th>
+>>>>>>> parent of 0dd74e8... load
 										<th>Sum</th>
 										<th>Status</th>
 										<th>Action</th>
@@ -84,29 +95,30 @@
 									<tbody>
 									</a>
 									<c:set var="index" value="${0}" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 									<c:forEach items="${listCart }" var="cart">
+=======
+									<c:forEach items="${listCartItem }" var="list">
+>>>>>>> parent of 0dd74e8... load
 										<tr class="odd gradeX">
 											<c:set var="index" value="${index + 1}" />
 											<td>${index }</td>
-											<td>${cart.id }</td>
-											<td>${cart.userEntity.userName }</td>
-											<td>${cart.userEntity.email }</td>
-											<td>${cart.buyDate }</td>
-											<%--<td>${list.product.name }</td>
+											<td>${list.id }</td>
+											<td>${list.cart.buyer.username }</td>
+											<td>${list.cart.buyer.email }</td>
+											<td>${list.cart.buyDate }</td>
+											<td>${list.product.name }</td>
 											<td>${list.quantity }</td>
-											<td>$ ${list.product.price }</td>--%>
-											<td>2000</td>
+											<td>$ ${list.product.price }</td>
+											<td>$ ${ list.quantity * list.product.price }</td>
 											<td class="center">Pending</td>
 
 
-											<td>
-												<a
-														<%--href="<c:url value='/admin/order/edit?id=${list.id }'/>"--%>
-														class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Xem Chi Tiết</a> |
-												<a
+											<td><a
 													href="<c:url value='/admin/order/edit?id=${list.id }'/>"
 													class="center">Edit</a> | <a
+<<<<<<< HEAD
 													href="<c:url value='/admin/order/delete?id=${cart.id }'/>"
 													class="center">Delete
 											</a></td>
@@ -132,6 +144,10 @@
 													href="<c:url value='/admin/order/delete?id=${list.id }'/>"
 													class="center">Delete</a></td>
 >>>>>>> Stashed changes
+=======
+													href="<c:url value='/admin/order/delete?id=${list.id }'/>"
+													class="center">Delete</a></td>
+>>>>>>> parent of 0dd74e8... load
 
 										</tr>
 									</c:forEach>
@@ -142,6 +158,7 @@
 
 						</div>
 					</div>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 					<c:forEach items="${listCart}" var="cart">
 						<div class="modal fade" id="oderlist${cart.id}">
@@ -193,6 +210,8 @@
 
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 0dd74e8... load
 					<!--End Advanced Tables -->
 				</div>
 			</div>

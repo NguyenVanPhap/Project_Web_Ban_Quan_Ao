@@ -10,32 +10,43 @@
 
 </script>
 <div class="rsidebar span_1_of_left">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     <h3>Bộ lọc tìm kiếm</h3>
+=======
+>>>>>>> parent of 0dd74e8... load
     <section  class="sky-form">
-        <h4>Theo nhà cung cấp</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4">
-                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?brandid=0&page=1">ALL</a></li>
-                <c:forEach var="i" items="${listBrand}">
-                    <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?brandid=${i.brandId}&page=1">${i.brandName}</a></li>
-                </c:forEach>
+        <div class="product_right">
+            <h4>Bộ lọc tìm kiếm</h4>
+            <h4>theo danh mục</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4">
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=0&page=1'"
+                                                   type="checkbox"  value="áo thun">All</label>
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=1&page=1'"
+                                                   type="checkbox"  value="áo thun">giày nike</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=2&page=1'"
+                                                   type="checkbox"  value="áo thun">giày adidas</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=3&page=1'"
+                                                   type="checkbox"  value="áo thun">áo thun </label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=4&page=1'"
+                                                   type="checkbox"  value="áo thun">áo sơ mi</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=5&page=1'"
+                                                   type="checkbox"  value="áo thun">quần kaki</label>
+
+                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=6&page=1'"
+                                                   type="checkbox"  value="áo thun">quần jean</label>
+
+                </div>
+
             </div>
         </div>
     </section>
-
-    <section  class="sky-form">
-        <h4>Theo Danh Mục</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4">
-                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?Cateid=0&page=1">ALL</a></li>
-
-                <c:forEach items="${cateList}" var="cate">
-                    <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?cateid=${cate.getCateId()}&page=1">${cate.getCateName()}</a></li>
-                </c:forEach>
-            </div>
-        </div>
-    </section>
+<<<<<<< HEAD
     
 =======
     <section  class="sky-form">
@@ -72,6 +83,10 @@
 
 
 >>>>>>> Stashed changes
+=======
+
+
+>>>>>>> parent of 0dd74e8... load
     <section  class="sky-form">
         <h4>Theo giá</h4>
         <div class="row row1 scroll-pane">
@@ -91,12 +106,15 @@
         <div class="row row1 scroll-pane">
             <div class="col col-4">
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=0&page=1">ALL</a></li>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 <c:forEach items="${colorList}" var="color">
                     <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=${color.getColorId()}&page=1">${color.getColorName()}</a></li>
 
                 </c:forEach>
 =======
+=======
+>>>>>>> parent of 0dd74e8... load
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=1&page=1">Xanh</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=2&page=1">Đỏ</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=3&page=1">Tím</a></li>
@@ -104,14 +122,20 @@
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=5&page=1">Nâu</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=6&page=1">Đen</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?colorid=7&page=1">Hồng</a></li>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 0dd74e8... load
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
 =======
+=======
+>>>>>>> parent of 0dd74e8... load
    <%-- <section  class="sky-form">
         <h4>Theo màu</h4>
         <div class="row row1 scroll-pane">
@@ -149,18 +173,24 @@
             </div>
         </div>
     </section>--%>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 0dd74e8... load
     <section  class="sky-form">
         <h4>Theo Size</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=0&page=1">ALL</a></li>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
                 <c:forEach items="${sizeList}" var="size">
                     <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=${size.getSizeId()}&page=1">${size.getSizeName()}</a></li>
                 </c:forEach>
 =======
+=======
+>>>>>>> parent of 0dd74e8... load
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=1&page=1">Size S</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=2&page=1">Size M</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=3&page=1">Size L</a></li>
@@ -171,7 +201,10 @@
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=8&page=1">Size 39</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=9&page=1">Size 40</a></li>
                 <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?sizeid=10&page=1">Size 41</a></li>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 0dd74e8... load
             </div>
         </div>
     </section>

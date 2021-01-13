@@ -30,11 +30,15 @@
 
             <property name="hibernate.connection.username" value="root"/>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             <property name="hibernate.connection.password" value="@nvp111111"/>
 =======
             <property name="hibernate.connection.password" value="nhattaisin9999"/>
 >>>>>>> Stashed changes
+=======
+            <property name="hibernate.connection.password" value="nhattaisin9999"/>
+>>>>>>> parent of 0dd74e8... load
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.connection.CharSet" value="utf8"/>
