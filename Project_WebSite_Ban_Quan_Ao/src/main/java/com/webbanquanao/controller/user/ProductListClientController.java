@@ -29,10 +29,13 @@ public class ProductListClientController extends HttpServlet {
 	ProductService productService = new ProductServiceImpl();
 	CategoryService cateService = new CategoryServiceImpl();
 	BrandService brandService = new BrandServiceImpl();
+	SizeService sizeService=new SizeServiceImpl();
+	ColorService colorService=new ColorServiceImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String[] categorylist=req.getParameterValues("catecheckbox");
-		req.setAttribute("categorylist",categorylist);
+
+
 		List<ProductEntity> products = productService.getAll();
 		int numOfProducts = products.size();int litmit=9;int numOfPages = 0;
 		if (numOfProducts/litmit==(float)numOfProducts/litmit){
@@ -48,6 +51,15 @@ public class ProductListClientController extends HttpServlet {
 		req.setAttribute("productList", productList);
 		List<CategoryEntity> cateList = cateService.getAll();
 		req.setAttribute("cateList",cateList);
+
+		List<SizeEntity> sizeEntityList=sizeService.getAll();
+		req.setAttribute("sizeList",sizeEntityList);
+
+		List<ColorEntity> colorEntityList=colorService.getAll();
+		req.setAttribute("colorList",colorEntityList);
+
+
+
 		req.setAttribute("numOfPages",numOfPages);
 
 		List<BrandEntity> listBrand = brandService.getAll();

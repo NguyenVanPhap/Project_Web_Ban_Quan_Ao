@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="info">Quick View</div>
                                     </div>
                                 </div>
-                                <div class="price">${pro.getPrice() }</div>
+                                <div class="price"><a style="text-decoration: underline black">đ</a> ${pro.getPrice() }</div>
                             </a>
                         </div>
                     </div>
