@@ -22,6 +22,10 @@
 
 			<li><a href="${pageContext.request.contextPath }/admin/brand/list"><i
 					class="fa fa-bar-chart-o fa-3x"></i> Brand management</a></li>
+			<li><a href="${pageContext.request.contextPath }/admin/color/list"><i
+					class="fa fa-bar-chart-o fa-3x"></i> Color management</a></li>
+			<li><a href="${pageContext.request.contextPath }/admin/size/list"><i
+					class="fa fa-bar-chart-o fa-3x"></i> Size management</a></li>
 
 			<li><a href="${pageContext.request.contextPath }/admin/contact/list"><i
 					class="fa fa-bar-chart-o fa-3x"></i> Contact Management</a></li>
