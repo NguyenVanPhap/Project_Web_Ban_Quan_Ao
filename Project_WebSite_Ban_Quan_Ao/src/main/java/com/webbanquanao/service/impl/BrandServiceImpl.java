@@ -10,6 +10,21 @@ import java.util.List;
 
 public class BrandServiceImpl implements BrandService {
     BrandDao brandDao = new BrandDaoImpl();
+
+    @Override
+    public void insert(BrandEntity brandEntity) {
+        brandDao.insert(brandEntity);
+    }
+
+    @Override
+    public void edit(BrandEntity brandEntity) {
+        brandDao.edit(brandEntity);
+    }
+
+    @Override
+    public void delete(int brand_id) {
+        brandDao.detele(brand_id);
+    }
     @Override
     public List<BrandEntity> getAll() {
         return brandDao.getAll();
