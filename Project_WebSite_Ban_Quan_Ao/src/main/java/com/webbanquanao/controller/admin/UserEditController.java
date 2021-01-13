@@ -32,15 +32,20 @@ public class UserEditController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> users = userService.search(email);
-        users.forEach((u -> {
-            req.setAttribute("user", u.getUserName());
-        }));
+        UserEntity users = userService.search(email);
+        req.setAttribute("user",users.getUserName());
         int id = Integer.parseInt(req.getParameter("id"));
         UserEntity user = userService.get(id);
         req.setAttribute("users", user);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/admin/edit-user.jsp");
-        dispatcher.forward(req, resp);
+        int role = user.getPermission();
+        String link = "/View/admin/edit-user.jsp";
+        if(role == 1){
+            link = "/View/admin/edit-user.jsp";
+        }
+        else{
+            link = null;
+        }
+        req.getRequestDispatcher(link).forward(req, resp);
     }
 
     @Override
