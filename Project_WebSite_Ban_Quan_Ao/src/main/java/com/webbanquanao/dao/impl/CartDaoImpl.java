@@ -23,10 +23,11 @@ public class CartDaoImpl implements CartDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("Insert into Cart(u_id,buyDate,action) values(:u_id,:buyDate,:action)");
+        Query query = getSession.createSQLQuery("Insert into Cart(u_id,buyDate,action,status) values(:u_id,:buyDate,:action,:status)");
         query.setParameter("u_id",cart.getUserEntity().getId());
         query.setParameter("buyDate",cart.getBuyDate());
         query.setParameter("action",cart.getAction());
+        query.setParameter("status",0);
         try{
             query.executeUpdate();
             getSession.getTransaction().commit();
