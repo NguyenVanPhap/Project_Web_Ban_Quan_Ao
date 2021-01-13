@@ -1,3 +1,4 @@
+/*
 package com.webbanquanao.controller.user;
 
 import com.webbanquanao.model.CartEntity;
@@ -36,3 +37,4 @@ public class PaymentMethodController extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 }
+*/

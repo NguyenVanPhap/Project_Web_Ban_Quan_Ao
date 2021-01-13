@@ -96,15 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="info">Quick View</div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
                                 <div class="price"><a style="text-decoration: underline black">đ</a> ${pro.getPrice() }</div>
-=======
-                                <div class="price">${pro.getPrice() }</div>
->>>>>>> Stashed changes
-=======
-                                <div class="price">${pro.getPrice() }</div>
->>>>>>> parent of 0dd74e8... load
                             </a>
                         </div>
                     </div>

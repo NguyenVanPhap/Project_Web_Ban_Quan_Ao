@@ -32,9 +32,18 @@ public class OrderDeleteController extends HttpServlet {
             request.setAttribute("user", u.getUserName());
         }));
 
+        String type = request.getParameter("type");
+
         int id= Integer.parseInt(request.getParameter("id")) ;
         cartService.delete(id);
-        response.sendRedirect(request.getContextPath()+"/admin/order/list");
+        if (type.equals("user"))
+        {
+            response.sendRedirect(request.getContextPath()+"/infoController");
+        }
+        else {
+            response.sendRedirect(request.getContextPath()+"/admin/order/list");
+        }
+
     }
 }
 

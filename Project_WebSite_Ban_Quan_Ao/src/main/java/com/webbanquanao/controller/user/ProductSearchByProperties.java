@@ -98,7 +98,11 @@ public class ProductSearchByProperties extends HttpServlet {
                 sessProperty.setAttribute("endPrice",Integer.parseInt(endPrice));
             }
         }
-        int brand_id = (int) sessProperty.getAttribute("brand_id");
+        int brand_id=0;
+        if (sessProperty.getAttribute("brand_id") !=null) {
+            brand_id = (int) sessProperty.getAttribute("brand_id");
+        }
+        else brand_id=0;
         int cate_id= (int) sessProperty.getAttribute("cate_id");
         int color_id= (int)sessProperty.getAttribute("color_id");
         int size_id= (int)sessProperty.getAttribute("size_id");

@@ -82,15 +82,7 @@
                             <p>${allproduct.get(0).getDes()}</p>
                         </div>
                         <div class="priceindollers">
-<<<<<<< HEAD
-<<<<<<< Updated upstream
                             <h3><a style="text-decoration: underline black">đ</a> <span>${allproduct.get(0).getPrice() }</span></h3>
-=======
-                            <h3>$ <span>${allproduct.get(0).getPrice() }</span></h3>
->>>>>>> Stashed changes
-=======
-                            <h3>$ <span>${allproduct.get(0).getPrice() }</span></h3>
->>>>>>> parent of 0dd74e8... load
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -107,9 +99,9 @@
             <div class="products-section-grids">
                 <ul id="filters" class="clearfix">
                     <li><span class="filter active" data-filter="app card icon web" onclick="window.location='${pageContext.request.contextPath }/Home'">ALL</span></li>
-                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=giày nike'">Giày</span></li>
-                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=quan jean'">Quần </span></li>
-                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=áo thun'">áo</span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=giày'">Giày</span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=quần'">Quần </span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=áo'">áo</span></li>
 
                 </ul>
                 <div id="portfoliolist">
@@ -136,15 +128,7 @@
                             </div>
 
                             <div style="position: absolute; bottom: 0px">
-<<<<<<< HEAD
-<<<<<<< Updated upstream
                                 <h3><span><a style="text-decoration: underline black">đ</a></span>${pro.getPrice() }</h3>
-=======
-                                <h3><span>$</span>${pro.getPrice() }</h3>
->>>>>>> Stashed changes
-=======
-                                <h3><span>$</span>${pro.getPrice() }</h3>
->>>>>>> parent of 0dd74e8... load
                             </div>
                         </div>
                     </c:forEach>

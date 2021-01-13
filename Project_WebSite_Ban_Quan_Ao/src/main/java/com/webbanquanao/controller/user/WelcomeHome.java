@@ -31,6 +31,7 @@ public class WelcomeHome extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        Reset value
         HttpSession sessProperty = request.getSession();
+        sessProperty.setAttribute("brand_id",0);
         sessProperty.setAttribute("cate_id",0);
         sessProperty.setAttribute("color_id",0);
         sessProperty.setAttribute("size_id",0);

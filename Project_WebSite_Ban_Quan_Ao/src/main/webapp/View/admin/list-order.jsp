@@ -95,7 +95,7 @@
 												<a
 													href="<c:url value='/admin/order/edit?id=${list.id }'/>"
 													class="center">Edit</a> | <a
-													href="<c:url value='/admin/order/delete?id=${cart.id }'/>"
+													href="<c:url value='/admin/order/delete?id=${cart.id }&type=admin'/>"
 													class="center">Delete
 											</a></td>
 

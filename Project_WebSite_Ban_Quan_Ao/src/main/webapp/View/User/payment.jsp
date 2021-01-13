@@ -132,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="center_column" class="center_column">
             <div class="row">
                 <div id="left_column" class="column col-sm-12 col-md-12">
-                    <form class="form-horizontal" action="${posturl}" method="get">
+                    <form class="form-horizontal" action="${pageContext.request.contextPath }/Home" method="get">
                         <input type="hidden" name="upload" value="1"/>
                         <input type="hidden" name="return" value="${returnurl}"/>
                         <input type="hidden" name="cmd" value="_cart"/>
