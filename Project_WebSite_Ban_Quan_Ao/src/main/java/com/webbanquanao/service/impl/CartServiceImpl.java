@@ -60,4 +60,17 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void UpdateCustomer(int id, int c_id) { cartDao.UpdateCustomer(id,c_id); }
+
+    @Override
+    public void updateStatus(CartEntity cart) {
+        int status = cart.getStatus();
+        if (status==2) {
+            status=0;
+        }
+        else {
+            status +=1;
+        }
+        cart.setStatus(status);
+        cartDao.updateStatus(cart);
+    }
 }

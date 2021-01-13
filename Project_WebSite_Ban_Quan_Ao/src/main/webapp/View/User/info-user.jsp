@@ -125,18 +125,29 @@
 				</thead>
 				<tbody>
 				<c:forEach var="cart" items="${carts}">
+
 					<tr>
 						<td class="cart_product">
 							<h4>#${cart.id}</h4>
 						</td>
 						<td class="cart_description">
-							<h4>Đã giao</h4>
+							<h4>
+								<c:if test="${cart.status==0}">Đang xử lý</c:if>
+								<c:if test="${cart.status==1}">Đã duyệt</c:if>
+								<c:if test="${cart.status==2}">Đã nhận hàng </c:if>
+							</h4>
 						</td>
 						<td class="cart_description">
 							<h4>${cart.buyDate}</h4>
 						</td>
 						<td class="cart_description">
-							<h4> VNĐ</h4>
+<%--							<c:url var="totalPrice"></c:url>--%>
+
+							<c:forEach var="item" items="${cart.getCartitemEntities()}">
+								<c:set var="totalPrice"  value="${totalPrice+item.getQuantity() * item.getSkuEntity().getProductEntity().getPrice()}"></c:set>
+							</c:forEach>
+							<h4> ${totalPrice} VNĐ</h4>
+							<c:set var="totalPrice" value="${0}"></c:set>
 						</td>
 						<td>
 							<a class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Xem Chi Tiết</a> |

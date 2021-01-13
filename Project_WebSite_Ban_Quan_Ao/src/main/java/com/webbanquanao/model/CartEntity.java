@@ -24,6 +24,18 @@ public class CartEntity {
     @Column(name = "action")
     private Boolean action;
 
+    @Basic
+    @Column(name = "status")
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<CartitemEntity> cartitemEntities;
 
