@@ -1,6 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<<<<<<< Updated upstream
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 		 pageEncoding="UTF-8"%>
+=======
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		 pageEncoding="ISO-8859-1"%>
+>>>>>>> Stashed changes
 <c:url value="/View/admin/Static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -60,9 +65,15 @@
 										<th>Buyer</th>
 										<th>Email</th>
 										<th>Date</th>
+<<<<<<< Updated upstream
 										<%--<th>Product</th>
 										<th>Quantity</th>
 										<th>Price</th>--%>
+=======
+										<th>Product</th>
+										<th>Quantity</th>
+										<th>Price</th>
+>>>>>>> Stashed changes
 										<th>Sum</th>
 										<th>Status</th>
 										<th>Action</th>
@@ -73,6 +84,7 @@
 									<tbody>
 									</a>
 									<c:set var="index" value="${0}" />
+<<<<<<< Updated upstream
 									<c:forEach items="${listCart }" var="cart">
 										<tr class="odd gradeX">
 											<c:set var="index" value="${index + 1}" />
@@ -98,6 +110,28 @@
 													href="<c:url value='/admin/order/delete?id=${cart.id }'/>"
 													class="center">Delete
 											</a></td>
+=======
+									<c:forEach items="${listCartItem }" var="list">
+										<tr class="odd gradeX">
+											<c:set var="index" value="${index + 1}" />
+											<td>${index }</td>
+											<td>${list.id }</td>
+											<td>${list.cart.buyer.username }</td>
+											<td>${list.cart.buyer.email }</td>
+											<td>${list.cart.buyDate }</td>
+											<td>${list.product.name }</td>
+											<td>${list.quantity }</td>
+											<td>$ ${list.product.price }</td>
+											<td>$ ${ list.quantity * list.product.price }</td>
+											<td class="center">Pending</td>
+
+
+											<td><a
+													href="<c:url value='/admin/order/edit?id=${list.id }'/>"
+													class="center">Edit</a> | <a
+													href="<c:url value='/admin/order/delete?id=${list.id }'/>"
+													class="center">Delete</a></td>
+>>>>>>> Stashed changes
 
 										</tr>
 									</c:forEach>
@@ -108,6 +142,7 @@
 
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					<c:forEach items="${listCart}" var="cart">
 						<div class="modal fade" id="oderlist${cart.id}">
 							<div class="modal-dialog modal-dialog-centered modal-lg">
@@ -156,6 +191,8 @@
 						</div> <!-- end modal -->
 					</c:forEach>
 
+=======
+>>>>>>> Stashed changes
 					<!--End Advanced Tables -->
 				</div>
 			</div>

@@ -171,7 +171,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span><textarea name="userMsg"> </textarea></span>
                 </div>
                 <div>
+<<<<<<< Updated upstream
                     <label style="color: green">${infoMsg}</label>
+=======
+>>>>>>> Stashed changes
                     <span><input type="submit" class="" value="Submit us"></span>
                 </div>
             </form>
