@@ -30,7 +30,6 @@
 
             <property name="hibernate.connection.username" value="root"/>
 
-
             <property name="hibernate.connection.password" value="@nvp111111"/>
 
 
