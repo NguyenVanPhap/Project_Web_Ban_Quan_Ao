@@ -22,27 +22,20 @@
             </div>
         </div>
     </section>
+
     <section  class="sky-form">
-        <div class="product_right">
+        <h4>Theo Danh Mục</h4>
+        <div class="row row1 scroll-pane">
+            <div class="col col-4">
+                <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?Cateid=0&page=1">ALL</a></li>
 
-            <h4>theo danh mục</h4>
-            <div class="row row1 scroll-pane">
-                <div class="col col-4">
-
-                    <label class="checkbox"><input onchange="window.location.href='${pageContext.request.contextPath }/user/product/list'"
-                                                   type="checkbox"  value="áo thun">All</label>
-                    <c:forEach items="${cateList}" var="cate">
-                    <label class="checkbox">
-                        <input onchange="window.location.href='${pageContext.request.contextPath }/product/searchByProperties?cateid=${cate.getCateId()}&page=1'"
-                                                   type="checkbox"  value="${cate.getCateName()}">${cate.getCateName()}</label>
-                    </c:forEach>
-                </div>
-
+                <c:forEach items="${cateList}" var="cate">
+                    <li><a style="color: black; font-size: larger; text-decoration : none;" href="${pageContext.request.contextPath }/product/searchByProperties?cateid=${cate.getCateId()}&page=1">${cate.getCateName()}</a></li>
+                </c:forEach>
             </div>
         </div>
     </section>
-
-
+    
     <section  class="sky-form">
         <h4>Theo giá</h4>
         <div class="row row1 scroll-pane">
