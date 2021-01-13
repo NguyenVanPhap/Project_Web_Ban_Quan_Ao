@@ -56,12 +56,13 @@ public class WelcomeHome extends HttpServlet {
             if(i<=8)
                 newList.add(productList.get(i));
         }
+        int role = 0;
         try {
             HttpSession session = request.getSession();
             String email = session.getAttribute("email").toString();
             UserEntity user = userService.search(email);
             request.setAttribute("user",user.getUserName());
-
+            role = user.getPermission();
             request.setAttribute("email", email);
         }
         catch (Exception e) {
@@ -69,7 +70,14 @@ public class WelcomeHome extends HttpServlet {
 
         request.setAttribute("productList",newList);
         request.setAttribute("allproduct",productService.getAll());
-        request.getRequestDispatcher("/View/User/index.jsp").forward(request, response);
+        String link = "";
+        if(role == 0){
+            link = "/View/User/index.jsp";
+        }
+        else{
+            link = "/View/admin/index.jsp";
+        }
+        request.getRequestDispatcher(link).forward(request, response);
     }
 
 }
