@@ -140,6 +140,22 @@ public class CartAddController extends HttpServlet {
                         cartitemEntity.setCartEntity(cartEntity);
                         cartEntity.setCartitemEntities(listCartItem);
                         if(email!=null) {
+                            if(cartEntity.getId()==0)
+                            {
+                                UserEntity userEntity = userService.getUser(email);
+                                cartEntity.setUserEntity(userEntity);
+                                cartService.insert(cartEntity);
+                                int idCart = cartService.getIDCart();
+                                cartEntity.setId(idCart);
+
+                                for(CartitemEntity cartItem : listCartItem){
+                                    cartItem.setCartEntity(cartEntity);
+                                    cartItemService.insert(cartItem);
+                                    int IdCartItem = cartItemService.getIDCartItem();
+                                    cartItem.setId(IdCartItem);
+                                }
+                            }
+                            cartitemEntity.setCartEntity(cartEntity);
                             cartItemService.insert(cartitemEntity);
                             int idCartItem = cartItemService.getIDCartItem();
                             cartitemEntity.setId(idCartItem);

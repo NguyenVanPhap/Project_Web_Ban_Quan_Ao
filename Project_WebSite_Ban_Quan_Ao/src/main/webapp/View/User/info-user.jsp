@@ -11,6 +11,10 @@
 	<meta name="author" content="">
 	<title>Quản lí tài khoản</title>
 
+	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
+	<!-- put first the jquery path, otherwise the bootstrap.js won't work-->
+	<script src="js/jquery/jquery-3.1.0.js"></script>
+	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 
 
 	<link href="${url}/css/bootstrap.css" rel='stylesheet' <%--type='text/css'--%> />
@@ -19,7 +23,6 @@
 	<!-- Custom Theme files -->
 	<link href="${url}/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="${url}/css/form.css" rel="stylesheet" <%--type="text/css"--%> media="all" />
-
 
 	<link href="${url}/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${url}/css/font-awesome.min.css" rel="stylesheet">
@@ -80,10 +83,11 @@
 					<div class="shopper-info">
 						<p>Thông tin tài khoản</p>
 						<form action="${pageContext.request.contextPath }/infoController?type=changeInfo" method="post">
+							<input readonly name="email"  placeholder="Email" value="${user.getEmail()}">
 							<input name="name"  placeholder="Tên" value="${user.getUserName()}">
-							<input name="email"  placeholder="Email" value="${user.getEmail()}">
+
 							<input name="address"  placeholder="Địa chỉ" value="${user.getAddress()}">
-<%--							<input id="phonenumber" type="text" placeholder="Số điện thoại" value="${user.getPhonenumber()}">--%>
+							<input name="phonenumber" type="text" placeholder="Số điện thoại" value="${user.getPhone()}">
 							<label style="display: block">${msg}</label>
 							<button style="width: 150px; height: 30px;color: white; background-color: #ff0000; " type="submit" value="Cập nhật thông tin">Cập nhật thông tin</button>
 						</form>
@@ -99,7 +103,7 @@
 							<label style="display: block" >${msgPass}</label>
 							<button style="width: 150px; height: 30px;color: white; background-color: #ff0000; " type="submit" value="Đổi mật khẩu">Đổi mật khẩu</button>
 						</form>
-<%--						<a class="btn btn-primary" onclick="changePassword()" href="">Đổi mật khẩu</a>--%>
+						<%--						<a class="btn btn-primary" onclick="changePassword()" href="">Đổi mật khẩu</a>--%>
 					</div>
 				</div>
 			</div>
@@ -130,68 +134,91 @@
 						</td>
 						<td class="cart_description">
 							<h4>${cart.buyDate}</h4>
-						</td><td class="cart_description">
-						<h4>${cart.totalPrice} VNĐ</h4>
-					</td><td class="cart_description">
-						<a class="center" data-toggle="modal"   data-target="#oderlist${cart.id}">Xem chi tiết</a>
-					</td>
+						</td>
+						<td class="cart_description">
+							<h4> VNĐ</h4>
+						</td>
+						<td>
+							<a class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Xem Chi Tiết</a> |
+							<a	href="<c:url value='/admin/order/delete?id=${cart.id }&type=user'/>"	class="center">Delete	</a>
+						</td>
 					</tr>
 				</c:forEach>
 				</tbody>
 			</table>
-		</div>
-		<c:forEach items="${carts}" var="cart">
-			<div class="modal fade" id="oderlist${cart.id}">
-				<div class="modal-dialog modal-dialog-centered modal-lg">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Chi  tiết đơn hàng</h4>
-						</div>
-						<div class="modal-body">
-							<table class="table table-condensed">
-								<thead>
 
-								<tr class="cart_menu">
-									<td class="image">Ảnh</td>
-									<td class="description">Tên Sản Phẩm</td>
-									<td class="price">Giá</td>
-									<td class="quantity">Số Lượng</td>
-									<td class="total">Tổng Tiền</td>
-								</tr>
-								</thead>
-								<tbody>
-								<c:forEach items="${cart.getItemModelList()}" var="item">
-									<tr>
-										<td class="cart_product">
-											<c:url value="/image/${item.getProduct().getImage()}" var="imgUrl"></c:url>
-											<img width="100px" height="100px" src="${imgUrl}" alt="#">
-										</td>
-										<td class="description">${item.getProduct().getProductName()}</td>
-										<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
-										<td class="quantity">${item.getQuantity()}</td>
-										<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>
-									</tr>
-								</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-success">OK</button>
-						</div>
-					</div>
-				</div>
-			</div> <!-- end modal -->
-		</c:forEach>
+		</div>
+
+
 	</div>
-<%--	<jsp:include page="footer.jsp"></jsp:include>--%>
+
+
+	<%--	<jsp:include page="footer.jsp"></jsp:include>--%>
 </section> <!--/#cart_items-->
+
 <jsp:include page="/View/User/footer.jsp"></jsp:include>
+
+<%--<script>
+	$("[data-toggle='modal']").modal();
+</script>--%>
+<c:forEach items="${carts}" var="cart">
+	<div class="modal fade" id="oderlist${cart.id}">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Chi  tiết đơn hàng</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-condensed">
+						<thead>
+
+						<tr class="cart_menu">
+							<td class="image">Ảnh</td>
+							<td class="description">Tên Sản Phẩm</td>
+							<td>Màu sắc</td>
+							<td>Size</td>
+							<td class="price">Giá</td>
+							<td class="quantity">Số Lượng</td>
+							<td class="total">Tổng Tiền</td>
+						</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${cart.getCartitemEntities()}" var="item">
+							<c:url value="/image/${item.getSkuEntity().getProductEntity().getImage()}" var="imgUrl"></c:url>
+							<tr>
+								<td class="cart_product">
+									<img width="45px" height="45px" src="${imgUrl}" alt="#">
+								</td>
+								<td class="description">${item.getSkuEntity().getProductEntity().getName()}</td>
+								<td>${item.getSkuEntity().getColorEntity().getColorName()}</td>
+								<td>${item.getSkuEntity().getSizeEntity().getSizeName()}</td>
+								<td class="price">${item.getSkuEntity().getProductEntity().getPrice()}<span>VNĐ</span></td>
+								<td class="quantity">${item.getQuantity()}</td>
+								<td class="total">${item.getSkuEntity().getProductEntity().getPrice()*item.getQuantity()}<span>VNĐ</span></td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-success">OK</button>
+				</div>
+			</div>
+		</div>
+	</div> <!-- end modal -->
+</c:forEach>
+
 <script src="${url}/js/jquery.js"></script>
 <script src="${url}/js/bootstrap.min.js"></script>
 <script src="${url}/js/jquery.scrollUp.min.js"></script>
 <script src="${url}/js/jquery.prettyPhoto.js"></script>
 <script src="${url}/js/main.js"></script>
+<%--------------------------%>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<%--------------------------------%>
 <script>
 	function changePassword() {
 		var oldPassword =$('#oldPassword').val();

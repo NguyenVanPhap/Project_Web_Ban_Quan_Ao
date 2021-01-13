@@ -16,6 +16,8 @@ public interface CartService {
 
     List<CartEntity> getAll();
 
+    List<CartEntity> getByUserId(int id);
+
     List<CartEntity> search(String keyword);
 
     void removeProduct(CartEntity cart, int pId);

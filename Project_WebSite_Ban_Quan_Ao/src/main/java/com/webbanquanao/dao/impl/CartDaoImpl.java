@@ -149,6 +149,23 @@ public class CartDaoImpl implements CartDao {
         return cartList;
     }
 
+    @Override
+    public List<CartEntity> getByUserId(int id) {
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        String qString = "FROM CartEntity C where C.userEntity.id =:id";
+        TypedQuery<CartEntity> q = em.createQuery(qString,CartEntity.class);
+        q.setParameter("id",id);
+        List<CartEntity> cartList = new ArrayList<CartEntity>();
+        try{
+            cartList = q.getResultList();
+            if(cartList == null || cartList.isEmpty())
+                cartList= null;
+        }finally {
+            em.close();
+        }
+        return cartList;
+    }
+
     public List<CartEntity> search(String name) {
   /*      List<Cart> cartList = new ArrayList<Cart>();
         String sql = "SELECT cart.id, cart.buyDate, User.email, user.username, user.id AS user_id "

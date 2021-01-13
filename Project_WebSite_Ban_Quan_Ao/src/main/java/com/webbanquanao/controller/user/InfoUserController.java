@@ -1,7 +1,13 @@
 package com.webbanquanao.controller.user;
 
+import com.webbanquanao.model.CartEntity;
+import com.webbanquanao.model.CartitemEntity;
 import com.webbanquanao.model.UserEntity;
+import com.webbanquanao.service.CartItemService;
+import com.webbanquanao.service.CartService;
 import com.webbanquanao.service.UserService;
+import com.webbanquanao.service.impl.CartItemServiceImpl;
+import com.webbanquanao.service.impl.CartServiceImpl;
 import com.webbanquanao.service.impl.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -12,16 +18,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns="/infoController")
 public class InfoUserController  extends HttpServlet {
     UserService userService = new UserServiceImpl();
+    CartService cartService = new CartServiceImpl();
+    CartItemService cartItemService = new CartItemServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email=(String) session.getAttribute("email");
         UserEntity user = userService.getUser(email);
+
+        List<CartEntity> carts = cartService.getByUserId(user.getId());
+
+        if (carts != null) {
+            for(CartEntity cart : carts) {
+                List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
+                cart.setCartitemEntities(lstCartItem);
+            }
+        }
+
+        req.setAttribute("carts",carts);
         req.setAttribute("user",user);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/info-user.jsp");
         dispatcher.forward(req, resp);

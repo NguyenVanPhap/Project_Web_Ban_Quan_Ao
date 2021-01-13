@@ -36,9 +36,11 @@ public class OrderListController extends HttpServlet {
 
         List<CartEntity> listCart = cartService.getAll();
 
-        for(CartEntity cart : listCart) {
-            List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
-            cart.setCartitemEntities(lstCartItem);
+        if (listCart != null) {
+            for(CartEntity cart : listCart) {
+                List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
+                cart.setCartitemEntities(lstCartItem);
+            }
         }
 
         request.setAttribute("listCart",listCart);

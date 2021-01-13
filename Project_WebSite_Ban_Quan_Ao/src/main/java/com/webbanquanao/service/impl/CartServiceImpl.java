@@ -27,6 +27,10 @@ public class CartServiceImpl implements CartService {
         return cartDao.getAll();
     }
 
+    public List<CartEntity> getByUserId(int id) {
+        return cartDao.getByUserId(id);
+    }
+
     @Override
     public CartEntity get(int id) {
         return cartDao.get(id);

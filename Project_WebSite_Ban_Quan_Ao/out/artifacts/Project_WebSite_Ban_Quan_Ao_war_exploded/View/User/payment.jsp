@@ -119,6 +119,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- start Dresses-page -->
 <br/><br/><br/>
+
+<c:set var="returnurl" scope="session" value="http://localhost:8080/Project_WebSite_Ban_Quan_Ao_war_exploded/member/cart"/>
+<c:set var="business" scope="session" value="chuShop@gmail.com"/>
+
 <div class="container">
     <div class="spec ">
         <h3 style="color: #eb5367">Thanh toán</h3>
@@ -128,7 +132,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="center_column" class="center_column">
             <div class="row">
                 <div id="left_column" class="column col-sm-12 col-md-12">
-                    <form class="form-horizontal" action="${pageContext.request.contextPath}/payment" method="get">
+                    <form class="form-horizontal" action="${posturl}" method="get">
+                        <input type="hidden" name="upload" value="1"/>
+                        <input type="hidden" name="return" value="${returnurl}"/>
+                        <input type="hidden" name="cmd" value="_cart"/>
+                        <input type="hidden" name="business" value="${business}"/>-->
+
                         <div class="col-sm-6 col-md-6">
                             <div class="detail_ct">
                                 <legend>THÔNG TIN LIÊN HỆ</legend>
@@ -168,11 +177,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <label class="col-lg-4 control-label">Hình thức thanh toán</label>
                                     <div class="col-lg-8">
                                         <div>
-                                            <input type="radio" id="online" name="optionPayment" value="online" checked>
+                                            <input type="radio" id="online" name="optionPayment" value="online" checked onclick="window.location='${pageContext.request.contextPath}/User/payment/method?method=online'">
                                             <label for="online" style="color: #696763">Trực tuyến</label>
                                         </div>
                                         <div>
-                                            <input type="radio" id="offline" name="optionPayment" value="offline">
+                                            <input type="radio" id="offline" name="optionPayment" value="offline" onclick="window.location='${pageContext.request.contextPath}/User/payment/method?method=offline'">
                                             <label for="offline" style="color: #696763">Trả khi nhận hàng</label>
                                         </div>
                                     </div>
@@ -192,17 +201,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${cartEntity.getCartitemEntities()}" var="cartItem">
+                                <c:forEach items="${cartEntity.getCartitemEntities()}" var="cartItem" varStatus="loop">
                                 <tr style="border-top:1px solid #999;">
                                     <td>
                                         <img src="${pageContext.request.contextPath}/image/${cartItem.getSkuEntity().getProductEntity().getImage()}" width="48">
                                     </td>
                                     <td>
+                                        <input type="hidden" name="item_name_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getName()}"/>
                                         <strong>
                                                 ${cartItem.getSkuEntity().getProductEntity().getName()}
                                         </strong>
                                     </td>
+
+                                    <input type="hidden" name = "quantity_${loop.count}" value="${cartItem.getSkuEntity().getQuantity() }"/>
                                     <td>${cartItem.getQuantity() }</td>
+
+                                    <input type="hidden" name = "amount_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getPrice()}"/>
                                     <td>${cartItem.getSkuEntity().getProductEntity().getPrice()} VNĐ</td>
                                     <td>${cartItem.getSkuEntity().getProductEntity().getPrice()*cartItem.getQuantity() } VNĐ</td>
                                 </tr>
@@ -215,7 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <td></td>
                                     <td></td>
                                     <td colspan="6">
-                                        <a class="btn btn-default hidden-xs" style="float:right;" href="">Quay về</a>
+                                        <a class="btn btn-default hidden-xs" style="float:right;" href="${pageContext.request.contextPath}/member/cart">Quay về</a>
                                         <div class="clr"></div>
                                     </td>
                                 </tr>

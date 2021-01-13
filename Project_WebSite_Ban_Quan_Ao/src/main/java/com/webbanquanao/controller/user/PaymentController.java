@@ -33,6 +33,9 @@ public class PaymentController extends HttpServlet {
         String phone = req.getParameter("phone");
         String address = req.getParameter("address");
         String note = req.getParameter("note");
+        String optionPayment = req.getParameter("optionPayment");
+
+        System.out.println(optionPayment);
 
         HttpSession httpSession = req.getSession();
         String u_email = (String) httpSession.getAttribute("email");
@@ -63,8 +66,9 @@ public class PaymentController extends HttpServlet {
         cartEntity.setCustomerEntity(customerEntity);
         httpSession.setAttribute("cartEntity",cartEntity);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/Home");
-        dispatcher.forward(req, resp);
+      //  RequestDispatcher dispatcher = req.getRequestDispatcher("/https://www.sandbox.paypal.com/cgi-bin/webscr");
+      //  dispatcher.forward(req, resp);
+        resp.sendRedirect("/https://www.sandbox.paypal.com/cgi-bin/webscr");
     }
 }
 
