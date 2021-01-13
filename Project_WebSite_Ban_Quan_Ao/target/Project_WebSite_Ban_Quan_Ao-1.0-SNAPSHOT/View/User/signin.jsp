@@ -95,9 +95,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <input type="submit" value="SIGNIN" class="botton">
                         </div>
 
-
-
-
                 </form>
                 <form action="${APIurl}" method="get">
                     <div class="forgetit">
@@ -121,6 +118,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <input type="text" value="${email}" placeholder="Please enter email" name = "email">
                         </div>
                         <div class="clearfix"></div>
+                        <%--////////////////--%>
+                        <div class="cus_info_wrap">
+                            <label class="labelTop">
+                                User name:
+                                <span class="require">*</span>
+                            </label>
+                            <input type="text" value="${username}" placeholder="Please enter Username" name = "username">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="cus_info_wrap">
+                            <label class="labelTop">
+                                Phone:
+                                <span class="require">*</span>
+                            </label>
+                            <input type="text" value="${phone}" placeholder="Please enter phone" name = "phone">
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="cus_info_wrap">
+                            <label class="labelTop">
+                                Address:
+                                <span class="require">*</span>
+                            </label>
+                            <input type="text" value="${address}" placeholder="Please enter address" name = "address">
+                        </div>
+                        <div class="clearfix"></div>
+                        <%--/////////////////////////--%>
                         <div class="cus_info_wrap">
                             <label class="labelTop">
                                 Password:
@@ -129,6 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <input type="password" value="" placeholder="Please enter password" name = "password">
                         </div>
                         <div class="clearfix"></div><div class="cus_info_wrap">
+
                         <label class="labelTop confirmpass">
                             Conform Password:
                             <span class="require">*</span>
@@ -142,8 +167,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </c:if>
 
                         <div class="botton1">
-                            <input type="submit" value="SIGNIN" class="botton">
+                            <input type="submit" value="SIGNUP" class="botton">
                         </div>
+                        <c:if test="${not empty success}">
+                            <p>${success}</p>
+                        </c:if>
                     </div>
                 </form>
 
