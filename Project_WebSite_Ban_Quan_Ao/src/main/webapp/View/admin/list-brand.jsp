@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
-                    <a href="<c:url value='/admin/category/add'/>"
+                    <a href="<c:url value='/admin/brand/add'/>"
                        class="button">ADD</a>
                     <div class="panel panel-default">
                         <div class="panel-heading">Advanced Tables</div>
