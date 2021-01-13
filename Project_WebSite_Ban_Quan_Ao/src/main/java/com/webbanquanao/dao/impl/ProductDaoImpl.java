@@ -220,14 +220,7 @@ public class ProductDaoImpl implements ProductDao {
     {
 
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
-/*        String[] params = new String[property.size()];
-        Object[] value = new Object[property.size()];
-        int i=0;
-        for(Map.Entry<String, Object> item: property.entrySet()){
-            params[i] = item.getKey();
-            value[i]=item.getValue();
-            i++;
-        }*/
+
         String qString = "select Sku.productEntity FROM SkuEntity Sku Where 1=1 ";
         if (value.get(0) !=null) {
             qString+=" and Sku.productEntity.categoryEntity.cateId =:cate_id ";

@@ -1,9 +1,18 @@
 package com.webbanquanao.controller.user;
 
 import clojure.lang.Obj;
+import com.webbanquanao.model.CategoryEntity;
+import com.webbanquanao.model.ColorEntity;
 import com.webbanquanao.model.ProductEntity;
+import com.webbanquanao.model.SizeEntity;
+import com.webbanquanao.service.CategoryService;
+import com.webbanquanao.service.ColorService;
 import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.SizeService;
+import com.webbanquanao.service.impl.CategoryServiceImpl;
+import com.webbanquanao.service.impl.ColorServiceImpl;
 import com.webbanquanao.service.impl.ProductServiceImpl;
+import com.webbanquanao.service.impl.SizeServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,9 +26,17 @@ import java.util.*;
 @WebServlet(urlPatterns="/product/searchByProperties")
 public class ProductSearchByProperties extends HttpServlet {
     ProductService productService  = new ProductServiceImpl();
+    CategoryService cateService = new CategoryServiceImpl();
+    SizeService sizeService=new SizeServiceImpl();
+    ColorService colorService=new ColorServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        List<SizeEntity> sizeEntityList=sizeService.getAll();
+        req.setAttribute("sizeList",sizeEntityList);
+
+        List<ColorEntity> colorEntityList=colorService.getAll();
+        req.setAttribute("colorList",colorEntityList);
         HttpSession sessProperty = req.getSession();
         String cateid= req.getParameter("cateid") ;
         String colorid = req.getParameter("colorid");
@@ -27,7 +44,8 @@ public class ProductSearchByProperties extends HttpServlet {
         String pageCurrent = req.getParameter("page");
         String startPrice = req.getParameter("startPrice");
         String endPrice = req.getParameter("endPrice");
-
+        List<CategoryEntity> cateList = cateService.getAll();
+        req.setAttribute("cateList",cateList);
         if (cateid !=null) {
             sessProperty.setAttribute("cate_id",Integer.parseInt(cateid));
             sessProperty.setAttribute("color_id",0);
@@ -68,19 +86,14 @@ public class ProductSearchByProperties extends HttpServlet {
         int page =(int) sessProperty.getAttribute("page");
         int start_price = (int) sessProperty.getAttribute("startPrice");
         int end_price = (int) sessProperty.getAttribute("endPrice");
-//        Map map = new HashMap<String, Object>();
-//        map.put("cateId",(cate_id==0)?null:cate_id);
-//        map.put("colorId",(color_id==0)?null:color_id);
-//        map.put("sizeId",(size_id==0)?null:size_id);
+
         List<Object> values = new ArrayList<>();
         values.add(0,(cate_id==0)?null:cate_id);
         values.add(1,(color_id==0)?null:color_id);
         values.add(2,(size_id==0)?null:size_id);
         values.add(3,start_price);
         values.add(4,end_price);
-//        map.put("cateId",null);
-//        map.put("colorId",1);
-//        map.put("sizeId",null);
+
 
         int litmit=9;
         int offset = (page-1) * litmit;

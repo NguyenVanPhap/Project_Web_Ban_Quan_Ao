@@ -1,15 +1,9 @@
 package com.webbanquanao.controller.user;
 
 
-import com.webbanquanao.model.CategoryEntity;
-import com.webbanquanao.model.ProductEntity;
-import com.webbanquanao.model.UserEntity;
-import com.webbanquanao.service.CategoryService;
-import com.webbanquanao.service.ProductService;
-import com.webbanquanao.service.UserService;
-import com.webbanquanao.service.impl.CategoryServiceImpl;
-import com.webbanquanao.service.impl.ProductServiceImpl;
-import com.webbanquanao.service.impl.UserServiceImpl;
+import com.webbanquanao.model.*;
+import com.webbanquanao.service.*;
+import com.webbanquanao.service.impl.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,11 +19,13 @@ import java.util.List;
 public class ProductListClientController extends HttpServlet {
 	ProductService productService = new ProductServiceImpl();
 	CategoryService cateService = new CategoryServiceImpl();
+	SizeService sizeService=new SizeServiceImpl();
+	ColorService colorService=new ColorServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String[] categorylist=req.getParameterValues("catecheckbox");
-		req.setAttribute("categorylist",categorylist);
+
+
 		List<ProductEntity> products = productService.getAll();
 		int numOfProducts = products.size();int litmit=9;int numOfPages = 0;
 		if (numOfProducts/litmit==(float)numOfProducts/litmit){
@@ -45,6 +41,15 @@ public class ProductListClientController extends HttpServlet {
 		req.setAttribute("productList", productList);
 		List<CategoryEntity> cateList = cateService.getAll();
 		req.setAttribute("cateList",cateList);
+
+		List<SizeEntity> sizeEntityList=sizeService.getAll();
+		req.setAttribute("sizeList",sizeEntityList);
+
+		List<ColorEntity> colorEntityList=colorService.getAll();
+		req.setAttribute("colorList",colorEntityList);
+
+
+
 		req.setAttribute("numOfPages",numOfPages);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/product.jsp");
 		dispatcher.forward(req, resp);

@@ -27,9 +27,13 @@ import com.webbanquanao.service.impl.SkuServiceImpl;
 public class ProductDetailController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     CategoryService categoryService = new CategoryServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         List<ProductEntity> productList = productService.getAll();
+        List<CategoryEntity> cateList = categoryService.getAll();
+        req.setAttribute("cateList",cateList);
         SkuService skuService = new SkuServiceImpl();
         Random rand = new Random();
         List<ProductEntity> newList = new ArrayList<>();
