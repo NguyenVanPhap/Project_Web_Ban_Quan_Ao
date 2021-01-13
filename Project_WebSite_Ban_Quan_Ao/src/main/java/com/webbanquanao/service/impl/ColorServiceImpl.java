@@ -19,14 +19,11 @@ public class ColorServiceImpl implements ColorService {
 
     @Override
     public void edit(ColorEntity colorEntity) {
-//        SkuEntity oldSku = skuDao.get(newskuEntity.getSkuId());
-//
-//        oldSku.setColorEntity(newskuEntity.getColorEntity());
-//        oldSku.setSizeEntity(newskuEntity.getSizeEntity());
-//        oldSku.setQuantity(newskuEntity.getQuantity());
-//
-//
-//        skuDao.edit(oldSku);
+        ColorEntity oldColor = colorDao.get(colorEntity.getColorId());
+
+        oldColor.setColorName(colorEntity.getColorName());
+
+        colorDao.edit(colorEntity);
 
     }
 

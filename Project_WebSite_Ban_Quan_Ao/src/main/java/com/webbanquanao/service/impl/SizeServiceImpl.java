@@ -19,14 +19,11 @@ public class SizeServiceImpl implements SizeService {
 
     @Override
     public void edit(SizeEntity sizeEntity) {
-//        SkuEntity oldSku = skuDao.get(newskuEntity.getSkuId());
-//
-//        oldSku.setColorEntity(newskuEntity.getColorEntity());
-//        oldSku.setSizeEntity(newskuEntity.getSizeEntity());
-//        oldSku.setQuantity(newskuEntity.getQuantity());
-//
-//
-//        skuDao.edit(oldSku);
+        SizeEntity oldSize = sizeDao.get(sizeEntity.getSizeId());
+
+        oldSize.setSizeName(sizeEntity.getSizeName());
+
+       sizeDao.edit(oldSize);
 
     }
 
