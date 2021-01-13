@@ -70,16 +70,6 @@
             </ol>
         </div>
 
-        <c:set var="posturl" scope="session" value="https://www.sandbox.paypal.com/cgi-bin/webscr"/>
-        <c:set var="returnurl" scope="session" value="http://localhost:8080/Project_WebSite_Ban_Quan_Ao_war_exploded/checkout"/>
-        <c:set var="business" scope="session" value="chuShop@gmail.com"/>
-
-<!--        <form action="${posturl}" method="POST">
-            <input type="hidden" name="upload" value="1"/>
-            <input type="hidden" name="return" value="${returnurl}"/>
-            <input type="hidden" name="cmd" value="_cart"/>
-            <input type="hidden" name="business" value="${business}"/>-->
-
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
@@ -91,17 +81,6 @@
                     <td>Số lượng</td>
                     <td>Tổng tiền</td>
                     <td>Xóa</td>
-      <!--              <td class="image">Id</td>
-                    <td class="description"></td>
-                    <td class="price">Price</td>
-                    <td class="quantity">Quantity</td>
-                    <td class="total">Total</td>
-                    STT // tính cộng dồn lên
-                    Sản phẩm(image, tên, bởi ai bán) // Lấy từ Product ra với tên id User tương ứng
-                    Giá // Lấy giá từ Id với User tương ứng
-                    Số lượng // Lấy từ CartItem ra quantity
-                    Thành tiền // Tiền của 1 sp ở product * số lượng
-                    Gốc dưới là tổng tiền. // tính tổng các thành tiền...-->
                 </tr>
                 </thead>
                 <tbody>
@@ -112,16 +91,13 @@
                             <a href=""><img height="200" width="200" src="${pageContext.request.contextPath}/image/${cartItem.getSkuEntity().getProductEntity().getImage()}" alt=""></a>
                         </td>
                         <td class="cart_description">
-                            <input type="hidden" name="item_name_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getName()}"/>
                             <h4><a href="">${cartItem.getSkuEntity().getProductEntity().getName()}</a></h4>
                             <p>Màu sắc: ${cartItem.getSkuEntity().getColorEntity().getColorName()}, size: ${cartItem.getSkuEntity().getSizeEntity().getSizeName()}</p>
                         </td>
                         <td class="cart_price">
-                            <input type="hidden" name = "amount_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getPrice()}"/>
                             <h4>${cartItem.getSkuEntity().getProductEntity().getPrice()} VNĐ</h4>
                         </td>
                         <td class="cart_quantity">
-                            <input type="hidden" name = "quantity_${loop.count}" value="${cartItem.getSkuEntity().getQuantity() }"/>
                             <div class="cart_quantity_button">
                                 <a class="cart_quantity_up" href="${pageContext.request.contextPath}/member/cart/increaseOrDecrease?pId=${cartItem.getSkuEntity().getProductEntity().getId()}&&check=1"> + </a>
                                 <input class="cart_quantity_input" type="text" name="quantity" value="${cartItem.getQuantity() }" autocomplete="off" size="2">

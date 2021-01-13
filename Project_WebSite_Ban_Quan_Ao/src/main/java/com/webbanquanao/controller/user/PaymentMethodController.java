@@ -1,10 +1,15 @@
-/*
 package com.webbanquanao.controller.user;
 
 import com.webbanquanao.model.CartEntity;
+import com.webbanquanao.model.CustomerEntity;
+import com.webbanquanao.model.UserEntity;
 import com.webbanquanao.service.CartService;
+import com.webbanquanao.service.CustomerService;
 import com.webbanquanao.service.ProductService;
+import com.webbanquanao.service.UserService;
 import com.webbanquanao.service.impl.CartServiceImpl;
+import com.webbanquanao.service.impl.CustomerServiceImpl;
+import com.webbanquanao.service.impl.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,26 +20,74 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns= {"User/payment/method"})
+@WebServlet(urlPatterns= {"/user/paymentMethod"})
 public class PaymentMethodController extends HttpServlet {
-    private CartService cartService = new CartServiceImpl();
-    private ProductService productService;
+
+    UserService userService = new UserServiceImpl();
+    CustomerService customerService = new CustomerServiceImpl();
+    CartService cartService = new CartServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+/*        String fullname = req.getParameter("fullname");
+        String email = req.getParameter("email");
+        String phone = req.getParameter("phone");
+        String address = req.getParameter("address");
+        String note = req.getParameter("note");
+        String optionPayment = req.getParameter("optionPayment");
+
+        System.out.println(fullname);
+        System.out.println(email);
+        System.out.println(phone);
+        System.out.println(address);
+        System.out.println(note);
+        System.out.println(optionPayment);
+
+        HttpSession httpSession = req.getSession();
+        String u_email = (String) httpSession.getAttribute("email");
+        CartEntity cartEntity = (CartEntity) httpSession.getAttribute("cartEntity");
+
+        UserEntity userEntity = new UserEntity();
+        userEntity = userService.getUser(u_email);
+        int c_id = customerService.getCustomerId(userEntity.getId());
+
+        CustomerEntity customerEntity = new CustomerEntity();
+        customerEntity.setFullname(fullname);
+        customerEntity.setEmail(email);
+        customerEntity.setPhone(phone);
+        customerEntity.setAddress(address);
+
+        if(c_id!=0) {
+            customerEntity.setId(c_id);
+            customerService.edit(customerEntity);
+        }
+        else {
+            customerService.insert(customerEntity);
+            int new_c_id = customerService.getNewIDCustomer();
+            customerEntity.setId(new_c_id);
+
+            cartService.UpdateCustomer(cartEntity.getId(),new_c_id);
+        }
+
+        cartEntity.setCustomerEntity(customerEntity);
+        httpSession.setAttribute("cartEntity",cartEntity);*/
+
         String posturl = "";
 
         String method = req.getParameter("method");
-        if(method=="online"){
+
+        if(method.equals("online")){
             posturl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
         }
         else{
-            posturl = "/guiMailDi";
+            posturl = "/guiEmail";
         }
 
         req.setAttribute("posturl",posturl);
+        req.setAttribute("method",method);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/payment.jsp");
         dispatcher.forward(req, resp);
     }
 }
-*/
+

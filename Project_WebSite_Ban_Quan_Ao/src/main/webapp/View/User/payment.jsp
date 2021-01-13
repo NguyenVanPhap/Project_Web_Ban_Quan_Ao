@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViewBag.Title</title>
+    <title>Thanh toán</title>
     <link href="${url}/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="${url}/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="${url}/Scripts/modernizr-2.6.2.js"></script>
@@ -83,7 +83,6 @@
         }
     </style>
 
-    <title>Pakhi an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Products :: w3layouts</title>
     <link href="${url}/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="${url}/js/jquery.min.js"></script>
@@ -120,23 +119,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start Dresses-page -->
 <br/><br/><br/>
 
-<c:set var="returnurl" scope="session" value="http://localhost:8080/Project_WebSite_Ban_Quan_Ao_war_exploded/member/cart"/>
-<c:set var="business" scope="session" value="chuShop@gmail.com"/>
-
 <div class="container">
     <div class="spec ">
         <h3 style="color: #eb5367">Thanh toán</h3>
-
     </div>
     <div class="row">
         <div id="center_column" class="center_column">
             <div class="row">
                 <div id="left_column" class="column col-sm-12 col-md-12">
-                    <form class="form-horizontal" action="${pageContext.request.contextPath }/Home" method="get">
-                        <input type="hidden" name="upload" value="1"/>
-                        <input type="hidden" name="return" value="${returnurl}"/>
-                        <input type="hidden" name="cmd" value="_cart"/>
-                        <input type="hidden" name="business" value="${business}"/>-->
+                    <form class="form-horizontal" action="${pageContext.request.contextPath}/paypal" method="get">
 
                         <div class="col-sm-6 col-md-6">
                             <div class="detail_ct">
@@ -144,32 +135,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Họ và tên *</label>
                                     <div class="col-lg-8">
-                                        <input type="text" required name="fullname" class="form-control input-sm field" style="width:300px;" value="${cartEntity.getCustomerEntity().getFullname()}">
+                                        <input type="text" required name="fullname" placeholder="Hãy nhập tên của bạn..." class="form-control input-sm field" style="font-family:courier,arial,helvetica; font-weight: bold; width:300px;" value="${cartEntity.getCustomerEntity().getFullname()}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-4 control-label">Email</label>
+                                    <label class="col-lg-4 control-label">Email *</label>
                                     <div class="col-lg-8">
-                                        <input type="email" required placeholder="Không bắt buộc" class="form-control input-sm field" name="email" style="width:300px;" value="${cartEntity.getCustomerEntity().getEmail()}">
+                                        <input type="email" required placeholder="Hãy nhập email của bạn..." class="form-control input-sm field" name="c_email" style="font-family:courier,arial,helvetica; font-weight: bold; width:300px;" value="${cartEntity.getCustomerEntity().getEmail()}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Số điện thoại *</label>
                                     <div class="col-lg-8">
-                                        <input type="text" required class="form-control input-sm field" id="phone" name="phone" style="width:300px;" value="${cartEntity.getCustomerEntity().getPhone()}">
+                                        <input type="text" required class="form-control input-sm field" placeholder="Hãy nhập số điện thoại của bạn..." id="phone" name="phone" style="font-family:courier,arial,helvetica; font-weight: bold; width:300px;" value="${cartEntity.getCustomerEntity().getPhone()}">
                                     </div>
                                 </div>
                                 <legend>ĐỊA CHỈ GIAO HÀNG</legend>
                                 <div class="form-group">
-                                    <label class="col-lg-4 control-label">Địa chỉ</label>
+                                    <label class="col-lg-4 control-label">Địa chỉ *</label>
                                     <div class="col-lg-8">
-                                        <textarea required class="form-control input-sm field"  placeholder="Vui lòng ghi địa chỉ chi tiết..." name="address" rows="5" style="height:50px;">${cartEntity.getCustomerEntity().getAddress()}</textarea>
+                                        <textarea required class="form-control input-sm field"  placeholder="Vui lòng ghi địa chỉ chi tiết..." name="address" rows="5" style="font-family:courier,arial,helvetica; font-weight: bold; height:50px;">${cartEntity.getCustomerEntity().getAddress()}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">Ghi chú</label>
                                     <div class="col-lg-8">
-                                        <textarea required class="form-control input-sm field" placeholder="Thông tin thêm..." name="note" rows="5" style="height:50px;"></textarea>
+                                        <textarea class="form-control input-sm field" placeholder="Thông tin thêm..." name="note" rows="5" style="font-family:courier,arial,helvetica; font-weight: bold; height:50px;"></textarea>
                                     </div>
                                 </div>
                                 <legend>PHƯƠNG THỨC THANH TOÁN</legend>
@@ -177,11 +168,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <label class="col-lg-4 control-label">Hình thức thanh toán</label>
                                     <div class="col-lg-8">
                                         <div>
-                                            <input type="radio" id="online" name="optionPayment" value="online" checked onclick="window.location='${pageContext.request.contextPath}/User/payment/method?method=online'">
+                                            <input type="radio" id="online" name="optionPayment" value="online" checked >
                                             <label for="online" style="color: #696763">Trực tuyến</label>
                                         </div>
                                         <div>
-                                            <input type="radio" id="offline" name="optionPayment" value="offline" onclick="window.location='${pageContext.request.contextPath}/User/payment/method?method=offline'">
+                                            <input type="radio" id="offline" name="optionPayment" value="offline" >
                                             <label for="offline" style="color: #696763">Trả khi nhận hàng</label>
                                         </div>
                                     </div>
@@ -207,16 +198,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <img src="${pageContext.request.contextPath}/image/${cartItem.getSkuEntity().getProductEntity().getImage()}" width="48">
                                     </td>
                                     <td>
-                                        <input type="hidden" name="item_name_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getName()}"/>
                                         <strong>
                                                 ${cartItem.getSkuEntity().getProductEntity().getName()}
                                         </strong>
                                     </td>
 
-                                    <input type="hidden" name = "quantity_${loop.count}" value="${cartItem.getSkuEntity().getQuantity() }"/>
                                     <td>${cartItem.getQuantity() }</td>
 
-                                    <input type="hidden" name = "amount_${loop.count}" value="${cartItem.getSkuEntity().getProductEntity().getPrice()}"/>
                                     <td>${cartItem.getSkuEntity().getProductEntity().getPrice()} VNĐ</td>
                                     <td>${cartItem.getSkuEntity().getProductEntity().getPrice()*cartItem.getQuantity() } VNĐ</td>
                                 </tr>

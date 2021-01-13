@@ -49,6 +49,7 @@ public class CheckOutController extends HttpServlet {
             }
 
             req.setAttribute("posturl","https://www.sandbox.paypal.com/cgi-bin/webscr");
+            req.setAttribute("method","online");
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/payment.jsp");
             dispatcher.forward(req, resp);
