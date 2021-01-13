@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns= {"/admin/brand/list"})
-public class BrandListController extends HttpServlet {
+@WebServlet(urlPatterns= {"/admin/user/list"})
+public class UserListController extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
     @Override

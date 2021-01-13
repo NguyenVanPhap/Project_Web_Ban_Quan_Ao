@@ -99,9 +99,9 @@
             <div class="products-section-grids">
                 <ul id="filters" class="clearfix">
                     <li><span class="filter active" data-filter="app card icon web" onclick="window.location='${pageContext.request.contextPath }/Home'">ALL</span></li>
-                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=giày nike'">Giày</span></li>
-                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=quan jean'">Quần </span></li>
-                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=áo thun'">áo</span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=giày'">Giày</span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=quần'">Quần </span></li>
+                    <li><span class="filter" data-filter="app" onclick="window.location='${pageContext.request.contextPath }/Home?cateid=áo'">áo</span></li>
 
                 </ul>
                 <div id="portfoliolist">

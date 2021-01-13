@@ -19,6 +19,10 @@
 				USER Management</a></li>
 			<li><a href="${pageContext.request.contextPath }/admin/order/list"><i
 					class="fa fa-bar-chart-o fa-3x"></i> Order Management</a></li>
+
+			<li><a href="${pageContext.request.contextPath }/admin/brand/list"><i
+					class="fa fa-bar-chart-o fa-3x"></i> Brand management</a></li>
+
 			<li><a href="${pageContext.request.contextPath }/admin/contact/list"><i
 					class="fa fa-bar-chart-o fa-3x"></i> Contact Management</a></li>
 
