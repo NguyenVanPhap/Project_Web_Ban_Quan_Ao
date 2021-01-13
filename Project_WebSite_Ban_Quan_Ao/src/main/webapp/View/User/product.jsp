@@ -55,7 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </li>
         </ul>
         <ul class="previous">
-            <li><a href="index.html">Back to Previous Page</a></li>
+
         </ul>
         <div class="clearfix"></div>
     </div>
@@ -65,24 +65,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="cont span_2_of_3">
             <div class="mens-toolbar">
 
-                <div class="pager">
-                    <div class="limiter visible-desktop">
+                <div class="pager" style="width: 100%">
 
-                    </div>
-                    <ul class="dc_pagination dc_paginationA dc_paginationA06">
+                    <div class="dc_pagination dc_paginationA dc_paginationA06">
                         <li><a href="#" class="previous">Pages</a></li>
                         <c:forEach var = "i" begin = "1" end = "${numOfPages}">
 <%--                            <li><a href="<c:url value='/user/product/list?page=${i}'/>">${i}</a></li>--%>
                             <li><a href="${pageContext.request.contextPath }/product/searchByProperties?page=${i}">${i}</a></li>
                         </c:forEach>
-                    </ul>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
             </div>
 
             <c:forEach items="${productList}" var="pro">
-            <div class="box1">
+            <div class="box1" style="width: 107%">
                 <div class="col_1_of_single1 span_1_of_single1">
                     <div class="view1 view-fifth1">
                         <div class="top_box">
@@ -91,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="<c:url value='/product/detail?id=${pro.getId() }'/>">
                                 <div class="grid_img">
                                     <c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
-                                    <div class="css3"><img height="250" width="200" src="${imgUrl}" alt=""/></div>
+                                    <div class="css3"><img height="270" width="200" src="${imgUrl}" alt=""/></div>
                                     <div class="mask1">
                                         <div class="info">Quick View</div>
                                     </div>
@@ -125,23 +123,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- content-section-ends -->
 
-
-<div class="footer">
-    <div class="up-arrow">
-        <a class="scroll" href="#"><img src="${url}/images/up.png" alt="" /></a>
-    </div>
-    <div class="container">
-        <div class="copyrights">
-            <p>Copyright &copy; 2015 All rights reserved </p>
-        </div>
-        <div class="footer-social-icons">
-            <a href="#"><i class="fb"></i></a>
-            <a href="#"><i class="tw"></i></a>
-            <a href="#"><i class="in"></i></a>
-            <a href="#"><i class="pt"></i></a>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
+<jsp:include page="/View/User/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -32,10 +32,8 @@ public class SkuEditController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        request.setAttribute("user",user.getUserName());
         String id = request.getParameter("id");
         SkuEntity sku = skuService.get(Integer.parseInt(id));
         request.setAttribute("sku",sku);
@@ -49,8 +47,15 @@ public class SkuEditController extends HttpServlet {
         List<SizeEntity> sizes = sizeService.getAll();
         request.setAttribute("sizes", sizes);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/View/admin/edit-sku.jsp");
-        dispatcher.forward(request, response);
+        int role = user.getPermission();
+        String link = "/View/admin/edit-sku.jsp";
+        if(role == 1){
+            link = "/View/admin/edit-sku.jsp";
+        }
+        else{
+            link = null;
+        }
+        request.getRequestDispatcher(link).forward(request, response);
     }
 
     @Override

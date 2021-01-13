@@ -166,6 +166,9 @@
 
 	<%--	<jsp:include page="footer.jsp"></jsp:include>--%>
 </section> <!--/#cart_items-->
+
+<jsp:include page="/View/User/footer.jsp"></jsp:include>
+
 <%--<script>
 	$("[data-toggle='modal']").modal();
 </script>--%>
@@ -216,6 +219,7 @@
 		</div>
 	</div> <!-- end modal -->
 </c:forEach>
+
 <script src="${url}/js/jquery.js"></script>
 <script src="${url}/js/bootstrap.min.js"></script>
 <script src="${url}/js/jquery.scrollUp.min.js"></script>
