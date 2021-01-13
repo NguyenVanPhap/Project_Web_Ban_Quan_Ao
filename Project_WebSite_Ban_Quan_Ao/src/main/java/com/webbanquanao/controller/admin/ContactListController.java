@@ -25,13 +25,18 @@ public class ContactListController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            req.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        req.setAttribute("user",user.getUserName());
         List<ContactEntity> contactEntityList = contactService.getAll();
         req.setAttribute("contactEntityList", contactEntityList);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/admin/list-contact.jsp");
-        dispatcher.forward(req, resp);
+        int role = user.getPermission();
+        String link = "/View/admin/list-contact.jsp";
+        if(role == 1){
+            link = "/View/admin/list-contact.jsp";
+        }
+        else{
+            link = null;
+        }
+        req.getRequestDispatcher(link).forward(req, resp);
     }
 }

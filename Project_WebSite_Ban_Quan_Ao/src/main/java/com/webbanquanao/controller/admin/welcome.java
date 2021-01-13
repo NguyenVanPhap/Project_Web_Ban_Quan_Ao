@@ -26,11 +26,17 @@ public class welcome extends HttpServlet {
 //        request.setAttribute("username", user.getUserName());
 
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
-        request.getRequestDispatcher("/View/admin/index.jsp").forward(request, response);
+        UserEntity user = userService.search(email);
+        request.setAttribute("user",user.getUserName());
+        int role = user.getPermission();
+        String link = "/View/admin/index.jsp";
+        if(role == 1){
+            link = "/View/admin/index.jsp";
+        }
+        else{
+            link = null;
+        }
+        request.getRequestDispatcher(link).forward(request, response);
     }
 
 }

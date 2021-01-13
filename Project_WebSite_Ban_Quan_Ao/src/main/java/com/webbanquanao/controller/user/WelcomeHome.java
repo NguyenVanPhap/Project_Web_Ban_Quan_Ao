@@ -59,10 +59,9 @@ public class WelcomeHome extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             String email = session.getAttribute("email").toString();
-            List<UserEntity> user = userService.search(email);
-            user.forEach((u -> {
-                request.setAttribute("user", u.getUserName());
-            }));
+            UserEntity user = userService.search(email);
+            request.setAttribute("user",user.getUserName());
+
             request.setAttribute("email", email);
         }
         catch (Exception e) {

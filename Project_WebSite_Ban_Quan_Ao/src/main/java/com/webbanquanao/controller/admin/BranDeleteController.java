@@ -25,10 +25,8 @@ public class BranDeleteController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        request.setAttribute("user",user.getUserName());
         String id = request.getParameter("id");
         brandService.delete(Integer.parseInt(id));
         response.sendRedirect(request.getContextPath() + "/admin/brand/list");

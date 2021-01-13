@@ -27,23 +27,12 @@ public class OrderDeleteController extends HttpServlet {
 
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
-
-        String type = request.getParameter("type");
+        UserEntity user = userService.search(email);
+        request.setAttribute("user",user.getUserName());
 
         int id= Integer.parseInt(request.getParameter("id")) ;
         cartService.delete(id);
-        if (type.equals("user"))
-        {
-            response.sendRedirect(request.getContextPath()+"/infoController");
-        }
-        else {
-            response.sendRedirect(request.getContextPath()+"/admin/order/list");
-        }
-
+        response.sendRedirect(request.getContextPath()+"/admin/order/list");
     }
 }
 

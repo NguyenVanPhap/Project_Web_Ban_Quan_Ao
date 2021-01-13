@@ -21,7 +21,7 @@ public interface UserService {
 
     List<UserEntity> getAll();
 
-    List<UserEntity> search(String keyword);
+    UserEntity search(String keyword);
 
     boolean checkExistEmail(String email);
 
