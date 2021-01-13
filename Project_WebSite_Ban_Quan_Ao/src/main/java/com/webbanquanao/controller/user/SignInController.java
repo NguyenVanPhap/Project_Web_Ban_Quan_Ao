@@ -86,13 +86,11 @@ public class SignInController extends HttpServlet {
             else if(userService.checkExistAccount(email,pass)){
                 session.setAttribute("email",email);
                 String home = "/Home";
-                List<UserEntity> users = userService.search(email);
-                for (UserEntity u : users) {
-                    if (u.getPermission().equals(1)) {
-                        home = "/admin";
-                    }
-                    else break;
+                UserEntity users = userService.search(email);
+                if(users.getPermission().equals(1)){
+                    home = "/admin";
                 }
+
               /*  if(home == "/Home")
                     for(UserEntity u: users){
                         System.out.println("Hello World!!!");

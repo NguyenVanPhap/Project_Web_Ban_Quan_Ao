@@ -104,16 +104,16 @@ public class UserDaoImpl  implements UserDao{
     }
 
     @Override
-    public List<UserEntity> search(String keyword) {
+    public UserEntity search(String keyword) {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         String qString = "SELECT u FROM UserEntity u "+
                 "WHERE u.email LIKE CONCAT('%',:keyword,'%')";
         TypedQuery<UserEntity> q = em.createQuery(qString,UserEntity.class);
         q.setParameter("keyword",keyword);
 
-        List<UserEntity> userEntities;
+        UserEntity userEntities;
         try{
-            userEntities=q.getResultList();
+            userEntities=q.getSingleResult();
             return userEntities;
         }
         catch (NoResultException e){

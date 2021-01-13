@@ -29,24 +29,27 @@ public class OrderListController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        request.setAttribute("user",user.getUserName());
 
         List<CartEntity> listCart = cartService.getAll();
 
-        if (listCart != null) {
-            for(CartEntity cart : listCart) {
-                List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
-                cart.setCartitemEntities(lstCartItem);
-            }
+        for(CartEntity cart : listCart) {
+            List<CartitemEntity> lstCartItem = cartItemService.getByCartId(cart.getId());
+            cart.setCartitemEntities(lstCartItem);
         }
 
         request.setAttribute("listCart",listCart);
         /*List<CartitemEntity> listCartItem =cartItemService.getAll();
         request.setAttribute("listCartItem", listCartItem);*/
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/View/admin/list-order.jsp");
-        dispatcher.forward(request, response);
+        int role = user.getPermission();
+        String link = "/View/admin/list-order.jsp";
+        if(role == 1){
+            link = "/View/admin/list-order.jsp";
+        }
+        else{
+            link = null;
+        }
+        request.getRequestDispatcher(link).forward(request, response);
     }
 }

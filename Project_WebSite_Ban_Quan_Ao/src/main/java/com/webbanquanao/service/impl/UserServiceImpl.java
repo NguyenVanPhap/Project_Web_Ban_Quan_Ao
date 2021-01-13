@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> search(String username) {
+    public UserEntity search(String username) {
         return userDao.search(username);
     }
 

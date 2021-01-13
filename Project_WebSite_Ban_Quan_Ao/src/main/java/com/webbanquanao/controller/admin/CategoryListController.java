@@ -26,13 +26,18 @@ public class CategoryListController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        request.setAttribute("user",user.getUserName());
         List<CategoryEntity> cateList = cateService.getAll();
         request.setAttribute("cateList", cateList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/View/admin/list-category.jsp");
-        dispatcher.forward(request, response);
+        int role = user.getPermission();
+        String link = "/View/admin/list-category.jsp";
+        if(role == 1){
+            link = "/View/admin/list-category.jsp";
+        }
+        else{
+            link = null;
+        }
+        request.getRequestDispatcher(link).forward(request, response);
     }
 }

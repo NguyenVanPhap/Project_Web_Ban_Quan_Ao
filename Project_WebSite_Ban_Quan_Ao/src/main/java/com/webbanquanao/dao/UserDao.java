@@ -18,7 +18,7 @@ public interface UserDao {
 
     List<UserEntity> getAll();
 
-    List<UserEntity> search(String userName);
+    UserEntity search(String userName);
 
     boolean checkExistEmail(String email);
 

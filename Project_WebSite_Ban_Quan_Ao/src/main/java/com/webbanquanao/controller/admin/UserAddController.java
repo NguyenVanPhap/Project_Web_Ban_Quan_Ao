@@ -34,18 +34,23 @@ public class UserAddController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            req.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        req.setAttribute("user",user.getUserName());
         String eString = req.getParameter("e");
         if (eString != null) {
             if (eString.equals("1")) {
                 req.setAttribute("errMsg", "Username da ton tai!!!");
             }
         }
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/admin/add-user.jsp");
-        dispatcher.forward(req, resp);
+        int role = user.getPermission();
+        String link = "/View/admin/add-user.jsp";
+        if(role == 1){
+            link = "/View/admin/add-user.jsp";
+        }
+        else{
+            link = null;
+        }
+        req.getRequestDispatcher(link).forward(req, resp);
     }
 
     @Override

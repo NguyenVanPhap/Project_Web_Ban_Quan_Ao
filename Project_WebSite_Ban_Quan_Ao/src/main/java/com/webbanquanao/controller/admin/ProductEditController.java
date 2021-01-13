@@ -40,10 +40,8 @@ public class ProductEditController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
-        List<UserEntity> user = userService.search(email);
-        user.forEach((u -> {
-            request.setAttribute("user", u.getUserName());
-        }));
+        UserEntity user = userService.search(email);
+        request.setAttribute("user",user.getUserName());
         String id = request.getParameter("id");
         ProductEntity product = productService.get(Integer.parseInt(id));
         List<CategoryEntity> categories = categoryService.getAll();
@@ -54,8 +52,15 @@ public class ProductEditController extends HttpServlet {
 
         request.setAttribute("product", product);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/View/admin/edit-product.jsp");
-        dispatcher.forward(request, response);
+        int role = user.getPermission();
+        String link = "/View/admin/edit-product.jsp";
+        if(role == 1){
+            request.getRequestDispatcher(link).forward(request, response);
+        }
+        else{
+            link = null;
+        }
+        request.getRequestDispatcher(link).forward(request, response);
     }
 
     @Override
