@@ -152,6 +152,7 @@ public class SkuDaoImpl implements SkuDao {
         finally {
             em.close();
         }
+
         return quantity;
     }
 

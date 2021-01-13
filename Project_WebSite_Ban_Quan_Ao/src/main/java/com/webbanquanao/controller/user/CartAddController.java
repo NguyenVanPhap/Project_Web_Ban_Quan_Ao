@@ -46,7 +46,11 @@ public class CartAddController extends HttpServlet {
 
                     int color_id = colorService.getColorId(color);
                     int size_id = sizeService.getSizeId(size);
-                    int maxquantity = skuService.getMaxQuantity(p_id,color_id,size_id);
+                    int maxquantity = 0;
+
+                    maxquantity = skuService.getMaxQuantity(p_id, color_id, size_id);
+
+
                     int sku_id = skuService.getSkuId(p_id,color_id,size_id);
 
                     ColorEntity colorEntity = new ColorEntity();
@@ -110,7 +114,8 @@ public class CartAddController extends HttpServlet {
 
                         int color_id = colorService.getColorId(color);
                         int size_id = sizeService.getSizeId(size);
-                        int maxquantity = skuService.getMaxQuantity(p_id,color_id,size_id);
+
+                        int maxquantity = skuService.getMaxQuantity(p_id, color_id, size_id);
                         int sku_id = skuService.getSkuId(p_id,color_id,size_id);
 
                         ColorEntity colorEntity = new ColorEntity();
