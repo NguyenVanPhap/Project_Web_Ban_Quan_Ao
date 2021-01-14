@@ -83,6 +83,7 @@ public class UserEditController extends HttpServlet {
                     }
                     else
                     {
+
                         Pattern pattern = Pattern.compile("^(.+)@(.+)$");
                         if(!pattern.matcher(item.getString()).matches())
                         {
@@ -91,12 +92,20 @@ public class UserEditController extends HttpServlet {
                         }
                         else if(userService.checkExistEmail(item.getString()))
                         {
-                            req.getSession().setAttribute("emailError", "This email is already exist");
-                            url = "0";
+                            if(item.getString()!=userService.get(Integer.parseInt(iduser)).getEmail()) {
+                                req.getSession().setAttribute("emailError", "This email is already exist");
+                                url = "0";
+                            }
+                            else
+                            {
+                                req.getSession().setAttribute("emailError", null);
+
+                            }
                         }
                         else
                         {
                             req.getSession().setAttribute("emailError", null);
+
                         }
 
                     }
