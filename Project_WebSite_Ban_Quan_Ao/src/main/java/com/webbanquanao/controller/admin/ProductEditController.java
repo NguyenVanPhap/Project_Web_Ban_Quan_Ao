@@ -47,9 +47,7 @@ public class ProductEditController extends HttpServlet {
         List<CategoryEntity> categories = categoryService.getAll();
         List<BrandEntity> listBrand = brandService.getAll();
         request.setAttribute("listBrand", listBrand);
-
         request.setAttribute("categories", categories);
-
         request.setAttribute("product", product);
 
         int role = user.getPermission();

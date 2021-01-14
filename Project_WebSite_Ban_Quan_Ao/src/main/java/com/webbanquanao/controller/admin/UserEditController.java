@@ -1,5 +1,9 @@
 package com.webbanquanao.controller.admin;
 
+import com.sun.deploy.security.SelectableSecurityManager;
+import com.webbanquanao.model.BrandEntity;
+import com.webbanquanao.model.CategoryEntity;
+import com.webbanquanao.model.ProductEntity;
 import com.webbanquanao.model.UserEntity;
 import com.webbanquanao.service.UserService;
 import com.webbanquanao.service.impl.UserServiceImpl;
@@ -32,15 +36,19 @@ public class UserEditController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = session.getAttribute("email").toString();
-        UserEntity users = userService.search(email);
-        req.setAttribute("user",users.getUserName());
-        int id = Integer.parseInt(req.getParameter("id"));
-        UserEntity user = userService.get(id);
-        req.setAttribute("users", user);
+        UserEntity user = userService.search(email);
+        req.setAttribute("user",user.getUserName());
+        String id = req.getParameter("id");
+
+        UserEntity userEntity = userService.get(Integer.parseInt(id));
+
+
+        req.setAttribute("users", userEntity);
+
         int role = user.getPermission();
         String link = "/View/admin/edit-user.jsp";
         if(role == 1){
-            link = "/View/admin/edit-user.jsp";
+            req.getRequestDispatcher(link).forward(req, resp);
         }
         else{
             link = null;
@@ -81,7 +89,13 @@ public class UserEditController extends HttpServlet {
                             req.getSession().setAttribute("emailError", "You must enter email in format xx@xx");
                             url = "0";
                         }
-                        else {
+                        else if(userService.checkExistEmail(item.getString()))
+                        {
+                            req.getSession().setAttribute("emailError", "This email is already exist");
+                            url = "0";
+                        }
+                        else
+                        {
                             req.getSession().setAttribute("emailError", null);
                         }
 
