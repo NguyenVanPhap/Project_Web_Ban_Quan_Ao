@@ -127,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="center_column" class="center_column">
             <div class="row">
                 <div id="left_column" class="column col-sm-12 col-md-12">
-                    <form class="form-horizontal" action="${pageContext.request.contextPath}/paypal" method="get">
+                    <form class="form-horizontal" action="${pageContext.request.contextPath}/payment" method="get">
 
                         <div class="col-sm-6 col-md-6">
                             <div class="detail_ct">
@@ -204,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </td>
 
                                     <td>${cartItem.getQuantity() }</td>
-                                    
+
                                     <td>${cartItem.getSkuEntity().getProductEntity().getPrice()} VNĐ</td>
                                     <td>${cartItem.getSkuEntity().getProductEntity().getPrice()*cartItem.getQuantity() } VNĐ</td>
                                 </tr>
