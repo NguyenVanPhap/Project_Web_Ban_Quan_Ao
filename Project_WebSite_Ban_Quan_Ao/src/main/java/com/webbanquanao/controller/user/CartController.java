@@ -21,11 +21,6 @@ public class CartController extends HttpServlet {
     private ProductService productService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-/*        System.out.println("Hello");
-        HttpSession httpSession = req.getSession();
-        Object obj = httpSession.getAttribute("cart");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/cart.jsp");
-        dispatcher.forward(req, resp);*/
         HttpSession httpSession = req.getSession();
         CartEntity cartEntity = (CartEntity) httpSession.getAttribute("cartEntity");
         double total = cartService.totalBill(cartEntity);

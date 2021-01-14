@@ -1,4 +1,3 @@
-/*
 package com.webbanquanao.controller.user;
 
 import com.webbanquanao.model.CartEntity;
@@ -15,26 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns= {"User/payment/method"})
-public class PaymentMethodController extends HttpServlet {
-    private CartService cartService = new CartServiceImpl();
-    private ProductService productService;
+@WebServlet(urlPatterns= {"/cartSuccess"})
+public class CartSuccessController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String posturl = "";
+        HttpSession httpSession = req.getSession();
 
-        String method = req.getParameter("method");
-        if(method=="online"){
-            posturl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-        }
-        else{
-            posturl = "/guiMailDi";
-        }
+        CartEntity cartEntity = null;
 
-        req.setAttribute("posturl",posturl);
+        httpSession.setAttribute("cartEntity",cartEntity);
+        double total = 0;
+        httpSession.setAttribute("total",total);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/payment.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/cart.jsp");
         dispatcher.forward(req, resp);
     }
 }
-*/
