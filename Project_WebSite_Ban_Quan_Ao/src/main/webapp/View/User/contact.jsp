@@ -156,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <form method="post" action="${pageContext.request.contextPath}/contactController">
                 <div>
                     <span><label>Name</label></span>
-                    <span><input name="userName" type="text" class="textbox"></span>
+                    <span><input id="name" name="userName" type="text" class="textbox"></span>
                 </div>
                 <div>
                     <span><label>E-mail</label></span>
@@ -168,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div>
                     <span><label>Subject</label></span>
-                    <span><textarea name="userMsg"> </textarea></span>
+                    <span><textarea id="subj" name="userMsg"> </textarea></span>
                 </div>
                 <div>
                     <label style="color: green">${infoMsg}</label>
@@ -181,6 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 <!-- content-section-ends -->
+
 <jsp:include page="/View/User/footer.jsp"></jsp:include>
 </body>
 </html>

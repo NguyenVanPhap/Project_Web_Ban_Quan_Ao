@@ -4,6 +4,7 @@ import com.webbanquanao.dao.ContactDAO;
 import com.webbanquanao.dao.HibernateConnection.HibernateUtil;
 import com.webbanquanao.model.ContactEntity;
 
+import com.webbanquanao.model.ProductEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -50,21 +51,20 @@ public class ContactDaoImpl implements ContactDAO {
     @Override
     public void delete(int id)
     {
-/*        Transaction transaction = null;
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
 
-        try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            transaction = session.beginTransaction();
-            ContactEntity contact =session.get(ContactEntity.class,id);
-            if (contact != null){
-                session.delete(contact);
-            }
-            transaction.commit();
+        try{
+            ContactEntity contact = em.find(ContactEntity.class, id);
+            trans.begin();
+            em.remove(em.merge(contact));
+            trans.commit();
+        }catch (Exception ex){
+            trans.rollback();
         }
-        catch (Exception e){
-            if(transaction != null)
-                transaction.rollback();
-            e.printStackTrace();
-        }*/
+        finally {
+            em.close();
+        }
     }
 
     @Override
@@ -85,7 +85,16 @@ public class ContactDaoImpl implements ContactDAO {
     }
     @Override
     public ContactEntity getById(int id){
-/*        Transaction transaction = null;
+
+        EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
+        try{
+            ContactEntity contact = em.find(ContactEntity.class, id);
+            return contact;
+        }
+        finally {
+            em.close();
+        }
+        /*Transaction transaction = null;
         ContactEntity contact = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
@@ -100,7 +109,7 @@ public class ContactDaoImpl implements ContactDAO {
             }
             e.printStackTrace();
         }
-        return contact;*/
-        return null;
+        return contact;
+        return null;*/
     }
 }

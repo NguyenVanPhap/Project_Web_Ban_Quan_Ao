@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(urlPatterns="/contactController")
 public class ContactController extends HttpServlet {
@@ -19,14 +20,25 @@ public class ContactController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContactEntity contact = new ContactEntity();
+        String infoMsg="";
         contact.setName((String) req.getParameter("userName"));
         contact.setEmail((String) req.getParameter("userEmail"));
         contact.setMobile((String) req.getParameter("userPhone"));
         contact.setSubject((String) req.getParameter("userMsg"));
-        contactService.insert(contact);
-        req.setAttribute("infoMsg","Đã gửi ý kiến phản hồi thành công");
+        if (contact.getName().equals("")) {
+            infoMsg = "Tên không được để trống";
+        } else if (contact.getSubject().equals("")) {
+            infoMsg ="Nội dung không được để trống";
+        } else {
+            contactService.insert(contact);
+            infoMsg="Đã gửi ý kiến phản hồi thành công";
+        }
+        req.setAttribute("infoMsg",infoMsg);
         resp.sendRedirect(req.getContextPath() + "/View/User/contact.jsp");
-//        RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/contact.jsp");
-//        dispatcher.forward(req, resp);
+
+/*
+        RequestDispatcher dispatcher = req.getRequestDispatcher(req.getContextPath() +"/View/User/contact.jsp");
+        dispatcher.forward(req, resp);
+*/
     }
 }
