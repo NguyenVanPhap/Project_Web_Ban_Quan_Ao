@@ -83,6 +83,11 @@ public class UserAddController extends HttpServlet {
                             req.getSession().setAttribute("emailError", "You must enter email in format x@x.x");
                             url = "0";
                         }
+                        else if(userService.checkExistEmail(item.getString()))
+                        {
+                            req.getSession().setAttribute("emailError", "This email is already exist");
+                            url = "0";
+                        }
                         else {
                             req.getSession().setAttribute("emailError", null);
                         }
