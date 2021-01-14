@@ -92,15 +92,14 @@ public class UserEditController extends HttpServlet {
                         }
                         else if(userService.checkExistEmail(item.getString()))
                         {
-                            if(item.getString()!=userService.get(Integer.parseInt(iduser)).getEmail()) {
-                                req.getSession().setAttribute("emailError", "This email is already exist");
-                                url = "0";
-                            }
-                            else
-                            {
-                                req.getSession().setAttribute("emailError", null);
-
-                            }
+                              if(Integer.parseInt(iduser)!=userService.get(item.getString()).getId())
+                              {
+                                  req.getSession().setAttribute("emailError", "This email is already exist");
+                                  url = "0";
+                              }
+                              else {
+                                  req.getSession().setAttribute("emailError", null);
+                              }
                         }
                         else
                         {
@@ -109,7 +108,6 @@ public class UserEditController extends HttpServlet {
                         }
 
                     }
-
                     user.setEmail(item.getString());;
                 } else if (item.getFieldName().equals("username")) {
                     if(item.getString().equals(""))

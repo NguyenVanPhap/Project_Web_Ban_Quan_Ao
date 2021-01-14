@@ -106,8 +106,8 @@
 														</c:if>
 												/>Admin
 												</label> <br>
-												<label> <input type="radio" value="2"
-															   name="permission" <c:if test="${users.permission==2}">
+												<label> <input type="radio" value="0"
+															   name="permission" <c:if test="${users.permission==0}">
 													checked
 												</c:if>
 												/>Client
