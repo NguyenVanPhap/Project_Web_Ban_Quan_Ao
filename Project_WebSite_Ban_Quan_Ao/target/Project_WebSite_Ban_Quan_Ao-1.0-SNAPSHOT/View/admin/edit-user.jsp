@@ -81,7 +81,7 @@
 												<a><p style="color: red"><c:out value="${emailError}" /></p></a>
 											</c:if>
 											<input class="form-control"
-																		 value="${users.email }" name="email" />
+																		 value="${users.email }" name="editemail" />
 										</div>
 
 										<div class="form-group">
@@ -101,13 +101,13 @@
 											<label>Role</label>
 											<div class="checkbox">
 												<label> <input type="radio" value="1" name="permission"
-														<c:if test="${users.permission==1}">
+														<c:if test="${users.getPermission()==1}">
 															checked
 														</c:if>
 												/>Admin
 												</label> <br>
-												<label> <input type="radio" value="2"
-															   name="permission" <c:if test="${users.permission==2}">
+												<label> <input type="radio" value="0"
+															   name="permission" <c:if test="${users.getPermission()==0}">
 													checked
 												</c:if>
 												/>Client
