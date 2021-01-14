@@ -48,9 +48,6 @@ public class CheckOutController extends HttpServlet {
                 httpSession.setAttribute("cartEntity",cartEntity);
             }
 
-            req.setAttribute("posturl","https://www.sandbox.paypal.com/cgi-bin/webscr");
-            req.setAttribute("method","online");
-
             RequestDispatcher dispatcher = req.getRequestDispatcher("/View/User/payment.jsp");
             dispatcher.forward(req, resp);
         }
