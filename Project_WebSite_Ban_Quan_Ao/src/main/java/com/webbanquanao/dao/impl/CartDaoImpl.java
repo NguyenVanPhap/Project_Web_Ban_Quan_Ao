@@ -23,7 +23,7 @@ public class CartDaoImpl implements CartDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("Insert into Cart(u_id,buyDate,action,status) values(:u_id,:buyDate,:action,:status)");
+        Query query = getSession.createSQLQuery("Insert into cart(u_id,buyDate,action,status) values(:u_id,:buyDate,:action,:status)");
         query.setParameter("u_id",cart.getUserEntity().getId());
         query.setParameter("buyDate",cart.getBuyDate());
         query.setParameter("action",cart.getAction());
@@ -43,7 +43,7 @@ public class CartDaoImpl implements CartDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("UPDATE Cart SET action = :action WHERE id = :id");
+        Query query = getSession.createSQLQuery("UPDATE cart SET action = :action WHERE id = :id");
         query.setParameter("id", cart.getId());
         query.setParameter("action", cart.getAction());
         try{
@@ -281,7 +281,7 @@ public class CartDaoImpl implements CartDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("UPDATE Cart SET c_id = :c_id WHERE id = :id");
+        Query query = getSession.createSQLQuery("UPDATE cart SET c_id = :c_id WHERE id = :id");
         query.setParameter("id", id);
         query.setParameter("c_id", c_id);;
         try{
