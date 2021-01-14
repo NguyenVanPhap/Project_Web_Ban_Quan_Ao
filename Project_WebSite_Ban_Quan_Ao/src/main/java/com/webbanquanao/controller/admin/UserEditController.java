@@ -75,7 +75,7 @@ public class UserEditController extends HttpServlet {
                     iduser=item.getString();
                     user.setId(Integer.parseInt(item.getString()));
                 }
-                else if (item.getFieldName().equals("email")) {
+                else if (item.getFieldName().equals("editemail")) {
                     if(item.getString().equals(""))
                     {
                         req.getSession().setAttribute("emailError", "Email is not allowed to be blank");
@@ -90,22 +90,12 @@ public class UserEditController extends HttpServlet {
                             req.getSession().setAttribute("emailError", "You must enter email in format xx@xx");
                             url = "0";
                         }
-                        else if(userService.checkExistEmail(item.getString()))
-                        {
-                              if(Integer.parseInt(iduser)!=userService.get(item.getString()).getId())
-                              {
-                                  req.getSession().setAttribute("emailError", "This email is already exist");
-                                  url = "0";
-                              }
-                              else {
-                                  req.getSession().setAttribute("emailError", null);
-                              }
-                        }
                         else
                         {
                             req.getSession().setAttribute("emailError", null);
 
                         }
+
 
                     }
                     user.setEmail(item.getString());;

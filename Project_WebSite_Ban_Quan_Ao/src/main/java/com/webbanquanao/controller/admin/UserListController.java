@@ -24,8 +24,10 @@ public class UserListController extends HttpServlet {
         String email = session.getAttribute("email").toString();
         UserEntity user = userService.search(email);
         request.setAttribute("user",user.getUserName());
+
         List<UserEntity> userList = userService.getAll();
         request.setAttribute("userList", userList);
+
         int role = user.getPermission();
         String link = "/View/admin/list-user.jsp";
         if(role == 1){

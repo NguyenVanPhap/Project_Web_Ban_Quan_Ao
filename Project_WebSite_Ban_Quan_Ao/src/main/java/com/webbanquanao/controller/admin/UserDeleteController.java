@@ -24,7 +24,9 @@ public class UserDeleteController extends HttpServlet {
         UserEntity user = userService.search(email);
         request.setAttribute("user",user.getUserName());
         String id = request.getParameter("id");
-        userService.delete(Integer.parseInt(id));
+
+        if(Integer.parseInt(id)!=user.getId())
+            userService.delete(Integer.parseInt(id));
 
         response.sendRedirect(request.getContextPath() + "/admin/user/list");
     }
