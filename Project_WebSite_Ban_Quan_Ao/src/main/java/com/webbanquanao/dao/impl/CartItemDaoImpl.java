@@ -22,7 +22,7 @@ public class CartItemDaoImpl implements CartItemDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("Insert into CartItem(sku_id,cart_id,quantity) values(:sku_id,:cart_id,:quantity)");
+        Query query = getSession.createSQLQuery("Insert into cartitem(sku_id,cart_id,quantity) values(:sku_id,:cart_id,:quantity)");
         query.setParameter("sku_id",cartItem.getSkuEntity().getSkuId());
         query.setParameter("cart_id",cartItem.getCartEntity().getId());
         query.setParameter("quantity",cartItem.getQuantity());
@@ -41,7 +41,7 @@ public class CartItemDaoImpl implements CartItemDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("UPDATE CartItem SET quantity = :quantity WHERE id = :id");
+        Query query = getSession.createSQLQuery("UPDATE cartitem SET quantity = :quantity WHERE id = :id");
         query.setParameter("id", cartItem.getId());
         query.setParameter("quantity", cartItem.getQuantity());;
         try{
@@ -59,7 +59,7 @@ public class CartItemDaoImpl implements CartItemDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        Query query = getSession.createSQLQuery("DELETE FROM CartItem Where id = :id");
+        Query query = getSession.createSQLQuery("DELETE FROM cartitem Where id = :id");
         query.setParameter("id", cartItem.getId());
         try{
             query.executeUpdate();
@@ -215,7 +215,7 @@ public class CartItemDaoImpl implements CartItemDao {
         EntityManager em = HibernateUtil.getEmFactory().createEntityManager();
         Session getSession = em.unwrap(Session.class);
         getSession.getTransaction().begin();
-        int id = (int) getSession.createSQLQuery("SELECT id FROM CartItem ORDER BY id DESC LIMIT 1").addScalar("id",new IntegerType()).uniqueResult();
+        int id = (int) getSession.createSQLQuery("SELECT id FROM cartitem ORDER BY id DESC LIMIT 1").addScalar("id",new IntegerType()).uniqueResult();
         try{
 
             getSession.getTransaction().commit();
