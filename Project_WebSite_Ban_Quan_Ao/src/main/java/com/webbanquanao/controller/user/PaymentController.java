@@ -52,6 +52,9 @@ public class PaymentController extends HttpServlet {
         customerEntity.setPhone(phone);
         customerEntity.setAddress(address);
 
+        cartEntity.setNote(note);
+        cartService.UpdateNote(cartEntity.getId(),cartEntity.getNote());
+
         if(c_id!=0) {
             customerEntity.setId(c_id);
             customerService.edit(customerEntity);

@@ -121,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="desc1 span_3_of_2">
                         <h3>${product.getName() }</h3>
-                        <p>${product.getPrice() }
+                        <p>${product.getPrice() } VNĐ
                         <form action="${pageContext.request.contextPath}/member/cart/add" method="get">
                         <select name="pId" hidden>
                             <option value="${product.getId()}"></option>

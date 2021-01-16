@@ -31,4 +31,6 @@ public interface CartService {
     void UpdateCustomer(int id, int c_id);
 
     void updateStatus(CartEntity cart);
+
+    void UpdateNote(int id, String note);
 }
