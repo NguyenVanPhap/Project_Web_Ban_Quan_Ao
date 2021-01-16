@@ -73,4 +73,7 @@ public class CartServiceImpl implements CartService {
         cart.setStatus(status);
         cartDao.updateStatus(cart);
     }
+
+    @Override
+    public void UpdateNote(int id, String note) { cartDao.UpdateNote(id,note); }
 }

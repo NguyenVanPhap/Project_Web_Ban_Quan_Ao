@@ -406,7 +406,6 @@ nav.navbar.navbar-default {
 .cart {
     float: right;
     cursor: pointer;
-    margin-top: 11px;
     width: 9%;
 }
 
